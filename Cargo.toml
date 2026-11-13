@@ -1,0 +1,52 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/engine-modeler",
+    "crates/piska-modeler",
+    "vendor/engine-i18n",
+    "vendor/engine-build",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+engine-modeler = { path = "crates/engine-modeler" }
+# Копии крейтов движка Piska (scripts/sync_from_engine.py): перевод интерфейса и значок exe.
+engine-i18n = { path = "vendor/engine-i18n" }
+engine-build = { path = "vendor/engine-build" }
+
+# Те же версии, что у движка Piska: так этот каталог собирается и внутри движка, и сам.
+glam = "0.29"
+serde = { version = "1", features = ["derive"] }
+ron = "0.8"
+thiserror = "1"
+log = "0.4"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+gltf = { version = "1", default-features = false, features = ["import", "utils"] }
+wgpu = "23"
+winit = "0.30"
+pollster = "0.3"
+egui = { version = "0.30", default-features = false, features = ["default_fonts"] }
+egui-wgpu = { version = "0.30", default-features = false }
+egui-winit = { version = "0.30", default-features = false, features = ["clipboard", "wayland", "x11"] }
+
+# Отладочная сборка должна работать плавно: зависимости (wgpu, egui) — с полной
+# оптимизацией, свой код — слегка; программный растеризатор (запасной путь вида) — полностью.
+[profile.dev]
+opt-level = 1
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.dev.package.engine-modeler]
+opt-level = 3
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+strip = true

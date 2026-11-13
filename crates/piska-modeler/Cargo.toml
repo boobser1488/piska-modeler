@@ -1,0 +1,26 @@
+[package]
+name = "piska-modeler"
+description = "Piska Modeler отдельной программой: окно редактора низкополигональных моделей (.pmodel) и снимки без окна."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+engine-modeler = { workspace = true, features = ["gpu"] }
+egui.workspace = true
+egui-wgpu.workspace = true
+egui-winit.workspace = true
+wgpu.workspace = true
+winit.workspace = true
+pollster.workspace = true
+image.workspace = true
+log.workspace = true
+
+[build-dependencies]
+# Значок в exe (Windows): ресурс без rc.exe.
+engine-build.workspace = true
+
+[dev-dependencies]
+# Тест: значок читается из готового exe.
+engine-build.workspace = true

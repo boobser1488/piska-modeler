@@ -1,0 +1,10 @@
+[package]
+name = "engine-i18n"
+description = "Перевод интерфейса инструментов Piska (редактор, хаб, редактор моделей): gettext-подобный слой с ключом по английскому тексту, формами множественного числа и каталогом ru.po."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# Намеренно без зависимостей: слой подключается и к редактору, и к редактору моделей,
+# и к хабу, и собирается для web.
+[dependencies]

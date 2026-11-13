@@ -1,0 +1,5914 @@
+# Русский каталог интерфейса Piska (редактор, хаб, редактор моделей).
+# Формат и правила: crates/engine-i18n/src/lib.rs (модуль catalogue), глоссарий: docs/design/glossary-ru.md.
+# Строки `#:` пишет tools/extract_ui_strings.py --update; сверка: tools/extract_ui_strings.py --check.
+
+msgid ""
+msgstr ""
+"Project-Id-Version: piska-engine\n"
+"Language: ru\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: crates/engine-editor/src/add_menu.rs:12
+msgid "Rendering"
+msgstr "Рендеринг"
+
+#: crates/engine-editor/src/add_menu.rs:13
+msgid "Physics 2D"
+msgstr "Физика 2D"
+
+#: crates/engine-editor/src/add_menu.rs:14
+msgid "Physics 3D"
+msgstr "Физика 3D"
+
+#: crates/engine-editor/src/add_menu.rs:15
+msgid "Audio"
+msgstr "Звук"
+
+#: crates/engine-editor/src/add_menu.rs:16
+msgid "UI"
+msgstr "UI"
+
+#: crates/engine-editor/src/add_menu.rs:17
+msgid "Effects"
+msgstr "Эффекты"
+
+#: crates/engine-editor/src/add_menu.rs:18
+msgid "Animation"
+msgstr "Анимация"
+
+#: crates/engine-editor/src/add_menu.rs:19
+msgid "Scripts"
+msgstr "Скрипты"
+
+#: crates/engine-editor/src/add_menu.rs:20
+msgid "Scripts (C++)"
+msgstr "Скрипты (C++)"
+
+#: crates/engine-editor/src/add_menu.rs:21
+msgid "Scripts (Scenario)"
+msgstr "Скрипты (Scenario)"
+
+#: crates/engine-editor/src/catalog.rs:19
+msgid "Physics"
+msgstr "Физика"
+
+#: crates/engine-editor/src/catalog.rs:25
+msgid "Camera"
+msgstr "Камера"
+
+#: crates/engine-editor/src/catalog.rs:64
+msgid "Light"
+msgstr "Источник света"
+
+#: crates/engine-editor/src/catalog.rs:69
+msgid "Canvas"
+msgstr "Холст"
+
+#: crates/engine-editor/src/catalog.rs:75
+msgid "Tilemap"
+msgstr "Тайловая карта"
+
+#: crates/engine-editor/src/catalog.rs:81
+msgid "Environment"
+msgstr "Окружение"
+
+#: crates/engine-editor/src/catalog.rs:137
+msgid "2D/Animated Sprite"
+msgstr "2D/Анимированный спрайт"
+
+#: crates/engine-editor/src/catalog.rs:138
+msgid "Animated Sprite"
+msgstr "Анимированный спрайт"
+
+#: crates/engine-editor/src/catalog.rs:145
+msgid "2D/Sprite with Physics"
+msgstr "2D/Спрайт с физикой"
+
+#: crates/engine-editor/src/catalog.rs:146
+msgid "Sprite with Physics"
+msgstr "Спрайт с физикой"
+
+#: crates/engine-editor/src/catalog.rs:148
+msgid "Body"
+msgstr "Тело"
+
+#: crates/engine-editor/src/catalog.rs:152
+msgid "Audio Source"
+msgstr "Источник звука"
+
+#: crates/engine-editor/src/catalog.rs:152
+msgid "Audio/Audio Source"
+msgstr "Звук/Источник звука"
+
+#: crates/engine-editor/src/catalog.rs:153
+msgid "Audio Listener"
+msgstr "Слушатель звука"
+
+#: crates/engine-editor/src/catalog.rs:153
+msgid "Audio/Audio Listener"
+msgstr "Звук/Слушатель звука"
+
+#: crates/engine-editor/src/catalog.rs:155
+msgid "Text"
+msgstr "Текст"
+
+#: crates/engine-editor/src/catalog.rs:156
+msgid "Image"
+msgstr "Изображение"
+
+#: crates/engine-editor/src/catalog.rs:159
+msgid "Button"
+msgstr "Кнопка"
+
+#: crates/engine-editor/src/catalog.rs:167
+msgid "Toggle"
+msgstr "Переключатель"
+
+#: crates/engine-editor/src/catalog.rs:171
+msgid "Label"
+msgstr "Подпись"
+
+#: crates/engine-editor/src/catalog.rs:173
+msgid "Slider"
+msgstr "Ползунок"
+
+#: crates/engine-editor/src/catalog.rs:174
+msgid "Progress Bar"
+msgstr "Индикатор прогресса"
+
+#: crates/engine-editor/src/catalog.rs:174
+msgid "UI/Progress Bar"
+msgstr "UI/Индикатор прогресса"
+
+#: crates/engine-editor/src/catalog.rs:175
+msgid "Input Field"
+msgstr "Поле ввода"
+
+#: crates/engine-editor/src/catalog.rs:175
+msgid "UI/Input Field"
+msgstr "UI/Поле ввода"
+
+#: crates/engine-editor/src/catalog.rs:176
+msgid "Effects/Particle System"
+msgstr "Эффекты/Система частиц"
+
+#: crates/engine-editor/src/catalog.rs:176
+msgid "Particle System"
+msgstr "Система частиц"
+
+#: crates/engine-editor/src/catalog.rs:177
+msgid "Trail"
+msgstr "След"
+
+#: crates/engine-editor/src/catalog.rs:179
+msgid "Physics/Rigidbody Cube"
+msgstr "Физика/Физический куб"
+
+#: crates/engine-editor/src/catalog.rs:180
+msgid "Rigidbody Cube"
+msgstr "Физический куб"
+
+#: crates/engine-editor/src/catalog.rs:183
+msgid "Collider"
+msgstr "Коллайдер"
+
+#: crates/engine-editor/src/catalog.rs:183
+msgid "Rigidbody"
+msgstr "Rigidbody"
+
+#: crates/engine-editor/src/catalog.rs:188
+msgid "Character Controller"
+msgstr "Контроллер персонажа"
+
+#: crates/engine-editor/src/catalog.rs:190
+msgid "Character"
+msgstr "Персонаж"
+
+#: crates/engine-editor/src/code.rs:112
+msgid "Rust"
+msgstr "Rust"
+
+#: crates/engine-editor/src/code.rs:113
+msgid "C++"
+msgstr "C++"
+
+#: crates/engine-editor/src/code.rs:114
+msgid "RON"
+msgstr "RON"
+
+#: crates/engine-editor/src/code.rs:116
+msgid "Scenario"
+msgstr "Scenario"
+
+#: crates/engine-editor/src/code.rs:137
+msgid "None"
+msgstr "Нет"
+
+#: crates/engine-editor/src/code.rs:836
+msgid "Build"
+msgstr "Собрать"
+
+#: crates/engine-editor/src/code.rs:839
+msgid "Save and run the build commands"
+msgstr "Сохранить и выполнить команды сборки"
+
+#: crates/engine-editor/src/code.rs:839
+msgid "{}; output goes to the Console"
+msgstr "{}; вывод — в Консоли"
+
+#: crates/engine-editor/src/code.rs:841
+msgid "A build is running"
+msgstr "Идёт сборка"
+
+#: crates/engine-editor/src/code.rs:843
+msgid "No build commands: add them with `EditorConfig::build_command`"
+msgstr "Нет команд сборки: добавьте их через `EditorConfig::build_command`"
+
+#: crates/engine-editor/src/code.rs:849
+msgid "Save"
+msgstr "Сохранить"
+
+#: crates/engine-editor/src/code.rs:850
+msgid "Save the file"
+msgstr "Сохранить файл"
+
+#: crates/engine-editor/src/code.rs:855
+msgid "Open Externally"
+msgstr "Открыть во внешнем редакторе"
+
+#: crates/engine-editor/src/code.rs:858
+msgid "Open this file in the external code editor set in Preferences → General"
+msgstr "Открыть файл во внешнем редакторе кода, заданном в «Настройки → Общие»"
+
+#: crates/engine-editor/src/code.rs:882
+msgid "Not built yet"
+msgstr "Ещё не собрано"
+
+#: crates/engine-editor/src/code.rs:883
+msgid "Building…"
+msgstr "Сборка…"
+
+#: crates/engine-editor/src/code.rs:884
+msgid "Build succeeded in {seconds:.1} s"
+msgstr "Сборка завершена за {seconds:.1} с"
+
+#: crates/engine-editor/src/code.rs:885
+msgid "Build failed: {command} — see the Console"
+msgstr "Ошибка сборки: {command} — подробности в Консоли"
+
+#: crates/engine-editor/src/code.rs:892
+msgid "Ln {line}, Col {column}"
+msgstr "Стр. {line}, стлб {column}"
+
+#: crates/engine-editor/src/code.rs:1097
+msgid "Close"
+msgstr "Закрыть"
+
+#: crates/engine-editor/src/code.rs:1097
+msgid "Close (unsaved changes are kept in memory until you close)"
+msgstr "Закрыть (несохранённые изменения хранятся в памяти до закрытия)"
+
+#: crates/engine-editor/src/code.rs:1128
+msgid "No results"
+msgstr "Ничего не найдено"
+
+#: crates/engine-editor/src/code.rs:1172
+msgid "No code folders. Start the editor with `EditorConfig::code_dir(\"src\")`."
+msgstr "Нет папок с кодом. Запустите редактор с `EditorConfig::code_dir(\"src\")`."
+
+#: crates/engine-editor/src/console.rs:187
+msgid "Clear"
+msgstr "Очистить"
+
+#: crates/engine-editor/src/console.rs:187
+msgid "Remove all messages"
+msgstr "Удалить все сообщения"
+
+#: crates/engine-editor/src/console.rs:195
+msgid "Collapse"
+msgstr "Свернуть повторы"
+
+#: crates/engine-editor/src/console.rs:196
+msgid "Show identical messages once, with a count"
+msgstr "Показывать одинаковые сообщения один раз со счётчиком"
+
+#: crates/engine-editor/src/console.rs:202
+msgid "Error Pause"
+msgstr "Пауза при ошибке"
+
+#: crates/engine-editor/src/console.rs:203
+msgid "Pause the game when an error is logged in Play mode"
+msgstr "Ставить игру на паузу, если в режиме игры записана ошибка"
+
+#: crates/engine-editor/src/console.rs:209
+msgid "Auto-scroll"
+msgstr "Автопрокрутка"
+
+#: crates/engine-editor/src/console.rs:210
+msgid "Keep the newest message in view"
+msgstr "Держать последнее сообщение в поле зрения"
+
+#: crates/engine-editor/src/console.rs:214
+msgid "Show errors"
+msgstr "Показывать ошибки"
+
+#: crates/engine-editor/src/console.rs:215
+msgid "Show warnings"
+msgstr "Показывать предупреждения"
+
+#: crates/engine-editor/src/console.rs:216
+msgid "Show messages"
+msgstr "Показывать сообщения"
+
+#: crates/engine-editor/src/console.rs:246
+msgid "Logs from the engine, your game and builds appear here"
+msgstr "Здесь появляются журналы движка, вашей игры и сборок"
+
+#: crates/engine-editor/src/console.rs:246
+msgid "No messages"
+msgstr "Нет сообщений"
+
+#: crates/engine-editor/src/console.rs:248
+msgid "Change the search text or turn the level filters back on"
+msgstr "Измените текст поиска или снова включите фильтры уровней"
+
+#: crates/engine-editor/src/console.rs:248
+msgid "Nothing matches"
+msgstr "Нет совпадений"
+
+#: crates/engine-editor/src/console.rs:311
+msgid "{first_line}  …"
+msgstr "{first_line}  …"
+
+#: crates/engine-editor/src/console.rs:354
+msgid "Copy"
+msgstr "Копировать"
+
+#: crates/engine-editor/src/console.rs:359
+msgid "Open {name}:{line}"
+msgstr "Открыть {name}:{line}"
+
+#: crates/engine-editor/src/console.rs:360
+msgid "Open the file in the Code tab at this line"
+msgstr "Открыть файл на этой строке во вкладке «Код»"
+
+#: crates/engine-editor/src/dock.rs:58
+msgid "Hierarchy"
+msgstr "Иерархия"
+
+#: crates/engine-editor/src/dock.rs:59
+msgid "Inspector"
+msgstr "Инспектор"
+
+#: crates/engine-editor/src/dock.rs:60
+msgid "Scene"
+msgstr "Сцена"
+
+#: crates/engine-editor/src/dock.rs:61
+msgid "Game"
+msgstr "Игра"
+
+#: crates/engine-editor/src/dock.rs:62
+msgid "Code"
+msgstr "Код"
+
+#: crates/engine-editor/src/dock.rs:63
+msgid "Project"
+msgstr "Проект"
+
+#: crates/engine-editor/src/dock.rs:64
+msgid "Console"
+msgstr "Консоль"
+
+#: crates/engine-editor/src/dock.rs:65
+msgid "Profiler"
+msgstr "Профайлер"
+
+#: crates/engine-editor/src/dock.rs:136
+msgid "Default"
+msgstr "По умолчанию"
+
+#: crates/engine-editor/src/dock.rs:138
+msgid "Tall"
+msgstr "Высокая"
+
+#: crates/engine-editor/src/dock.rs:139
+msgid "Wide"
+msgstr "Широкая"
+
+#: crates/engine-editor/src/dock.rs:686
+msgid "{} is not open: open it from the Window menu first"
+msgstr "Окно «{}» не открыто: сначала откройте его из меню «Окно»"
+
+#: crates/engine-editor/src/dock.rs:951
+msgid "Maximize"
+msgstr "Развернуть"
+
+#: crates/engine-editor/src/dock.rs:951
+msgid "Restore"
+msgstr "Восстановить"
+
+#: crates/engine-editor/src/dock.rs:955
+msgid "Close Tab"
+msgstr "Закрыть вкладку"
+
+#: crates/engine-editor/src/dock.rs:958
+msgid "Float Window"
+msgstr "Открепить окно"
+
+#: crates/engine-editor/src/dock.rs:963
+msgid "Add Tab"
+msgstr "Добавить вкладку"
+
+#: crates/engine-editor/src/dock.rs:1005
+msgid "Window options: maximize, close, add a tab"
+msgstr "Параметры окна: развернуть, закрыть, добавить вкладку"
+
+#: crates/engine-editor/src/dock.rs:1250
+msgid "Save Layout"
+msgstr "Сохранить раскладку"
+
+#: crates/engine-editor/src/dock.rs:1252
+msgid "The current windows, their sizes and floating windows are saved under this name."
+msgstr "Текущие окна, их размеры и плавающие окна сохраняются под этим именем."
+
+#: crates/engine-editor/src/dock.rs:1258
+msgid "My Layout"
+msgstr "Моя раскладка"
+
+#: crates/engine-editor/src/dock.rs:1401
+msgid "a layout needs a name: type one in the Save Layout dialog"
+msgstr "у раскладки должно быть имя: введите его в диалоге «Сохранить раскладку»"
+
+#: crates/engine-editor/src/dock.rs:1420
+msgid "the saved layout `{name}` cannot be loaded ({reason}); delete it from Window → Layouts → Delete Layout"
+msgstr "не удалось загрузить сохранённую раскладку `{name}` ({reason}); удалите её через «Окно → Раскладки → Удалить раскладку»"
+
+#: crates/engine-editor/src/export.rs:77
+msgid "Web"
+msgstr "Веб"
+
+#: crates/engine-editor/src/export.rs:78
+msgid "Windows"
+msgstr "Windows"
+
+#: crates/engine-editor/src/export.rs:79
+msgid "Android"
+msgstr "Android"
+
+#: crates/engine-editor/src/export.rs:80
+msgid "Linux"
+msgstr "Linux"
+
+#: crates/engine-editor/src/export.rs:201
+msgid "Export {}"
+msgstr "Экспортировать {}"
+
+#: crates/engine-editor/src/export.rs:237
+msgid "export the game for the Web first"
+msgstr "сначала экспортируйте игру для веба"
+
+#: crates/engine-editor/src/export.rs:258
+msgid "cannot start `piska-export serve`: {e}. Is cargo on PATH?"
+msgstr "не удалось запустить `piska-export serve`: {e}. Есть ли cargo в PATH?"
+
+#: crates/engine-editor/src/export.rs:320
+msgid "Target"
+msgstr "Цель"
+
+#: crates/engine-editor/src/export.rs:329
+msgid "Platform"
+msgstr "Платформа"
+
+#: crates/engine-editor/src/export.rs:334
+msgid "WebAssembly page for browsers (WebGPU, WebGL2 fallback)"
+msgstr "Страница WebAssembly для браузеров (WebGPU, запасной вариант — WebGL2)"
+
+#: crates/engine-editor/src/export.rs:335
+msgid "Windows program: .exe with the assets folder next to it"
+msgstr "Программа для Windows: .exe и папка ассетов рядом с ним"
+
+#: crates/engine-editor/src/export.rs:337
+msgid "Signed APK for phones and tablets (Android 8.0+); needs the Android SDK, NDK, Java and cargo-ndk"
+msgstr "Подписанный APK для телефонов и планшетов (Android 8.0+); нужны Android SDK, NDK, Java и cargo-ndk"
+
+#: crates/engine-editor/src/export.rs:340
+msgid "Linux x86_64 program with assets, .desktop entry and a .tar.gz"
+msgstr "Программа для Linux x86_64 с ассетами, ярлыком .desktop и архивом .tar.gz"
+
+#: crates/engine-editor/src/export.rs:348
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: crates/engine-editor/src/export.rs:354
+msgid "Debug"
+msgstr "Debug"
+
+#: crates/engine-editor/src/export.rs:354
+msgid "Faster to build; larger and slower"
+msgstr "Собирается быстрее; больше по размеру и медленнее"
+
+#: crates/engine-editor/src/export.rs:355
+msgid "Optimized: smaller and faster, takes longer to build"
+msgstr "Оптимизированная: меньше и быстрее, но собирается дольше"
+
+#: crates/engine-editor/src/export.rs:355
+msgid "Release"
+msgstr "Release"
+
+#: crates/engine-editor/src/export.rs:362
+msgid "Output"
+msgstr "Папка вывода"
+
+#: crates/engine-editor/src/export.rs:373
+msgid "Relative to the workspace, or an absolute path. Empty — the default above."
+msgstr "Относительно рабочей области или абсолютный путь. Пусто — путь по умолчанию выше."
+
+#: crates/engine-editor/src/export.rs:385
+msgid "Starting the export tool…"
+msgstr "Запуск инструмента экспорта…"
+
+#: crates/engine-editor/src/export.rs:393
+msgid "Export failed — see the Console for the compiler output"
+msgstr "Ошибка экспорта — вывод компилятора в Консоли"
+
+#: crates/engine-editor/src/export.rs:395
+msgid "Ready to build"
+msgstr "Готово к сборке"
+
+#: crates/engine-editor/src/export.rs:406
+msgid "Reveal in File Manager"
+msgstr "Показать в файловом менеджере"
+
+#: crates/engine-editor/src/export.rs:410
+msgid "Run in Browser"
+msgstr "Запустить в браузере"
+
+#: crates/engine-editor/src/hierarchy.rs:194
+msgid "Create"
+msgstr "Создать"
+
+#: crates/engine-editor/src/hierarchy.rs:217
+msgid "Create a new object in the scene"
+msgstr "Создать объект в сцене"
+
+#: crates/engine-editor/src/hierarchy.rs:220
+msgid "Words match object names; t:Type matches a component type, e.g. t:Camera"
+msgstr "Слова ищутся в именах объектов; t:Тип — по типу компонента, например t:Camera"
+
+#: crates/engine-editor/src/hierarchy.rs:242
+msgid "No objects match the search"
+msgstr "Нет объектов, подходящих под запрос"
+
+#: crates/engine-editor/src/hierarchy.rs:468
+msgid "Activate the object"
+msgstr "Включить объект"
+
+#: crates/engine-editor/src/hierarchy.rs:468
+msgid "Deactivate the object"
+msgstr "Выключить объект"
+
+#: crates/engine-editor/src/hierarchy.rs:525
+msgid "Material"
+msgstr "Материал"
+
+#: crates/engine-editor/src/hierarchy.rs:624
+msgid "Create Child"
+msgstr "Создать дочерний"
+
+#: crates/engine-editor/src/hierarchy.rs:626
+msgid "Rename"
+msgstr "Переименовать"
+
+#: crates/engine-editor/src/hierarchy.rs:629
+msgid "Duplicate"
+msgstr "Дублировать"
+
+#: crates/engine-editor/src/hierarchy.rs:632
+msgid "Delete"
+msgstr "Удалить"
+
+#: crates/engine-editor/src/hierarchy.rs:639
+msgid "Cut"
+msgstr "Вырезать"
+
+#: crates/engine-editor/src/hierarchy.rs:643
+msgid "Copy objects first (Ctrl+C)"
+msgstr "Сначала скопируйте объекты (Ctrl+C)"
+
+#: crates/engine-editor/src/hierarchy.rs:643
+msgid "Paste"
+msgstr "Вставить"
+
+#: crates/engine-editor/src/hierarchy.rs:646
+msgid "Paste as Child"
+msgstr "Вставить как дочерний"
+
+#: crates/engine-editor/src/hierarchy.rs:653
+msgid "Group Selection"
+msgstr "Сгруппировать выделенное"
+
+#: crates/engine-editor/src/hierarchy.rs:657
+msgid "Activate"
+msgstr "Включить"
+
+#: crates/engine-editor/src/hierarchy.rs:657
+msgid "Deactivate"
+msgstr "Выключить"
+
+#: crates/engine-editor/src/hierarchy.rs:661
+msgid "Frame in Scene View"
+msgstr "Показать в окне «Сцена»"
+
+#: crates/engine-editor/src/hierarchy.rs:666
+msgid "Already the first"
+msgstr "Уже первый"
+
+#: crates/engine-editor/src/hierarchy.rs:666
+msgid "Move Up"
+msgstr "Переместить вверх"
+
+#: crates/engine-editor/src/hierarchy.rs:669
+msgid "Move Down"
+msgstr "Переместить вниз"
+
+#: crates/engine-editor/src/hierarchy.rs:672
+msgid "Already at the root"
+msgstr "Уже в корне"
+
+#: crates/engine-editor/src/hierarchy.rs:672
+msgid "Move to Root"
+msgstr "Переместить в корень"
+
+#: crates/engine-editor/src/hierarchy.rs:676
+msgid "Sort Children A-Z"
+msgstr "Сортировать дочерние А–Я"
+
+#: crates/engine-editor/src/hierarchy.rs:677
+msgid "Needs at least two children"
+msgstr "Нужно хотя бы два дочерних объекта"
+
+#: crates/engine-editor/src/hierarchy.rs:684
+msgid "Unpack Prefab"
+msgstr "Распаковать префаб"
+
+#: crates/engine-editor/src/hierarchy.rs:687
+msgid "Save as Prefab"
+msgstr "Сохранить как префаб"
+
+#: crates/engine-editor/src/hierarchy.rs:689
+msgid "No assets directory is mounted"
+msgstr "Папка ассетов не подключена"
+
+#: crates/engine-editor/src/hub_link.rs:78
+msgid "Piska Hub was not found next to the editor and the engine workspace is unknown; start it with `cargo run -p piska-hub` in the engine folder"
+msgstr "Piska Hub не найден рядом с редактором, а рабочая область движка неизвестна; запустите его командой `cargo run -p piska-hub` в папке движка"
+
+#: crates/engine-editor/src/hub_link.rs:87
+msgid "cannot start Piska Hub: {e}"
+msgstr "не удалось запустить Piska Hub: {e}"
+
+#: crates/engine-editor/src/hub_link.rs:104
+msgid "cannot reach Piska Hub through `{}`: {e}"
+msgstr "не удалось связаться с Piska Hub через `{}`: {e}"
+
+#: crates/engine-editor/src/inspector.rs:112
+msgid "Play mode — changes are reverted on Stop"
+msgstr "Режим игры — изменения отменятся при остановке"
+
+#: crates/engine-editor/src/inspector.rs:129
+msgid "Active: inactive objects are not updated or drawn"
+msgstr "Активен: неактивные объекты не обновляются и не отрисовываются"
+
+#: crates/engine-editor/src/inspector.rs:148
+msgid "Tag"
+msgstr "Тег"
+
+#: crates/engine-editor/src/inspector.rs:152
+msgid "Layer"
+msgstr "Слой"
+
+#: crates/engine-editor/src/inspector.rs:165
+msgid "Transform"
+msgstr "Трансформ"
+
+#: crates/engine-editor/src/inspector.rs:172
+msgid "Local position, metres"
+msgstr "Локальная позиция, м"
+
+#: crates/engine-editor/src/inspector.rs:172
+msgid "Position"
+msgstr "Позиция"
+
+#: crates/engine-editor/src/inspector.rs:182
+msgid "Euler angles in degrees"
+msgstr "Углы Эйлера в градусах"
+
+#: crates/engine-editor/src/inspector.rs:182
+msgid "Rotation"
+msgstr "Поворот"
+
+#: crates/engine-editor/src/inspector.rs:195
+msgid "Scale"
+msgstr "Масштаб"
+
+#: crates/engine-editor/src/inspector.rs:254
+msgid "This component has no settings"
+msgstr "У этого компонента нет настроек"
+
+#: crates/engine-editor/src/inspector.rs:368
+msgid "Name"
+msgstr "Имя"
+
+#: crates/engine-editor/src/inspector.rs:369
+msgid "Objects"
+msgstr "Объекты"
+
+#: crates/engine-editor/src/inspector.rs:370
+msgid "Components"
+msgstr "Компоненты"
+
+#: crates/engine-editor/src/inspector.rs:373
+msgid "File"
+msgstr "Файл"
+
+#: crates/engine-editor/src/inspector.rs:380
+msgid "Shortcuts"
+msgstr "Горячие клавиши"
+
+#: crates/engine-editor/src/inspector.rs:393
+msgid "Move, rotate, scale"
+msgstr "Перемещение, поворот, масштаб"
+
+#: crates/engine-editor/src/inspector.rs:394
+msgid "Frame the selection"
+msgstr "Показать выделенное"
+
+#: crates/engine-editor/src/inspector.rs:398
+msgid "New empty object"
+msgstr "Новый пустой объект"
+
+#: crates/engine-editor/src/inspector.rs:399
+msgid "Play / Stop"
+msgstr "Играть / Стоп"
+
+#: crates/engine-editor/src/inspector.rs:400
+msgid "Save the scene"
+msgstr "Сохранить сцену"
+
+#: crates/engine-editor/src/inspector.rs:448
+msgid "This object is an instance of the prefab: the scene stores only what differs"
+msgstr "Этот объект — экземпляр префаба: в сцене хранятся только отличия"
+
+#: crates/engine-editor/src/inspector.rs:450
+msgid "Turn the instance into ordinary objects"
+msgstr "Превратить экземпляр в обычные объекты"
+
+#: crates/engine-editor/src/inspector.rs:450
+msgid "Unpack"
+msgstr "Распаковать"
+
+#: crates/engine-editor/src/inspector.rs:454
+msgid "Select"
+msgstr "Выделить"
+
+#: crates/engine-editor/src/inspector.rs:454
+msgid "Show the prefab in the Project window"
+msgstr "Показать префаб в окне «Проект»"
+
+#: crates/engine-editor/src/inspector.rs:539
+msgid "Reset"
+msgstr "Сбросить"
+
+#: crates/engine-editor/src/inspector.rs:543
+msgid "Copy Values"
+msgstr "Копировать значения"
+
+#: crates/engine-editor/src/inspector.rs:546
+msgid "Paste Values"
+msgstr "Вставить значения"
+
+#: crates/engine-editor/src/inspector.rs:547
+msgid "Copy the values of a component of the same type first"
+msgstr "Сначала скопируйте значения компонента того же типа"
+
+#: crates/engine-editor/src/inspector.rs:554
+msgid "Already the first component"
+msgstr "Уже первый компонент"
+
+#: crates/engine-editor/src/inspector.rs:557
+msgid "Already the last component"
+msgstr "Уже последний компонент"
+
+#: crates/engine-editor/src/inspector.rs:562
+msgid "Remove Component"
+msgstr "Удалить компонент"
+
+#: crates/engine-editor/src/inspector.rs:573
+msgid "Reset the transform"
+msgstr "Сбросить трансформ"
+
+#: crates/engine-editor/src/inspector.rs:573
+msgid "Reset, copy, paste, move or remove"
+msgstr "Сбросить, копировать, вставить, переместить или удалить"
+
+#: crates/engine-editor/src/inspector.rs:621
+msgid "X"
+msgstr "X"
+
+#: crates/engine-editor/src/inspector.rs:622
+msgid "Y"
+msgstr "Y"
+
+#: crates/engine-editor/src/inspector.rs:623
+msgid "Z"
+msgstr "Z"
+
+#: crates/engine-editor/src/inspector.rs:790
+msgid "Add"
+msgstr "Добавить"
+
+#: crates/engine-editor/src/inspector.rs:792
+msgid "The element type of an empty list is unknown here: add the first element in code or in the scene file"
+msgstr "Тип элементов пустого списка здесь неизвестен: добавьте первый элемент в коде или в файле сцены"
+
+#: crates/engine-editor/src/inspector.rs:794
+msgid "Add a copy of the last element"
+msgstr "Добавить копию последнего элемента"
+
+#: crates/engine-editor/src/inspector.rs:820
+msgid "Asset"
+msgstr "Ассет"
+
+#: crates/engine-editor/src/inspector.rs:823
+msgid "None ({kind})"
+msgstr "Нет ({kind})"
+
+#: crates/engine-editor/src/inspector.rs:824
+msgid "Missing asset"
+msgstr "Ассет отсутствует"
+
+#: crates/engine-editor/src/inspector.rs:870
+msgid "Search {kind} assets"
+msgstr "Поиск ассетов: {kind}"
+
+#: crates/engine-editor/src/inspector.rs:901
+msgid "No {kind} assets match"
+msgstr "Нет подходящих ассетов: {kind}"
+
+#: crates/engine-editor/src/inspector.rs:1015
+msgid "Add Component"
+msgstr "Добавить компонент"
+
+#: crates/engine-editor/src/inspector.rs:1042
+msgid "Already on this object"
+msgstr "Уже есть у этого объекта"
+
+#: crates/engine-editor/src/inspector.rs:1053
+msgid "Recent"
+msgstr "Недавние"
+
+#: crates/engine-editor/src/inspector.rs:1078
+msgid "No component matches"
+msgstr "Нет подходящих компонентов"
+
+#: crates/engine-editor/src/inspector.rs:1098
+msgid "New Rust Script…"
+msgstr "Создать скрипт Rust…"
+
+#: crates/engine-editor/src/inspector.rs:1106
+msgid "New C++ Script…"
+msgstr "Создать скрипт C++…"
+
+#: crates/engine-editor/src/inspector.rs:1119
+msgid "New Scenario Script…"
+msgstr "Создать скрипт Scenario…"
+
+#: crates/engine-editor/src/material_editor.rs:44
+msgid "Texture"
+msgstr "Текстура"
+
+#: crates/engine-editor/src/material_editor.rs:189
+msgid "extracting materials needs a MeshRenderer with a model file"
+msgstr "для извлечения материалов нужен MeshRenderer с файлом модели"
+
+#: crates/engine-editor/src/material_editor.rs:320
+msgid "Undo"
+msgstr "Отменить"
+
+#: crates/engine-editor/src/material_editor.rs:321
+msgid "Redo"
+msgstr "Повторить"
+
+#: crates/engine-editor/src/material_editor.rs:355
+msgid "Surface"
+msgstr "Поверхность"
+
+#: crates/engine-editor/src/material_editor.rs:356
+msgid "Base Colour"
+msgstr "Основной цвет"
+
+#: crates/engine-editor/src/material_editor.rs:356
+msgid "Multiplied by the base texture; alpha is transparency"
+msgstr "Умножается на основную текстуру; альфа — прозрачность"
+
+#: crates/engine-editor/src/material_editor.rs:360
+msgid "Base Texture"
+msgstr "Основная текстура"
+
+#: crates/engine-editor/src/material_editor.rs:360
+msgid "Colour texture (sRGB)"
+msgstr "Цветовая текстура (sRGB)"
+
+#: crates/engine-editor/src/material_editor.rs:361
+msgid "0 — plastic, wood; 1 — metal"
+msgstr "0 — пластик, дерево; 1 — металл"
+
+#: crates/engine-editor/src/material_editor.rs:361
+msgid "Metallic"
+msgstr "Металличность"
+
+#: crates/engine-editor/src/material_editor.rs:362
+msgid "0 — mirror, 1 — matte"
+msgstr "0 — зеркало, 1 — матовая"
+
+#: crates/engine-editor/src/material_editor.rs:362
+msgid "Roughness"
+msgstr "Шероховатость"
+
+#: crates/engine-editor/src/material_editor.rs:363
+msgid "glTF layout: green — roughness, blue — metallic (linear)"
+msgstr "Каналы glTF: зелёный — шероховатость, синий — металличность (линейные)"
+
+#: crates/engine-editor/src/material_editor.rs:363
+msgid "Metal / Rough Map"
+msgstr "Карта металличности/шероховатости"
+
+#: crates/engine-editor/src/material_editor.rs:365
+msgid "Normal Map"
+msgstr "Карта нормалей"
+
+#: crates/engine-editor/src/material_editor.rs:366
+msgid "Tangent-space normals, OpenGL convention (green up)"
+msgstr "Нормали в касательном пространстве, соглашение OpenGL (зелёный вверх)"
+
+#: crates/engine-editor/src/material_editor.rs:367
+msgid "0 — flat, 1 — as in the texture"
+msgstr "0 — плоско, 1 — как в текстуре"
+
+#: crates/engine-editor/src/material_editor.rs:367
+msgid "Strength"
+msgstr "Сила"
+
+#: crates/engine-editor/src/material_editor.rs:369
+msgid "Emission"
+msgstr "Излучение"
+
+#: crates/engine-editor/src/material_editor.rs:370
+msgid "Emissive Colour"
+msgstr "Цвет излучения"
+
+#: crates/engine-editor/src/material_editor.rs:370
+msgid "Glow added on top of lighting"
+msgstr "Свечение поверх освещения"
+
+#: crates/engine-editor/src/material_editor.rs:375
+msgid "Above 1 makes bloom"
+msgstr "Больше 1 даёт блум"
+
+#: crates/engine-editor/src/material_editor.rs:375
+msgid "Intensity"
+msgstr "Интенсивность"
+
+#: crates/engine-editor/src/material_editor.rs:376
+msgid "Emissive Map"
+msgstr "Карта излучения"
+
+#: crates/engine-editor/src/material_editor.rs:376
+msgid "Multiplies the emissive colour (sRGB)"
+msgstr "Умножает цвет излучения (sRGB)"
+
+#: crates/engine-editor/src/material_editor.rs:378
+msgid "Occlusion"
+msgstr "Затенение"
+
+#: crates/engine-editor/src/material_editor.rs:379
+msgid "Occlusion Map"
+msgstr "Карта затенения"
+
+#: crates/engine-editor/src/material_editor.rs:379
+msgid "Red channel darkens ambient light in creases"
+msgstr "Красный канал затемняет рассеянный свет в складках"
+
+#: crates/engine-editor/src/material_editor.rs:382
+msgid "Tiling"
+msgstr "Тайлинг"
+
+#: crates/engine-editor/src/material_editor.rs:383
+msgid "Texture repeats along U and V"
+msgstr "Сколько раз текстура повторяется по U и V"
+
+#: crates/engine-editor/src/material_editor.rs:383
+msgid "UV Tiling"
+msgstr "Тайлинг UV"
+
+#: crates/engine-editor/src/material_editor.rs:384
+msgid "UV Offset"
+msgstr "Смещение UV"
+
+#: crates/engine-editor/src/material_editor.rs:385
+msgid "Repeat the base texture every N metres in world space (0 — use mesh UV)"
+msgstr "Повторять основную текстуру каждые N м в мировом пространстве (0 — использовать UV меша)"
+
+#: crates/engine-editor/src/material_editor.rs:385
+msgid "World Tiling"
+msgstr "Мировой тайлинг"
+
+#: crates/engine-editor/src/material_editor.rs:386
+msgid " m"
+msgstr " м"
+
+#: crates/engine-editor/src/material_editor.rs:390
+msgid "Alpha"
+msgstr "Альфа"
+
+#: crates/engine-editor/src/material_editor.rs:390
+msgid "Opaque, cut out below a threshold (leaves), or blended (glass)"
+msgstr "Непрозрачный, с отсечением ниже порога (листва) или со смешиванием (стекло)"
+
+#: crates/engine-editor/src/material_editor.rs:395
+msgid "Alpha is ignored"
+msgstr "Альфа не учитывается"
+
+#: crates/engine-editor/src/material_editor.rs:395
+msgid "Opaque"
+msgstr "Непрозрачный"
+
+#: crates/engine-editor/src/material_editor.rs:396
+msgid "Cutout"
+msgstr "Отсечение"
+
+#: crates/engine-editor/src/material_editor.rs:396
+msgid "Pixels below the threshold are not drawn (also in shadows)"
+msgstr "Пиксели ниже порога не рисуются (в том числе в тенях)"
+
+#: crates/engine-editor/src/material_editor.rs:397
+msgid "Blend"
+msgstr "Смешивание"
+
+#: crates/engine-editor/src/material_editor.rs:397
+msgid "Mixed with what is behind; drawn after opaque objects"
+msgstr "Смешивается с тем, что позади; рисуется после непрозрачных объектов"
+
+#: crates/engine-editor/src/material_editor.rs:402
+msgid "Threshold"
+msgstr "Порог"
+
+#: crates/engine-editor/src/material_editor.rs:404
+msgid "Double-Sided"
+msgstr "Двусторонний"
+
+#: crates/engine-editor/src/material_editor.rs:404
+msgid "Draw back faces too, lit from their own side"
+msgstr "Рисовать и задние грани, освещая их с их стороны"
+
+#: crates/engine-editor/src/material_editor.rs:405
+msgid "Cast Shadows"
+msgstr "Отбрасывать тени"
+
+#: crates/engine-editor/src/material_editor.rs:406
+msgid "Receive Shadows"
+msgstr "Принимать тени"
+
+#: crates/engine-editor/src/material_editor.rs:407
+msgid "No lighting: the colour as is (plus emission)"
+msgstr "Без освещения: цвет как есть (плюс излучение)"
+
+#: crates/engine-editor/src/material_editor.rs:407
+msgid "Unlit"
+msgstr "Без освещения"
+
+#: crates/engine-editor/src/material_editor.rs:408
+msgid "Dev Grid"
+msgstr "Сетка-прототип"
+
+#: crates/engine-editor/src/material_editor.rs:408
+msgid "Metre grid on top — for level prototypes"
+msgstr "Метровая сетка поверх — для прототипов уровней"
+
+#: crates/engine-editor/src/material_editor.rs:440
+msgid "U "
+msgstr "U "
+
+#: crates/engine-editor/src/material_editor.rs:441
+msgid "V "
+msgstr "V "
+
+#: crates/engine-editor/src/material_editor.rs:484
+msgid "Preview on a sphere"
+msgstr "Предпросмотр на сфере"
+
+#: crates/engine-editor/src/material_editor.rs:484
+msgid "Sphere"
+msgstr "Сфера"
+
+#: crates/engine-editor/src/material_editor.rs:485
+msgid "Cube"
+msgstr "Куб"
+
+#: crates/engine-editor/src/material_editor.rs:485
+msgid "Preview on a cube"
+msgstr "Предпросмотр на кубе"
+
+#: crates/engine-editor/src/material_editor.rs:486
+msgid "Plane"
+msgstr "Плоскость"
+
+#: crates/engine-editor/src/material_editor.rs:486
+msgid "Preview on a flat plane"
+msgstr "Предпросмотр на плоскости"
+
+#: crates/engine-editor/src/material_editor.rs:535
+msgid "Part {i}"
+msgstr "Часть {i}"
+
+#: crates/engine-editor/src/material_editor.rs:549
+msgid "Materials"
+msgstr "Материалы"
+
+#: crates/engine-editor/src/material_editor.rs:554
+msgid "Element {slot}"
+msgstr "Элемент {slot}"
+
+#: crates/engine-editor/src/material_editor.rs:558
+msgid "Material of this part of the mesh; drag a .material here"
+msgstr "Материал этой части меша; перетащите сюда файл .material"
+
+#: crates/engine-editor/src/material_editor.rs:570
+msgid "Edit"
+msgstr "Изменить"
+
+#: crates/engine-editor/src/material_editor.rs:570
+msgid "Open the material in the Inspector"
+msgstr "Открыть материал в Инспекторе"
+
+#: crates/engine-editor/src/material_editor.rs:594
+msgid "Model Materials"
+msgstr "Материалы модели"
+
+#: crates/engine-editor/src/material_editor.rs:594
+msgid "Without assigned materials, use the materials described in the model file"
+msgstr "Если материалы не назначены, использовать материалы, описанные в файле модели"
+
+#: crates/engine-editor/src/material_editor.rs:601
+msgid "Extract materials from model"
+msgstr "Извлечь материалы из модели"
+
+#: crates/engine-editor/src/material_editor.rs:602
+msgid "Create {file_materials} .material file(s) next to the model from its embedded materials and assign them"
+msgstr "Создать рядом с моделью файлы .material ({file_materials} шт.) из встроенных в неё материалов и назначить их"
+
+#: crates/engine-editor/src/material_editor.rs:613
+msgid "Inline material (legacy)"
+msgstr "Встроенный материал (устаревший)"
+
+#: crates/engine-editor/src/prefs.rs:518
+msgid "no external code editor is set: enter its command in Preferences → General"
+msgstr "внешний редактор кода не задан: укажите его команду в «Настройки → Общие»"
+
+#: crates/engine-editor/src/prefs.rs:530
+msgid "cannot start the external editor `{program}`: {e}. Check the command in Preferences → General"
+msgstr "не удаётся запустить внешний редактор `{program}`: {e}. Проверьте команду в «Настройки → Общие»"
+
+#: crates/engine-editor/src/prefs.rs:567
+msgid "Started the external editor with {}"
+msgstr "Внешний редактор запущен: {}"
+
+#: crates/engine-editor/src/profiler.rs:134
+msgid "Game (scripts, physics)"
+msgstr "Игра (скрипты, физика)"
+
+#: crates/engine-editor/src/profiler.rs:135
+msgid "Scene render"
+msgstr "Отрисовка сцены"
+
+#: crates/engine-editor/src/profiler.rs:136
+msgid "Editor UI"
+msgstr "Интерфейс редактора"
+
+#: crates/engine-editor/src/profiler.rs:137
+msgid "Tessellation"
+msgstr "Тесселяция"
+
+#: crates/engine-editor/src/profiler.rs:138
+msgid "GPU submit"
+msgstr "Отправка на GPU"
+
+#: crates/engine-editor/src/profiler.rs:139
+msgid "Waiting for GPU / vsync"
+msgstr "Ожидание GPU / vsync"
+
+#: crates/engine-editor/src/profiler.rs:170
+msgid "Clear Selection"
+msgstr "Снять выделение"
+
+#: crates/engine-editor/src/profiler.rs:174
+msgid "worst {worst:.1} ms  ·  1% low {one_percent:.1} ms"
+msgstr "худший {worst:.1} мс  ·  1% худших {one_percent:.1} мс"
+
+#: crates/engine-editor/src/profiler.rs:200
+msgid "Average of 60 frames"
+msgstr "Среднее за 60 кадров"
+
+#: crates/engine-editor/src/profiler.rs:200
+msgid "Selected frame"
+msgstr "Выбранный кадр"
+
+#: crates/engine-editor/src/profiler.rs:213
+msgid "Click to hide or show this part on the graph"
+msgstr "Щёлкните, чтобы скрыть или показать эту часть на графике"
+
+#: crates/engine-editor/src/profiler.rs:217
+msgid "Frame"
+msgstr "Кадр"
+
+#: crates/engine-editor/src/profiler.rs:221
+msgid "Draw calls"
+msgstr "Вызовы отрисовки"
+
+#: crates/engine-editor/src/profiler.rs:222
+msgid "Sprites"
+msgstr "Спрайты"
+
+#: crates/engine-editor/src/profiler.rs:223
+msgid "Textures"
+msgstr "Текстуры"
+
+#: crates/engine-editor/src/profiler.rs:321
+msgid "last {} frames · click a frame to inspect it"
+msgstr "последних кадров: {} · щёлкните кадр, чтобы изучить его"
+
+#: crates/engine-editor/src/profiler.rs:329
+msgid "Frame {:.2} ms\n"
+msgstr "Кадр {:.2} мс\n"
+
+#: crates/engine-editor/src/project.rs:350
+msgid "Open Scene"
+msgstr "Открыть сцену"
+
+#: crates/engine-editor/src/project.rs:352
+msgid "Add to Scene"
+msgstr "Добавить в сцену"
+
+#: crates/engine-editor/src/project.rs:359
+msgid "Create Sprite"
+msgstr "Создать спрайт"
+
+#: crates/engine-editor/src/project.rs:365
+msgid "Open in Code Tab"
+msgstr "Открыть во вкладке «Код»"
+
+#: crates/engine-editor/src/project.rs:366
+msgid "Mesh"
+msgstr "Меш"
+
+#: crates/engine-editor/src/project.rs:366
+msgid "Open in Piska Modeler"
+msgstr "Открыть в Piska Modeler"
+
+#: crates/engine-editor/src/project.rs:458
+msgid "Folder"
+msgstr "Папка"
+
+#: crates/engine-editor/src/project.rs:509
+msgid "Files"
+msgstr "Файлы"
+
+#: crates/engine-editor/src/project.rs:511
+msgid "Folders"
+msgstr "Папки"
+
+#: crates/engine-editor/src/project.rs:513
+msgid "Total size"
+msgstr "Общий размер"
+
+#: crates/engine-editor/src/project.rs:514
+msgid "By type"
+msgstr "По типам"
+
+#: crates/engine-editor/src/project.rs:520
+msgid "Drag onto a folder to move, hold Ctrl to copy. Ctrl+C / Ctrl+X / Delete work on the whole selection."
+msgstr "Перетащите на папку, чтобы переместить; с Ctrl — скопировать. Ctrl+C / Ctrl+X / Delete действуют на всё выделение."
+
+#: crates/engine-editor/src/project.rs:555
+msgid "No asset selected"
+msgstr "Ассет не выбран"
+
+#: crates/engine-editor/src/project.rs:615
+msgid "Path"
+msgstr "Путь"
+
+#: crates/engine-editor/src/project.rs:616
+msgid "Type"
+msgstr "Тип"
+
+#: crates/engine-editor/src/project.rs:618
+msgid "Modified"
+msgstr "Изменён"
+
+#: crates/engine-editor/src/project.rs:621
+msgid "Size"
+msgstr "Размер"
+
+#: crates/engine-editor/src/project.rs:624
+msgid "Scenes reference this asset by its GUID: renaming or moving the file keeps the link"
+msgstr "Сцены ссылаются на этот ассет по GUID: при переименовании или перемещении файла связь сохраняется"
+
+#: crates/engine-editor/src/project.rs:724
+msgid "Vertices"
+msgstr "Вершины"
+
+#: crates/engine-editor/src/project.rs:725
+msgid "Triangles"
+msgstr "Треугольники"
+
+#: crates/engine-editor/src/project.rs:726
+msgid "Sub-meshes"
+msgstr "Подмеши"
+
+#: crates/engine-editor/src/project.rs:728
+msgid "Bounds"
+msgstr "Габариты"
+
+#: crates/engine-editor/src/project.rs:730
+msgid "File size"
+msgstr "Размер файла"
+
+#: crates/engine-editor/src/project.rs:736
+msgid "None in the file: default grey"
+msgstr "В файле нет: серый по умолчанию"
+
+#: crates/engine-editor/src/project.rs:753
+msgid "This model cannot be read"
+msgstr "Не удаётся прочитать модель"
+
+#: crates/engine-editor/src/project.rs:756
+msgid "File size: {size}"
+msgstr "Размер файла: {size}"
+
+#: crates/engine-editor/src/project_bar.rs:169
+msgid "Sort by {}"
+msgstr "Сортировка: {}"
+
+#: crates/engine-editor/src/project_bar.rs:222
+msgid "Sort: {} {}"
+msgstr "Сортировка: {} {}"
+
+#: crates/engine-editor/src/project_bar.rs:245
+msgid "Scripts grouped by language"
+msgstr "Скрипты сгруппированы по языку"
+
+#: crates/engine-editor/src/project_bar.rs:258
+msgid "Sort by"
+msgstr "Сортировка"
+
+#: crates/engine-editor/src/project_bar.rs:265
+msgid "Ascending"
+msgstr "По возрастанию"
+
+#: crates/engine-editor/src/project_bar.rs:268
+msgid "Descending"
+msgstr "По убыванию"
+
+#: crates/engine-editor/src/project_bar.rs:274
+msgid "Folders are always listed first"
+msgstr "Папки всегда идут первыми"
+
+#: crates/engine-editor/src/project_bar.rs:295
+msgid "all"
+msgstr "все"
+
+#: crates/engine-editor/src/project_bar.rs:295
+msgid "Show every type"
+msgstr "Показать все типы"
+
+#: crates/engine-editor/src/project_bar.rs:295
+msgid "Show only this type (click several to combine)"
+msgstr "Показать только этот тип (можно выбрать несколько)"
+
+#: crates/engine-editor/src/project_chrome.rs:57
+msgid "Back (Alt+Left, mouse button 4)"
+msgstr "Назад (Alt+Left, кнопка мыши 4)"
+
+#: crates/engine-editor/src/project_chrome.rs:60
+msgid "Forward (Alt+Right, mouse button 5)"
+msgstr "Вперёд (Alt+Right, кнопка мыши 5)"
+
+#: crates/engine-editor/src/project_chrome.rs:63
+msgid "Up one folder (Alt+Up, Backspace)"
+msgstr "На папку вверх (Alt+Up, Backspace)"
+
+#: crates/engine-editor/src/project_chrome.rs:130
+msgid "Item size: drag to the left end for a compact list"
+msgstr "Размер значков: перетащите влево до упора для компактного списка"
+
+#: crates/engine-editor/src/project_chrome.rs:160
+msgid "Search in"
+msgstr "Искать в"
+
+#: crates/engine-editor/src/project_chrome.rs:169
+msgid "Where the search looks"
+msgstr "Где искать"
+
+#: crates/engine-editor/src/project_chrome.rs:245
+msgid "Assets"
+msgstr "Ассеты"
+
+#: crates/engine-editor/src/project_chrome.rs:312
+msgid "Search results"
+msgstr "Результаты поиска"
+
+#: crates/engine-editor/src/project_chrome.rs:319
+msgid "Click to type a path"
+msgstr "Щёлкните, чтобы ввести путь"
+
+#: crates/engine-editor/src/project_chrome.rs:376
+msgid "{n} items selected · {}"
+msgstr "Выделено элементов: {n} · {}"
+
+#: crates/engine-editor/src/project_chrome.rs:396
+msgid "Drop files to import them into {dest}"
+msgstr "Отпустите файлы, чтобы импортировать их в {dest}"
+
+#: crates/engine-editor/src/project_chrome.rs:403
+msgid "Open an asset folder first: files are imported into the open folder"
+msgstr "Сначала откройте папку ассетов: файлы импортируются в открытую папку"
+
+#: crates/engine-editor/src/project_chrome.rs:436
+msgid "Counting files…"
+msgstr "Подсчёт файлов…"
+
+#: crates/engine-editor/src/project_chrome.rs:462
+msgid "Delete permanently?"
+msgstr "Удалить безвозвратно?"
+
+#: crates/engine-editor/src/project_chrome.rs:555
+msgid "Cannot open `{}`: {err}"
+msgstr "Не удаётся открыть `{}`: {err}"
+
+#: crates/engine-editor/src/project_chrome.rs:569
+msgid "Import New Asset"
+msgstr "Импортировать новый ассет"
+
+#: crates/engine-editor/src/project_chrome.rs:576
+msgid "Import into {title}"
+msgstr "Импорт в {title}"
+
+#: crates/engine-editor/src/project_chrome.rs:653
+msgid "Import"
+msgstr "Импортировать"
+
+#: crates/engine-editor/src/project_chrome.rs:653
+msgid "Import {count} {}"
+msgstr "Импортировать {count} {}"
+
+#: crates/engine-editor/src/project_chrome.rs:661
+msgid "Ctrl-click selects several. Double-click opens a folder."
+msgstr "Ctrl+щелчок выделяет несколько. Двойной щелчок открывает папку."
+
+#: crates/engine-editor/src/project_content.rs:660
+msgid "{}\nCannot preview: {reason}"
+msgstr "{}\nПредпросмотр недоступен: {reason}"
+
+#: crates/engine-editor/src/project_content.rs:929
+msgid "Unknown type in the search"
+msgstr "Неизвестный тип в запросе"
+
+#: crates/engine-editor/src/project_content.rs:929
+msgid "Use t:script, t:scene, t:prefab, t:model, t:material, t:texture or t:audio"
+msgstr "Используйте t:script, t:scene, t:prefab, t:model, t:material, t:texture или t:audio"
+
+#: crates/engine-editor/src/project_content.rs:931
+msgid "Click `All` above to show every type"
+msgstr "Нажмите «Все» вверху, чтобы показать все типы"
+
+#: crates/engine-editor/src/project_content.rs:931
+msgid "Nothing of the selected types here"
+msgstr "Здесь нет ассетов выбранных типов"
+
+#: crates/engine-editor/src/project_content.rs:933
+msgid "Drop files here from your file manager, or right-click for Create and Import New Asset"
+msgstr "Перетащите сюда файлы из файлового менеджера или щёлкните правой кнопкой и выберите «Создать» или «Импортировать новый ассет»"
+
+#: crates/engine-editor/src/project_content.rs:933
+msgid "This folder is empty"
+msgstr "Эта папка пуста"
+
+#: crates/engine-editor/src/project_content.rs:935
+msgid "Try another name, or search in All Assets"
+msgstr "Попробуйте другое имя или ищите во «Всех ассетах»"
+
+#: crates/engine-editor/src/project_fs.rs:37
+msgid " And {} more failed."
+msgstr " Ещё не удалось: {}."
+
+#: crates/engine-editor/src/project_fs.rs:40
+msgid " Nothing was changed."
+msgstr " Ничего не изменено."
+
+#: crates/engine-editor/src/project_fs.rs:42
+msgid " The rest was done."
+msgstr " Остальное выполнено."
+
+#: crates/engine-editor/src/project_fs.rs:97
+msgid "The name cannot be empty"
+msgstr "Имя не может быть пустым"
+
+#: crates/engine-editor/src/project_fs.rs:100
+msgid "The name cannot start or end with a space"
+msgstr "Имя не может начинаться или заканчиваться пробелом"
+
+#: crates/engine-editor/src/project_fs.rs:103
+msgid "The name cannot end with a dot"
+msgstr "Имя не может заканчиваться точкой"
+
+#: crates/engine-editor/src/project_fs.rs:107
+msgid "The name contains a control character"
+msgstr "Имя содержит управляющий символ"
+
+#: crates/engine-editor/src/project_fs.rs:109
+msgid "The name cannot contain `{bad}`"
+msgstr "Имя не может содержать `{bad}`"
+
+#: crates/engine-editor/src/project_fs.rs:116
+msgid "`{stem}` is a reserved name on Windows"
+msgstr "`{stem}` — зарезервированное имя в Windows"
+
+#: crates/engine-editor/src/project_fs.rs:122
+msgid "The name is too long"
+msgstr "Имя слишком длинное"
+
+#: crates/engine-editor/src/project_fs.rs:167
+msgid " (it no longer exists; press Refresh)"
+msgstr " (его больше нет; нажмите «Обновить»)"
+
+#: crates/engine-editor/src/project_fs.rs:507
+msgid "the Recycle Bin did not take: {}"
+msgstr "корзина не приняла: {}"
+
+#: crates/engine-editor/src/project_fs.rs:535
+msgid "cannot prepare the Recycle Bin request: {e}"
+msgstr "не удаётся подготовить запрос к корзине: {e}"
+
+#: crates/engine-editor/src/project_fs.rs:548
+msgid "the Recycle Bin refused: {why}"
+msgstr "корзина отказала: {why}"
+
+#: crates/engine-editor/src/project_fs.rs:550
+msgid "cannot start PowerShell to use the Recycle Bin: {err}"
+msgstr "не удаётся запустить PowerShell для работы с корзиной: {err}"
+
+#: crates/engine-editor/src/project_fs.rs:563
+msgid "Finder refused: {}"
+msgstr "Finder отказал: {}"
+
+#: crates/engine-editor/src/project_fs.rs:579
+msgid "this platform has no Recycle Bin"
+msgstr "на этой платформе нет корзины"
+
+#: crates/engine-editor/src/project_menus.rs:45
+msgid "Prefab from Selection"
+msgstr "Префаб из выделенного"
+
+#: crates/engine-editor/src/project_menus.rs:47
+msgid "Select an object in the Hierarchy first"
+msgstr "Сначала выделите объект в Иерархии"
+
+#: crates/engine-editor/src/project_menus.rs:56
+msgid "Rust Script…"
+msgstr "Скрипт Rust…"
+
+#: crates/engine-editor/src/project_menus.rs:59
+msgid "C++ Script…"
+msgstr "Скрипт C++…"
+
+#: crates/engine-editor/src/project_menus.rs:66
+msgid "Scenario Script…"
+msgstr "Скрипт Scenario…"
+
+#: crates/engine-editor/src/project_menus.rs:70
+msgid "Model (Piska Modeler)"
+msgstr "Модель (Piska Modeler)"
+
+#: crates/engine-editor/src/project_menus.rs:77
+msgid "Nothing is selected"
+msgstr "Ничего не выделено"
+
+#: crates/engine-editor/src/project_menus.rs:83
+msgid "Copy or cut something first"
+msgstr "Сначала скопируйте или вырежьте что-нибудь"
+
+#: crates/engine-editor/src/project_menus.rs:102
+msgid "Rename…"
+msgstr "Переименовать…"
+
+#: crates/engine-editor/src/project_menus.rs:105
+msgid "Delete…"
+msgstr "Удалить…"
+
+#: crates/engine-editor/src/project_menus.rs:119
+msgid "Open"
+msgstr "Открыть"
+
+#: crates/engine-editor/src/project_menus.rs:128
+msgid "Edit as Text"
+msgstr "Редактировать как текст"
+
+#: crates/engine-editor/src/project_menus.rs:131
+msgid "Show in File Manager"
+msgstr "Показать в файловом менеджере"
+
+#: crates/engine-editor/src/project_menus.rs:139
+msgid "Select one item to rename"
+msgstr "Выделите один элемент для переименования"
+
+#: crates/engine-editor/src/project_menus.rs:146
+msgid "Copy Path"
+msgstr "Копировать путь"
+
+#: crates/engine-editor/src/project_menus.rs:146
+msgid "Select one item"
+msgstr "Выделите один элемент"
+
+#: crates/engine-editor/src/project_menus.rs:149
+msgid "Copy GUID"
+msgstr "Копировать GUID"
+
+#: crates/engine-editor/src/project_menus.rs:149
+msgid "Select one asset"
+msgstr "Выделите один ассет"
+
+#: crates/engine-editor/src/project_menus.rs:155
+msgid "Remove from Favorites"
+msgstr "Удалить из избранного"
+
+#: crates/engine-editor/src/project_menus.rs:158
+msgid "Add to Favorites"
+msgstr "Добавить в избранное"
+
+#: crates/engine-editor/src/project_menus.rs:163
+msgid "Reimport"
+msgstr "Переимпортировать"
+
+#: crates/engine-editor/src/project_menus.rs:167
+msgid "Find References In Scene"
+msgstr "Найти ссылки в сцене"
+
+#: crates/engine-editor/src/project_menus.rs:174
+msgid "Properties"
+msgstr "Свойства"
+
+#: crates/engine-editor/src/project_menus.rs:183
+msgid "Refresh"
+msgstr "Обновить"
+
+#: crates/engine-editor/src/project_menus.rs:190
+msgid "Import New Asset…"
+msgstr "Импортировать новый ассет…"
+
+#: crates/engine-editor/src/project_menus.rs:196
+msgid "Select All"
+msgstr "Выделить всё"
+
+#: crates/engine-editor/src/project_nav.rs:134
+msgid "This Folder"
+msgstr "Эта папка"
+
+#: crates/engine-editor/src/project_nav.rs:135
+msgid "All Assets"
+msgstr "Все ассеты"
+
+#: crates/engine-editor/src/project_nav.rs:464
+msgid "All Scripts"
+msgstr "Все скрипты"
+
+#: crates/engine-editor/src/project_nav.rs:465
+msgid "All Scenes"
+msgstr "Все сцены"
+
+#: crates/engine-editor/src/project_nav.rs:466
+msgid "All Models"
+msgstr "Все модели"
+
+#: crates/engine-editor/src/project_nav.rs:467
+msgid "All Materials"
+msgstr "Все материалы"
+
+#: crates/engine-editor/src/project_nav.rs:468
+msgid "All Prefabs"
+msgstr "Все префабы"
+
+#: crates/engine-editor/src/project_ops.rs:261
+msgid "Cannot rename `{}`: {why}"
+msgstr "Не удаётся переименовать `{}`: {why}"
+
+#: crates/engine-editor/src/project_ops.rs:277
+msgid "Duplicated"
+msgstr "Дублировано"
+
+#: crates/engine-editor/src/project_ops.rs:292
+msgid "Deleted"
+msgstr "Удалено"
+
+#: crates/engine-editor/src/project_ops.rs:298
+msgid "Copied the path `Assets/{key}`"
+msgstr "Скопирован путь `Assets/{key}`"
+
+#: crates/engine-editor/src/project_ops.rs:303
+msgid "Copied the GUID of `{}`"
+msgstr "Скопирован GUID `{}`"
+
+#: crates/engine-editor/src/project_ops.rs:403
+msgid "Moved"
+msgstr "Перемещено"
+
+#: crates/engine-editor/src/project_ops.rs:409
+msgid "Pasted"
+msgstr "Вставлено"
+
+#: crates/engine-editor/src/project_ops.rs:440
+msgid "Copied"
+msgstr "Скопировано"
+
+#: crates/engine-editor/src/project_ops.rs:480
+msgid "the Recycle Bin did not take it"
+msgstr "корзина не приняла файл"
+
+#: crates/engine-editor/src/project_ops.rs:487
+msgid "Moved to the Recycle Bin:"
+msgstr "Перемещено в корзину:"
+
+#: crates/engine-editor/src/project_ops.rs:528
+msgid "Cannot create a folder: {why}"
+msgstr "Не удаётся создать папку: {why}"
+
+#: crates/engine-editor/src/project_ops.rs:542
+msgid "Cannot create a scene in `{folder}`: {err}"
+msgstr "Не удаётся создать сцену в `{folder}`: {err}"
+
+#: crates/engine-editor/src/project_ops.rs:570
+msgid "Reimported {count} {}"
+msgstr "Переимпортировано: {count} {}"
+
+#: crates/engine-editor/src/project_ops.rs:581
+msgid "Prefab"
+msgstr "Префаб"
+
+#: crates/engine-editor/src/project_ops.rs:601
+msgid "No object in the open scene uses `{name}`"
+msgstr "Ни один объект в открытой сцене не использует `{name}`"
+
+#: crates/engine-editor/src/project_ops.rs:611
+msgid "Another import is still running; drop the files again when it finishes"
+msgstr "Ещё идёт другой импорт; перетащите файлы снова, когда он завершится"
+
+#: crates/engine-editor/src/project_ops.rs:623
+msgid "Importing into Assets/{dest}…"
+msgstr "Импорт в Assets/{dest}…"
+
+#: crates/engine-editor/src/project_ops.rs:654
+msgid "Imported"
+msgstr "Импортировано"
+
+#: crates/engine-editor/src/project_tree.rs:33
+msgid "Favorites"
+msgstr "Избранное"
+
+#: crates/engine-editor/src/project_tree.rs:192
+msgid "Search: {query}"
+msgstr "Поиск: {query}"
+
+#: crates/engine-editor/src/project_tree.rs:194
+msgid "Show Results"
+msgstr "Показать результаты"
+
+#: crates/engine-editor/src/project_tree.rs:197
+msgid "Delete Saved Search"
+msgstr "Удалить сохранённый поиск"
+
+#: crates/engine-editor/src/runner.rs:166
+msgid "out of GPU memory"
+msgstr "недостаточно видеопамяти"
+
+#: crates/engine-editor/src/rust_scripts.rs:958
+msgid "{}: cannot start `{}`: {err}. Is it installed and on PATH?"
+msgstr "{}: не удаётся запустить `{}`: {err}. Программа установлена и доступна в PATH?"
+
+#: crates/engine-editor/src/rust_scripts.rs:1567
+msgid "Language"
+msgstr "Язык"
+
+#: crates/engine-editor/src/rust_scripts.rs:1610
+msgid "Starting the rebuilt editor… it opens with this scene and these files."
+msgstr "Запуск пересобранного редактора… он откроется с этой сценой и этими файлами."
+
+#: crates/engine-editor/src/rust_scripts.rs:1612
+msgid "Building… the editor reloads itself with the new code when the build succeeds."
+msgstr "Сборка… после успешной сборки редактор перезапустится с новым кодом."
+
+#: crates/engine-editor/src/rust_scripts.rs:1685
+msgid "Rename Script"
+msgstr "Переименовать скрипт"
+
+#: crates/engine-editor/src/rust_scripts.rs:1705
+msgid "Delete script from disk?"
+msgstr "Удалить скрипт с диска?"
+
+#: crates/engine-editor/src/script_order.rs:164
+msgid "Add script"
+msgstr "Добавить скрипт"
+
+#: crates/engine-editor/src/script_order.rs:195
+msgid "No component to add"
+msgstr "Нет компонентов для добавления"
+
+#: crates/engine-editor/src/script_order.rs:200
+msgid "Rust, C++ and engine components that are registered in this editor"
+msgstr "Компоненты Rust, C++ и движка, зарегистрированные в этом редакторе"
+
+#: crates/engine-editor/src/script_order.rs:286
+msgid "Save project.settings and use this order right away, also in Play"
+msgstr "Сохранить project.settings и сразу применить этот порядок, в том числе в режиме игры"
+
+#: crates/engine-editor/src/script_order.rs:298
+msgid "Saved in project.settings"
+msgstr "Сохранено в project.settings"
+
+#: crates/engine-editor/src/script_order.rs:298
+msgid "Unsaved changes"
+msgstr "Несохранённые изменения"
+
+#: crates/engine-editor/src/script_order.rs:311
+msgid "Execution order"
+msgstr "Порядок выполнения"
+
+#: crates/engine-editor/src/script_order.rs:312
+msgid "Lowest number runs first in Start, FixedUpdate, Update and LateUpdate. Unlisted types run at Default Time (0)."
+msgstr "Меньшее число выполняется первым в Start, FixedUpdate, Update и LateUpdate. Типы не из списка выполняются в порядке по умолчанию (0)."
+
+#: crates/engine-editor/src/script_order.rs:339
+msgid "Engine"
+msgstr "Движок"
+
+#: crates/engine-editor/src/script_order.rs:340
+msgid "Not registered"
+msgstr "Не зарегистрирован"
+
+#: crates/engine-editor/src/script_order.rs:412
+msgid "Order in code: {code}. Remove the row to use it."
+msgstr "Порядок в коде: {code}. Удалите строку, чтобы использовать его."
+
+#: crates/engine-editor/src/script_order.rs:413
+msgid "The same as in code"
+msgstr "Как в коде"
+
+#: crates/engine-editor/src/script_order.rs:414
+msgid "This component is not registered in this editor: its order still applies in games that register it"
+msgstr "Этот компонент не зарегистрирован в этом редакторе: его порядок всё равно действует в играх, где он зарегистрирован"
+
+#: crates/engine-editor/src/script_order.rs:426
+msgid "Remove from the list: the component goes back to the order from its code"
+msgstr "Убрать из списка: компонент вернётся к порядку из своего кода"
+
+#: crates/engine-editor/src/script_order.rs:435
+msgid "Default Time  ·  0"
+msgstr "По умолчанию  ·  0"
+
+#: crates/engine-editor/src/script_order.rs:435
+msgid "Default Time  ·  0  ·  add a script to run before or after everything else"
+msgstr "По умолчанию  ·  0  ·  добавьте скрипт, чтобы он выполнялся раньше или позже всех остальных"
+
+#: crates/engine-editor/src/selection.rs:252
+msgid "Group"
+msgstr "Группа"
+
+#: crates/engine-editor/src/settings/build.rs:70
+msgid "Landscape"
+msgstr "Альбомная"
+
+#: crates/engine-editor/src/settings/build.rs:71
+msgid "Portrait"
+msgstr "Книжная"
+
+#: crates/engine-editor/src/settings/build.rs:72
+msgid "Any (follows the phone)"
+msgstr "Любая (по положению телефона)"
+
+#: crates/engine-editor/src/settings/build.rs:108
+msgid "`{id}` is not a valid Android package id: use at least two dot-separated parts, each starting with a letter and containing only letters, digits and `_` (for example `com.example.my_game`)"
+msgstr "`{id}` — недопустимый идентификатор пакета Android: нужно не меньше двух частей через точку, каждая начинается с буквы и содержит только буквы, цифры и `_` (например, `com.example.my_game`)"
+
+#: crates/engine-editor/src/settings/build.rs:122
+msgid "icon `{icon}` must be a PNG file inside assets/"
+msgstr "значок `{icon}` должен быть PNG-файлом в папке assets/"
+
+#: crates/engine-editor/src/settings/build.rs:130
+msgid "the Android version code must be from 1 to {ANDROID_MAX_VERSION_CODE}, not {code}"
+msgstr "код версии Android должен быть от 1 до {ANDROID_MAX_VERSION_CODE}, а не {code}"
+
+#: crates/engine-editor/src/settings/build.rs:134
+msgid "the Android version name cannot be blank: clear the field to use the package version"
+msgstr "имя версии Android не может состоять из одних пробелов: очистите поле, чтобы использовать версию пакета"
+
+#: crates/engine-editor/src/settings/build.rs:139
+msgid "the minimum Android SDK must be at least {ANDROID_MIN_SDK} (Android 8.0: the engine plays sound through AAudio) and at most 99, not {sdk}"
+msgstr "минимальный Android SDK должен быть не ниже {ANDROID_MIN_SDK} (Android 8.0: движок выводит звук через AAudio) и не выше 99, а не {sdk}"
+
+#: crates/engine-editor/src/settings/build.rs:162
+msgid "Cargo.toml is not valid TOML: {e}. Fix the file and reopen this page"
+msgstr "Cargo.toml содержит некорректный TOML: {e}. Исправьте файл и снова откройте эту страницу"
+
+#: crates/engine-editor/src/settings/build.rs:164
+msgid "Cargo.toml has no [package] table: it is not a game crate"
+msgstr "В Cargo.toml нет таблицы [package]: это не крейт игры"
+
+#: crates/engine-editor/src/settings/build.rs:203
+msgid "`android.orientation = \"{text}\"` is not supported: use landscape, portrait or any"
+msgstr "`android.orientation = \"{text}\"` не поддерживается: используйте landscape, portrait или any"
+
+#: crates/engine-editor/src/settings/build.rs:223
+msgid "`{key}` in Cargo.toml is not a table: fix it by hand, then edit it here"
+msgstr "`{key}` в Cargo.toml — не таблица: исправьте файл вручную, затем редактируйте здесь"
+
+#: crates/engine-editor/src/settings/build.rs:252
+msgid "Cargo.toml is not valid TOML: {e}"
+msgstr "Cargo.toml содержит некорректный TOML: {e}"
+
+#: crates/engine-editor/src/settings/build.rs:277
+msgid "Cargo.toml has no [package] table"
+msgstr "В Cargo.toml нет таблицы [package]"
+
+#: crates/engine-editor/src/settings/build.rs:368
+msgid "Saved export options to {}"
+msgstr "Параметры экспорта сохранены в {}"
+
+#: crates/engine-editor/src/settings/build.rs:397
+msgid "cannot write `{}`: {e}. Is the file read-only?"
+msgstr "не удаётся записать `{}`: {e}. Возможно, файл только для чтения?"
+
+#: crates/engine-editor/src/settings/build.rs:483
+msgid "default"
+msgstr "по умолчанию"
+
+#: crates/engine-editor/src/settings/build.rs:496
+msgid "Game crate"
+msgstr "Крейт игры"
+
+#: crates/engine-editor/src/settings/build.rs:524
+msgid "{error}. The export options cannot be edited until the file is fixed."
+msgstr "{error}. Параметры экспорта нельзя изменить, пока файл не исправлен."
+
+#: crates/engine-editor/src/settings/build.rs:538
+msgid "Export options live in [package.metadata.piska] of this file; the rest of it is never touched."
+msgstr "Параметры экспорта хранятся в [package.metadata.piska] этого файла; остальное его содержимое не меняется."
+
+#: crates/engine-editor/src/settings/build.rs:538
+msgid "Manifest"
+msgstr "Манифест"
+
+#: crates/engine-editor/src/settings/build.rs:543
+msgid "Cargo.toml: {problem}. Export stops on it: set the value here or fix the file."
+msgstr "Cargo.toml: {problem}. Экспорт на этом остановится: задайте значение здесь или исправьте файл."
+
+#: crates/engine-editor/src/settings/build.rs:546
+msgid "All platforms"
+msgstr "Все платформы"
+
+#: crates/engine-editor/src/settings/build.rs:551
+msgid "Title"
+msgstr "Название"
+
+#: crates/engine-editor/src/settings/build.rs:552
+msgid "Web page title and Android app name. Empty: the package name."
+msgstr "Заголовок веб-страницы и имя приложения Android. Пусто — имя пакета."
+
+#: crates/engine-editor/src/settings/build.rs:558
+msgid "Icon"
+msgstr "Значок"
+
+#: crates/engine-editor/src/settings/build.rs:558
+msgid "Icon of the exported game on every platform. None: assets/icon.png, otherwise the engine icon."
+msgstr "Значок экспортированной игры на всех платформах. Нет — assets/icon.png, а если его нет, значок движка."
+
+#: crates/engine-editor/src/settings/build.rs:558
+msgid "None (icon.png)"
+msgstr "Нет (icon.png)"
+
+#: crates/engine-editor/src/settings/build.rs:567
+msgid "Package id"
+msgstr "Идентификатор пакета"
+
+#: crates/engine-editor/src/settings/build.rs:568
+msgid "Application id in the store, for example com.example.my_game. Empty: org.piska.<game folder>."
+msgstr "Идентификатор приложения в магазине, например com.example.my_game. Пусто — org.piska.<папка игры>."
+
+#: crates/engine-editor/src/settings/build.rs:576
+msgid "Version code"
+msgstr "Код версии"
+
+#: crates/engine-editor/src/settings/build.rs:577
+msgid "Whole number that must grow with every release you upload to a store."
+msgstr "Целое число, которое должно расти с каждым выпуском, загружаемым в магазин."
+
+#: crates/engine-editor/src/settings/build.rs:586
+msgid "Version name"
+msgstr "Имя версии"
+
+#: crates/engine-editor/src/settings/build.rs:587
+msgid "Version players see, for example 1.2.0. Empty: the package version."
+msgstr "Версия, которую видят игроки, например 1.2.0. Пусто — версия пакета."
+
+#: crates/engine-editor/src/settings/build.rs:593
+msgid "How the screen is held. Landscape and portrait still turn by 180°."
+msgstr "Как держат экран. Альбомная и книжная ориентации всё равно поворачиваются на 180°."
+
+#: crates/engine-editor/src/settings/build.rs:593
+msgid "Orientation"
+msgstr "Ориентация"
+
+#: crates/engine-editor/src/settings/build.rs:613
+msgid "Minimum SDK"
+msgstr "Минимальный SDK"
+
+#: crates/engine-editor/src/settings/build.rs:614
+msgid "Oldest Android API the game installs on. 26 (Android 8.0) is the lowest the engine supports."
+msgstr "Самый старый Android API, на который устанавливается игра. 26 (Android 8.0) — минимум, который поддерживает движок."
+
+#: crates/engine-editor/src/settings/build.rs:620
+msgid "Windows and Linux"
+msgstr "Windows и Linux"
+
+#: crates/engine-editor/src/settings/build.rs:622
+msgid "Windows and Linux builds use the title and icon above. The glibc version of a Linux build is an option of the export itself: piska-export linux --glibc 2.31."
+msgstr "Сборки для Windows и Linux используют название и значок, заданные выше. Версия glibc для сборки Linux — параметр самого экспорта: piska-export linux --glibc 2.31."
+
+#: crates/engine-editor/src/settings/input.rs:189
+msgid "{debug} Arrow"
+msgstr "Стрелка {debug}"
+
+#: crates/engine-editor/src/settings/input.rs:190
+msgid "Left Shift"
+msgstr "Левый Shift"
+
+#: crates/engine-editor/src/settings/input.rs:191
+msgid "Right Shift"
+msgstr "Правый Shift"
+
+#: crates/engine-editor/src/settings/input.rs:192
+msgid "Left Ctrl"
+msgstr "Левый Ctrl"
+
+#: crates/engine-editor/src/settings/input.rs:193
+msgid "Right Ctrl"
+msgstr "Правый Ctrl"
+
+#: crates/engine-editor/src/settings/input.rs:194
+msgid "Left Alt"
+msgstr "Левый Alt"
+
+#: crates/engine-editor/src/settings/input.rs:195
+msgid "Right Alt"
+msgstr "Правый Alt"
+
+#: crates/engine-editor/src/settings/input.rs:205
+msgid " (A / Cross)"
+msgstr " (A / Крест)"
+
+#: crates/engine-editor/src/settings/input.rs:206
+msgid " (B / Circle)"
+msgstr " (B / Круг)"
+
+#: crates/engine-editor/src/settings/input.rs:207
+msgid " (X / Square)"
+msgstr " (X / Квадрат)"
+
+#: crates/engine-editor/src/settings/input.rs:208
+msgid " (Y / Triangle)"
+msgstr " (Y / Треугольник)"
+
+#: crates/engine-editor/src/settings/input.rs:219
+msgid "Left"
+msgstr "Влево"
+
+#: crates/engine-editor/src/settings/input.rs:219
+msgid "Right"
+msgstr "Вправо"
+
+#: crates/engine-editor/src/settings/input.rs:222
+msgid "Down"
+msgstr "Вниз"
+
+#: crates/engine-editor/src/settings/input.rs:222
+msgid "Up"
+msgstr "Вверх"
+
+#: crates/engine-editor/src/settings/input.rs:237
+msgid "Key"
+msgstr "Клавиша"
+
+#: crates/engine-editor/src/settings/input.rs:238
+msgid "Mouse"
+msgstr "Мышь"
+
+#: crates/engine-editor/src/settings/input.rs:238
+msgid "{} Button"
+msgstr "Кнопка {}"
+
+#: crates/engine-editor/src/settings/input.rs:239
+msgid "Pad"
+msgstr "Геймпад"
+
+#: crates/engine-editor/src/settings/input.rs:240
+msgid "Stick"
+msgstr "Стик"
+
+#: crates/engine-editor/src/settings/input.rs:307
+msgid "An action needs a name"
+msgstr "У действия должно быть имя"
+
+#: crates/engine-editor/src/settings/input.rs:310
+msgid "An action named “{name}” already exists: names must be unique"
+msgstr "Действие «{name}» уже существует: имена должны быть уникальными"
+
+#: crates/engine-editor/src/settings/input.rs:407
+msgid "Keyboard"
+msgstr "Клавиатура"
+
+#: crates/engine-editor/src/settings/input.rs:408
+msgid "Letters"
+msgstr "Буквы"
+
+#: crates/engine-editor/src/settings/input.rs:409
+msgid "Digits"
+msgstr "Цифры"
+
+#: crates/engine-editor/src/settings/input.rs:410
+msgid "Arrows and editing"
+msgstr "Стрелки и редактирование"
+
+#: crates/engine-editor/src/settings/input.rs:411
+msgid "Modifiers"
+msgstr "Модификаторы"
+
+#: crates/engine-editor/src/settings/input.rs:412
+msgid "Function keys"
+msgstr "Функциональные клавиши"
+
+#: crates/engine-editor/src/settings/input.rs:422
+msgid "Gamepad"
+msgstr "Геймпад"
+
+#: crates/engine-editor/src/settings/input.rs:423
+msgid "Buttons"
+msgstr "Кнопки"
+
+#: crates/engine-editor/src/settings/input.rs:430
+msgid "Sticks and triggers"
+msgstr "Стики и триггеры"
+
+#: crates/engine-editor/src/settings/input.rs:495
+msgid "Press a key, click a mouse button or use the gamepad…  (Esc cancels)"
+msgstr "Нажмите клавишу, кнопку мыши или используйте геймпад…  (Esc — отмена)"
+
+#: crates/engine-editor/src/settings/input.rs:513
+msgid "Click, then press the new key, mouse button or gamepad input"
+msgstr "Щёлкните, затем нажмите новую клавишу, кнопку мыши или элемент геймпада"
+
+#: crates/engine-editor/src/settings/input.rs:517
+msgid "Remove this binding"
+msgstr "Удалить эту привязку"
+
+#: crates/engine-editor/src/settings/input.rs:543
+msgid "Listen"
+msgstr "Записать"
+
+#: crates/engine-editor/src/settings/input.rs:546
+msgid "Add a binding: press the key, mouse button or gamepad input it should react to"
+msgstr "Добавить привязку: нажмите то, на что она должна реагировать, — клавишу, кнопку мыши или элемент геймпада"
+
+#: crates/engine-editor/src/settings/input.rs:550
+msgid "Pick a key, mouse button or gamepad input from a list"
+msgstr "Выбрать клавишу, кнопку мыши или элемент геймпада из списка"
+
+#: crates/engine-editor/src/settings/input.rs:582
+msgid "Flip the sign: for example, stick down gives +1"
+msgstr "Сменить знак: например, стик вниз будет давать +1"
+
+#: crates/engine-editor/src/settings/input.rs:582
+msgid "Invert"
+msgstr "Инвертировать"
+
+#: crates/engine-editor/src/settings/input.rs:588
+msgid "Remove this axis"
+msgstr "Удалить эту ось"
+
+#: crates/engine-editor/src/settings/input.rs:597
+msgid "Add Axis"
+msgstr "Добавить ось"
+
+#: crates/engine-editor/src/settings/input.rs:598
+msgid "Read a gamepad stick or trigger as this axis"
+msgstr "Считывать стик или триггер геймпада как эту ось"
+
+#: crates/engine-editor/src/settings/input.rs:639
+msgid "Actions"
+msgstr "Действия"
+
+#: crates/engine-editor/src/settings/input.rs:642
+msgid "Action list"
+msgstr "Список действий"
+
+#: crates/engine-editor/src/settings/input.rs:643
+msgid "Read them in code: ctx.input().button(\"Jump\"), ctx.input().axis(\"Horizontal\"). Click an action to edit it."
+msgstr "Чтение в коде: ctx.input().button(\"Jump\"), ctx.input().axis(\"Horizontal\"). Щёлкните действие, чтобы изменить его."
+
+#: crates/engine-editor/src/settings/input.rs:663
+msgid "Axis"
+msgstr "Ось"
+
+#: crates/engine-editor/src/settings/input.rs:677
+msgid "Remove this action"
+msgstr "Удалить это действие"
+
+#: crates/engine-editor/src/settings/input.rs:691
+msgid "New action name"
+msgstr "Имя нового действия"
+
+#: crates/engine-editor/src/settings/input.rs:699
+msgid "A button action: pressed or not (Jump, Fire)"
+msgstr "Действие-кнопка: нажата или нет (Jump, Fire)"
+
+#: crates/engine-editor/src/settings/input.rs:699
+msgid "Add Button"
+msgstr "Добавить кнопку"
+
+#: crates/engine-editor/src/settings/input.rs:700
+msgid "An axis action from −1 to 1 (Horizontal, Throttle)"
+msgstr "Действие-ось от −1 до 1 (Horizontal, Throttle)"
+
+#: crates/engine-editor/src/settings/input.rs:755
+msgid "Defined only in the game's code: {}. Code that binds an action after start-up wins over this map."
+msgstr "Заданы только в коде игры: {}. Если код привязывает действие после запуска, его привязки важнее этой карты."
+
+#: crates/engine-editor/src/settings/input.rs:769
+msgid "{} “{name}”"
+msgstr "{} «{name}»"
+
+#: crates/engine-editor/src/settings/input.rs:776
+msgid "What code asks for. Must be unique; renaming keeps the bindings."
+msgstr "Имя, которое запрашивает код. Должно быть уникальным; при переименовании привязки сохраняются."
+
+#: crates/engine-editor/src/settings/input.rs:807
+msgid "Button: pressed or not. Axis: a value from −1 to 1 from two sides and gamepad sticks."
+msgstr "Кнопка: нажата или нет. Ось: значение от −1 до 1 из двух сторон и стиков геймпада."
+
+#: crates/engine-editor/src/settings/input.rs:813
+msgid "Pressed or not: input.button(name)"
+msgstr "Нажата или нет: input.button(name)"
+
+#: crates/engine-editor/src/settings/input.rs:814
+msgid "From −1 to 1: input.axis(name)"
+msgstr "От −1 до 1: input.axis(name)"
+
+#: crates/engine-editor/src/settings/input.rs:839
+msgid "Any of these presses the button."
+msgstr "Любая из них нажимает кнопку."
+
+#: crates/engine-editor/src/settings/input.rs:839
+msgid "Bindings"
+msgstr "Привязки"
+
+#: crates/engine-editor/src/settings/input.rs:841
+msgid "Any of these gives −1 (left, down, back)."
+msgstr "Любая из них даёт −1 (влево, вниз, назад)."
+
+#: crates/engine-editor/src/settings/input.rs:841
+msgid "Negative"
+msgstr "Отрицательные"
+
+#: crates/engine-editor/src/settings/input.rs:842
+msgid "Any of these gives +1 (right, up, forward)."
+msgstr "Любая из них даёт +1 (вправо, вверх, вперёд)."
+
+#: crates/engine-editor/src/settings/input.rs:842
+msgid "Positive"
+msgstr "Положительные"
+
+#: crates/engine-editor/src/settings/input.rs:882
+msgid "Analog axes"
+msgstr "Аналоговые оси"
+
+#: crates/engine-editor/src/settings/input.rs:883
+msgid "Gamepad sticks and triggers read smoothly; added to the keys above and kept within −1…1."
+msgstr "Стики и триггеры геймпада считываются плавно; значение складывается с клавишами выше и не выходит за пределы −1…1."
+
+#: crates/engine-editor/src/settings/input.rs:896
+msgid "Dead zone"
+msgstr "Мёртвая зона"
+
+#: crates/engine-editor/src/settings/input.rs:897
+msgid "Stick movement smaller than this counts as zero; the rest is stretched to the full range."
+msgstr "Отклонение стика меньше этого значения считается нулём; остальное растягивается на весь диапазон."
+
+#: crates/engine-editor/src/settings/input.rs:909
+msgid "Revert action"
+msgstr "Сбросить действие"
+
+#: crates/engine-editor/src/settings/input.rs:910
+msgid "Give this built-in action its default bindings back."
+msgstr "Вернуть встроенному действию привязки по умолчанию."
+
+#: crates/engine-editor/src/settings/input.rs:910
+msgid "Remove every binding of this action."
+msgstr "Удалить все привязки этого действия."
+
+#: crates/engine-editor/src/settings/input.rs:913
+msgid "Clear bindings"
+msgstr "Очистить привязки"
+
+#: crates/engine-editor/src/settings/input.rs:913
+msgid "Revert to default"
+msgstr "Вернуть по умолчанию"
+
+#: crates/engine-editor/src/settings/mod.rs:69
+msgid "Project Settings"
+msgstr "Настройки проекта"
+
+#: crates/engine-editor/src/settings/mod.rs:92
+msgid "General"
+msgstr "Общие"
+
+#: crates/engine-editor/src/settings/mod.rs:94
+msgid "Undo, auto-save and the code editor. Kept for this user."
+msgstr "Отмена действий, автосохранение и редактор кода. Хранятся для этого пользователя."
+
+#: crates/engine-editor/src/settings/mod.rs:100
+msgid "Appearance"
+msgstr "Оформление"
+
+#: crates/engine-editor/src/settings/mod.rs:102
+msgid "How the editor looks. Changes apply at once and are kept for this user."
+msgstr "Внешний вид редактора. Изменения применяются сразу и хранятся для этого пользователя."
+
+#: crates/engine-editor/src/settings/mod.rs:108
+msgid "Scene View"
+msgstr "Вид «Сцена»"
+
+#: crates/engine-editor/src/settings/mod.rs:110
+msgid "Grid, background, snapping steps and the camera of the Scene view."
+msgstr "Сетка, фон, шаги привязки и камера окна «Сцена»."
+
+#: crates/engine-editor/src/settings/mod.rs:116
+msgid "Game View"
+msgstr "Вид «Игра»"
+
+#: crates/engine-editor/src/settings/mod.rs:118
+msgid "Frame rate of the editor window in Edit and Play mode."
+msgstr "Частота кадров окна редактора в режиме правки и в режиме игры."
+
+#: crates/engine-editor/src/settings/mod.rs:124
+msgid "Console & Diagnostics"
+msgstr "Консоль и диагностика"
+
+#: crates/engine-editor/src/settings/mod.rs:126
+msgid "What the Console shows when the editor starts, and the Profiler history."
+msgstr "Что показывает Консоль при запуске редактора, и история Профайлера."
+
+#: crates/engine-editor/src/settings/mod.rs:132
+msgid "Build & Tools"
+msgstr "Сборка и инструменты"
+
+#: crates/engine-editor/src/settings/mod.rs:134
+msgid "Where cargo, the Android SDK, Java, zig and the C++ tools are, and where exports go."
+msgstr "Где находятся cargo, Android SDK, Java, zig и инструменты C++ и куда сохраняется экспорт."
+
+#: crates/engine-editor/src/settings/mod.rs:142
+msgid "Keyboard shortcuts of every editor command. Click a shortcut, then press the new keys."
+msgstr "Горячие клавиши всех команд редактора. Щёлкните сочетание, затем нажмите новые клавиши."
+
+#: crates/engine-editor/src/settings/mod.rs:149
+msgid "Player"
+msgstr "Проигрыватель"
+
+#: crates/engine-editor/src/settings/mod.rs:151
+msgid "The game window, its title and icon, and the first scene. Exported with the game."
+msgstr "Окно игры, его заголовок и значок, первая сцена. Экспортируются вместе с игрой."
+
+#: crates/engine-editor/src/settings/mod.rs:159
+msgid "Export options of the game crate: [package.metadata.piska] in its Cargo.toml, read by piska-export."
+msgstr "Параметры экспорта крейта игры: [package.metadata.piska] в его Cargo.toml, их читает piska-export."
+
+#: crates/engine-editor/src/settings/mod.rs:167
+msgid "Gravity, solver and which layers collide for 2D bodies."
+msgstr "Гравитация, решатель и столкновения слоёв для 2D-тел."
+
+#: crates/engine-editor/src/settings/mod.rs:175
+msgid "Gravity, solver and which layers collide for 3D bodies."
+msgstr "Гравитация, решатель и столкновения слоёв для 3D-тел."
+
+#: crates/engine-editor/src/settings/mod.rs:181
+msgid "Tags and Layers"
+msgstr "Теги и слои"
+
+#: crates/engine-editor/src/settings/mod.rs:183
+msgid "Tags and layer names offered by the Inspector. Scenes keep the tag text and the layer number."
+msgstr "Теги и имена слоёв, которые предлагает Инспектор. Сцены хранят текст тега и номер слоя."
+
+#: crates/engine-editor/src/settings/mod.rs:189
+msgid "Input"
+msgstr "Ввод"
+
+#: crates/engine-editor/src/settings/mod.rs:191
+msgid "Input actions games read with input.button(…) and input.axis(…): keys, mouse and gamepad bindings."
+msgstr "Действия ввода, которые игра читает через input.button(…) и input.axis(…): привязки клавиш, мыши и геймпада."
+
+#: crates/engine-editor/src/settings/mod.rs:197
+msgid "Time"
+msgstr "Время"
+
+#: crates/engine-editor/src/settings/mod.rs:199
+msgid "Fixed step of physics and FixedUpdate, the longest frame and the start time scale."
+msgstr "Фиксированный шаг физики и FixedUpdate, максимальная длительность кадра и начальный масштаб времени."
+
+#: crates/engine-editor/src/settings/mod.rs:205
+msgid "Graphics"
+msgstr "Графика"
+
+#: crates/engine-editor/src/settings/mod.rs:207
+msgid "Quality level and what the renderer draws. Games can switch the level at run time."
+msgstr "Уровень качества и то, что рисует рендерер. Игра может сменить уровень во время работы."
+
+#: crates/engine-editor/src/settings/mod.rs:215
+msgid "Start volumes of the mixer buses."
+msgstr "Начальная громкость шин микшера."
+
+#: crates/engine-editor/src/settings/mod.rs:221
+msgid "Script Execution Order"
+msgstr "Порядок выполнения скриптов"
+
+#: crates/engine-editor/src/settings/mod.rs:223
+msgid "Which components run first. Changes wait for Apply, then work right away, also in Play."
+msgstr "Какие компоненты выполняются первыми. Изменения вступают в силу после «Применить» и работают сразу, в том числе в режиме игры."
+
+#: crates/engine-editor/src/settings/mod.rs:440
+msgid "{} now runs “{}”"
+msgstr "{} теперь выполняет «{}»"
+
+#: crates/engine-editor/src/settings/mod.rs:506
+msgid "Saved to {PROJECT_SETTINGS_FILE}"
+msgstr "Сохранено в {PROJECT_SETTINGS_FILE}"
+
+#: crates/engine-editor/src/settings/mod.rs:559
+msgid "Reset {what} to defaults"
+msgstr "Сброс к значениям по умолчанию: {what}"
+
+#: crates/engine-editor/src/settings/mod.rs:594
+msgid "cannot write `{}`: {e}. Choose another folder"
+msgstr "не удаётся записать `{}`: {e}. Выберите другую папку"
+
+#: crates/engine-editor/src/settings/mod.rs:595
+msgid "Exported to {}"
+msgstr "Экспортировано в {}"
+
+#: crates/engine-editor/src/settings/mod.rs:604
+msgid "cannot read `{}`: {e}. Check the path"
+msgstr "не удаётся прочитать `{}`: {e}. Проверьте путь"
+
+#: crates/engine-editor/src/settings/mod.rs:609
+msgid "`{}` is not an editor preferences file: export one with Preferences → Export…"
+msgstr "`{}` — не файл настроек редактора: экспортируйте его через Настройки → Экспортировать…"
+
+#: crates/engine-editor/src/settings/mod.rs:626
+msgid "Imported {}"
+msgstr "Импортировано: {}"
+
+#: crates/engine-editor/src/settings/mod.rs:743
+msgid "Search preferences"
+msgstr "Поиск в настройках"
+
+#: crates/engine-editor/src/settings/mod.rs:744
+msgid "Search project settings"
+msgstr "Поиск в настройках проекта"
+
+#: crates/engine-editor/src/settings/mod.rs:764
+msgid "Export…"
+msgstr "Экспортировать…"
+
+#: crates/engine-editor/src/settings/mod.rs:767
+msgid "Save these settings to a file"
+msgstr "Сохранить эти настройки в файл"
+
+#: crates/engine-editor/src/settings/mod.rs:771
+msgid "Import…"
+msgstr "Импортировать…"
+
+#: crates/engine-editor/src/settings/mod.rs:774
+msgid "Replace these settings with the ones from a file"
+msgstr "Заменить эти настройки настройками из файла"
+
+#: crates/engine-editor/src/settings/mod.rs:832
+msgid "No settings match “{}”"
+msgstr "Ничего не найдено по запросу «{}»"
+
+#: crates/engine-editor/src/settings/mod.rs:867
+msgid "Set every setting on this page back to its default"
+msgstr "Вернуть все настройки этой страницы к значениям по умолчанию"
+
+#: crates/engine-editor/src/settings/mod.rs:874
+msgid "Set every setting on every page back to its default"
+msgstr "Вернуть все настройки на всех страницах к значениям по умолчанию"
+
+#: crates/engine-editor/src/settings/mod.rs:882
+msgid "Changes apply at once and are kept for this user"
+msgstr "Изменения применяются сразу и хранятся для этого пользователя"
+
+#: crates/engine-editor/src/settings/mod.rs:883
+msgid "Changes apply at once and are saved to Assets/{PROJECT_SETTINGS_FILE}"
+msgstr "Изменения применяются сразу и сохраняются в Assets/{PROJECT_SETTINGS_FILE}"
+
+#: crates/engine-editor/src/settings/mod.rs:906
+msgid "Reset {}?"
+msgstr "Сбросить «{}»?"
+
+#: crates/engine-editor/src/settings/mod.rs:908
+msgid "Every export option on this page is removed from [package.metadata.piska] in the game's Cargo.toml, so the export uses its defaults again."
+msgstr "Все параметры экспорта на этой странице будут удалены из [package.metadata.piska] в Cargo.toml игры, и экспорт снова будет использовать значения по умолчанию."
+
+#: crates/engine-editor/src/settings/mod.rs:910
+msgid "Every setting on this page goes back to its default value."
+msgstr "Все настройки на этой странице вернутся к значениям по умолчанию."
+
+#: crates/engine-editor/src/settings/mod.rs:915
+msgid "Reset all {}?"
+msgstr "Сбросить все {}?"
+
+#: crates/engine-editor/src/settings/mod.rs:920
+msgid "Every preference on every page goes back to its default value. Window layouts are kept."
+msgstr "Все настройки на всех страницах вернутся к значениям по умолчанию. Раскладки окон сохранятся."
+
+#: crates/engine-editor/src/settings/mod.rs:921
+msgid "Every project setting goes back to its default value and Assets/{PROJECT_SETTINGS_FILE} is rewritten. The export options on the Build page (the game's Cargo.toml) are kept."
+msgstr "Все настройки проекта вернутся к значениям по умолчанию, а файл Assets/{PROJECT_SETTINGS_FILE} будет перезаписан. Параметры экспорта на странице «Сборка» (Cargo.toml игры) сохранятся."
+
+#: crates/engine-editor/src/settings/mod.rs:923
+msgid "Reset All"
+msgstr "Сбросить всё"
+
+#: crates/engine-editor/src/settings/mod.rs:926
+msgid "Remove tag “{tag}”?"
+msgstr "Удалить тег «{tag}»?"
+
+#: crates/engine-editor/src/settings/mod.rs:928
+msgid "{used} object(s) in the open scene use it. They keep the tag text; the Inspector shows it as missing until the tag is added again."
+msgstr "Объектов с этим тегом в открытой сцене: {used}. Текст тега у них останется, но Инспектор будет показывать тег как отсутствующий, пока его снова не добавят."
+
+#: crates/engine-editor/src/settings/mod.rs:930
+msgid "Remove"
+msgstr "Удалить"
+
+#: crates/engine-editor/src/settings/mod.rs:937
+msgid "It runs “{}”. Replace: “{}” gets {} and “{}” is left without a shortcut."
+msgstr "Это сочетание уже выполняет «{}». При замене «{}» получит {}, а «{}» останется без сочетания клавиш."
+
+#: crates/engine-editor/src/settings/mod.rs:943
+msgid "Replace"
+msgstr "Заменить"
+
+#: crates/engine-editor/src/settings/mod.rs:1006
+msgid "Export"
+msgstr "Экспортировать"
+
+#: crates/engine-editor/src/settings/mod.rs:1009
+msgid "Read the settings from this file and apply them right away."
+msgstr "Прочитать настройки из этого файла и сразу применить их."
+
+#: crates/engine-editor/src/settings/mod.rs:1011
+msgid "Write the current settings to this file."
+msgstr "Записать текущие настройки в этот файл."
+
+#: crates/engine-editor/src/settings/mod.rs:1029
+msgid "Relative paths start in {}"
+msgstr "Относительные пути отсчитываются от {}"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:14
+msgid "Interface"
+msgstr "Интерфейс"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:24
+msgid "Custom"
+msgstr "Свой"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:28
+msgid "UI scale"
+msgstr "Масштаб интерфейса"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:29
+msgid "Size of all text and controls. Ctrl + and Ctrl − change it too."
+msgstr "Размер всего текста и элементов управления. Его также меняют Ctrl + и Ctrl −."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:39
+msgid "Accent colour"
+msgstr "Акцентный цвет"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:40
+msgid "Colour of the selection, the focused field and the main button."
+msgstr "Цвет выделения, активного поля и основной кнопки."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:71
+msgid "Play mode"
+msgstr "Режим игры"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:73
+msgid "Play mode tint"
+msgstr "Оттенок в режиме игры"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:74
+msgid "How strongly the toolbar is tinted while the game runs. 0% leaves only the accent line."
+msgstr "Насколько сильно подкрашивается панель инструментов, пока идёт игра. При 0% остаётся только акцентная линия."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:86
+msgid "Auto"
+msgstr "Авто"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:94
+msgid "Language of the editor, the project hub and the model editor. Auto follows the system language."
+msgstr "Язык редактора, хаба проектов и редактора моделей. «Авто» — язык системы."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:103
+msgid "Undo steps"
+msgstr "Шаги отмены"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:104
+msgid "How many scene edits Undo remembers. Older steps are forgotten."
+msgstr "Сколько правок сцены запоминает отмена. Более старые шаги забываются."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:112
+msgid "Save before Play"
+msgstr "Сохранять перед игрой"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:113
+msgid "Save the open scene when entering Play mode, if it already has a file."
+msgstr "Сохранять открытую сцену при входе в режим игры, если у неё уже есть файл."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:118
+msgid "Auto-save after"
+msgstr "Автосохранение через"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:119
+msgid "Minutes after the first unsaved change; 0 turns auto-save off. Only in Edit mode, only scenes with a file."
+msgstr "Минуты после первого несохранённого изменения; 0 отключает автосохранение. Только в режиме правки и только для сцен с файлом."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:129
+msgid "External code editor"
+msgstr "Внешний редактор кода"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:130
+msgid "Command that opens scripts; {file} and {line} are filled in. Empty: the built-in Code tab."
+msgstr "Команда, открывающая скрипты; {file} и {line} подставляются автоматически. Пусто — встроенная вкладка «Код»."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:135
+msgid "Test"
+msgstr "Проверить"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:138
+msgid "Open the file of the Code tab (or the assets folder) with this command"
+msgstr "Открыть файл вкладки «Код» (или папку ассетов) этой командой"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:165
+msgid "Colour of the grid lines in the Scene view."
+msgstr "Цвет линий сетки в окне «Сцена»."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:165
+msgid "Grid colour"
+msgstr "Цвет сетки"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:167
+msgid "Grid opacity"
+msgstr "Непрозрачность сетки"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:168
+msgid "100% is the usual strength; lower it to make the grid quieter."
+msgstr "100% — обычная яркость; уменьшите, чтобы сетка была менее заметной."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:173
+msgid "Background"
+msgstr "Фон"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:174
+msgid "Colour behind the scene in the 2D and 3D Scene view (the Game view uses the camera's own)."
+msgstr "Цвет за сценой в окне «Сцена» в 2D и 3D (окно «Игра» использует цвет камеры)."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:178
+msgid "Snapping"
+msgstr "Привязка"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:179
+msgid "Grid step of the Move tool with snapping on (or Ctrl held)."
+msgstr "Шаг сетки инструмента «Перемещение» при включённой привязке (или с зажатой Ctrl)."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:179
+msgid "Move step"
+msgstr "Шаг перемещения"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:180
+msgid "Angle step of the Rotate tool with snapping on."
+msgstr "Шаг угла инструмента «Поворот» при включённой привязке."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:180
+msgid "Rotate step"
+msgstr "Шаг поворота"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:181
+msgid "Factor step of the Scale tool with snapping on."
+msgstr "Шаг множителя инструмента «Масштаб» при включённой привязке."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:181
+msgid "Scale step"
+msgstr "Шаг масштаба"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:183
+msgid "How fast the 3D camera turns: right mouse button look and Alt + left mouse button orbit."
+msgstr "Скорость поворота 3D-камеры: обзор правой кнопкой мыши и облёт по Alt + левая кнопка мыши."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:183
+msgid "Look speed"
+msgstr "Скорость обзора"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:184
+msgid "Fly speed"
+msgstr "Скорость полёта"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:184
+msgid "Speed of flying with the right mouse button held and W / A / S / D, Q / E. Shift flies three times faster; the wheel changes it while flying."
+msgstr "Скорость полёта с зажатой правой кнопкой мыши и W / A / S / D, Q / E. С Shift — втрое быстрее; колесо мыши меняет скорость во время полёта."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:185
+msgid "Draw the scene's fog in the Scene view too. Off by default, so distant objects stay visible while editing; the Game view always shows the fog."
+msgstr "Показывать туман сцены и в окне «Сцена». По умолчанию выключено, чтобы при редактировании были видны дальние объекты; окно «Игра» показывает туман всегда."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:185
+msgid "Fog in the Scene view"
+msgstr "Туман в окне «Сцена»"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:187
+msgid "Invert vertical orbit"
+msgstr "Инвертировать вертикальный облёт"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:188
+msgid "Dragging up tilts the 3D camera down instead of up."
+msgstr "Перетаскивание вверх наклоняет 3D-камеру вниз, а не вверх."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:192
+msgid "How far one wheel step zooms, in 2D and 3D."
+msgstr "Насколько приближает один шаг колеса мыши, в 2D и 3D."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:192
+msgid "Zoom speed"
+msgstr "Скорость масштабирования"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:201
+msgid "Info messages are listed when the editor starts."
+msgstr "Сообщения показываются при запуске редактора."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:202
+msgid "Warnings are listed when the editor starts."
+msgstr "Предупреждения показываются при запуске редактора."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:203
+msgid "Errors are listed when the editor starts."
+msgstr "Ошибки показываются при запуске редактора."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:204
+msgid "Identical messages are shown once, with a count."
+msgstr "Одинаковые сообщения показываются один раз, со счётчиком."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:207
+msgid "A new error in Play mode pauses the game."
+msgstr "Новая ошибка в режиме игры ставит игру на паузу."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:212
+msgid "Clear on Play"
+msgstr "Очищать при запуске"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:213
+msgid "Entering Play mode empties the Console."
+msgstr "При входе в режим игры Консоль очищается."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:218
+msgid "Max messages"
+msgstr "Лимит сообщений"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:219
+msgid "The Console keeps this many newest messages."
+msgstr "Консоль хранит столько последних сообщений."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:228
+msgid "History length"
+msgstr "Длина истории"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:229
+msgid "How many recent frames the Profiler graph and averages cover."
+msgstr "Сколько последних кадров охватывают график и средние значения Профайлера."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:246
+msgid "Frame rate"
+msgstr "Частота кадров"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:248
+msgid "Vertical sync"
+msgstr "Вертикальная синхронизация"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:249
+msgid "Match the monitor refresh rate. Off: Play mode runs as fast as it can, or at the limit below."
+msgstr "Подстраиваться под частоту обновления монитора. Выкл. — режим игры работает с максимальной скоростью или с ограничением ниже."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:254
+msgid "Unlimited"
+msgstr "Без ограничения"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:254
+msgid "{cap} FPS"
+msgstr "{cap} FPS"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:257
+msgid "Play mode limit"
+msgstr "Ограничение в режиме игры"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:258
+msgid "Frames per second in Play mode when vertical sync is off."
+msgstr "Кадров в секунду в режиме игры при выключенной вертикальной синхронизации."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:263
+msgid "Edit mode"
+msgstr "Режим правки"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:265
+msgid "Redraw on demand"
+msgstr "Перерисовка по требованию"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:267
+msgid "Redraw only when something changes; an idle editor redraws {} times a second and leaves the GPU alone."
+msgstr "Перерисовывать только при изменениях; бездействующий редактор перерисовывается {} раз в секунду и не нагружает GPU."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:274
+msgid "Now: {fps:.0} FPS."
+msgstr "Сейчас: {fps:.0} FPS."
+
+#: crates/engine-editor/src/settings/pages_project.rs:30
+msgid "Identity"
+msgstr "Сведения"
+
+#: crates/engine-editor/src/settings/pages_project.rs:31
+msgid "Product name"
+msgstr "Название продукта"
+
+#: crates/engine-editor/src/settings/pages_project.rs:32
+msgid "Company name"
+msgstr "Название компании"
+
+#: crates/engine-editor/src/settings/pages_project.rs:33
+msgid "Version"
+msgstr "Версия"
+
+#: crates/engine-editor/src/settings/pages_project.rs:36
+msgid "Window icon: a PNG from the assets. None: icon.png if there is one, otherwise the engine icon."
+msgstr "Значок окна: PNG из ассетов. Нет — icon.png, если он есть, иначе значок движка."
+
+#: crates/engine-editor/src/settings/pages_project.rs:44
+msgid "Width"
+msgstr "Ширина"
+
+#: crates/engine-editor/src/settings/pages_project.rs:44
+msgid "Window width at start, in logical pixels (desktop). At 1280 the size set in code is kept."
+msgstr "Ширина окна при запуске в логических пикселях (ПК). При 1280 сохраняется размер, заданный в коде."
+
+#: crates/engine-editor/src/settings/pages_project.rs:45
+msgid "Window height at start, in logical pixels (desktop). At 720 the size set in code is kept."
+msgstr "Высота окна при запуске в логических пикселях (ПК). При 720 сохраняется размер, заданный в коде."
+
+#: crates/engine-editor/src/settings/pages_project.rs:46
+msgid "Resizable window"
+msgstr "Изменяемый размер окна"
+
+#: crates/engine-editor/src/settings/pages_project.rs:46
+msgid "The player can resize the game window (desktop)."
+msgstr "Игрок может менять размер окна игры (ПК)."
+
+#: crates/engine-editor/src/settings/pages_project.rs:48
+msgid "Fullscreen mode"
+msgstr "Полноэкранный режим"
+
+#: crates/engine-editor/src/settings/pages_project.rs:48
+msgid "How the game window opens at start (desktop)."
+msgstr "Как открывается окно игры при запуске (ПК)."
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "Match the monitor refresh rate in the game."
+msgstr "Синхронизировать частоту кадров игры с частотой обновления монитора."
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "VSync"
+msgstr "Вертикальная синхронизация"
+
+#: crates/engine-editor/src/settings/pages_project.rs:51
+msgid "Frame rate limit"
+msgstr "Ограничение частоты кадров"
+
+#: crates/engine-editor/src/settings/pages_project.rs:52
+msgid "Most frames per second the game draws (desktop and Android). 0: no limit."
+msgstr "Наибольшее число кадров в секунду, которое рисует игра (ПК и Android). 0 — без ограничения."
+
+#: crates/engine-editor/src/settings/pages_project.rs:60
+msgid "Startup"
+msgstr "Запуск"
+
+#: crates/engine-editor/src/settings/pages_project.rs:62
+msgid "Default scene"
+msgstr "Сцена по умолчанию"
+
+#: crates/engine-editor/src/settings/pages_project.rs:63
+msgid "Scene loaded at start when the game's build() creates no objects."
+msgstr "Сцена, которая загружается при запуске, если build() игры не создаёт объектов."
+
+#: crates/engine-editor/src/settings/pages_project.rs:77
+msgid "Fixed timestep"
+msgstr "Фиксированный шаг времени"
+
+#: crates/engine-editor/src/settings/pages_project.rs:78
+msgid "Seconds between FixedUpdate calls and physics steps (1/60 s = 0.0167)."
+msgstr "Секунды между вызовами FixedUpdate и шагами физики (1/60 с = 0.0167)."
+
+#: crates/engine-editor/src/settings/pages_project.rs:86
+msgid "Maximum allowed timestep"
+msgstr "Максимальный шаг времени"
+
+#: crates/engine-editor/src/settings/pages_project.rs:87
+msgid "Longest frame the game sees: after a hitch, time jumps at most this far."
+msgstr "Самый длинный кадр, который видит игра: после подвисания время скачет не дальше этого."
+
+#: crates/engine-editor/src/settings/pages_project.rs:95
+msgid "Time scale"
+msgstr "Масштаб времени"
+
+#: crates/engine-editor/src/settings/pages_project.rs:96
+msgid "Speed of game time at start: 1 is normal, 0.5 is slow motion, 0 is paused."
+msgstr "Скорость игрового времени при запуске: 1 — обычная, 0.5 — замедление, 0 — пауза."
+
+#: crates/engine-editor/src/settings/pages_project.rs:109
+msgid "Quality"
+msgstr "Качество"
+
+#: crates/engine-editor/src/settings/pages_project.rs:112
+msgid "Quality level"
+msgstr "Уровень качества"
+
+#: crates/engine-editor/src/settings/pages_project.rs:113
+msgid "Fills the fields below with the level's values; games switch levels at run time with ctx.set_quality."
+msgstr "Заполняет поля ниже значениями уровня; игра переключает уровни во время работы через ctx.set_quality."
+
+#: crates/engine-editor/src/settings/pages_project.rs:124
+msgid "No shadows, no bloom"
+msgstr "Без теней и блума"
+
+#: crates/engine-editor/src/settings/pages_project.rs:125
+msgid "Shadows up to 30 m, soft bloom"
+msgstr "Тени до 30 м, мягкий блум"
+
+#: crates/engine-editor/src/settings/pages_project.rs:126
+msgid "All effects"
+msgstr "Все эффекты"
+
+#: crates/engine-editor/src/settings/pages_project.rs:141
+msgid "Shadows"
+msgstr "Тени"
+
+#: crates/engine-editor/src/settings/pages_project.rs:142
+msgid "Sun shadows on 3D meshes."
+msgstr "Тени от солнца на 3D-мешах."
+
+#: crates/engine-editor/src/settings/pages_project.rs:144
+msgid "Shadow distance"
+msgstr "Дальность теней"
+
+#: crates/engine-editor/src/settings/pages_project.rs:145
+msgid "Farthest shadows, in metres; the smaller of this and the scene Environment's distance is used."
+msgstr "Дальность самых дальних теней в метрах; берётся меньшее из этого значения и дальности в Environment сцены."
+
+#: crates/engine-editor/src/settings/pages_project.rs:152
+msgid "Post-processing"
+msgstr "Постобработка"
+
+#: crates/engine-editor/src/settings/pages_project.rs:153
+msgid "Bloom"
+msgstr "Блум"
+
+#: crates/engine-editor/src/settings/pages_project.rs:153
+msgid "Glow around bright pixels."
+msgstr "Свечение вокруг ярких пикселей."
+
+#: crates/engine-editor/src/settings/pages_project.rs:154
+msgid "Bloom intensity"
+msgstr "Интенсивность блума"
+
+#: crates/engine-editor/src/settings/pages_project.rs:154
+msgid "Multiplies the bloom strength set in the scene Environment."
+msgstr "Умножает силу блума, заданную в Environment сцены."
+
+#: crates/engine-editor/src/settings/pages_project.rs:155
+msgid "Bloom threshold"
+msgstr "Порог блума"
+
+#: crates/engine-editor/src/settings/pages_project.rs:155
+msgid "Brightness above which pixels glow."
+msgstr "Яркость, выше которой пиксели светятся."
+
+#: crates/engine-editor/src/settings/pages_project.rs:156
+msgid "Fog density scale"
+msgstr "Множитель плотности тумана"
+
+#: crates/engine-editor/src/settings/pages_project.rs:156
+msgid "Multiplies the fog density of the scene Environment; 0 turns fog off."
+msgstr "Умножает плотность тумана из Environment сцены; 0 выключает туман."
+
+#: crates/engine-editor/src/settings/pages_project.rs:163
+msgid "Volume"
+msgstr "Громкость"
+
+#: crates/engine-editor/src/settings/pages_project.rs:164
+msgid "Master volume"
+msgstr "Общая громкость"
+
+#: crates/engine-editor/src/settings/pages_project.rs:164
+msgid "Volume of everything the game plays."
+msgstr "Громкость всего, что воспроизводит игра."
+
+#: crates/engine-editor/src/settings/pages_project.rs:165
+msgid "Music volume"
+msgstr "Громкость музыки"
+
+#: crates/engine-editor/src/settings/pages_project.rs:165
+msgid "Volume of the Music bus."
+msgstr "Громкость шины Music."
+
+#: crates/engine-editor/src/settings/pages_project.rs:166
+msgid "Effects volume"
+msgstr "Громкость эффектов"
+
+#: crates/engine-editor/src/settings/pages_project.rs:166
+msgid "Volume of the SFX bus."
+msgstr "Громкость шины SFX."
+
+#: crates/engine-editor/src/settings/pages_project.rs:167
+msgid "UI volume"
+msgstr "Громкость интерфейса"
+
+#: crates/engine-editor/src/settings/pages_project.rs:167
+msgid "Volume of the UI bus."
+msgstr "Громкость шины UI."
+
+#: crates/engine-editor/src/settings/pages_project.rs:168
+msgid "Focus"
+msgstr "Фокус"
+
+#: crates/engine-editor/src/settings/pages_project.rs:169
+msgid "Mute when unfocused"
+msgstr "Без звука в фоне"
+
+#: crates/engine-editor/src/settings/pages_project.rs:169
+msgid "Silence the game while its window is not in focus."
+msgstr "Отключать звук игры, пока её окно не в фокусе."
+
+#: crates/engine-editor/src/settings/physics.rs:30
+msgid "World"
+msgstr "Мир"
+
+#: crates/engine-editor/src/settings/physics.rs:31
+msgid "Acceleration of every 2D body, metres per second squared."
+msgstr "Ускорение каждого 2D-тела, в метрах на секунду в квадрате."
+
+#: crates/engine-editor/src/settings/physics.rs:31
+msgid "Gravity"
+msgstr "Гравитация"
+
+#: crates/engine-editor/src/settings/physics.rs:33
+msgid "Collisions"
+msgstr "Столкновения"
+
+#: crates/engine-editor/src/settings/physics.rs:43
+msgid "Acceleration of every 3D body, metres per second squared."
+msgstr "Ускорение каждого 3D-тела, в метрах на секунду в квадрате."
+
+#: crates/engine-editor/src/settings/physics.rs:50
+msgid "Solver"
+msgstr "Решатель"
+
+#: crates/engine-editor/src/settings/physics.rs:52
+msgid "Solver iterations"
+msgstr "Итерации решателя"
+
+#: crates/engine-editor/src/settings/physics.rs:53
+msgid "Contact solver passes per step: more keeps stacks of bodies stiffer and costs more time."
+msgstr "Проходы решателя контактов за шаг: чем больше, тем устойчивее стопки тел и тем дороже расчёт."
+
+#: crates/engine-editor/src/settings/physics.rs:61
+msgid "Sleep threshold (linear)"
+msgstr "Порог засыпания (линейный)"
+
+#: crates/engine-editor/src/settings/physics.rs:62
+msgid "Speed below which a body may fall asleep and stop costing time (Rapier's normalized threshold). 0: never."
+msgstr "Скорость, ниже которой тело может заснуть и перестать тратить время (нормализованный порог Rapier). 0 — никогда."
+
+#: crates/engine-editor/src/settings/physics.rs:70
+msgid "Sleep threshold (angular)"
+msgstr "Порог засыпания (угловой)"
+
+#: crates/engine-editor/src/settings/physics.rs:71
+msgid "Turning speed below which a body may fall asleep, in radians per second. 0: never."
+msgstr "Скорость вращения, ниже которой тело может заснуть, в радианах в секунду. 0 — никогда."
+
+#: crates/engine-editor/src/settings/physics.rs:87
+msgid "Layer collision matrix"
+msgstr "Матрица столкновений слоёв"
+
+#: crates/engine-editor/src/settings/physics.rs:88
+msgid "Ticked: bodies on these two layers collide. Name more layers on the Tags and Layers page to see them here."
+msgstr "Отмечено — тела на этих двух слоях сталкиваются. Чтобы здесь появились другие слои, задайте им имена на странице «Теги и слои»."
+
+#: crates/engine-editor/src/settings/physics.rs:170
+msgid "{name} × {other}"
+msgstr "{name} × {other}"
+
+#: crates/engine-editor/src/settings/rows.rs:199
+msgid "Reset to default"
+msgstr "Вернуть по умолчанию"
+
+#: crates/engine-editor/src/settings/rows.rs:453
+msgid "Found on disk"
+msgstr "Найдено на диске"
+
+#: crates/engine-editor/src/settings/rows.rs:455
+msgid "Not found on disk"
+msgstr "Не найдено на диске"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:43
+msgid "{} · {now}"
+msgstr "{} · {now}"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:45
+msgid "{} · {now} · default {default}"
+msgstr "{} · {now} · по умолчанию {default}"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:49
+msgid "Press keys…"
+msgstr "Нажмите клавиши…"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:77
+msgid "Press the new shortcut now. Esc cancels"
+msgstr "Нажмите новое сочетание. Esc — отмена"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:79
+msgid "Click, then press the new shortcut"
+msgstr "Щёлкните и нажмите новое сочетание"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:91
+msgid "Remove the shortcut"
+msgstr "Удалить сочетание"
+
+#: crates/engine-editor/src/settings/shortcuts_page.rs:110
+msgid "Shortcuts are kept with your preferences. Keys of the Project window (copy, paste, rename in the file list) and text fields are not listed here."
+msgstr "Горячие клавиши хранятся вместе с вашими настройками. Клавиши окна «Проект» (копирование, вставка, переименование в списке файлов) и текстовых полей здесь не показаны."
+
+#: crates/engine-editor/src/settings/tags.rs:47
+msgid "Tags"
+msgstr "Теги"
+
+#: crates/engine-editor/src/settings/tags.rs:50
+msgid "Tag list"
+msgstr "Список тегов"
+
+#: crates/engine-editor/src/settings/tags.rs:51
+msgid "Find objects by tag in code: scene.find_by_tag(\"Enemy\"). Untagged is built in."
+msgstr "Объекты ищутся по тегу из кода: scene.find_by_tag(\"Enemy\"). Тег Untagged встроенный."
+
+#: crates/engine-editor/src/settings/tags.rs:112
+msgid "Remove this tag"
+msgstr "Удалить тег"
+
+#: crates/engine-editor/src/settings/tags.rs:122
+msgid "New tag"
+msgstr "Новый тег"
+
+#: crates/engine-editor/src/settings/tags.rs:128
+msgid "Add Tag"
+msgstr "Добавить тег"
+
+#: crates/engine-editor/src/settings/tags.rs:143
+msgid "Tag “{}” already exists or is reserved"
+msgstr "Тег «{}» уже существует или зарезервирован"
+
+#: crates/engine-editor/src/settings/tags.rs:160
+msgid "Layers"
+msgstr "Слои"
+
+#: crates/engine-editor/src/settings/tags.rs:161
+msgid "Objects keep a layer number (0–31); the name is what the Inspector and the collision matrix show."
+msgstr "Объект хранит номер слоя (0–31); имя — то, что показывают Инспектор и матрица столкновений."
+
+#: crates/engine-editor/src/settings/tags.rs:168
+msgid "Builtin Layer {index}"
+msgstr "Встроенный слой {index}"
+
+#: crates/engine-editor/src/settings/tags.rs:168
+msgid "User Layer {index}"
+msgstr "Пользовательский слой {index}"
+
+#: crates/engine-editor/src/settings/tags.rs:169
+msgid "Unnamed"
+msgstr "Без имени"
+
+#: crates/engine-editor/src/settings/tags.rs:182
+msgid "Cannot rename “{old}” to “{new}”: the name is empty, reserved or taken"
+msgstr "Не удалось переименовать «{old}» в «{new}»: имя пустое, зарезервировано или занято"
+
+#: crates/engine-editor/src/settings/tags.rs:239
+msgid "Untagged"
+msgstr "Untagged"
+
+#: crates/engine-editor/src/settings/tags.rs:257
+msgid "Add Tag…"
+msgstr "Добавить тег…"
+
+#: crates/engine-editor/src/settings/tags.rs:261
+msgid "Tag: find objects by tag in code. Edit the list in Project Settings → Tags and Layers"
+msgstr "Тег: по нему объекты ищутся из кода. Список — в «Настройки проекта → Теги и слои»"
+
+#: crates/engine-editor/src/settings/tags.rs:281
+msgid "Add Layer…"
+msgstr "Добавить слой…"
+
+#: crates/engine-editor/src/settings/tags.rs:285
+msgid "Layer 0–31: camera culling and the physics collision matrix. Name layers in Project Settings → Tags and Layers"
+msgstr "Слой 0–31: отсечение камерой и матрица столкновений физики. Имена слоёв — в «Настройки проекта → Теги и слои»"
+
+#: crates/engine-editor/src/settings/tools.rs:48
+msgid "Android SDK"
+msgstr "Android SDK"
+
+#: crates/engine-editor/src/settings/tools.rs:49
+msgid "Android NDK"
+msgstr "Android NDK"
+
+#: crates/engine-editor/src/settings/tools.rs:50
+msgid "Java (JDK)"
+msgstr "Java (JDK)"
+
+#: crates/engine-editor/src/settings/tools.rs:52
+msgid "CMake"
+msgstr "CMake"
+
+#: crates/engine-editor/src/settings/tools.rs:53
+msgid "C++ compiler"
+msgstr "Компилятор C++"
+
+#: crates/engine-editor/src/settings/tools.rs:59
+msgid "Program that builds Rust code and runs the export tool. Empty: cargo from PATH."
+msgstr "Программа, которая собирает код на Rust и запускает инструмент экспорта. Пусто — cargo из PATH."
+
+#: crates/engine-editor/src/settings/tools.rs:60
+msgid "Folder of the Android SDK (ANDROID_HOME) for Android exports."
+msgstr "Папка Android SDK (ANDROID_HOME) для экспорта под Android."
+
+#: crates/engine-editor/src/settings/tools.rs:61
+msgid "Folder of the Android NDK (ANDROID_NDK_HOME) for Android exports."
+msgstr "Папка Android NDK (ANDROID_NDK_HOME) для экспорта под Android."
+
+#: crates/engine-editor/src/settings/tools.rs:62
+msgid "Folder of a JDK (JAVA_HOME) used to sign Android packages."
+msgstr "Папка JDK (JAVA_HOME) для подписи пакетов Android."
+
+#: crates/engine-editor/src/settings/tools.rs:63
+msgid "zig program (PISKA_ZIG) for Linux builds made on Windows."
+msgstr "Программа zig (PISKA_ZIG) для сборок под Linux на Windows."
+
+#: crates/engine-editor/src/settings/tools.rs:64
+msgid "Program that runs `cmake` build commands of C++ plugins."
+msgstr "Программа, которая выполняет команды сборки `cmake` для плагинов C++."
+
+#: crates/engine-editor/src/settings/tools.rs:65
+msgid "C++ compiler given to C++ plugin builds as CXX."
+msgstr "Компилятор C++, передаваемый сборкам плагинов C++ как CXX."
+
+#: crates/engine-editor/src/settings/tools.rs:181
+msgid "`{}` has no bin/java: choose the JDK folder"
+msgstr "В `{}` нет bin/java: выберите папку JDK"
+
+#: crates/engine-editor/src/settings/tools.rs:187
+msgid "Android SDK at {}"
+msgstr "Android SDK в {}"
+
+#: crates/engine-editor/src/settings/tools.rs:189
+msgid "`{}` has no platform-tools or platforms: choose the SDK folder"
+msgstr "В `{}` нет platform-tools или platforms: выберите папку SDK"
+
+#: crates/engine-editor/src/settings/tools.rs:195
+msgid "NDK {}"
+msgstr "NDK {}"
+
+#: crates/engine-editor/src/settings/tools.rs:197
+msgid "`{}` has no source.properties: choose the NDK folder"
+msgstr "В `{}` нет source.properties: выберите папку NDK"
+
+#: crates/engine-editor/src/settings/tools.rs:239
+msgid "not found"
+msgstr "не найдено"
+
+#: crates/engine-editor/src/settings/tools.rs:250
+msgid "Validate"
+msgstr "Проверить"
+
+#: crates/engine-editor/src/settings/tools.rs:253
+msgid "Run the tool (or look into the folder) and show what was found"
+msgstr "Запустить инструмент (или заглянуть в папку) и показать, что найдено"
+
+#: crates/engine-editor/src/settings/tools.rs:255
+msgid "Detect"
+msgstr "Найти"
+
+#: crates/engine-editor/src/settings/tools.rs:258
+msgid "Fill the path in from the environment, PATH or the usual install folders"
+msgstr "Заполнить путь из окружения, PATH или обычных папок установки"
+
+#: crates/engine-editor/src/settings/tools.rs:290
+msgid "Empty fields keep the usual lookup (PATH and environment variables); the faint text shows what would be used."
+msgstr "Пустые поля ищутся как обычно (PATH и переменные окружения); бледный текст показывает, что будет использовано."
+
+#: crates/engine-editor/src/settings/tools.rs:295
+msgid "Export folder"
+msgstr "Папка экспорта"
+
+#: crates/engine-editor/src/shortcuts.rs:187
+msgid "New Scene"
+msgstr "Создать сцену"
+
+#: crates/engine-editor/src/shortcuts.rs:189
+msgid "Save As…"
+msgstr "Сохранить как…"
+
+#: crates/engine-editor/src/shortcuts.rs:190
+msgid "Preferences…"
+msgstr "Настройки…"
+
+#: crates/engine-editor/src/shortcuts.rs:191
+msgid "Project Settings…"
+msgstr "Настройки проекта…"
+
+#: crates/engine-editor/src/shortcuts.rs:192
+msgid "Quit"
+msgstr "Выйти"
+
+#: crates/engine-editor/src/shortcuts.rs:196
+msgid "Redo (second shortcut)"
+msgstr "Повторить (второе сочетание)"
+
+#: crates/engine-editor/src/shortcuts.rs:200
+msgid "Frame Selected"
+msgstr "Показать выделенное"
+
+#: crates/engine-editor/src/shortcuts.rs:201
+msgid "Select None"
+msgstr "Снять выделение"
+
+#: crates/engine-editor/src/shortcuts.rs:208
+msgid "Deactivate Selection"
+msgstr "Деактивировать выделенное"
+
+#: crates/engine-editor/src/shortcuts.rs:209
+msgid "Activate Selection"
+msgstr "Активировать выделенное"
+
+#: crates/engine-editor/src/shortcuts.rs:211
+msgid "Create Empty"
+msgstr "Создать пустой"
+
+#: crates/engine-editor/src/shortcuts.rs:212
+msgid "Create Empty Child"
+msgstr "Создать пустой дочерний"
+
+#: crates/engine-editor/src/shortcuts.rs:214
+msgid "Play"
+msgstr "Играть"
+
+#: crates/engine-editor/src/shortcuts.rs:215
+msgid "Pause / Resume"
+msgstr "Пауза / Продолжить"
+
+#: crates/engine-editor/src/shortcuts.rs:216
+msgid "Step"
+msgstr "Шаг"
+
+#: crates/engine-editor/src/shortcuts.rs:218
+msgid "Move Tool"
+msgstr "Перемещение"
+
+#: crates/engine-editor/src/shortcuts.rs:218
+msgid "Tools"
+msgstr "Инструменты"
+
+#: crates/engine-editor/src/shortcuts.rs:219
+msgid "Rotate Tool"
+msgstr "Поворот"
+
+#: crates/engine-editor/src/shortcuts.rs:220
+msgid "Scale Tool"
+msgstr "Масштабирование"
+
+#: crates/engine-editor/src/shortcuts.rs:221
+msgid "Snap to Grid"
+msgstr "Привязка к сетке"
+
+#: crates/engine-editor/src/shortcuts.rs:222
+msgid "Local / World Axes"
+msgstr "Локальные / мировые оси"
+
+#: crates/engine-editor/src/shortcuts.rs:223
+msgid "Pivot / Center"
+msgstr "Опорная точка / центр"
+
+#: crates/engine-editor/src/shortcuts.rs:225
+msgid "2D / 3D View"
+msgstr "Вид 2D / 3D"
+
+#: crates/engine-editor/src/shortcuts.rs:225
+msgid "View"
+msgstr "Вид"
+
+#: crates/engine-editor/src/shortcuts.rs:226
+msgid "Show Grid"
+msgstr "Показывать сетку"
+
+#: crates/engine-editor/src/shortcuts.rs:227
+msgid "Show Gizmos"
+msgstr "Показывать гизмо"
+
+#: crates/engine-editor/src/shortcuts.rs:229
+msgid "Refresh Assets"
+msgstr "Обновить ассеты"
+
+#: crates/engine-editor/src/shortcuts.rs:230
+msgid "Build Code"
+msgstr "Собрать код"
+
+#: crates/engine-editor/src/shortcuts.rs:232
+msgid "Window"
+msgstr "Окно"
+
+#: crates/engine-editor/src/shortcuts.rs:240
+msgid "Maximize / Restore Window"
+msgstr "Развернуть / восстановить окно"
+
+#: crates/engine-editor/src/shortcuts.rs:242
+msgid "Help"
+msgstr "Справка"
+
+#: crates/engine-editor/src/shortcuts.rs:242
+msgid "Keyboard Shortcuts"
+msgstr "Горячие клавиши"
+
+#: crates/engine-editor/src/sorting.rs:41
+msgid "Date modified"
+msgstr "Изменён"
+
+#: crates/engine-editor/src/sorting.rs:119
+msgid "Scenes"
+msgstr "Сцены"
+
+#: crates/engine-editor/src/sorting.rs:120
+msgid "Prefabs"
+msgstr "Префабы"
+
+#: crates/engine-editor/src/sorting.rs:121
+msgid "Models"
+msgstr "Модели"
+
+#: crates/engine-editor/src/sorting.rs:125
+msgid "Other"
+msgstr "Другое"
+
+#: crates/engine-editor/src/sorting.rs:163
+msgid "Rust script"
+msgstr "Скрипт Rust"
+
+#: crates/engine-editor/src/sorting.rs:164
+msgid "C++ source"
+msgstr "Исходник C++"
+
+#: crates/engine-editor/src/sorting.rs:165
+msgid "C++ header"
+msgstr "Заголовок C++"
+
+#: crates/engine-editor/src/sorting.rs:168
+msgid "Scenario script"
+msgstr "Скрипт Scenario"
+
+#: crates/engine-editor/src/sorting.rs:171
+msgid "Model"
+msgstr "Модель"
+
+#: crates/engine-editor/src/sorting.rs:175
+msgid "Font"
+msgstr "Шрифт"
+
+#: crates/engine-editor/src/state.rs:62
+msgid "Piska Editor"
+msgstr "Piska Editor"
+
+#: crates/engine-editor/src/state.rs:993
+msgid "Sprite"
+msgstr "Спрайт"
+
+#: crates/engine-editor/src/state.rs:1014
+msgid "Directional Light"
+msgstr "Направленный свет"
+
+#: crates/engine-editor/src/state.rs:1015
+msgid "Point Light"
+msgstr "Точечный свет"
+
+#: crates/engine-editor/src/state.rs:1210
+msgid "Untitled"
+msgstr "Без названия"
+
+#: crates/engine-editor/src/state.rs:1217
+msgid "Main Camera"
+msgstr "Основная камера"
+
+#: crates/engine-editor/src/state.rs:1405
+msgid "there is no `{id}` in the GameObject menu; use one of: {}"
+msgstr "в меню «Объект» нет `{id}`; доступны: {}"
+
+#: crates/engine-editor/src/state.rs:1684
+msgid "the game is running: press Stop before saving"
+msgstr "игра запущена: остановите её перед сохранением"
+
+#: crates/engine-editor/src/terrain_tools.rs:41
+msgid "No brush: select and move objects as usual"
+msgstr "Без кисти: выделение и перемещение объектов как обычно"
+
+#: crates/engine-editor/src/terrain_tools.rs:41
+msgid "Off"
+msgstr "Нет"
+
+#: crates/engine-editor/src/terrain_tools.rs:42
+msgid "Raise"
+msgstr "Поднять"
+
+#: crates/engine-editor/src/terrain_tools.rs:42
+msgid "Raise the ground under the brush"
+msgstr "Поднять землю под кистью"
+
+#: crates/engine-editor/src/terrain_tools.rs:43
+msgid "Lower"
+msgstr "Опустить"
+
+#: crates/engine-editor/src/terrain_tools.rs:43
+msgid "Lower the ground under the brush"
+msgstr "Опустить землю под кистью"
+
+#: crates/engine-editor/src/terrain_tools.rs:44
+msgid "Smooth"
+msgstr "Сгладить"
+
+#: crates/engine-editor/src/terrain_tools.rs:44
+msgid "Smooth bumps and sharp edges"
+msgstr "Сгладить неровности и острые края"
+
+#: crates/engine-editor/src/terrain_tools.rs:45
+msgid "Flatten"
+msgstr "Разровнять"
+
+#: crates/engine-editor/src/terrain_tools.rs:45
+msgid "Pull the ground to a set height (Ctrl+click picks the height)"
+msgstr "Подтянуть землю к заданной высоте (Ctrl+щелчок берёт высоту)"
+
+#: crates/engine-editor/src/terrain_tools.rs:46
+msgid "Paint"
+msgstr "Рисовать"
+
+#: crates/engine-editor/src/terrain_tools.rs:46
+msgid "Paint a texture layer over the automatic ones"
+msgstr "Нанести слой текстуры поверх автоматических"
+
+#: crates/engine-editor/src/terrain_tools.rs:65
+msgid "Terrain"
+msgstr "Ландшафт"
+
+#: crates/engine-editor/src/terrain_tools.rs:68
+msgid "Water"
+msgstr "Вода"
+
+#: crates/engine-editor/src/terrain_tools.rs:78
+msgid "Snap to Terrain"
+msgstr "Привязать к ландшафту"
+
+#: crates/engine-editor/src/terrain_tools.rs:80
+msgid "Select an object above a terrain"
+msgstr "Выделите объект над ландшафтом"
+
+#: crates/engine-editor/src/terrain_tools.rs:253
+msgid "Falloff"
+msgstr "Спад"
+
+#: crates/engine-editor/src/terrain_tools.rs:259
+msgid "Height"
+msgstr "Высота"
+
+#: crates/engine-editor/src/terrain_tools.rs:261
+msgid "Ctrl+click picks the height"
+msgstr "Ctrl+щелчок берёт высоту"
+
+#: crates/engine-editor/src/terrain_tools.rs:267
+msgid "Erase paint"
+msgstr "Стереть краску"
+
+#: crates/engine-editor/src/terrain_tools.rs:273
+msgid "Back to the automatic height / slope layers"
+msgstr "Вернуть автоматические слои по высоте и уклону"
+
+#: crates/engine-editor/src/terrain_tools.rs:349
+msgid "Regenerate"
+msgstr "Перестроить"
+
+#: crates/engine-editor/src/terrain_tools.rs:350
+msgid "Apply the shape settings above and rebuild the terrain"
+msgstr "Применить настройки формы выше и перестроить ландшафт"
+
+#: crates/engine-editor/src/terrain_tools.rs:352
+msgid "Forget the unapplied shape settings"
+msgstr "Отбросить неприменённые настройки формы"
+
+#: crates/engine-editor/src/terrain_tools.rs:352
+msgid "Revert"
+msgstr "Откатить"
+
+#: crates/engine-editor/src/terrain_tools.rs:365
+msgid "Shape settings are applied with Regenerate"
+msgstr "Настройки формы применяются кнопкой «Перестроить»"
+
+#: crates/engine-editor/src/terrain_tools.rs:370
+msgid "Regenerate Terrain"
+msgstr "Перестроить ландшафт"
+
+#: crates/engine-editor/src/terrain_tools.rs:375
+msgid "The terrain has sculpting and painting.\nKeep it on top of the new shape, or discard it?"
+msgstr "На ландшафте есть скульптинг и раскраска.\nСохранить их поверх новой формы или отбросить?"
+
+#: crates/engine-editor/src/terrain_tools.rs:378
+msgid "Keep Sculpting"
+msgstr "Сохранить скульптинг"
+
+#: crates/engine-editor/src/terrain_tools.rs:381
+msgid "Discard Sculpting"
+msgstr "Отбросить скульптинг"
+
+#: crates/engine-editor/src/terrain_tools.rs:384
+msgid "Cancel"
+msgstr "Отмена"
+
+#: crates/engine-editor/src/terrain_tools.rs:416
+msgid "{name} Texture"
+msgstr "{name}: текстура"
+
+#: crates/engine-editor/src/terrain_tools.rs:417
+msgid "{name} Tint"
+msgstr "{name}: оттенок"
+
+#: crates/engine-editor/src/terrain_tools.rs:425
+msgid "No sculpting or painting yet"
+msgstr "Скульптинга и раскраски пока нет"
+
+#: crates/engine-editor/src/terrain_tools.rs:427
+msgid "Edited {tiles} tile(s) of 64 × 64 samples"
+msgstr "Изменено тайлов: {tiles} (по 64 × 64 отсчёта)"
+
+#: crates/engine-editor/src/terrain_tools.rs:430
+msgid "Remove all sculpting and painting"
+msgstr "Удалить весь скульптинг и раскраску"
+
+#: crates/engine-editor/src/terrain_tools.rs:436
+msgid "Brushes: pick a tool in the Scene view (3D) toolbar, then drag over the terrain."
+msgstr "Кисти: выберите инструмент на панели окна «Сцена» (3D) и ведите по ландшафту."
+
+#: crates/engine-editor/src/theme.rs:72
+msgid "Blue"
+msgstr "Синий"
+
+#: crates/engine-editor/src/theme.rs:73
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: crates/engine-editor/src/theme.rs:74
+msgid "Green"
+msgstr "Зелёный"
+
+#: crates/engine-editor/src/theme.rs:75
+msgid "Purple"
+msgstr "Фиолетовый"
+
+#: crates/engine-editor/src/theme.rs:76
+msgid "Teal"
+msgstr "Бирюзовый"
+
+#: crates/engine-editor/src/ui.rs:165
+msgid "GameObject"
+msgstr "Объект"
+
+#: crates/engine-editor/src/ui.rs:201
+msgid "Layouts"
+msgstr "Раскладки"
+
+#: crates/engine-editor/src/ui.rs:216
+msgid "Save Layout…"
+msgstr "Сохранить раскладку…"
+
+#: crates/engine-editor/src/ui.rs:220
+msgid "Delete Layout"
+msgstr "Удалить раскладку"
+
+#: crates/engine-editor/src/ui.rs:222
+msgid "No saved layouts yet: save one with Save Layout…"
+msgstr "Сохранённых раскладок пока нет: сохраните через «Сохранить раскладку…»"
+
+#: crates/engine-editor/src/ui.rs:234
+msgid "Reset Layout"
+msgstr "Сбросить раскладку"
+
+#: crates/engine-editor/src/ui.rs:240
+msgid "Restore {}"
+msgstr "Восстановить {}"
+
+#: crates/engine-editor/src/ui.rs:249
+msgid "Stop the game first"
+msgstr "Сначала остановите игру"
+
+#: crates/engine-editor/src/ui.rs:262
+msgid "There are no .scene files in the assets directory yet"
+msgstr "В папке ассетов пока нет файлов .scene"
+
+#: crates/engine-editor/src/ui.rs:291
+msgid "Build…"
+msgstr "Собрать…"
+
+#: crates/engine-editor/src/ui.rs:302
+msgid "Project Hub…"
+msgstr "Хаб проектов…"
+
+#: crates/engine-editor/src/ui.rs:307
+msgid "Open Recent"
+msgstr "Открыть недавние"
+
+#: crates/engine-editor/src/ui.rs:329
+msgid "Nothing to undo"
+msgstr "Нечего отменять"
+
+#: crates/engine-editor/src/ui.rs:329
+msgid "Undo is not available in Play mode"
+msgstr "Отмена недоступна в режиме игры"
+
+#: crates/engine-editor/src/ui.rs:338
+msgid "Nothing to redo"
+msgstr "Нечего повторять"
+
+#: crates/engine-editor/src/ui.rs:338
+msgid "Redo is not available in Play mode"
+msgstr "Повтор недоступен в режиме игры"
+
+#: crates/engine-editor/src/ui.rs:348
+msgid "Select an object first"
+msgstr "Сначала выделите объект"
+
+#: crates/engine-editor/src/ui.rs:388
+msgid "Stop"
+msgstr "Стоп"
+
+#: crates/engine-editor/src/ui.rs:392
+msgid "Pause"
+msgstr "Пауза"
+
+#: crates/engine-editor/src/ui.rs:392
+msgid "Resume"
+msgstr "Продолжить"
+
+#: crates/engine-editor/src/ui.rs:395
+msgid "The game is not running"
+msgstr "Игра не запущена"
+
+#: crates/engine-editor/src/ui.rs:424
+msgid "Select the parent object first"
+msgstr "Сначала выделите родительский объект"
+
+#: crates/engine-editor/src/ui.rs:430
+msgid "3D Object"
+msgstr "3D-объект"
+
+#: crates/engine-editor/src/ui.rs:448
+msgid "Sprite (child)"
+msgstr "Спрайт (дочерний)"
+
+#: crates/engine-editor/src/ui.rs:488
+msgid "Scene view"
+msgstr "Сцена"
+
+#: crates/engine-editor/src/ui.rs:489
+msgid "3D View"
+msgstr "3D-вид"
+
+#: crates/engine-editor/src/ui.rs:493
+msgid "Grid"
+msgstr "Сетка"
+
+#: crates/engine-editor/src/ui.rs:496
+msgid "Gizmos"
+msgstr "Гизмо"
+
+#: crates/engine-editor/src/ui.rs:503
+msgid "UI Scale"
+msgstr "Масштаб интерфейса"
+
+#: crates/engine-editor/src/ui.rs:527
+msgid "New Folder…"
+msgstr "Создать папку…"
+
+#: crates/engine-editor/src/ui.rs:543
+msgid "New Model (Piska Modeler)"
+msgstr "Создать модель (Piska Modeler)"
+
+#: crates/engine-editor/src/ui.rs:614
+msgid "Preferences"
+msgstr "Настройки"
+
+#: crates/engine-editor/src/ui.rs:629
+msgid "Move tool"
+msgstr "Перемещение"
+
+#: crates/engine-editor/src/ui.rs:630
+msgid "Rotate tool"
+msgstr "Поворот"
+
+#: crates/engine-editor/src/ui.rs:631
+msgid "Scale tool"
+msgstr "Масштаб"
+
+#: crates/engine-editor/src/ui.rs:650
+msgid "Snap: {} m steps, {}° turns, ×{} scale (Preferences → Scene View). Hold Ctrl to invert"
+msgstr "Привязка: шаг {} м, поворот {}°, масштаб ×{} (Настройки → Сцена). Удерживайте Ctrl, чтобы инвертировать"
+
+#: crates/engine-editor/src/ui.rs:696
+msgid "Stop and restore the scene"
+msgstr "Остановить и восстановить сцену"
+
+#: crates/engine-editor/src/ui.rs:710
+msgid "Advance one frame and pause"
+msgstr "Выполнить один кадр и поставить на паузу"
+
+#: crates/engine-editor/src/ui.rs:739
+msgid "Editor frame rate. The window redraws {redraw}. Click to open the Profiler"
+msgstr "Частота кадров редактора. Окно перерисовывается {redraw}. Щёлкните, чтобы открыть Профайлер"
+
+#: crates/engine-editor/src/ui.rs:751
+msgid "Layout"
+msgstr "Раскладка"
+
+#: crates/engine-editor/src/ui.rs:769
+msgid "Window layouts"
+msgstr "Раскладки окон"
+
+#: crates/engine-editor/src/ui.rs:817
+msgid "Playing"
+msgstr "Идёт игра"
+
+#: crates/engine-editor/src/ui.rs:818
+msgid "Paused"
+msgstr "Пауза"
+
+#: crates/engine-editor/src/ui.rs:839
+msgid "The scene has unsaved changes"
+msgstr "В сцене есть несохранённые изменения"
+
+#: crates/engine-editor/src/ui.rs:841
+msgid "The scene is saved"
+msgstr "Сцена сохранена"
+
+#: crates/engine-editor/src/ui.rs:868
+msgid "Open the Console"
+msgstr "Открыть Консоль"
+
+#: crates/engine-editor/src/ui.rs:912
+msgid "Save changes before closing?"
+msgstr "Сохранить изменения перед закрытием?"
+
+#: crates/engine-editor/src/ui.rs:913
+msgid "Scene “{scene_name}” has changes that are not saved. If you don't save, they are lost."
+msgstr "В сцене «{scene_name}» есть несохранённые изменения. Если их не сохранить, они будут потеряны."
+
+#: crates/engine-editor/src/ui.rs:918
+msgid "New C++ Script"
+msgstr "Новый скрипт C++"
+
+#: crates/engine-editor/src/ui.rs:918
+msgid "New Rust Script"
+msgstr "Новый скрипт Rust"
+
+#: crates/engine-editor/src/ui.rs:924
+msgid "Create and Build"
+msgstr "Создать и собрать"
+
+#: crates/engine-editor/src/ui.rs:927
+msgid "New Scenario Script"
+msgstr "Новый скрипт Scenario"
+
+#: crates/engine-editor/src/ui.rs:942
+msgid "Save Scene As"
+msgstr "Сохранить сцену как"
+
+#: crates/engine-editor/src/ui.rs:943
+msgid "Path inside the assets directory. `.scene` is added if missing."
+msgstr "Путь внутри папки ассетов. Если расширения `.scene` нет, оно будет добавлено."
+
+#: crates/engine-editor/src/ui.rs:952
+msgid "Created inside “{place}”."
+msgstr "Создаётся в «{place}»."
+
+#: crates/engine-editor/src/ui.rs:953
+msgid "Folder name"
+msgstr "Имя папки"
+
+#: crates/engine-editor/src/view3d.rs:518
+msgid "Fly speed  {:.1} m/s"
+msgstr "Скорость полёта  {:.1} м/с"
+
+#: crates/engine-editor/src/viewport.rs:125
+msgid "What the Scene view draws over the scene"
+msgstr "Что окно «Сцена» рисует поверх сцены"
+
+#: crates/engine-editor/src/viewport.rs:126
+msgid "Object Icons and Colliders"
+msgstr "Значки объектов и коллайдеры"
+
+#: crates/engine-editor/src/viewport.rs:132
+msgid "Fog"
+msgstr "Туман"
+
+#: crates/engine-editor/src/viewport.rs:136
+msgid "The Scene view camera"
+msgstr "Камера окна «Сцена»"
+
+#: crates/engine-editor/src/viewport.rs:150
+msgid "Frame Whole Scene"
+msgstr "Показать всю сцену"
+
+#: crates/engine-editor/src/viewport.rs:156
+msgid "{objects} objects  ·  {draw_calls} draw calls"
+msgstr "Объектов: {objects}  ·  вызовов отрисовки: {draw_calls}"
+
+#: crates/engine-editor/src/viewport.rs:172
+msgid "Display  {} × {}"
+msgstr "Экран  {} × {}"
+
+#: crates/engine-editor/src/viewport.rs:181
+msgid "Maximize On Play"
+msgstr "Развернуть при запуске"
+
+#: crates/engine-editor/src/viewport.rs:182
+msgid "Enlarge the Game view to the whole dock area when Play starts"
+msgstr "Разворачивать окно «Игра» на всю область панелей при запуске игры"
+
+#: crates/engine-editor/src/viewport.rs:234
+msgid "Right drag  orbit     Drag  pan     Wheel  zoom     F  frame selection"
+msgstr "Перетаскивание ПКМ  орбита     Перетаскивание  панорама     Колесо  масштаб     F  показать выделение"
+
+#: crates/engine-editor/src/viewport.rs:302
+msgid "This is what the game camera sees. {} to run the game"
+msgstr "Так видит сцену игровая камера. {}, чтобы запустить игру"
+
+#: crates/engine-editor/src/viewport.rs:303
+msgid "Press Play"
+msgstr "Нажмите «Играть»"
+
+#: crates/engine-editor/src/viewport.rs:438
+msgid "Drag  select     Right / middle drag  pan     Wheel  zoom     F  frame     Ctrl  snap"
+msgstr "Перетаскивание  выделение     Перетаскивание ПКМ / СКМ  панорама     Колесо  масштаб     F  показать     Ctrl  привязка"
+
+#: crates/engine-modeler/src/ui/mod.rs:73
+msgid "Move"
+msgstr "Перемещение"
+
+#: crates/engine-modeler/src/ui/mod.rs:74
+msgid "Resize"
+msgstr "Размер"
+
+#: crates/engine-modeler/src/ui/mod.rs:75
+msgid "Rotate"
+msgstr "Поворот"
+
+#: crates/engine-modeler/src/ui/mod.rs:76
+msgid "Pivot"
+msgstr "Опорная точка"
+
+#: crates/engine-modeler/src/ui/mod.rs:77
+msgid "Pencil"
+msgstr "Карандаш"
+
+#: crates/engine-modeler/src/ui/mod.rs:78
+msgid "Eraser"
+msgstr "Ластик"
+
+#: crates/engine-modeler/src/ui/mod.rs:79
+msgid "Fill"
+msgstr "Заливка"
+
+#: crates/engine-modeler/src/ui/mod.rs:80
+msgid "Line"
+msgstr "Линия"
+
+#: crates/engine-modeler/src/ui/mod.rs:81
+msgid "Rectangle"
+msgstr "Прямоугольник"
+
+#: crates/engine-modeler/src/ui/mod.rs:82
+msgid "Color Picker"
+msgstr "Пипетка"
+
+#: crates/engine-modeler/src/ui/mod.rs:83
+msgid "Shade"
+msgstr "Тон"
+
+#: crates/engine-modeler/src/ui/mod.rs:125
+msgid "Click to select, drag on empty space for a box, Ctrl adds"
+msgstr "Щелчок — выделить, перетаскивание по пустому месту — рамка, Ctrl — добавить"
+
+#: crates/engine-modeler/src/ui/mod.rs:126
+msgid "Drag an arrow to move along it, the centre square in the view plane"
+msgstr "Перетащите стрелку, чтобы двигать вдоль неё, центральный квадрат — в плоскости вида"
+
+#: crates/engine-modeler/src/ui/mod.rs:127
+msgid "Drag a face handle: the box grows from that side, the opposite side stays"
+msgstr "Перетащите маркер грани: коробка растёт с этой стороны, противоположная остаётся на месте"
+
+#: crates/engine-modeler/src/ui/mod.rs:128
+msgid "Drag a ring to rotate around the pivot"
+msgstr "Перетащите кольцо, чтобы вращать вокруг опорной точки"
+
+#: crates/engine-modeler/src/ui/mod.rs:129
+msgid "Drag the arrows to move the pivot without moving the shape"
+msgstr "Перетащите стрелки, чтобы сдвинуть опорную точку, не двигая фигуру"
+
+#: crates/engine-modeler/src/ui/mod.rs:130
+msgid "Paint texels on the model or in the UV view"
+msgstr "Рисовать тексели на модели или в окне UV"
+
+#: crates/engine-modeler/src/ui/mod.rs:131
+msgid "Make texels transparent"
+msgstr "Делать тексели прозрачными"
+
+#: crates/engine-modeler/src/ui/mod.rs:132
+msgid "Fill the face (or the connected colour, see Fill mode)"
+msgstr "Залить грань (или связную область цвета, см. режим заливки)"
+
+#: crates/engine-modeler/src/ui/mod.rs:133
+msgid "Drag a straight line on one face"
+msgstr "Провести прямую линию на одной грани"
+
+#: crates/engine-modeler/src/ui/mod.rs:134
+msgid "Drag a rectangle outline on one face (Shift: filled)"
+msgstr "Нарисовать контур прямоугольника на одной грани (Shift — с заливкой)"
+
+#: crates/engine-modeler/src/ui/mod.rs:135
+msgid "Click to take a colour"
+msgstr "Щёлкните, чтобы взять цвет"
+
+#: crates/engine-modeler/src/ui/mod.rs:136
+msgid "Drag to lighten, with Shift to darken"
+msgstr "Перетаскивайте, чтобы осветлить, с Shift — затемнить"
+
+#: crates/engine-modeler/src/ui/mod.rs:709
+msgid "there is no texture to export"
+msgstr "нет текстуры для экспорта"
+
+#: crates/engine-modeler/src/ui/mod.rs:718
+msgid "Import Texture"
+msgstr "Импортировать текстуру"
+
+#: crates/engine-modeler/src/ui/mod.rs:724
+msgid "Imported texture `{name}`; assign it to faces in the UV panel"
+msgstr "Текстура `{name}` импортирована; назначьте её граням на панели UV"
+
+#: crates/engine-modeler/src/ui/mod.rs:738
+msgid "Import Reference"
+msgstr "Импортировать опорный меш"
+
+#: crates/engine-modeler/src/ui/mod.rs:739
+msgid "Reference `{name}` added (shown grey, not editable)"
+msgstr "Опорный меш `{name}` добавлен (отображается серым, не редактируется)"
+
+#: crates/engine-modeler/src/ui/mod.rs:797
+msgid "Add Group"
+msgstr "Добавить группу"
+
+#: crates/engine-modeler/src/ui/mod.rs:822
+msgid "Mirror X"
+msgstr "Отразить по X"
+
+#: crates/engine-modeler/src/ui/mod.rs:824
+msgid "Mirror X needs selected elements without a twin"
+msgstr "Для отражения по X выделите элементы без двойника"
+
+#: crates/engine-modeler/src/ui/mod.rs:830
+msgid "Unlink Twin"
+msgstr "Отвязать двойника"
+
+#: crates/engine-modeler/src/ui/mod.rs:836
+msgid "Flip"
+msgstr "Перевернуть"
+
+#: crates/engine-modeler/src/ui/mod.rs:837
+msgid "Align"
+msgstr "Выровнять"
+
+#: crates/engine-modeler/src/ui/mod.rs:838
+msgid "Distribute"
+msgstr "Распределить"
+
+#: crates/engine-modeler/src/ui/mod.rs:845
+msgid "Center"
+msgstr "Центр"
+
+#: crates/engine-modeler/src/ui/mod.rs:848
+msgid "Visibility"
+msgstr "Видимость"
+
+#: crates/engine-modeler/src/ui/mod.rs:861
+msgid "Auto UV"
+msgstr "Авто-UV"
+
+#: crates/engine-modeler/src/ui/mod.rs:865
+msgid "Repack UV"
+msgstr "Перепаковать UV"
+
+#: crates/engine-modeler/src/ui/mod.rs:867
+msgid "the layouts do not fit even on a 2048 texture"
+msgstr "развёртки не помещаются даже в текстуру 2048"
+
+#: crates/engine-modeler/src/ui/mod.rs:871
+msgid "Add Texture"
+msgstr "Добавить текстуру"
+
+#: crates/engine-modeler/src/ui/mod.rs:879
+msgid "Resize Texture"
+msgstr "Изменить размер текстуры"
+
+#: crates/engine-modeler/src/ui/mod.rs:911
+msgid "Restore Recovered Changes"
+msgstr "Восстановить изменения"
+
+#: crates/engine-modeler/src/ui/mod.rs:912
+msgid "Recovered the unsaved changes; save to keep them"
+msgstr "Несохранённые изменения восстановлены; сохраните, чтобы не потерять их"
+
+#: crates/engine-modeler/src/ui/mod.rs:1171
+msgid "New"
+msgstr "Создать"
+
+#: crates/engine-modeler/src/ui/mod.rs:1174
+msgid "Open…"
+msgstr "Открыть…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1184
+msgid "Import Texture (PNG)…"
+msgstr "Импортировать текстуру (PNG)…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1187
+msgid "Import Reference (.obj, .glb)…"
+msgstr "Импортировать опорный меш (.obj, .glb)…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1191
+msgid "Export glTF Binary (.glb)…"
+msgstr "Экспортировать двоичный glTF (.glb)…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1194
+msgid "Export Wavefront (.obj + .mtl)…"
+msgstr "Экспортировать Wavefront (.obj + .mtl)…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1197
+msgid "Export Texture (PNG)…"
+msgstr "Экспортировать текстуру (PNG)…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1201
+msgid "Close Document"
+msgstr "Закрыть документ"
+
+#: crates/engine-modeler/src/ui/mod.rs:1250
+msgid "Mirror X (linked twin)"
+msgstr "Отразить по X (связанный двойник)"
+
+#: crates/engine-modeler/src/ui/mod.rs:1258
+msgid "Flip {name}"
+msgstr "Перевернуть по {name}"
+
+#: crates/engine-modeler/src/ui/mod.rs:1265
+msgid "Max"
+msgstr "Максимум"
+
+#: crates/engine-modeler/src/ui/mod.rs:1265
+msgid "Min"
+msgstr "Минимум"
+
+#: crates/engine-modeler/src/ui/mod.rs:1274
+msgid "Along {name}"
+msgstr "Вдоль {name}"
+
+#: crates/engine-modeler/src/ui/mod.rs:1279
+msgid "Center on Origin"
+msgstr "Переместить в начало координат"
+
+#: crates/engine-modeler/src/ui/mod.rs:1282
+msgid "Hide / Show"
+msgstr "Скрыть / показать"
+
+#: crates/engine-modeler/src/ui/mod.rs:1288
+msgid "Auto UV (box layout)"
+msgstr "Авто-UV (развёртка коробкой)"
+
+#: crates/engine-modeler/src/ui/mod.rs:1298
+msgid "Resize Texture…"
+msgstr "Изменить размер текстуры…"
+
+#: crates/engine-modeler/src/ui/mod.rs:1305
+msgid "Front"
+msgstr "Спереди"
+
+#: crates/engine-modeler/src/ui/mod.rs:1306
+msgid "Back"
+msgstr "Сзади"
+
+#: crates/engine-modeler/src/ui/mod.rs:1309
+msgid "Top"
+msgstr "Сверху"
+
+#: crates/engine-modeler/src/ui/mod.rs:1310
+msgid "Bottom"
+msgstr "Снизу"
+
+#: crates/engine-modeler/src/ui/mod.rs:1318
+msgid "Orthographic"
+msgstr "Ортография"
+
+#: crates/engine-modeler/src/ui/mod.rs:1321
+msgid "Frame Selection"
+msgstr "Показать выделение"
+
+#: crates/engine-modeler/src/ui/mod.rs:1326
+msgid "Size Ruler"
+msgstr "Линейка размеров"
+
+#: crates/engine-modeler/src/ui/mod.rs:1328
+msgid "Smooth Edges (2× supersampling)"
+msgstr "Сглаживание краёв (суперсэмплинг 2×)"
+
+#: crates/engine-modeler/src/ui/mod.rs:1353
+msgid "Not saved yet"
+msgstr "Ещё не сохранено"
+
+#: crates/engine-modeler/src/ui/mod.rs:1386
+msgid "Tab switches between modelling and painting"
+msgstr "Tab переключает между моделированием и рисованием"
+
+#: crates/engine-modeler/src/ui/mod.rs:1397
+msgid "Creates it at the origin, inside the selected group"
+msgstr "Создаёт в начале координат, внутри выделенной группы"
+
+#: crates/engine-modeler/src/ui/mod.rs:1403
+msgid "A named node with its own pivot"
+msgstr "Именованный узел со своей опорной точкой"
+
+#: crates/engine-modeler/src/ui/mod.rs:1410
+msgid "Linked twin on the other side: edit one, the other follows"
+msgstr "Связанный двойник с другой стороны: правки одного повторяются на другом"
+
+#: crates/engine-modeler/src/ui/mod.rs:1415
+msgid "Flip X"
+msgstr "Перевернуть по X"
+
+#: crates/engine-modeler/src/ui/mod.rs:1415
+msgid "Mirror the selection in place"
+msgstr "Отразить выделение на месте"
+
+#: crates/engine-modeler/src/ui/mod.rs:1420
+msgid "Move the selection (or the model) to X = 0, Z = 0"
+msgstr "Переместить выделение (или модель) в X = 0, Z = 0"
+
+#: crates/engine-modeler/src/ui/mod.rs:1436
+msgid "Snap"
+msgstr "Привязка"
+
+#: crates/engine-modeler/src/ui/mod.rs:1450
+msgid "Grid snapping for move and resize. Hold Ctrl to toggle while dragging, Shift for quarter steps"
+msgstr "Привязка к сетке при перемещении и изменении размера. Ctrl во время перетаскивания переключает её, Shift — шаг в четверть"
+
+#: crates/engine-modeler/src/ui/mod.rs:1453
+msgid "Free"
+msgstr "Свободно"
+
+#: crates/engine-modeler/src/ui/mod.rs:1461
+msgid "Rotation snapping"
+msgstr "Привязка поворота"
+
+#: crates/engine-modeler/src/ui/mod.rs:1466
+msgid "Brush colour (X swaps with the second colour)"
+msgstr "Цвет кисти (X — поменять со вторым цветом)"
+
+#: crates/engine-modeler/src/ui/mod.rs:1472
+msgid "Second colour: click to swap"
+msgstr "Второй цвет: щёлкните, чтобы поменять местами"
+
+#: crates/engine-modeler/src/ui/mod.rs:1480
+msgid "Brush size ( [ and ] )"
+msgstr "Размер кисти ( [ и ] )"
+
+#: crates/engine-modeler/src/ui/mod.rs:1483
+msgid "Face"
+msgstr "Грань"
+
+#: crates/engine-modeler/src/ui/mod.rs:1484
+msgid "Connected"
+msgstr "Связная область"
+
+#: crates/engine-modeler/src/ui/mod.rs:1486
+msgid "Mirror Painting"
+msgstr "Зеркальное рисование"
+
+#: crates/engine-modeler/src/ui/mod.rs:1486
+msgid "Paint on both sides of X = 0"
+msgstr "Рисовать по обе стороны от X = 0"
+
+#: crates/engine-modeler/src/ui/mod.rs:1493
+msgid "How much the Shade brush lightens or darkens per stroke"
+msgstr "Насколько кисть «Тон» осветляет или затемняет за один мазок"
+
+#: crates/engine-modeler/src/ui/mod.rs:1505
+msgid "Wireframe"
+msgstr "Каркас"
+
+#: crates/engine-modeler/src/ui/mod.rs:1506
+msgid "Solid"
+msgstr "Сплошной"
+
+#: crates/engine-modeler/src/ui/mod.rs:1507
+msgid "Textured"
+msgstr "Текстуры"
+
+#: crates/engine-modeler/src/ui/mod.rs:1522
+msgid "Switch the projection"
+msgstr "Переключить проекцию"
+
+#: crates/engine-modeler/src/ui/mod.rs:1528
+msgid "Fit the selection or the model in view"
+msgstr "Вписать выделение или модель в вид"
+
+#: crates/engine-modeler/src/ui/mod.rs:1577
+msgid "Brush and second colour (X swaps)"
+msgstr "Цвет кисти и второй цвет (X — поменять местами)"
+
+#: crates/engine-modeler/src/ui/mod.rs:1596
+msgid "Outliner"
+msgstr "Структура"
+
+#: crates/engine-modeler/src/ui/mod.rs:1600
+msgid "Add Cuboid"
+msgstr "Добавить кубоид"
+
+#: crates/engine-modeler/src/ui/mod.rs:1618
+msgid "Palette"
+msgstr "Палитра"
+
+#: crates/engine-modeler/src/ui/mod.rs:1631
+msgid "UV"
+msgstr "UV"
+
+#: crates/engine-modeler/src/ui/mod.rs:1667
+msgid "Element"
+msgstr "Элемент"
+
+#: crates/engine-modeler/src/ui/mod.rs:1755
+msgid "Unsaved changes from an earlier session were found"
+msgstr "Найдены несохранённые изменения из прошлого сеанса"
+
+#: crates/engine-modeler/src/ui/mod.rs:1759
+msgid "Discard"
+msgstr "Отбросить"
+
+#: crates/engine-modeler/src/ui/mod.rs:1773
+msgid "Open Model"
+msgstr "Открыть модель"
+
+#: crates/engine-modeler/src/ui/mod.rs:1774
+msgid "Save Model As"
+msgstr "Сохранить модель как"
+
+#: crates/engine-modeler/src/ui/mod.rs:1775
+msgid "Export glTF Binary"
+msgstr "Экспортировать двоичный glTF"
+
+#: crates/engine-modeler/src/ui/mod.rs:1776
+msgid "Export Wavefront OBJ"
+msgstr "Экспортировать Wavefront OBJ"
+
+#: crates/engine-modeler/src/ui/mod.rs:1777
+msgid "Export Texture"
+msgstr "Экспортировать текстуру"
+
+#: crates/engine-modeler/src/ui/mod.rs:1779
+msgid "Import Reference Mesh"
+msgstr "Импортировать опорный меш"
+
+#: crates/engine-modeler/src/ui/mod.rs:1846
+msgid "Type a path"
+msgstr "Введите путь"
+
+#: crates/engine-modeler/src/ui/mod.rs:1909
+msgid "Reload Texture"
+msgstr "Перезагрузить текстуру"
+
+#: crates/engine-modeler/src/ui/mod.rs:1919
+msgid "Reloaded {path}"
+msgstr "Перезагружено: {path}"
+
+#: crates/engine-modeler/src/ui/mod.rs:1926
+msgid "Cuboid"
+msgstr "Кубоид"
+
+#: crates/engine-modeler/src/ui/mod.rs:1928
+msgid "Cylinder"
+msgstr "Цилиндр"
+
+#: crates/engine-modeler/src/ui/mod.rs:1929
+msgid "Cone"
+msgstr "Конус"
+
+#: crates/engine-modeler/src/ui/outliner.rs:45
+msgid "No elements yet"
+msgstr "Элементов пока нет"
+
+#: crates/engine-modeler/src/ui/outliner.rs:46
+msgid "Add a cuboid from the toolbar"
+msgstr "Добавьте кубоид с панели инструментов"
+
+#: crates/engine-modeler/src/ui/outliner.rs:147
+msgid "Mirrored twin of `{name}`: edits are repeated across X = 0"
+msgstr "Отражённый двойник `{name}`: правки повторяются относительно X = 0"
+
+#: crates/engine-modeler/src/ui/outliner.rs:160
+msgid "Show / hide in the view (H)"
+msgstr "Показать / скрыть в окне вида (H)"
+
+#: crates/engine-modeler/src/ui/outliner.rs:163
+msgid "Lock: cannot be picked, moved or painted"
+msgstr "Блокировка: нельзя выделить, переместить или раскрасить"
+
+#: crates/engine-modeler/src/ui/outliner.rs:164
+msgid "Lock"
+msgstr "Блокировка"
+
+#: crates/engine-modeler/src/ui/outliner.rs:285
+msgid "Reorder"
+msgstr "Изменить порядок"
+
+#: crates/engine-modeler/src/ui/panels.rs:41
+msgid "Nothing selected"
+msgstr "Ничего не выделено"
+
+#: crates/engine-modeler/src/ui/panels.rs:42
+msgid "Click an element in the view or the Outliner"
+msgstr "Щёлкните элемент в окне вида или в «Структуре»"
+
+#: crates/engine-modeler/src/ui/panels.rs:66
+msgid "Edit Properties"
+msgstr "Изменить свойства"
+
+#: crates/engine-modeler/src/ui/panels.rs:74
+msgid "Origin"
+msgstr "Начало"
+
+#: crates/engine-modeler/src/ui/panels.rs:90
+msgid "The group rotates its children around Origin — the joint of a limb."
+msgstr "Группа вращает дочерние элементы вокруг начала — сустава конечности."
+
+#: crates/engine-modeler/src/ui/panels.rs:98
+msgid "Shape"
+msgstr "Фигура"
+
+#: crates/engine-modeler/src/ui/panels.rs:119
+msgid "sides "
+msgstr "сторон "
+
+#: crates/engine-modeler/src/ui/panels.rs:123
+msgid "rings "
+msgstr "колец "
+
+#: crates/engine-modeler/src/ui/panels.rs:159
+msgid "Inflate"
+msgstr "Раздутие"
+
+#: crates/engine-modeler/src/ui/panels.rs:162
+msgid "Grows the box on every side; the texture stays the same"
+msgstr "Увеличивает коробку со всех сторон; текстура не меняется"
+
+#: crates/engine-modeler/src/ui/panels.rs:168
+msgid "Faces"
+msgstr "Грани"
+
+#: crates/engine-modeler/src/ui/panels.rs:197
+msgid "All faces"
+msgstr "Все грани"
+
+#: crates/engine-modeler/src/ui/panels.rs:199
+msgid "Visible"
+msgstr "Видимая"
+
+#: crates/engine-modeler/src/ui/panels.rs:209
+msgid "Emissive"
+msgstr "Свечение"
+
+#: crates/engine-modeler/src/ui/panels.rs:209
+msgid "Unlit in the view; exported as emission"
+msgstr "Без освещения в окне вида; экспортируется как излучение"
+
+#: crates/engine-modeler/src/ui/panels.rs:216
+msgid "Tint"
+msgstr "Оттенок"
+
+#: crates/engine-modeler/src/ui/panels.rs:253
+msgid "Box layout"
+msgstr "Развёртка коробкой"
+
+#: crates/engine-modeler/src/ui/panels.rs:254
+msgid "Unwrap automatically like a paper box; turn off to place faces by hand"
+msgstr "Развернуть автоматически, как бумажную коробку; отключите, чтобы расставить грани вручную"
+
+#: crates/engine-modeler/src/ui/panels.rs:264
+msgid "shares its twin's texture"
+msgstr "использует текстуру двойника"
+
+#: crates/engine-modeler/src/ui/panels.rs:269
+msgid "Twin"
+msgstr "Двойник"
+
+#: crates/engine-modeler/src/ui/panels.rs:271
+msgid "Unlink"
+msgstr "Отвязать"
+
+#: crates/engine-modeler/src/ui/panels.rs:292
+msgid "Brush colour"
+msgstr "Цвет кисти"
+
+#: crates/engine-modeler/src/ui/panels.rs:294
+msgid "Second colour: click to swap (X)"
+msgstr "Второй цвет: щёлкните, чтобы поменять местами (X)"
+
+#: crates/engine-modeler/src/ui/panels.rs:321
+msgid "RECENT"
+msgstr "НЕДАВНИЕ"
+
+#: crates/engine-modeler/src/ui/panels.rs:333
+msgid "PALETTE"
+msgstr "ПАЛИТРА"
+
+#: crates/engine-modeler/src/ui/panels.rs:335
+msgid "Add the brush colour to the palette"
+msgstr "Добавить цвет кисти в палитру"
+
+#: crates/engine-modeler/src/ui/panels.rs:378
+msgid "Imported from {source}; reloads when the file changes"
+msgstr "Импортировано из {source}; перезагружается при изменении файла"
+
+#: crates/engine-modeler/src/ui/panels.rs:389
+msgid "Resize…"
+msgstr "Изменить размер…"
+
+#: crates/engine-modeler/src/ui/panels.rs:392
+msgid "Import PNG…"
+msgstr "Импортировать PNG…"
+
+#: crates/engine-modeler/src/ui/panels.rs:395
+msgid "Export PNG…"
+msgstr "Экспортировать PNG…"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:96
+msgid "Pack every box layout tightly; painted texels move along"
+msgstr "Плотно упаковать все развёртки коробкой; нарисованные тексели переносятся вместе с ними"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:96
+msgid "Repack"
+msgstr "Перепаковать"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:101
+msgid "Box layout for the selection (or everything)"
+msgstr "Развёртка коробкой для выделения (или всего)"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:219
+msgid "Mirror vertically"
+msgstr "Отразить по вертикали"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:224
+msgid "Mirror horizontally"
+msgstr "Отразить по горизонтали"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:229
+msgid "Rotate the picture on the face by 90°"
+msgstr "Повернуть изображение на грани на 90°"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:235
+msgid "Edit UV"
+msgstr "Изменить UV"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:254
+msgid "Click a face rectangle to edit it"
+msgstr "Щёлкните прямоугольник грани, чтобы изменить его"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:302
+msgid "Scale UV"
+msgstr "Масштабировать UV"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:309
+msgid "Move UV"
+msgstr "Переместить UV"
+
+#: crates/engine-modeler/src/ui/uv_editor.rs:400
+msgid "Paint Texture"
+msgstr "Рисовать по текстуре"
+
+#: crates/engine-modeler/src/ui/viewport.rs:463
+msgid "Move Pivot"
+msgstr "Переместить опорную точку"
+
+#: crates/engine-modeler/src/ui/viewport.rs:671
+msgid "Erase"
+msgstr "Стереть"
+
+#: tools/piska-hub/src/config.rs:96
+msgid "`{}` could not be read ({err}); starting with an empty list. Fix or delete the file to restore it."
+msgstr "Не удалось прочитать `{}` ({err}); список начат заново. Исправьте или удалите файл, чтобы восстановить его."
+
+#: tools/piska-hub/src/config.rs:179
+msgid "Never"
+msgstr "Никогда"
+
+#: tools/piska-hub/src/config.rs:184
+msgid "Just now"
+msgstr "Только что"
+
+#: tools/piska-hub/src/config.rs:187
+msgid "Yesterday"
+msgstr "Вчера"
+
+#: tools/piska-hub/src/hub.rs:470
+msgid "The engine checkout was not found: set PISKA_ENGINE_ROOT or start the hub from the engine folder"
+msgstr "Не найдена копия движка: задайте PISKA_ENGINE_ROOT или запустите хаб из папки движка"
+
+#: tools/piska-hub/src/hub.rs:695
+msgid "Not deleted: {e}"
+msgstr "Не удалено: {e}"
+
+#: tools/piska-hub/src/hub.rs:699
+msgid "`{}` is one of the engine's own samples; it is not deleted from the hub"
+msgstr "`{}` — один из встроенных примеров движка; из хаба он не удаляется"
+
+#: tools/piska-hub/src/hub.rs:788
+msgid "Cannot save the project list to `{}`: {err}"
+msgstr "Не удалось сохранить список проектов в `{}`: {err}"
+
+#: tools/piska-hub/src/hub.rs:857
+msgid "The engine checkout was not found, so Piska Modeler cannot be started"
+msgstr "Рабочая копия движка не найдена, поэтому Piska Modeler запустить нельзя"
+
+#: tools/piska-hub/src/hub.rs:917
+msgid "Removed “{title}” from the list. The folder was not touched."
+msgstr "«{title}» убран из списка. Папка осталась на месте."
+
+#: tools/piska-hub/src/hub.rs:934
+msgid "Deleted `{}` from disk."
+msgstr "`{}` удалён с диска."
+
+#: tools/piska-hub/src/hub.rs:938
+msgid "Could not delete `{}` completely: {err}"
+msgstr "Не удалось полностью удалить `{}`: {err}"
+
+#: tools/piska-hub/src/hub.rs:964
+msgid "Added “{}”."
+msgstr "Добавлен проект «{}»."
+
+#: tools/piska-hub/src/hub.rs:980
+msgid "“{}” found at `{}`."
+msgstr "Проект «{}» найден: `{}`."
+
+#: tools/piska-hub/src/hub.rs:1012
+msgid "Build cancelled."
+msgstr "Сборка отменена."
+
+#: tools/piska-hub/src/hub.rs:1130
+msgid "Piska Player"
+msgstr "Piska Player"
+
+#: tools/piska-hub/src/hub.rs:1134
+msgid "The project's scripts build inside the editor; it switches to them when they are ready."
+msgstr "Скрипты проекта собираются внутри редактора; он переключится на них, когда они будут готовы."
+
+#: tools/piska-hub/src/hub.rs:1143
+msgid "There is no previous build of this project yet; build it first."
+msgstr "У проекта ещё нет предыдущей сборки; сначала соберите его."
+
+#: tools/piska-hub/src/hub.rs:1156
+msgid "“{title}” is already {what} (process {pid})."
+msgstr "«{title}» уже {what} (процесс {pid})."
+
+#: tools/piska-hub/src/hub.rs:1190
+msgid "“{title}” is open in the editor (process {pid})."
+msgstr "«{title}» открыт в редакторе (процесс {pid})."
+
+#: tools/piska-hub/src/hub.rs:1199
+msgid "“{title}” is running (process {pid})."
+msgstr "«{title}» запущен (процесс {pid})."
+
+#: tools/piska-hub/src/hub.rs:1207
+msgid "A build is already running; wait for it or cancel it first."
+msgstr "Сборка уже идёт; дождитесь её окончания или отмените её."
+
+#: tools/piska-hub/src/hub.rs:1225
+msgid "All {} editors are already built and up to date."
+msgstr "Все редакторы ({}) уже собраны и актуальны."
+
+#: tools/piska-hub/src/hub.rs:1242
+msgid "Prebuilt {} editors."
+msgstr "Заранее собрано редакторов: {}."
+
+#: tools/piska-hub/src/hub.rs:1244
+msgid "Prebuilt {} editors, {failed} failed."
+msgstr "Заранее собрано редакторов: {}, не удалось: {failed}."
+
+#: tools/piska-hub/src/hub.rs:1285
+msgid "“{}” is already {what} (process {pid})."
+msgstr "«{}» уже {what} (процесс {pid})."
+
+#: tools/piska-hub/src/hub.rs:1326
+msgid "The engine checkout was not found"
+msgstr "Рабочая копия движка не найдена"
+
+#: tools/piska-hub/src/hub.rs:1350
+msgid "Created “{}”."
+msgstr "Создан проект «{}»."
+
+#: tools/piska-hub/src/hub.rs:1404
+msgid "“{title}” exited with an error; see its console output."
+msgstr "«{title}» завершился с ошибкой; подробности — в выводе консоли."
+
+#: tools/piska-hub/src/hub.rs:1477
+msgid "Build failed with {errors} error{}."
+msgstr "Сборка не удалась. Ошибок: {errors}{}."
+
+#: tools/piska-hub/src/hub.rs:1479
+msgid "Build failed; see the output below."
+msgstr "Сборка не удалась; подробности — в выводе ниже."
+
+#: tools/piska-hub/src/hub.rs:1484
+msgid "Build of “{failed_title}” failed: {reason} Open its details from the task bar."
+msgstr "Сборка «{failed_title}» не удалась: {reason} Подробности — на панели задач."
+
+#: tools/piska-hub/src/hub.rs:1533
+msgid "“{title}” exported."
+msgstr "«{title}» экспортирован."
+
+#: tools/piska-hub/src/hub.rs:1575
+msgid "“{title}” is queued; it builds after the current build ({} waiting)."
+msgstr "«{title}» в очереди; сборка начнётся после текущей (в очереди: {})."
+
+#: tools/piska-hub/src/hub.rs:1595
+msgid "Piska tools"
+msgstr "Инструменты Piska"
+
+#: tools/piska-hub/src/hub.rs:1669
+msgid "Building {label} once; after that it opens projects instantly."
+msgstr "{label} собирается один раз; после этого проекты открываются мгновенно."
+
+#: tools/piska-hub/src/hub.rs:1705
+msgid "Folder not found: {}"
+msgstr "Папка не найдена: {}"
+
+#: tools/piska-hub/src/jobs.rs:30
+msgid "Opening"
+msgstr "Открытие"
+
+#: tools/piska-hub/src/jobs.rs:31
+msgid "Starting"
+msgstr "Запуск"
+
+#: tools/piska-hub/src/jobs.rs:32
+msgid "Exporting"
+msgstr "Экспорт"
+
+#: tools/piska-hub/src/jobs.rs:33
+msgid "Preparing"
+msgstr "Подготовка"
+
+#: tools/piska-hub/src/jobs.rs:130
+msgid "piska-export builds games from `games/` of the engine; `{}` is outside it. Copy or move the project to games/ to export it"
+msgstr "piska-export собирает игры только из папки `games/` движка, а `{}` находится вне её. Чтобы экспортировать проект, скопируйте или переместите его в games/"
+
+#: tools/piska-hub/src/jobs.rs:269
+msgid "cannot start `{}`: {e}. Is Rust (cargo) installed and in PATH?"
+msgstr "не удаётся запустить `{}`: {e}. Установлен ли Rust (cargo) и прописан ли он в PATH?"
+
+#: tools/piska-hub/src/main.rs:48
+msgid "Piska Hub"
+msgstr "Piska Hub"
+
+#: tools/piska-hub/src/project.rs:283
+msgid "Perspective"
+msgstr "Перспектива"
+
+#: tools/piska-hub/src/samples.rs:18
+msgid "Swarm"
+msgstr "Swarm"
+
+#: tools/piska-hub/src/samples.rs:19
+msgid "Arena survival shooter: waves, bosses, upgrades, a sprite atlas and a thousand bullets on screen."
+msgstr "Шутер на выживание на арене: волны, боссы, улучшения, атлас спрайтов и тысяча пуль на экране."
+
+#: tools/piska-hub/src/samples.rs:24
+msgid "Lantern Keeper"
+msgstr "Lantern Keeper"
+
+#: tools/piska-hub/src/samples.rs:25
+msgid "2D platformer with tilemaps, light, enemies, a boss, menus and saved progress across levels."
+msgstr "2D-платформер с тайлмапами, светом, врагами, боссом, меню и сохранением прогресса между уровнями."
+
+#: tools/piska-hub/src/samples.rs:30
+msgid "Marble Factory"
+msgstr "Marble Factory"
+
+#: tools/piska-hub/src/samples.rs:31
+msgid "3D physics course with PBR materials, fog and bloom; level mechanisms are written in C++."
+msgstr "Физическая 3D-трасса с PBR-материалами, туманом и блумом; механизмы уровней написаны на C++."
+
+#: tools/piska-hub/src/templates.rs:26
+msgid "Empty 2D"
+msgstr "Пустой 2D"
+
+#: tools/piska-hub/src/templates.rs:27
+msgid "Empty 3D"
+msgstr "Пустой 3D"
+
+#: tools/piska-hub/src/templates.rs:28
+msgid "Starfall sample"
+msgstr "Пример Starfall"
+
+#: tools/piska-hub/src/templates.rs:35
+msgid "Orthographic camera, a sprite and one Rust component. The smallest 2D game that runs."
+msgstr "Ортографическая камера, спрайт и один компонент на Rust. Самая маленькая работающая 2D-игра."
+
+#: tools/piska-hub/src/templates.rs:38
+msgid "Perspective camera, sun and sky, a ground grid and a cube spun by a Rust component."
+msgstr "Перспективная камера, солнце и небо, сетка на земле и куб, который вращает компонент на Rust."
+
+#: tools/piska-hub/src/templates.rs:41
+msgid "A complete small 2D game: sprites, prefabs, 2D physics, UI, sound and a saved high score."
+msgstr "Небольшая законченная 2D-игра: спрайты, префабы, 2D-физика, интерфейс, звук и сохранение рекорда."
+
+#: tools/piska-hub/src/templates.rs:49
+msgid "1 scene · 1 sprite · 1 script"
+msgstr "1 сцена · 1 спрайт · 1 скрипт"
+
+#: tools/piska-hub/src/templates.rs:50
+msgid "1 scene · 1 script"
+msgstr "1 сцена · 1 скрипт"
+
+#: tools/piska-hub/src/templates.rs:51
+msgid "1 scene · 1 prefab · 3 sprites · 1 sound · 3 scripts"
+msgstr "1 сцена · 1 префаб · 3 спрайта · 1 звук · 3 скрипта"
+
+#: tools/piska-hub/src/ui.rs:213
+msgid "Piska Engine {}"
+msgstr "Piska Engine {}"
+
+#: tools/piska-hub/src/ui.rs:220
+msgid "Projects"
+msgstr "Проекты"
+
+#: tools/piska-hub/src/ui.rs:221
+msgid "New Project"
+msgstr "Новый проект"
+
+#: tools/piska-hub/src/ui.rs:222
+msgid "Samples & Docs"
+msgstr "Примеры и документация"
+
+#: tools/piska-hub/src/ui.rs:224
+msgid "Settings"
+msgstr "Настройки"
+
+#: tools/piska-hub/src/ui.rs:249
+msgid "Engine checkout: {}"
+msgstr "Рабочая копия движка: {}"
+
+#: tools/piska-hub/src/ui.rs:257
+msgid "Editor"
+msgstr "Редактор"
+
+#: tools/piska-hub/src/ui.rs:288
+msgid "Ready"
+msgstr "Готово"
+
+#: tools/piska-hub/src/ui.rs:292
+msgid "{} projects  ·  config {}"
+msgstr "Проектов: {}  ·  конфигурация {}"
+
+#: tools/piska-hub/src/ui.rs:355
+msgid "  ·  {pinned} pinned"
+msgstr "  ·  закреплено: {pinned}"
+
+#: tools/piska-hub/src/ui.rs:358
+msgid "  ·  {missing} missing"
+msgstr "  ·  не найдено: {missing}"
+
+#: tools/piska-hub/src/ui.rs:360
+msgid "  ·  engine games/ and folders you added"
+msgstr "  ·  games/ движка и добавленные вами папки"
+
+#: tools/piska-hub/src/ui.rs:365
+msgid "Add Existing…"
+msgstr "Добавить существующий…"
+
+#: tools/piska-hub/src/ui.rs:370
+msgid "Prebuild All"
+msgstr "Собрать все заранее"
+
+#: tools/piska-hub/src/ui.rs:372
+msgid "Build the editor of every project that needs it, one after another, so Open is instant later"
+msgstr "Собрать по очереди редакторы всех проектов, которым это нужно, чтобы потом «Открыть» срабатывало мгновенно"
+
+#: tools/piska-hub/src/ui.rs:395
+msgid "List"
+msgstr "Список"
+
+#: tools/piska-hub/src/ui.rs:400
+msgid "Alphabetical"
+msgstr "По алфавиту"
+
+#: tools/piska-hub/src/ui.rs:400
+msgid "Last opened"
+msgstr "По дате открытия"
+
+#: tools/piska-hub/src/ui.rs:400
+msgid "Recently opened first"
+msgstr "Сначала недавно открытые"
+
+#: tools/piska-hub/src/ui.rs:403
+msgid "Sort"
+msgstr "Сортировка"
+
+#: tools/piska-hub/src/ui.rs:415
+msgid "Nothing matches “{}”"
+msgstr "По запросу «{}» ничего не найдено"
+
+#: tools/piska-hub/src/ui.rs:482
+msgid "Pin to top"
+msgstr "Закрепить вверху"
+
+#: tools/piska-hub/src/ui.rs:482
+msgid "Unpin"
+msgstr "Открепить"
+
+#: tools/piska-hub/src/ui.rs:511
+msgid "{location}  ·  {}"
+msgstr "{location}  ·  {}"
+
+#: tools/piska-hub/src/ui.rs:512
+msgid "External  ·  {}"
+msgstr "Внешний  ·  {}"
+
+#: tools/piska-hub/src/ui.rs:535
+msgid "Open in the editor"
+msgstr "Открыть в редакторе"
+
+#: tools/piska-hub/src/ui.rs:558
+msgid "Locate…"
+msgstr "Указать папку…"
+
+#: tools/piska-hub/src/ui.rs:568
+msgid "Play: run the game (already built)"
+msgstr "Играть: запустить игру (уже собрана)"
+
+#: tools/piska-hub/src/ui.rs:569
+msgid "Play: build and run the game"
+msgstr "Играть: собрать и запустить игру"
+
+#: tools/piska-hub/src/ui.rs:580
+msgid "Already open in the editor (process {pid})"
+msgstr "Уже открыт в редакторе (процесс {pid})"
+
+#: tools/piska-hub/src/ui.rs:582
+msgid "Open the editor now (it is built and up to date)"
+msgstr "Открыть редактор сразу (он собран и актуален)"
+
+#: tools/piska-hub/src/ui.rs:584
+msgid "The project changed since the last build: build, then open (⋯ → Open Last Build skips the build)"
+msgstr "Проект изменился после последней сборки: собрать и открыть (меню … → «Открыть последнюю сборку» — без сборки)"
+
+#: tools/piska-hub/src/ui.rs:586
+msgid "Build the editor program, then open it"
+msgstr "Собрать программу редактора и открыть её"
+
+#: tools/piska-hub/src/ui.rs:697
+msgid "Opened {}"
+msgstr "Открыт {}"
+
+#: tools/piska-hub/src/ui.rs:769
+msgid "Prebuilding editors: {} of {}"
+msgstr "Предсборка редакторов: {} из {}"
+
+#: tools/piska-hub/src/ui.rs:773
+msgid "{}  ·  {command}"
+msgstr "{}  ·  {command}"
+
+#: tools/piska-hub/src/ui.rs:790
+msgid "{done} of {} done{}  ·  {} already up to date"
+msgstr "Готово {done} из {}{}  ·  уже актуальны: {}"
+
+#: tools/piska-hub/src/ui.rs:812
+msgid "Step {done} of {total}: {step}"
+msgstr "Шаг {done} из {total}: {step}"
+
+#: tools/piska-hub/src/ui.rs:814
+msgid "Waiting for another cargo build to release the build directory…"
+msgstr "Ожидание, пока другая сборка cargo освободит папку сборки…"
+
+#: tools/piska-hub/src/ui.rs:817
+msgid "Compiling {current}"
+msgstr "Компиляция {current}"
+
+#: tools/piska-hub/src/ui.rs:818
+msgid "Starting cargo…"
+msgstr "Запуск cargo…"
+
+#: tools/piska-hub/src/ui.rs:821
+msgid "Cancelled"
+msgstr "Отменено"
+
+#: tools/piska-hub/src/ui.rs:822
+msgid "Finished"
+msgstr "Завершено"
+
+#: tools/piska-hub/src/ui.rs:823
+msgid "Started (process {pid})"
+msgstr "Запущено (процесс {pid})"
+
+#: tools/piska-hub/src/ui.rs:853
+msgid "{} compiled  ·  {} up to date  ·  {} warning{}  ·  {} error{}"
+msgstr "Скомпилировано: {}  ·  актуально: {}  ·  предупреждений: {}{}  ·  ошибок: {}{}"
+
+#: tools/piska-hub/src/ui.rs:864
+msgid "The hub hides while the editor is open and comes back when you close it."
+msgstr "Пока открыт редактор, хаб скрыт; он вернётся, когда вы закроете редактор."
+
+#: tools/piska-hub/src/ui.rs:876
+msgid " Open Last Build starts the editor built {when}."
+msgstr " «Открыть последнюю сборку» запустит редактор, собранный {when}."
+
+#: tools/piska-hub/src/ui.rs:877
+msgid " Open Last Build starts the previous build."
+msgstr " «Открыть последнюю сборку» запустит предыдущую сборку."
+
+#: tools/piska-hub/src/ui.rs:885
+msgid "Waiting for another build ({})"
+msgstr "Ожидание другой сборки ({})"
+
+#: tools/piska-hub/src/ui.rs:887
+msgid "Another cargo build is using the {what}. This build continues by itself when that one finishes; nothing is wrong with your project. You can wait, cancel, or open what you built before.{last_hint}"
+msgstr "Другая сборка cargo использует {what}. Эта сборка продолжится сама, когда та завершится; с вашим проектом всё в порядке. Можно подождать, отменить сборку или открыть то, что было собрано раньше.{last_hint}"
+
+#: tools/piska-hub/src/ui.rs:895
+msgid "The engine source does not compile right now"
+msgstr "Исходный код движка сейчас не компилируется"
+
+#: tools/piska-hub/src/ui.rs:897
+msgid "The error is in `{package}`, not in your project: the engine is probably being edited at the moment. Try Again once it compiles.{last_hint}"
+msgstr "Ошибка в `{package}`, а не в вашем проекте: вероятно, движок сейчас редактируют. Нажмите «Повторить», когда он снова начнёт компилироваться.{last_hint}"
+
+#: tools/piska-hub/src/ui.rs:905
+msgid "Error in {}"
+msgstr "Ошибка в {}"
+
+#: tools/piska-hub/src/ui.rs:906
+msgid "Fix it in your code and press Try Again.{last_hint}"
+msgstr "Исправьте ошибку в коде и нажмите «Повторить».{last_hint}"
+
+#: tools/piska-hub/src/ui.rs:919
+msgid "Errors ({})"
+msgstr "Ошибки ({})"
+
+#: tools/piska-hub/src/ui.rs:956
+msgid "Open {}"
+msgstr "Открыть {}"
+
+#: tools/piska-hub/src/ui.rs:975
+msgid "Waiting for cargo…"
+msgstr "Ожидание cargo…"
+
+#: tools/piska-hub/src/ui.rs:1001
+msgid "Open Last Build"
+msgstr "Открыть последнюю сборку"
+
+#: tools/piska-hub/src/ui.rs:1001
+msgid "Play Last Build"
+msgstr "Запустить последнюю сборку"
+
+#: tools/piska-hub/src/ui.rs:1010
+msgid "Stop Prebuild"
+msgstr "Остановить предсборку"
+
+#: tools/piska-hub/src/ui.rs:1017
+msgid "Continue in Background"
+msgstr "Продолжить в фоне"
+
+#: tools/piska-hub/src/ui.rs:1018
+msgid "Keep building and go back to the hub; the task bar shows progress"
+msgstr "Продолжить сборку и вернуться в хаб; ход выполнения виден на панели задач"
+
+#: tools/piska-hub/src/ui.rs:1028
+msgid "Stop this build and start the program from the previous build"
+msgstr "Остановить эту сборку и запустить программу из предыдущей сборки"
+
+#: tools/piska-hub/src/ui.rs:1035
+msgid "Done"
+msgstr "Готово"
+
+#: tools/piska-hub/src/ui.rs:1042
+msgid "Show Output Folder"
+msgstr "Показать папку с результатом"
+
+#: tools/piska-hub/src/ui.rs:1052
+msgid "Start the program from the previous successful build"
+msgstr "Запустить программу из предыдущей успешной сборки"
+
+#: tools/piska-hub/src/ui.rs:1057
+msgid "Try Again"
+msgstr "Повторить"
+
+#: tools/piska-hub/src/ui.rs:1060
+msgid "Back to Projects"
+msgstr "К проектам"
+
+#: tools/piska-hub/src/ui.rs:1078
+msgid "Prebuild {} of {}: {}"
+msgstr "Предсборка {} из {}: {}"
+
+#: tools/piska-hub/src/ui.rs:1088
+msgid "{current}  ·  {} / {total}"
+msgstr "{current}  ·  {} / {total}"
+
+#: tools/piska-hub/src/ui.rs:1090
+msgid "starting cargo…"
+msgstr "запуск cargo…"
+
+#: tools/piska-hub/src/ui.rs:1093
+msgid "{what}  —  {detail}"
+msgstr "{what}  —  {detail}"
+
+#: tools/piska-hub/src/ui.rs:1104
+msgid "Prebuild finished: {} built, {failed} failed"
+msgstr "Предсборка завершена: собрано: {}, не удалось: {failed}"
+
+#: tools/piska-hub/src/ui.rs:1134
+msgid "Dismiss"
+msgstr "Закрыть"
+
+#: tools/piska-hub/src/ui.rs:1138
+msgid "Details"
+msgstr "Подробности"
+
+#: tools/piska-hub/src/ui.rs:1138
+msgid "Hide Details"
+msgstr "Скрыть подробности"
+
+#: tools/piska-hub/src/ui.rs:1151
+msgid "Programs that come with the engine, and where to start with each."
+msgstr "Программы, которые поставляются с движком, и с чего начать работу с каждой из них."
+
+#: tools/piska-hub/src/ui.rs:1173
+msgid "Model Editor"
+msgstr "Редактор моделей"
+
+#: tools/piska-hub/src/ui.rs:1174
+msgid "Piska Modeler: low-poly models (.pmodel) built from boxes, cylinders and spheres, with paint and materials. Models appear in the Project window of the editor."
+msgstr "Piska Modeler: низкополигональные модели (.pmodel) из кубоидов, цилиндров и сфер, с раскраской и материалами. Модели появляются в окне «Проект» редактора."
+
+#: tools/piska-hub/src/ui.rs:1180
+msgid "A small scripting language for levels and behaviour: saved files restart in Play without a build. New projects start with a Scenario script."
+msgstr "Небольшой скриптовый язык для уровней и поведения: сохранённые файлы перезапускаются в режиме игры без сборки. Новые проекты создаются со скриптом Scenario."
+
+#: tools/piska-hub/src/ui.rs:1186
+msgid "Build a game for the web, Windows or Android with piska-export. Exports the project selected in the Projects list."
+msgstr "Сборка игры для веба, Windows или Android с помощью piska-export. Экспортируется проект, выбранный в списке «Проекты»."
+
+#: tools/piska-hub/src/ui.rs:1204
+msgid "Build and Open"
+msgstr "Собрать и открыть"
+
+#: tools/piska-hub/src/ui.rs:1204
+msgid "Open Model Editor"
+msgstr "Открыть редактор моделей"
+
+#: tools/piska-hub/src/ui.rs:1206
+msgid "Starts Piska Modeler (built once in the background if it is missing)"
+msgstr "Запускает Piska Modeler (если его нет, он один раз соберётся в фоне)"
+
+#: tools/piska-hub/src/ui.rs:1212
+msgid "Guide"
+msgstr "Руководство"
+
+#: tools/piska-hub/src/ui.rs:1219
+msgid "Open Documentation"
+msgstr "Открыть документацию"
+
+#: tools/piska-hub/src/ui.rs:1224
+msgid "New project whose demo behaviour is a Scenario script (assets/scenarios/spin.scenario)"
+msgstr "Новый проект, демо-поведение которого задано скриптом Scenario (assets/scenarios/spin.scenario)"
+
+#: tools/piska-hub/src/ui.rs:1233
+msgid "Export “{title}”…"
+msgstr "Экспортировать «{title}»…"
+
+#: tools/piska-hub/src/ui.rs:1239
+msgid "Select a project in the Projects list first"
+msgstr "Сначала выберите проект в списке «Проекты»"
+
+#: tools/piska-hub/src/ui.rs:1249
+msgid "Guides"
+msgstr "Руководства"
+
+#: tools/piska-hub/src/ui.rs:1275
+msgid "{} built, {failed} failed, {} were already up to date. Open is now instant for the built ones."
+msgstr "Собрано: {}, не удалось: {failed}, уже были актуальны: {}. Собранные проекты теперь открываются мгновенно."
+
+#: tools/piska-hub/src/ui.rs:1279
+msgid "Prebuild finished"
+msgstr "Предсборка завершена"
+
+#: tools/piska-hub/src/ui.rs:1292
+msgid "Built"
+msgstr "Собрано"
+
+#: tools/piska-hub/src/ui.rs:1319
+msgid "A game crate with its own editor program, assets with .meta files, a starting scene, a headless test and a README."
+msgstr "Крейт игры со своей программой редактора, ассеты с файлами .meta, стартовая сцена, тест без окна (headless) и README."
+
+#: tools/piska-hub/src/ui.rs:1334
+msgid "Template"
+msgstr "Шаблон"
+
+#: tools/piska-hub/src/ui.rs:1405
+msgid "Folder: {shown}"
+msgstr "Папка: {shown}"
+
+#: tools/piska-hub/src/ui.rs:1408
+msgid "Lowercase letters, digits, _ and -. It becomes the crate and folder name."
+msgstr "Строчные латинские буквы, цифры, _ и -. Станет именем крейта и папки."
+
+#: tools/piska-hub/src/ui.rs:1416
+msgid "Location"
+msgstr "Расположение"
+
+#: tools/piska-hub/src/ui.rs:1422
+msgid "Browse…"
+msgstr "Обзор…"
+
+#: tools/piska-hub/src/ui.rs:1430
+msgid "Use the engine's games/ folder"
+msgstr "Использовать папку games/ движка"
+
+#: tools/piska-hub/src/ui.rs:1442
+msgid "Inside the engine workspace: the project shares the engine's build cache, so the first build only compiles the game."
+msgstr "Внутри рабочего пространства движка: проект использует общий с движком кэш сборки, поэтому первая сборка компилирует только игру."
+
+#: tools/piska-hub/src/ui.rs:1448
+msgid "Outside the engine: the project gets its own Cargo workspace with a path to this engine checkout. Its first build compiles the whole engine — about 10–15 minutes and several GB of disk."
+msgstr "Вне движка: у проекта будет своё рабочее пространство Cargo с путём к этой рабочей копии движка. Первая сборка скомпилирует весь движок — это примерно 10–15 минут и несколько ГБ на диске."
+
+#: tools/piska-hub/src/ui.rs:1454
+msgid "Options"
+msgstr "Параметры"
+
+#: tools/piska-hub/src/ui.rs:1456
+msgid "C++ scripts folder (cpp/)"
+msgstr "Папка скриптов C++ (cpp/)"
+
+#: tools/piska-hub/src/ui.rs:1459
+msgid "Adds build.rs and cpp/Wobble.cpp; components in cpp/*.cpp are compiled into the game. Needs a C++ compiler (MSVC or GCC)."
+msgstr "Добавляет build.rs и cpp/Wobble.cpp; компоненты из cpp/*.cpp компилируются в игру. Нужен компилятор C++ (MSVC или GCC)."
+
+#: tools/piska-hub/src/ui.rs:1468
+msgid "Files ({})"
+msgstr "Файлы ({})"
+
+#: tools/piska-hub/src/ui.rs:1473
+msgid "\n… and {} more"
+msgstr "\n… и ещё {}"
+
+#: tools/piska-hub/src/ui.rs:1489
+msgid "Create and Open"
+msgstr "Создать и открыть"
+
+#: tools/piska-hub/src/ui.rs:1492
+msgid "Create the project and open it in the editor right away (Enter)"
+msgstr "Создать проект и сразу открыть его в редакторе (Enter)"
+
+#: tools/piska-hub/src/ui.rs:1519
+msgid "“{title}” is ready"
+msgstr "«{title}» готов"
+
+#: tools/piska-hub/src/ui.rs:1524
+msgid "Open builds the game's editor program; the engine is already compiled in the workspace."
+msgstr "«Открыть» соберёт программу редактора игры; движок в рабочем пространстве уже скомпилирован."
+
+#: tools/piska-hub/src/ui.rs:1526
+msgid "The first Open compiles the engine for this project: expect 10–15 minutes."
+msgstr "При первом открытии для этого проекта компилируется движок: это займёт 10–15 минут."
+
+#: tools/piska-hub/src/ui.rs:1535
+msgid "Open Now"
+msgstr "Открыть сейчас"
+
+#: tools/piska-hub/src/ui.rs:1557
+msgid "Complete games made with the engine, and the API guides they were written from."
+msgstr "Законченные игры на этом движке и руководства по API, по которым они написаны."
+
+#: tools/piska-hub/src/ui.rs:1588
+msgid "      docs/api was not found in the engine checkout."
+msgstr "      В рабочей копии движка не найдена папка docs/api."
+
+#: tools/piska-hub/src/ui.rs:1617
+msgid "Open with the system's default app"
+msgstr "Открыть в приложении по умолчанию"
+
+#: tools/piska-hub/src/ui.rs:1674
+msgid "Show games/{} in the file manager"
+msgstr "Показать games/{} в файловом менеджере"
+
+#: tools/piska-hub/src/ui.rs:1695
+msgid "Interface scale and accent are shared with the editor's Preferences."
+msgstr "Масштаб интерфейса и акцентный цвет общие с настройками редактора."
+
+#: tools/piska-hub/src/ui.rs:1704
+msgid "Default project location"
+msgstr "Расположение проектов по умолчанию"
+
+#: tools/piska-hub/src/ui.rs:1704
+msgid "New Project starts here."
+msgstr "Здесь по умолчанию создаётся «Новый проект»."
+
+#: tools/piska-hub/src/ui.rs:1715
+msgid "Back to the engine's games/ folder"
+msgstr "Вернуть папку games/ движка"
+
+#: tools/piska-hub/src/ui.rs:1720
+msgid "After opening a project"
+msgstr "После открытия проекта"
+
+#: tools/piska-hub/src/ui.rs:1720
+msgid "Hidden, the hub comes back when the editor closes."
+msgstr "Хаб скрывается и возвращается после закрытия редактора."
+
+#: tools/piska-hub/src/ui.rs:1721
+msgid "Close the hub"
+msgstr "Закрыть хаб"
+
+#: tools/piska-hub/src/ui.rs:1721
+msgid "Close the window; the process exits with the editor"
+msgstr "Закрыть окно; процесс завершится вместе с редактором"
+
+#: tools/piska-hub/src/ui.rs:1721
+msgid "Hide and come back when the editor closes"
+msgstr "Скрыть и вернуться после закрытия редактора"
+
+#: tools/piska-hub/src/ui.rs:1721
+msgid "Hide the hub"
+msgstr "Скрыть хаб"
+
+#: tools/piska-hub/src/ui.rs:1726
+msgid "Also used by the editor."
+msgstr "Действует и в редакторе."
+
+#: tools/piska-hub/src/ui.rs:1726
+msgid "Interface scale"
+msgstr "Масштаб интерфейса"
+
+#: tools/piska-hub/src/ui.rs:1733
+msgid "Selection, focus and main buttons. Also used by the editor."
+msgstr "Выделение, фокус и основные кнопки. Действует и в редакторе."
+
+#: tools/piska-hub/src/ui.rs:1750
+msgid "Games from games/ that you removed from the list."
+msgstr "Игры из games/, которые вы убрали из списка."
+
+#: tools/piska-hub/src/ui.rs:1750
+msgid "Removed engine games"
+msgstr "Убранные игры движка"
+
+#: tools/piska-hub/src/ui.rs:1758
+msgid "Project list file"
+msgstr "Файл списка проектов"
+
+#: tools/piska-hub/src/ui.rs:1758
+msgid "Projects, pins and times; RON, safe to edit while the hub is closed."
+msgstr "Проекты, закрепления и время открытия; формат RON, можно править, пока хаб закрыт."
+
+#: tools/piska-hub/src/ui.rs:1759
+msgid "no config directory (set PISKA_HUB_CONFIG_DIR)"
+msgstr "нет папки конфигурации (задайте PISKA_HUB_CONFIG_DIR)"
+
+#: tools/piska-hub/src/ui.rs:1791
+msgid "Locate “{}”"
+msgstr "Указать папку «{}»"
+
+#: tools/piska-hub/src/ui.rs:1792
+msgid "Add Existing Project"
+msgstr "Добавить существующий проект"
+
+#: tools/piska-hub/src/ui.rs:1795
+msgid "Choose the game folder: the one with Cargo.toml, src/lib.rs and an `engine` dependency."
+msgstr "Выберите папку игры — ту, где есть Cargo.toml, src/lib.rs и зависимость `engine`."
+
+#: tools/piska-hub/src/ui.rs:1805
+msgid "no editor program — Open will explain"
+msgstr "нет программы редактора — «Открыть» объяснит почему"
+
+#: tools/piska-hub/src/ui.rs:1806
+msgid "“{}” — {}, {editor}."
+msgstr "«{}» — {}, {editor}."
+
+#: tools/piska-hub/src/ui.rs:1809
+msgid "Choose one of the crates below (marked with a cube)."
+msgstr "Выберите один из крейтов ниже (они отмечены кубиком)."
+
+#: tools/piska-hub/src/ui.rs:1813
+msgid "Add Project"
+msgstr "Добавить проект"
+
+#: tools/piska-hub/src/ui.rs:1813
+msgid "Use This Folder"
+msgstr "Выбрать эту папку"
+
+#: tools/piska-hub/src/ui.rs:1827
+msgid "Choose a Folder"
+msgstr "Выбор папки"
+
+#: tools/piska-hub/src/ui.rs:1828
+msgid "New projects are created inside this folder."
+msgstr "Новые проекты создаются в этой папке."
+
+#: tools/piska-hub/src/ui.rs:1832
+msgid "Select Folder"
+msgstr "Выбрать папку"
+
+#: tools/piska-hub/src/ui.rs:1842
+msgid "Delete “{title}” from disk?"
+msgstr "Удалить «{title}» с диска?"
+
+#: tools/piska-hub/src/ui.rs:1845
+msgid "This folder and everything in it is deleted permanently. This cannot be undone:"
+msgstr "Эта папка и всё её содержимое будут удалены навсегда. Отменить это нельзя:"
+
+#: tools/piska-hub/src/ui.rs:1865
+msgid "Export “{title}”"
+msgstr "Экспорт «{title}»"
+
+#: tools/piska-hub/src/ui.rs:1867
+msgid "WebGPU / WebGL2 in the browser"
+msgstr "WebGPU / WebGL2 в браузере"
+
+#: tools/piska-hub/src/ui.rs:1869
+msgid "A .exe with the assets next to it"
+msgstr "Файл .exe и ассеты рядом с ним"
+
+#: tools/piska-hub/src/ui.rs:1874
+msgid "APK; needs the SDK, NDK, Java and cargo-ndk"
+msgstr "APK; нужны SDK, NDK, Java и cargo-ndk"
+
+#: tools/piska-hub/src/ui.rs:1883
+msgid "Faster to build"
+msgstr "Собирается быстрее"
+
+#: tools/piska-hub/src/ui.rs:1883
+msgid "Optimized, smaller"
+msgstr "Оптимизированная, меньше по размеру"
+
+#: tools/piska-hub/src/ui.rs:1888
+msgid "Runs `cargo run -p piska-export -- {platform} --game {folder}{}`. The result goes to dist/{folder}/{platform}/. Same as File → Build… in the editor (docs/api/export.md)."
+msgstr "Выполняет `cargo run -p piska-export -- {platform} --game {folder}{}`. Результат сохраняется в dist/{folder}/{platform}/. То же, что «Файл → Собрать…» в редакторе (docs/api/export.md)."
+
+#: tools/piska-hub/src/ui.rs:1951
+msgid "Running"
+msgstr "Запущен"
+
+#: tools/piska-hub/src/ui.rs:1963
+msgid "Standalone"
+msgstr "Отдельный"
+
+#: tools/piska-hub/src/ui.rs:1966
+msgid "No editor"
+msgstr "Без редактора"
+
+#: tools/piska-hub/src/ui.rs:1969
+msgid "Missing"
+msgstr "Не найден"
+
+#: tools/piska-hub/src/ui.rs:1970
+msgid "Not a Piska project"
+msgstr "Не проект Piska"
+
+#: tools/piska-hub/src/ui.rs:1980
+msgid "Already open in the editor"
+msgstr "Уже открыт в редакторе"
+
+#: tools/piska-hub/src/ui.rs:1985
+msgid "Open in Editor"
+msgstr "Открыть в редакторе"
+
+#: tools/piska-hub/src/ui.rs:1991
+msgid "There is no previous build of the editor yet"
+msgstr "Предыдущей сборки редактора ещё нет"
+
+#: tools/piska-hub/src/ui.rs:1996
+msgid "Rebuild and Open"
+msgstr "Пересобрать и открыть"
+
+#: tools/piska-hub/src/ui.rs:2001
+msgid "No game program (src/main.rs)"
+msgstr "Нет программы игры (src/main.rs)"
+
+#: tools/piska-hub/src/ui.rs:2004
+msgid "Rebuild and Play"
+msgstr "Пересобрать и запустить"
+
+#: tools/piska-hub/src/ui.rs:2010
+msgid "piska-export builds games from the engine's games/ folder"
+msgstr "piska-export собирает игры только из папки games/ движка"
+
+#: tools/piska-hub/src/ui.rs:2016
+msgid "The folder does not exist"
+msgstr "Папка не существует"
+
+#: tools/piska-hub/src/ui.rs:2019
+msgid "Pin to Top"
+msgstr "Закрепить вверху"
+
+#: tools/piska-hub/src/ui.rs:2026
+msgid "Remove from List"
+msgstr "Убрать из списка"
+
+#: tools/piska-hub/src/ui.rs:2029
+msgid "Delete from Disk…"
+msgstr "Удалить с диска…"
+
+#: tools/piska-hub/src/ui.rs:2031
+msgid "Only a valid project folder can be deleted from here"
+msgstr "Отсюда можно удалить только папку корректного проекта"
+
+#: tools/piska-hub/src/ui.rs:2161
+msgid "  No subfolders"
+msgstr "  Нет вложенных папок"
+
+#: tools/piska-hub/src/ui.rs:2190
+msgid "Click a folder to choose it, double-click to open it."
+msgstr "Щелчок по папке выбирает её, двойной щелчок — открывает."
+
+#: tools/piska-hub/src/ui.rs:2208
+msgid "No build needed"
+msgstr "Сборка не нужна"
+
+#: tools/piska-hub/src/ui.rs:2212
+msgid "Built {}"
+msgstr "Собран {}"
+
+#: tools/piska-hub/src/ui.rs:2215
+msgid "Needs build"
+msgstr "Нужна сборка"
+
+#: tools/piska-hub/src/ui.rs:2216
+msgid "Never built"
+msgstr "Ещё не собирался"
+
+#: tools/piska-hub/src/ui.rs:2246
+msgid "{package}  ·  {location}"
+msgstr "{package}  ·  {location}"
+
+msgid "3D models"
+msgstr "3D-модели"
+
+msgid "A .material asset with colour, textures, metallic and roughness; drop it onto an object."
+msgstr "Ассет .material с цветом, текстурами, металличностью и шероховатостью; перетащите его на объект."
+
+msgid "A component is a Rust struct with `component!`; the editor rebuilds and restarts itself with your code."
+msgstr "Компонент — это структура Rust с `component!`; редактор пересоберётся и перезапустится вместе с вашим кодом."
+
+msgid "Active: applies to every selected object"
+msgstr "Активность: применяется ко всем выделенным объектам"
+
+msgid "Adds a terrain to the scene, switches to 3D and picks the Raise brush: drag over the ground."
+msgstr "Добавляет ландшафт на сцену, включает 3D и выбирает кисть «Поднять»: проведите по земле."
+
+msgid "Build the game"
+msgstr "Собрать игру"
+
+msgid "C++ components are compiled into a plugin that reloads while the editor runs."
+msgstr "Компоненты C++ собираются в плагин, который перезагружается прямо в работающем редакторе."
+
+msgid "Create Terrain"
+msgstr "Создать ландшафт"
+
+msgid "Editor Manual"
+msgstr "Руководство по редактору"
+
+msgid "Export a web, Windows or Android build of this game from File → Build…."
+msgstr "Экспортируйте веб-, Windows- или Android-сборку игры через «Файл → Собрать…»."
+
+msgid "Getting Started"
+msgstr "Начало работы"
+
+msgid "Make a material"
+msgstr "Создать материал"
+
+msgid "Model an object"
+msgstr "Смоделировать объект"
+
+msgid "Model Editor (Piska Modeler)"
+msgstr "Редактор моделей (Piska Modeler)"
+
+msgid "New Material"
+msgstr "Новый материал"
+
+msgid "New Model…"
+msgstr "Создать модель…"
+
+msgid "Only the components that every selected object has are shown."
+msgstr "Показаны только компоненты, которые есть у всех выделенных объектов."
+
+msgid "Open Build…"
+msgstr "Открыть сборку…"
+
+msgid "or point the PISKA_MODELER environment variable at the program, then try again."
+msgstr "или укажите путь к программе в переменной окружения PISKA_MODELER и повторите попытку."
+
+msgid "Piska Modeler builds low-poly models from boxes and paints them. Models live in Assets as .pmodel."
+msgstr "Piska Modeler собирает низкополигональные модели из кубоидов и раскрашивает их. Модели хранятся в Assets как .pmodel."
+
+msgid "Piska Modeler is not installed here"
+msgstr "Piska Modeler здесь не установлен"
+
+msgid "Scenario Documentation"
+msgstr "Документация по Scenario"
+
+msgid "Scenario is the engine's small language for cutscenes and level logic: no build, saving restarts it."
+msgstr "Scenario — небольшой язык движка для роликов и логики уровней: сборка не нужна, сохранение перезапускает скрипт."
+
+msgid "Scenario language"
+msgstr "Язык Scenario"
+
+msgid "Sculpt a terrain"
+msgstr "Вылепить ландшафт"
+
+msgid "The selected objects have different values here"
+msgstr "У выделенных объектов здесь разные значения"
+
+msgid "Write a Scenario script"
+msgstr "Написать скрипт Scenario"
+
+msgid "Write a script in C++"
+msgstr "Написать скрипт на C++"
+
+msgid "Write a script in Rust"
+msgstr "Написать скрипт на Rust"
+
+msgid "—  (mixed: set all like the active object)"
+msgstr "—  (разные: задать всем как у активного объекта)"
+
+msgid "Add Cone"
+msgstr "Добавить конус"
+
+msgid "Add Cylinder"
+msgstr "Добавить цилиндр"
+
+msgid "Add Plane"
+msgstr "Добавить плоскость"
+
+msgid "Add Sphere"
+msgstr "Добавить сферу"
+
+msgid "cannot read `{path}`: {error}"
+msgstr "не удалось прочитать `{path}`: {error}"
+
+msgid "cannot write `{path}`: {error}"
+msgstr "не удалось записать `{path}`: {error}"
+
+msgid "Copied {n} item"
+msgid_plural "Copied {n} items"
+msgstr[0] "Скопирован {n} элемент"
+msgstr[1] "Скопировано {n} элемента"
+msgstr[2] "Скопировано {n} элементов"
+
+msgid "Created {n} mirrored twin: edits on either side are repeated"
+msgid_plural "Created {n} mirrored twins: edits on either side are repeated"
+msgstr[0] "Создан {n} зеркальный двойник: правки с любой стороны повторяются"
+msgstr[1] "Создано {n} зеркальных двойника: правки с любой стороны повторяются"
+msgstr[2] "Создано {n} зеркальных двойников: правки с любой стороны повторяются"
+
+msgctxt "menu"
+msgid "File"
+msgstr "Файл"
+
+msgctxt "menu"
+msgid "Edit"
+msgstr "Правка"
+
+msgctxt "menu"
+msgid "Model"
+msgstr "Модель"
+
+msgctxt "menu"
+msgid "Texture"
+msgstr "Текстура"
+
+msgctxt "menu"
+msgid "View"
+msgstr "Вид"
+
+msgctxt "mode"
+msgid "Edit"
+msgstr "Форма"
+
+msgctxt "mode"
+msgid "Paint"
+msgstr "Рисование"
+
+msgctxt "mode"
+msgid "EDIT"
+msgstr "ФОРМА"
+
+msgctxt "mode"
+msgid "PAINT"
+msgstr "РИСОВАНИЕ"
+
+msgctxt "snap"
+msgid "Off"
+msgstr "Выкл."
+
+msgctxt "face"
+msgid "North"
+msgstr "Север"
+
+msgctxt "face"
+msgid "East"
+msgstr "Восток"
+
+msgctxt "face"
+msgid "South"
+msgstr "Юг"
+
+msgctxt "face"
+msgid "West"
+msgstr "Запад"
+
+msgctxt "face"
+msgid "Up"
+msgstr "Верх"
+
+msgctxt "face"
+msgid "Down"
+msgstr "Низ"
+
+msgid "Exported {path}"
+msgstr "Экспортировано: {path}"
+
+msgid "Exported {path} with .mtl and textures"
+msgstr "Экспортировано: {path} (вместе с .mtl и текстурами)"
+
+msgid "Opened {path}"
+msgstr "Открыто: {path}"
+
+msgid "Saved {path}"
+msgstr "Сохранено: {path}"
+
+msgid "Undo {label}"
+msgstr "Отменить: {label}"
+
+msgid "Redo {label}"
+msgstr "Повторить: {label}"
+
+msgid "Undone {label}"
+msgstr "Отменено: {label}"
+
+msgid "Redone {label}"
+msgstr "Повторено: {label}"
+
+msgid "Relative paths start at {path}"
+msgstr "Относительные пути отсчитываются от {path}"
+
+msgid "snap off"
+msgstr "привязка выкл."
+
+msgid "snap {step} px"
+msgstr "привязка {step} px"
+
+msgid "Type the size as WIDTHxHEIGHT, up to {max}x{max}"
+msgstr "Введите размер как ШИРИНАxВЫСОТА, не больше {max}x{max}"
+
+msgid "{axis} {mode}"
+msgstr "{axis} {mode}"
+
+msgid "{count} selected"
+msgstr "Выделено: {count}"
+
+msgid "{count} selected — editing `{name}`"
+msgstr "Выделено: {count} — правка `{name}`"
+
+msgid "{elements} · {groups}"
+msgstr "{elements} · {groups}"
+
+msgid "{face} face"
+msgstr "Грань: {face}"
+
+msgid "{face} face — click to select for UV and colour"
+msgstr "Грань «{face}»: щёлкните, чтобы выбрать для UV и цвета"
+
+msgid "{field} {axis}: drag or type"
+msgstr "{field}, {axis}: перетащите или введите значение"
+
+msgid "{hex}  ·  right click removes"
+msgstr "{hex}  ·  ПКМ — удалить"
+
+msgid "{name} · group · {count} children"
+msgstr "{name} · группа · дочерних: {count}"
+
+msgid "{n} element"
+msgid_plural "{n} elements"
+msgstr[0] "{n} элемент"
+msgstr[1] "{n} элемента"
+msgstr[2] "{n} элементов"
+
+msgid "{n} group"
+msgid_plural "{n} groups"
+msgstr[0] "{n} группа"
+msgstr[1] "{n} группы"
+msgstr[2] "{n} групп"
+
+msgid "{px} px = 1 m"
+msgstr "{px} px = 1 м"
+
+msgid "{triangles} tris"
+msgstr "{triangles} тр."
+
+msgid "Compiling shaders and drawing the scene…"
+msgstr "Компиляция шейдеров и отрисовка сцены…"
+
+msgid "Flat XY view or perspective view with a free camera"
+msgstr "Плоский вид XY или перспективный вид со свободной камерой"
+
+msgid "Gizmo axes: world (Global) or the object's own (Local)"
+msgstr "Оси гизмо: мировые или собственные оси объекта (локальные)"
+
+msgid "Global"
+msgstr "Мировые"
+
+msgid "Local"
+msgstr "Локальные"
+
+msgid "Opening “{project}”"
+msgstr "Открытие «{project}»"
+
+msgid "Piska Engine"
+msgstr "Piska Engine"
+
+msgid "Rendering asset previews…"
+msgstr "Отрисовка превью ассетов…"
+
+msgid "Where the gizmo rotates and scales the selection: the active object's pivot or the centre of the selection"
+msgstr "Вокруг чего гизмо поворачивает и масштабирует выделение: опорной точки активного объекта или центра выделения"

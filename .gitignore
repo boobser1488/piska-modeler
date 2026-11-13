@@ -1,0 +1,5 @@
+/target
+# Временный файл атомарной записи .pmodel
+*.pmodel.tmp
+__pycache__/
+*.pyc

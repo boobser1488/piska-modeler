@@ -1,0 +1,10 @@
+[package]
+name = "engine-build"
+description = "Помощник build.rs: значок приложения в exe на Windows (ресурс RT_GROUP_ICON без rc.exe)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+image.workspace = true
+thiserror.workspace = true

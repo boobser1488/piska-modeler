@@ -1,0 +1,29 @@
+[package]
+name = "engine-modeler"
+description = "Piska Modeler: низкополигональные модели из кубоидов с пиксельной текстурой — документ, операции, UV, рисование, формат .pmodel, экспорт в glTF / OBJ; интерфейс на egui (фича `ui`)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[features]
+default = []
+# Интерфейс редактора моделей (egui): окно приложения `tools/piska-modeler` и панель Modeler редактора.
+ui = ["dep:egui", "dep:engine-i18n"]
+# Вид модели на видеокарте (wgpu), его показывает egui: программа `piska-modeler`.
+gpu = ["ui", "dep:wgpu", "dep:egui-wgpu"]
+
+[dependencies]
+glam.workspace = true
+serde.workspace = true
+ron.workspace = true
+thiserror.workspace = true
+log.workspace = true
+image.workspace = true
+serde_json = "1"
+# Импорт `.glb` / `.gltf` как опорного меша. Те же фичи, что у engine-assets, — без лишней пересборки.
+gltf = { workspace = true, features = ["names"] }
+egui = { workspace = true, optional = true }
+# Перевод интерфейса (tr, trf!, trn!): крейт без зависимостей, одним файлом + каталог ru.po.
+engine-i18n = { workspace = true, optional = true }
+wgpu = { workspace = true, optional = true }
+egui-wgpu = { workspace = true, optional = true }

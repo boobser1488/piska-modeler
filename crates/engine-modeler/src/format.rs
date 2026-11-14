@@ -34,8 +34,10 @@ use crate::ModelError;
 
 /// Метка формата в начале файла.
 pub const FORMAT: &str = "piska-model";
-/// Версия, которую пишет эта программа.
-pub const VERSION: u32 = 1;
+/// Наибольшая версия, которую читает и пишет эта программа. Версия 2 — модель с
+/// элементами-мешами (`Shape::Mesh`); модель без них пишется версией 1, чтобы её
+/// открывали и прежние выпуски.
+pub const VERSION: u32 = 2;
 /// Расширение файла.
 pub const EXTENSION: &str = "pmodel";
 
@@ -88,7 +90,7 @@ pub fn read_baked(text: &str) -> Result<BakedSection, ModelError> {
 pub fn to_string(doc: &Document) -> String {
     let file = ModelFile {
         format: FORMAT.to_string(),
-        version: VERSION,
+        version: if doc.elements().any(|(_, e)| e.mesh.is_some()) { VERSION } else { 1 },
         model: doc.clone(),
         baked: Some(BakedSection::from_baked(&crate::bake(doc))),
     };

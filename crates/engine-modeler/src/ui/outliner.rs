@@ -41,12 +41,12 @@ impl OutlinerState {
         let p = Palette::from_ctx(ui.ctx());
         let mut command = None;
         if session.doc.nodes.is_empty() {
-            ui.add_space(10.0);
+            ui.add_space(super::kit::SP_4);
             ui.vertical_centered(|ui| {
                 ui.label(egui::RichText::new(tr("No elements yet")).color(p.text_muted));
                 ui.label(egui::RichText::new(tr("Add a cuboid from the toolbar")).size(11.5).color(p.text_faint));
             });
-            ui.add_space(10.0);
+            ui.add_space(super::kit::SP_4);
             return None;
         }
         // Строки по порядку дерева.
@@ -66,7 +66,7 @@ impl OutlinerState {
         let modifiers = ui.input(|i| i.modifiers);
         let mut drop: Option<Drop> = None;
         let mut rects = Vec::new();
-        ui.add_space(2.0);
+        ui.add_space(super::kit::SP_1);
         for (index, (id, depth)) in rows.iter().enumerate() {
             let Some(node) = session.doc.node(*id).cloned() else { continue };
             let width = ui.available_width();
@@ -108,6 +108,7 @@ impl OutlinerState {
                     Shape::Cylinder { .. } => Icon::Cylinder,
                     Shape::Cone { .. } => Icon::Cone,
                     Shape::Sphere { .. } => Icon::Sphere,
+                    Shape::Mesh => Icon::Grid,
                 },
             };
             let text_color = if hidden { p.text_faint } else if selected { Color32::WHITE } else { p.text };
@@ -124,7 +125,9 @@ impl OutlinerState {
             if renaming {
                 let name_rect = Rect::from_min_max(pos2(name_x, rect.min.y + 1.0), pos2(rect.max.x - 48.0, rect.max.y - 1.0));
                 let (_, text, focus) = self.renaming.as_mut().expect("checked");
-                let edit = ui.put(name_rect, egui::TextEdit::singleline(text).font(style::body()));
+                let edit = ui
+                    .allocate_new_ui(egui::UiBuilder::new().max_rect(name_rect), |ui| super::controls::text_field(ui, text, "", name_rect.width()))
+                    .inner;
                 if *focus {
                     edit.request_focus();
                     *focus = false;
@@ -182,36 +185,36 @@ impl OutlinerState {
                 }
             }
             response.context_menu(|ui| {
-                if ui.button(tr("Rename")).clicked() {
+                if super::controls::menu_item(ui, &tr("Rename"), "", true).clicked() {
                     self.renaming = Some((*id, node.name.clone(), true));
                     ui.close_menu();
                 }
-                if ui.button(tr("Duplicate")).clicked() {
+                if super::controls::menu_item(ui, &tr("Duplicate"), "", true).clicked() {
                     if !session.is_selected(*id) {
                         session.select(Some(*id));
                     }
                     command = Some(Command::Duplicate);
                     ui.close_menu();
                 }
-                if ui.button(tr("Group")).clicked() {
+                if super::controls::menu_item(ui, &tr("Group"), "", true).clicked() {
                     if !session.is_selected(*id) {
                         session.select(Some(*id));
                     }
                     command = Some(Command::GroupSelection);
                     ui.close_menu();
                 }
-                if node.element().is_some_and(|e| e.twin.is_none()) && ui.button(tr("Mirror X")).clicked() {
+                if node.element().is_some_and(|e| e.twin.is_none()) && super::controls::menu_item(ui, &tr("Mirror X"), "", true).clicked() {
                     session.select(Some(*id));
                     command = Some(Command::MirrorX);
                     ui.close_menu();
                 }
-                if node.element().is_some_and(|e| e.twin.is_some()) && ui.button(tr("Unlink Twin")).clicked() {
+                if node.element().is_some_and(|e| e.twin.is_some()) && super::controls::menu_item(ui, &tr("Unlink Twin"), "", true).clicked() {
                     session.select(Some(*id));
                     command = Some(Command::UnlinkTwin);
                     ui.close_menu();
                 }
                 ui.separator();
-                if ui.button(tr("Delete")).clicked() {
+                if super::controls::menu_item(ui, &tr("Delete"), "", true).clicked() {
                     if !session.is_selected(*id) {
                         session.select(Some(*id));
                     }

@@ -214,6 +214,9 @@ pub enum Shape {
     Cone { segments: u32 },
     /// Низкополигональный шар: `segments` по долготе, `rings` по широте.
     Sphere { segments: u32, rings: u32 },
+    /// Свободный меш (импорт `.obj`, `.glb`, `.ply`, `.stl`, меши Blockbench): вершины и
+    /// грани в [`Element::mesh`], вписанные в коробку элемента.
+    Mesh,
 }
 
 impl Shape {
@@ -224,6 +227,7 @@ impl Shape {
             Shape::Cylinder { .. } => "Cylinder",
             Shape::Cone { .. } => "Cone",
             Shape::Sphere { .. } => "Sphere",
+            Shape::Mesh => "Mesh",
         }
     }
 
@@ -233,7 +237,8 @@ impl Shape {
             Shape::Cuboid => &FaceDir::ALL,
             Shape::Plane => &[FaceDir::Up, FaceDir::Down],
             Shape::Cylinder { .. } | Shape::Cone { .. } => &[FaceDir::North, FaceDir::Up, FaceDir::Down],
-            Shape::Sphere { .. } => &[FaceDir::North],
+            // У меша одна «сторона» — она хранит оттенок и свечение всех его граней.
+            Shape::Sphere { .. } | Shape::Mesh => &[FaceDir::North],
         }
     }
 
@@ -274,6 +279,38 @@ pub struct Element {
     /// Отражённый по X близнец: правка одного повторяется на другом.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub twin: Option<NodeId>,
+    /// Вершины и грани формы [`Shape::Mesh`] (у остальных форм — `None`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub mesh: Option<MeshShape>,
+}
+
+/// Грань меша: вершины по кругу против часовой стрелки, если смотреть снаружи, UV углов
+/// в текселях текстуры `texture`.
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
+pub struct MeshFace {
+    pub vertices: Vec<u32>,
+    pub uvs: Vec<[f32; 2]>,
+    pub texture: u32,
+}
+
+/// Форма меша. Вершины — в долях коробки элемента: точка модели = `from + v · size`
+/// (по оси нулевого размера — `from`). Поэтому перенос, размер, поворот, отражение и
+/// близнецы работают с мешем так же, как с кубоидом.
+#[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
+pub struct MeshShape {
+    pub vertices: Vec<[f32; 3]>,
+    pub faces: Vec<MeshFace>,
+}
+
+impl MeshShape {
+    /// Есть ли у граней UV (хоть одна точка не в нуле) — можно ли рисовать по мешу.
+    pub fn has_uvs(&self) -> bool {
+        self.faces.iter().any(|f| f.uvs.iter().any(|uv| *uv != [0.0, 0.0]))
+    }
+
+    pub fn triangle_count(&self) -> usize {
+        self.faces.iter().map(|f| f.vertices.len().saturating_sub(2)).sum()
+    }
 }
 
 impl Element {
@@ -298,6 +335,47 @@ impl Element {
             box_uv: true,
             uv_origin: [0, 0],
             twin: None,
+            mesh: None,
+        }
+    }
+
+    /// Элемент-меш из вершин в единицах модели и граней (против часовой стрелки снаружи,
+    /// UV в текселях). Коробка — границы вершин, точка вращения — её центр.
+    pub fn mesh(points: &[Vec3], faces: Vec<MeshFace>) -> Self {
+        let mut element = Self::new(Shape::Mesh, Vec3::ZERO, Vec3::ZERO);
+        element.box_uv = false;
+        element.mesh = Some(MeshShape { vertices: Vec::new(), faces });
+        element.set_mesh_points(points);
+        element.pivot = element.center();
+        element
+    }
+
+    /// Вершины меша в единицах модели (до поворотов); не меш — пусто.
+    pub fn mesh_points(&self) -> Vec<Vec3> {
+        let Some(mesh) = &self.mesh else { return Vec::new() };
+        mesh.vertices.iter().map(|v| self.from + Vec3::from_array(*v) * self.size).collect()
+    }
+
+    /// Задать вершины меша в единицах модели: коробка элемента становится их границами
+    /// (точка вращения и поворот не меняются).
+    pub fn set_mesh_points(&mut self, points: &[Vec3]) {
+        let (min, max) = points
+            .iter()
+            .fold((Vec3::splat(f32::INFINITY), Vec3::splat(f32::NEG_INFINITY)), |(lo, hi), p| (lo.min(*p), hi.max(*p)));
+        let (min, max) = if points.is_empty() { (self.from, self.from) } else { (min, max) };
+        self.from = min;
+        self.size = max - min;
+        let size = self.size;
+        let normalized = points
+            .iter()
+            .map(|p| {
+                let d = *p - min;
+                let k = |a: f32, s: f32| if s > 1e-9 { a / s } else { 0.0 };
+                [k(d.x, size.x), k(d.y, size.y), k(d.z, size.z)]
+            })
+            .collect();
+        if let Some(mesh) = &mut self.mesh {
+            mesh.vertices = normalized;
         }
     }
 

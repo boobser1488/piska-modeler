@@ -29,7 +29,9 @@ struct MeshIn {
 
 struct MeshOut {
     @builtin(position) position: vec4<f32>,
-    @location(0) uv: vec2<f32>,
+    // centroid: со сглаживанием (MSAA) пиксель на ребре грани берёт UV внутри грани, а не
+    // продолжает их за её край, где в атласе лежит уже чужая грань (цветные точки на швах).
+    @location(0) @interpolate(perspective, centroid) uv: vec2<f32>,
     @location(1) tint: vec4<f32>,
     @location(2) shade: vec4<f32>,
 };

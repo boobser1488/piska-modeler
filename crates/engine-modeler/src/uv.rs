@@ -43,6 +43,8 @@ pub fn footprint(element: &Element, density: f32) -> [u32; 2] {
         Shape::Plane => [2 * w, d],
         Shape::Cylinder { .. } | Shape::Cone { .. } => [(2 * w).max(perimeter(w, d)), d + h],
         Shape::Sphere { .. } => [perimeter(w, d), (std::f32::consts::FRAC_PI_2 * h as f32).ceil() as u32],
+        // UV меша — свои у каждой грани (Generate UVs раскладывает их отдельно).
+        Shape::Mesh => [1, 1],
     };
     [size[0].max(1), size[1].max(1)]
 }
@@ -77,6 +79,7 @@ pub fn layout_box(element: &mut Element, origin: [u32; 2], density: f32) {
             let [fw, fh] = footprint(element, density).map(|v| v as f32);
             vec![(FaceDir::North, UvRect::new(ox, oy, fw, fh))]
         }
+        Shape::Mesh => Vec::new(),
     };
     for (dir, rect) in rects {
         element.face_mut(dir).uv = rect;
@@ -101,13 +104,33 @@ pub fn element_texture(element: &Element) -> u32 {
 
 /// Места, занятые развёртками коробкой на текстуре `texture`, кроме узлов `except`.
 pub fn occupied(doc: &Document, texture: u32, except: &[NodeId]) -> Vec<Rect> {
-    doc.elements()
+    let mut out: Vec<Rect> = doc
+        .elements()
         .filter(|(id, e)| e.box_uv && element_texture(e) == texture && !except.contains(id))
         .map(|(_, e)| {
             let [w, h] = footprint(e, doc.texel_density);
             [e.uv_origin[0], e.uv_origin[1], w, h]
         })
-        .collect()
+        .collect();
+    // Грани мешей на этой текстуре — их границы UV.
+    for (id, e) in doc.elements() {
+        let Some(mesh) = e.mesh.as_ref().filter(|_| !except.contains(&id)) else { continue };
+        for face in mesh.faces.iter().filter(|f| f.texture == texture) {
+            let (mut lo, mut hi) = ([f32::INFINITY; 2], [f32::NEG_INFINITY; 2]);
+            for uv in &face.uvs {
+                for k in 0..2 {
+                    lo[k] = lo[k].min(uv[k]);
+                    hi[k] = hi[k].max(uv[k]);
+                }
+            }
+            if lo[0] <= hi[0] && hi[0] > 0.0 {
+                let (x0, y0) = (lo[0].floor().max(0.0) as u32, lo[1].floor().max(0.0) as u32);
+                let (x1, y1) = (hi[0].ceil().max(0.0) as u32, hi[1].ceil().max(0.0) as u32);
+                out.push([x0, y0, (x1 - x0).max(1), (y1 - y0).max(1)]);
+            }
+        }
+    }
+    out
 }
 
 /// Первое свободное место `size` на холсте `canvas` (построчно сверху вниз).

@@ -33,6 +33,9 @@ pub mod format;
 pub mod geometry;
 pub mod image;
 pub mod import;
+pub mod interchange;
+pub mod mesh_edit;
+pub mod mesh_ops;
 pub mod ops;
 pub mod paint;
 pub mod raster;
@@ -48,7 +51,7 @@ pub mod gpu;
 
 pub use bake::{bake, BakedModel};
 pub use camera::{Camera, Hit, Ray, ViewPreset};
-pub use doc::{Document, Element, Face, FaceDir, Group, Node, NodeId, NodeKind, ReferenceMesh, Shape, Texture, UvRect};
+pub use doc::{Document, Element, Face, FaceDir, Group, MeshFace, MeshShape, Node, NodeId, NodeKind, ReferenceMesh, Shape, Texture, UvRect};
 pub use geometry::{build_mesh, BuildOptions, BuiltMesh};
 pub use image::{Image, Rgba};
 pub use session::Session;

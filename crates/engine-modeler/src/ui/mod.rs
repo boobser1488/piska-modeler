@@ -8,7 +8,9 @@
 //! так ими пользуются и меню, и тесты.
 
 mod icons;
+pub mod controls;
 pub mod kit;
+pub mod metrics;
 mod outliner;
 mod panels;
 mod style;
@@ -31,6 +33,7 @@ use crate::session::{clipboard_has_content, Session};
 use crate::{export, format, import, uv, ModelError};
 
 pub use icons::Icon;
+pub use viewport::{LastKind, LastOp, MeshCmd};
 use style::Palette;
 
 /// Режим окна: правка формы или рисование по текстуре (Tab).
@@ -283,7 +286,13 @@ impl Default for ViewSettings {
 #[derive(Clone, Debug, PartialEq)]
 pub enum Command {
     New,
+    /// File ▸ Open… (системное окно, без него — своё окно пути).
+    Open,
     Save,
+    /// File ▸ Save As…
+    SaveAs,
+    /// Спросить путь (импорт, экспорт, размер текстуры).
+    Ask(PromptKind),
     /// Сохранить в этот файл.
     SaveTo(PathBuf),
     /// Открыть файл.
@@ -294,6 +303,20 @@ pub enum Command {
     ExportTexture(PathBuf),
     ImportTexture(PathBuf),
     ImportReference(PathBuf),
+    /// Добавить меш из файла редактируемыми элементами (.obj, .glb, .ply, .stl, .bbmodel…).
+    ImportMesh(PathBuf),
+    /// Записать документ в `.bbmodel` (Blockbench).
+    ExportBbmodel(PathBuf),
+    /// Выделенный меш → кубоиды (если он из осевых коробок).
+    ConvertToCubes,
+    /// Развёртка граней выделенного меша (по нему можно рисовать).
+    GenerateUvs,
+    /// Слить совпадающие вершины выделенного меша.
+    MergeVertices,
+    /// Режим правки вершин и граней выделенного меша (вкл/выкл).
+    EditMeshVertices,
+    /// Операция над мешем (меню Mesh, клавиши режима V).
+    Mesh(viewport::MeshCmd),
     Undo,
     Redo,
     Copy,
@@ -401,9 +424,10 @@ fn mtime(path: &Path) -> Option<SystemTime> {
     std::fs::metadata(path).and_then(|m| m.modified()).ok()
 }
 
-/// Окно ввода пути (открыть, сохранить как, экспорт, импорт).
+/// Окно ввода пути (открыть, сохранить как, экспорт, импорт): системное окно файлов или
+/// своё окно с полем пути.
 #[derive(Clone, Debug, PartialEq)]
-enum PromptKind {
+pub enum PromptKind {
     Open,
     SaveAs,
     ExportGlb,
@@ -411,6 +435,8 @@ enum PromptKind {
     ExportTexture,
     ImportTexture,
     ImportReference,
+    ImportMesh,
+    ExportBbmodel,
     ResizeTexture,
 }
 
@@ -419,6 +445,88 @@ struct Prompt {
     text: String,
     error: Option<String>,
     focus: bool,
+}
+
+/// Форматы опорного меша File ▸ Import Reference: (имя фильтра, расширения). Новый формат
+/// импорта — строка здесь (и ветка в `import.rs`); имя — ключ перевода.
+// i18n-keys: "Wavefront OBJ" "glTF"
+pub const REFERENCE_FORMATS: &[(&str, &[&str])] = &[("Wavefront OBJ", &["obj"]), ("glTF", &["glb", "gltf"])];
+
+/// Всё, что открывает File ▸ Open: свои модели и чужие форматы (они открываются
+/// редактируемым документом без пути — Save спросит новый `.pmodel`).
+fn open_extensions() -> Vec<&'static str> {
+    let mut list = vec!["pmodel"];
+    list.extend(crate::interchange::OPEN_EXTENSIONS);
+    list
+}
+
+/// Все расширения опорных мешей.
+fn reference_extensions() -> Vec<&'static str> {
+    REFERENCE_FORMATS.iter().flat_map(|(_, ext)| ext.iter().copied()).collect()
+}
+
+impl PromptKind {
+    /// (заголовок, подсказка поля, кнопка).
+    fn labels(&self) -> (&'static str, &'static str, &'static str) {
+        match self {
+            PromptKind::Open => (n_("Open Model"), "path/to/model.pmodel", n_("Open")),
+            PromptKind::SaveAs => (n_("Save Model As"), "path/to/model.pmodel", n_("Save")),
+            PromptKind::ExportGlb => (n_("Export glTF Binary"), "model.glb", n_("Export")),
+            PromptKind::ExportObj => (n_("Export Wavefront OBJ"), "model.obj", n_("Export")),
+            PromptKind::ExportTexture => (n_("Export Texture"), "texture.png", n_("Export")),
+            PromptKind::ImportTexture => (n_("Import Texture"), "path/to/texture.png", n_("Import")),
+            PromptKind::ImportReference => (n_("Import Reference Mesh"), "path/to/mesh.obj or .glb", n_("Import")),
+            PromptKind::ImportMesh => (n_("Import Mesh"), "path/to/mesh.obj, .glb, .ply, .stl or .bbmodel", n_("Import")),
+            PromptKind::ExportBbmodel => (n_("Export Blockbench Model"), "model.bbmodel", n_("Export")),
+            PromptKind::ResizeTexture => (n_("Resize Texture"), "64x64", n_("Resize")),
+        }
+    }
+
+    /// Вопрос системному окну файлов (`None` — не файл: размер текстуры).
+    fn file_request(&self, folder: &Path, name: &str) -> Option<engine_build::file_dialog::Request> {
+        use engine_build::file_dialog::{Kind, Request};
+        let (title, _, _) = self.labels();
+        let all = tr("All files");
+        let request = |kind| Request::new(kind, tr(title)).folder(folder);
+        Some(match self {
+            PromptKind::Open => request(Kind::Open)
+                .filter(tr("Models"), &open_extensions())
+                .filter(tr("Piska model"), &["pmodel"])
+                .filter(tr("Blockbench model"), &["bbmodel"])
+                .filter(all, &[]),
+            PromptKind::ImportMesh => request(Kind::Open).filter(tr("Models"), crate::interchange::OPEN_EXTENSIONS).filter(all, &[]),
+            PromptKind::ExportBbmodel => request(Kind::Save).filter(tr("Blockbench model"), &["bbmodel"]).file_name(name),
+            PromptKind::SaveAs => request(Kind::Save).filter(tr("Piska model"), &["pmodel"]).file_name(name),
+            PromptKind::ExportGlb => request(Kind::Save).filter(tr("glTF Binary"), &["glb"]).file_name(name),
+            PromptKind::ExportObj => request(Kind::Save).filter(tr("Wavefront OBJ"), &["obj"]).file_name(name),
+            PromptKind::ExportTexture => request(Kind::Save).filter(tr("PNG image"), &["png"]).file_name(name),
+            PromptKind::ImportTexture => request(Kind::Open).filter(tr("PNG image"), &["png"]).filter(all, &[]),
+            PromptKind::ImportReference => {
+                let mut r = request(Kind::Open).filter(tr("Reference meshes"), &reference_extensions());
+                for (format, extensions) in REFERENCE_FORMATS {
+                    r = r.filter(tr(format), extensions);
+                }
+                r.filter(all, &[])
+            }
+            PromptKind::ResizeTexture => return None,
+        })
+    }
+
+    /// Команда для выбранного пути.
+    fn command(&self, path: PathBuf) -> Option<Command> {
+        Some(match self {
+            PromptKind::Open => Command::OpenFile(path),
+            PromptKind::SaveAs => Command::SaveTo(path),
+            PromptKind::ExportGlb => Command::ExportGlb(path),
+            PromptKind::ExportObj => Command::ExportObj(path),
+            PromptKind::ExportTexture => Command::ExportTexture(path),
+            PromptKind::ImportTexture => Command::ImportTexture(path),
+            PromptKind::ImportReference => Command::ImportReference(path),
+            PromptKind::ImportMesh => Command::ImportMesh(path),
+            PromptKind::ExportBbmodel => Command::ExportBbmodel(path),
+            PromptKind::ResizeTexture => return None,
+        })
+    }
 }
 
 /// Окно моделей целиком.
@@ -436,6 +544,8 @@ pub struct ModelerApp {
     open_sections: [bool; 5],
     status: Option<(String, f64, bool)>,
     prompt: Option<Prompt>,
+    /// Открытое системное окно «Открыть / Сохранить» и что делать с ответом.
+    file_dialog: Option<(PromptKind, engine_build::file_dialog::Dialog)>,
     saved: Vec<PathBuf>,
     /// Каталог для путей без каталога (Open…, экспорт нового документа).
     pub working_dir: PathBuf,
@@ -450,6 +560,10 @@ pub struct ModelerApp {
     time: f64,
     /// Через сколько секунд писать файл восстановления (0 — не писать).
     pub autosave_seconds: f64,
+    /// Последняя операция над мешем с числами (панель в углу вида).
+    last_op: Option<viewport::LastOp>,
+    /// Меню Shift+A открыто в этой точке.
+    add_menu_at: Option<egui::Pos2>,
 }
 
 impl Default for ModelerApp {
@@ -481,6 +595,7 @@ impl ModelerApp {
             open_sections: [true, true, true, true, false],
             status: None,
             prompt: None,
+            file_dialog: None,
             saved: Vec::new(),
             working_dir: std::env::current_dir().unwrap_or_default(),
             keyboard_focus: true,
@@ -489,6 +604,8 @@ impl ModelerApp {
             show_shortcuts: false,
             time: 0.0,
             autosave_seconds: 20.0,
+            last_op: None,
+            add_menu_at: None,
         }
     }
 
@@ -523,6 +640,65 @@ impl ModelerApp {
 
     pub fn session(&self) -> &Session {
         &self.tabs[self.active].session
+    }
+
+    /// Выделенный элемент-меш (первый выделенный), если он меш.
+    pub fn selected_mesh(&self) -> Option<NodeId> {
+        let id = self.session().primary()?;
+        (self.document().element(id)?.shape == crate::doc::Shape::Mesh).then_some(id)
+    }
+
+    /// Режим правки вершин: (элемент, выбранные вершины, выбранная грань).
+    pub fn mesh_edit_state(&self) -> Option<(NodeId, Vec<u32>, Option<usize>)> {
+        self.viewport.mesh_edit.as_ref().map(|m| (m.id, m.vertices.clone(), m.face))
+    }
+
+    /// File ▸ Import Mesh: меш из файла — редактируемыми элементами в этот документ
+    /// (`.bbmodel`, модель Minecraft, `.vox` открываются новым документом).
+    fn import_mesh(&mut self, path: &Path) {
+        let name = path.to_string_lossy().to_string();
+        if !crate::interchange::is_mesh_file(&name) {
+            // .bbmodel / модель Minecraft / .vox: в пустую модель (так её создаёт «Edit a Copy
+            // in Modeler» редактора) — прямо в неё, иначе — новой вкладкой.
+            if !self.document().nodes.is_empty() {
+                self.run(Command::OpenFile(path.to_path_buf()));
+                return;
+            }
+            match crate::interchange::open_file(path) {
+                Ok(opened) => {
+                    self.session_mut().edit("Import Model", |doc| {
+                        let name = doc.name.clone();
+                        *doc = opened.doc;
+                        doc.name = name;
+                    });
+                    self.frame_all();
+                    self.message(opened.summary);
+                }
+                Err(e) => self.error(e.to_string()),
+            }
+            return;
+        }
+        let bytes = match std::fs::read(path) {
+            Ok(bytes) => bytes,
+            Err(e) => return self.error(trf!("cannot read `{path}`: {error}", path = path.display(), error = e)),
+        };
+        let dir = path.parent().map(Path::to_path_buf).unwrap_or_default();
+        let resolve = move |p: &str| engine_model_formats::safe_relative_path(p, true).and_then(|p| std::fs::read(dir.join(p)).ok());
+        let mut result = Ok((Vec::new(), Vec::new()));
+        self.session_mut().edit("Import Mesh", |doc| result = crate::interchange::import_mesh_into(doc, &name, &bytes, &resolve, true));
+        match result {
+            Ok((ids, notes)) => {
+                for note in &notes {
+                    log::warn!("{}: {note}", path.display());
+                }
+                self.session_mut().selection = ids;
+                self.mode = Mode::Edit;
+                self.frame_all();
+                let file = path.file_name().map_or(name.clone(), |f| f.to_string_lossy().to_string());
+                self.message(format!("Imported {file} as an editable mesh: select, move and paint it; Model ▸ Edit Vertices / Faces changes its shape"));
+            }
+            Err(e) => self.error(e.to_string()),
+        }
     }
 
     pub fn session_mut(&mut self) -> &mut Session {
@@ -674,6 +850,9 @@ impl ModelerApp {
                 self.active = self.tabs.len() - 1;
                 self.viewport.camera = crate::camera::Camera::default();
             }
+            Command::Open => self.ask(PromptKind::Open),
+            Command::SaveAs => self.ask(PromptKind::SaveAs),
+            Command::Ask(kind) => self.ask(kind),
             Command::Save => match self.tabs[self.active].path.clone() {
                 Some(path) => self.run(Command::SaveTo(path)),
                 None => self.ask(PromptKind::SaveAs),
@@ -704,7 +883,22 @@ impl ModelerApp {
             }
             Command::OpenFile(path) => {
                 let path = self.resolve(&path, "pmodel");
-                if let Err(e) = self.open(&path) {
+                let is_foreign = path.extension().is_some_and(|e| !e.eq_ignore_ascii_case("pmodel"))
+                    && crate::interchange::can_open(&path.to_string_lossy());
+                if is_foreign {
+                    match crate::interchange::open_file(&path) {
+                        Ok(opened) => {
+                            // Источник не перезаписывается: у документа нет пути, Save спросит `.pmodel`.
+                            self.open_document(opened.doc, None);
+                            for note in &opened.notes {
+                                log::warn!("{}: {note}", path.display());
+                            }
+                            let notes = if opened.notes.is_empty() { String::new() } else { format!(" ({} note(s) in the log)", opened.notes.len()) };
+                            self.message(format!("{}{notes}", opened.summary));
+                        }
+                        Err(e) => self.error(e.to_string()),
+                    }
+                } else if let Err(e) = self.open(&path) {
                     self.error(e.to_string());
                 } else {
                     self.message(trf!("Opened {path}", path = path.display()));
@@ -774,6 +968,67 @@ impl ModelerApp {
                     Err(e) => self.error(e.to_string()),
                 }
             }
+            Command::ImportMesh(path) => {
+                let path = self.resolve(&path, "obj");
+                self.import_mesh(&path);
+            }
+            Command::ExportBbmodel(path) => {
+                let path = self.resolve(&path, "bbmodel");
+                let (text, notes) = crate::interchange::to_bbmodel(&self.session().doc);
+                match std::fs::write(&path, text) {
+                    Ok(()) if notes.is_empty() => self.message(trf!("Exported {path}", path = path.display())),
+                    Ok(()) => self.message(format!("Exported {}; {}", path.display(), notes.join("; "))),
+                    Err(e) => self.error(trf!("cannot write `{path}`: {error}", path = path.display(), error = e)),
+                }
+            }
+            Command::ConvertToCubes => match self.selected_mesh() {
+                Some(id) => {
+                    let mut result = Err(String::new());
+                    self.session_mut().edit("Convert to Cubes", |doc| result = crate::mesh_edit::convert_to_cubes(doc, id));
+                    match result {
+                        Ok(ids) => {
+                            let n = ids.len();
+                            self.session_mut().selection = ids;
+                            self.viewport.mesh_edit = None;
+                            self.message(format!("Converted to {n} cuboid(s); faces keep their texture"));
+                        }
+                        // Ошибка ничего не меняет — шага в истории нет.
+                        Err(e) => self.error(e),
+                    }
+                }
+                None => self.error("select a mesh element first (imported .obj, .glb, .ply or .stl)".to_string()),
+            },
+            Command::GenerateUvs => match self.selected_mesh() {
+                Some(id) => {
+                    let mut result = Ok(0);
+                    self.session_mut().edit("Generate UVs", |doc| result = crate::mesh_edit::generate_uvs(doc, id, None));
+                    match result {
+                        Ok(n) => self.message(format!("Generated UVs for {n} face(s); the mesh can be painted now (Tab)")),
+                        Err(e) => self.error(e),
+                    }
+                }
+                None => self.error("select a mesh element first".to_string()),
+            },
+            Command::MergeVertices => match self.selected_mesh() {
+                Some(id) => {
+                    let mut removed = 0;
+                    self.session_mut().edit("Merge Vertices", |doc| removed = crate::mesh_edit::merge_by_distance(doc, id, 0.01));
+                    self.message(format!("Merged {removed} vertex(es)"));
+                }
+                None => self.error("select a mesh element first".to_string()),
+            },
+            Command::EditMeshVertices => {
+                if self.viewport.mesh_edit.is_some() {
+                    self.viewport.mesh_edit = None;
+                    self.message("Back to element editing".to_string());
+                } else if let Some(id) = self.selected_mesh() {
+                    self.mode = Mode::Edit;
+                    self.viewport.mesh_edit = Some(viewport::MeshEdit::new(id));
+                    self.message("Vertex mode: click or box-select vertices, click a face to select it; drag the arrows to move; Del deletes the face; V or Esc returns".to_string());
+                } else {
+                    self.error("vertex editing works on mesh elements; select one first".to_string());
+                }
+            }
             Command::Undo => {
                 let label = self.session().undo_label().map(str::to_string);
                 if self.session_mut().undo() {
@@ -802,6 +1057,8 @@ impl ModelerApp {
                     self.session_mut().selection = created;
                 }
             }
+            Command::Delete if self.viewport.mesh_edit.is_some() => self.run_mesh(viewport::MeshCmd::Delete),
+            Command::Mesh(cmd) => self.run_mesh(cmd),
             Command::Delete => {
                 if !selection.is_empty() {
                     self.session_mut().edit("Delete", |doc| ops::delete(doc, &selection));
@@ -1024,17 +1281,68 @@ impl ModelerApp {
             PromptKind::ExportTexture => format!("{stem}_texture.png"),
             PromptKind::ImportTexture => String::new(),
             PromptKind::ImportReference => String::new(),
+            PromptKind::ImportMesh => String::new(),
+            PromptKind::ExportBbmodel => format!("{stem}.bbmodel"),
             PromptKind::ResizeTexture => {
                 let t = doc.textures.get(self.uv.texture as usize);
                 t.map_or("64x64".to_string(), |t| format!("{}x{}", t.image.width(), t.image.height()))
             }
         };
+        // Системное окно файлов, если программа его включила; иначе (тесты, нет zenity…) —
+        // своё окно с полем пути.
+        if self.file_dialog.is_none() && engine_build::file_dialog::available() {
+            let folder = self
+                .path()
+                .and_then(|p| p.parent())
+                .map(Path::to_path_buf)
+                .unwrap_or_else(|| self.working_dir.clone());
+            if let Some(request) = kind.file_request(&folder, &text) {
+                self.file_dialog = Some((kind, engine_build::file_dialog::Dialog::spawn(request)));
+                return;
+            }
+        }
+        self.open_prompt(kind, text);
+    }
+
+    fn open_prompt(&mut self, kind: PromptKind, text: String) {
         self.prompt = Some(Prompt {
             kind,
             text,
             error: None,
             focus: true,
         });
+    }
+
+    /// Ответ системного окна файлов: путь — выполнить команду, «Отмена» — ничего, окна
+    /// нет — своё окно пути.
+    fn poll_file_dialog(&mut self, ctx: &egui::Context) {
+        let Some((kind, dialog)) = &self.file_dialog else { return };
+        let Some(outcome) = dialog.poll() else {
+            ctx.request_repaint_after(std::time::Duration::from_millis(100));
+            return;
+        };
+        let kind = kind.clone();
+        let name = dialog.request.file_name.clone().unwrap_or_default();
+        self.file_dialog = None;
+        match outcome {
+            engine_build::file_dialog::Outcome::Chosen(path) => {
+                if let Some(command) = kind.command(path) {
+                    self.run(command);
+                }
+            }
+            engine_build::file_dialog::Outcome::Cancelled => {}
+            engine_build::file_dialog::Outcome::Unavailable => self.open_prompt(kind, name),
+        }
+    }
+
+    /// Системное окно файлов открыто (ждём ответа).
+    pub fn file_dialog_open(&self) -> bool {
+        self.file_dialog.is_some()
+    }
+
+    /// Своё окно ввода пути открыто (системного окна нет).
+    pub fn path_prompt_open(&self) -> bool {
+        self.prompt.is_some()
     }
 
     // ------------------------------------------------------------------
@@ -1121,6 +1429,13 @@ impl ModelerApp {
                 if let Some(preset) = picked {
                     self.viewport.camera.set_preset(preset);
                 }
+                if let Some(notice) = self.viewport.notice.take() {
+                    self.message(notice);
+                }
+                if let Some((label, kind)) = self.viewport.pending_last.take() {
+                    let history = self.session().history_len().0;
+                    self.last_op = Some(viewport::LastOp { label, kind, history });
+                }
                 self.recovery_banner(ui);
             });
         // Правка числовых полей: шаг истории закрывается, когда мышь отпущена.
@@ -1128,12 +1443,16 @@ impl ModelerApp {
             self.session_mut().commit();
             self.field_edit = false;
         }
+        self.mesh_panels(&ctx);
+        self.poll_file_dialog(&ctx);
         self.prompt_window(&ctx);
         self.shortcuts_window(&ctx);
         self.background_work();
     }
 
     fn shortcuts(&mut self, ctx: &egui::Context) {
+        // Режим меша первым: его клавиши (G R S E I F M X 1 2 3 A…) важнее общих.
+        self.mesh_shortcuts(ctx);
         let ctrl = |key| KeyboardShortcut::new(Modifiers::COMMAND, key);
         let ctrl_shift = |key| KeyboardShortcut::new(Modifiers::COMMAND | Modifiers::SHIFT, key);
         let mut commands = Vec::new();
@@ -1147,6 +1466,7 @@ impl ModelerApp {
             take(ctrl(Key::Z), Command::Undo);
             take(ctrl(Key::Y), Command::Redo);
             take(ctrl(Key::S), Command::Save);
+            take(ctrl(Key::O), Command::Open);
             take(ctrl(Key::D), Command::Duplicate);
             take(ctrl(Key::C), Command::Copy);
             take(ctrl(Key::V), Command::Paste);
@@ -1168,7 +1488,10 @@ impl ModelerApp {
                 commands.push(Command::ShowShortcuts);
             }
             if plain(i, Key::Escape) {
-                commands.push(Command::SelectNone);
+                commands.push(if self.viewport.mesh_edit.is_some() { Command::EditMeshVertices } else { Command::SelectNone });
+            }
+            if plain(i, Key::V) && (self.viewport.mesh_edit.is_some() || self.selected_mesh().is_some()) {
+                commands.push(Command::EditMeshVertices);
             }
             for (key, command) in [
                 (Key::F, Command::Frame),
@@ -1214,22 +1537,20 @@ impl ModelerApp {
             // Знак программы: две грани кубоида.
             let (mark, _) = ui.allocate_exact_size(vec2(18.0, 18.0), Sense::hover());
             icons::paint(ui.painter(), mark.shrink(1.0), Icon::Cuboid, p.accent);
-            ui.add_space(4.0);
+            ui.add_space(kit::SP_2);
             // Меню — обычными кнопками в строке (без `menu::bar`, который занимает всю ширину:
             // справа от меню стоят вкладки документов).
             ui.scope(|ui| {
                 ui.visuals_mut().button_frame = false;
                 ui.spacing_mut().item_spacing.x = kit::SP_L;
-                let item = |ui: &mut Ui, text: &str, shortcut: &str, enabled: bool| {
-                    ui.add_enabled(enabled, egui::Button::new(tr(text)).shortcut_text(shortcut)).clicked()
-                };
+                let item = |ui: &mut Ui, text: &str, shortcut: &str, enabled: bool| controls::menu_item(ui, &tr(text), shortcut, enabled).clicked();
                 let has_selection = !self.session().selection.is_empty();
                 ui.menu_button(tr_ctx("menu", "File"), |ui| {
                     ui.set_min_width(220.0);
                     if item(ui, "New", "Ctrl+N", true) {
                         command = Some(Command::New);
                     }
-                    if item(ui, "Open…", "", true) {
+                    if item(ui, "Open…", "Ctrl+O", true) {
                         self.ask(PromptKind::Open);
                     }
                     if item(ui, "Save", "Ctrl+S", true) {
@@ -1242,7 +1563,10 @@ impl ModelerApp {
                     if item(ui, "Import Texture (PNG)…", "", true) {
                         self.ask(PromptKind::ImportTexture);
                     }
-                    if item(ui, "Import Reference (.obj, .glb)…", "", true) {
+                    if item(ui, "Import Mesh (.obj, .glb, .ply, .stl, .bbmodel)…", "", true) {
+                        self.ask(PromptKind::ImportMesh);
+                    }
+                    if item(ui, "Import as Reference (grey, not editable)…", "", true) {
                         self.ask(PromptKind::ImportReference);
                     }
                     ui.separator();
@@ -1251,6 +1575,9 @@ impl ModelerApp {
                     }
                     if item(ui, "Export Wavefront (.obj + .mtl)…", "", true) {
                         self.ask(PromptKind::ExportObj);
+                    }
+                    if item(ui, "Export Blockbench (.bbmodel)…", "", true) {
+                        self.ask(PromptKind::ExportBbmodel);
                     }
                     if item(ui, "Export Texture (PNG)…", "", true) {
                         self.ask(PromptKind::ExportTexture);
@@ -1340,6 +1667,23 @@ impl ModelerApp {
                     if item(ui, "Hide / Show", "H", has_selection) {
                         command = Some(Command::ToggleVisibility);
                     }
+                    ui.separator();
+                    let mesh = self.selected_mesh().is_some();
+                    let editing = self.viewport.mesh_edit.is_some();
+                    if item(ui, if editing { "Finish Vertex Editing" } else { "Edit Vertices / Faces" }, "V", mesh || editing) {
+                        command = Some(Command::EditMeshVertices);
+                    }
+                    if item(ui, "Merge Vertices", "", mesh) {
+                        command = Some(Command::MergeVertices);
+                    }
+                    if item(ui, "Convert Mesh to Cubes", "", mesh) {
+                        command = Some(Command::ConvertToCubes);
+                    }
+                });
+                ui.menu_button(tr_ctx("menu", "Mesh"), |ui| {
+                    if let Some(cmd) = self.mesh_menu(ui) {
+                        command = Some(Command::Mesh(cmd));
+                    }
                 });
                 ui.menu_button(tr_ctx("menu", "Texture"), |ui| {
                     ui.set_min_width(220.0);
@@ -1348,6 +1692,9 @@ impl ModelerApp {
                     }
                     if item(ui, "Repack UV", "", true) {
                         command = Some(Command::Repack);
+                    }
+                    if item(ui, "Generate UVs (mesh)", "", self.selected_mesh().is_some()) {
+                        command = Some(Command::GenerateUvs);
                     }
                     ui.separator();
                     if item(ui, "Add Texture", "", true) {
@@ -1592,7 +1939,7 @@ impl ModelerApp {
                         ui.set_min_width(200.0);
                         style::caption(ui, &tr("Undo back to…"));
                         for (i, label) in labels.iter().enumerate() {
-                            if ui.button(tr(label)).clicked() {
+                            if controls::menu_item(ui, &tr(label), "", true).clicked() {
                                 command = Some(Command::UndoSteps(i + 1));
                                 ui.close_menu();
                             }
@@ -1649,10 +1996,8 @@ impl ModelerApp {
     /// Привязка перемещения и размера.
     fn snap_group(&mut self, ui: &mut Ui) {
         style::caption(ui, &tr("Snap"));
-        egui::ComboBox::from_id_salt("modeler.snap")
-            .width(72.0)
-            .selected_text(if self.view.snapping { format!("{} px", trim(self.view.snap_step)) } else { tr_ctx("snap", "Off").to_string() })
-            .show_ui(ui, |ui| {
+        let selected = if self.view.snapping { format!("{} px", trim(self.view.snap_step)) } else { tr_ctx("snap", "Off").to_string() };
+        controls::combo_ex(ui, "modeler.snap", selected.as_str(), 72.0, |ui| {
                 ui.selectable_value(&mut self.view.snapping, false, tr_ctx("snap", "Off"));
                 for step in [0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0] {
                     if ui.selectable_label(self.view.snapping && self.view.snap_step == step, format!("{} px", trim(step))).clicked() {
@@ -1668,10 +2013,8 @@ impl ModelerApp {
     /// Привязка поворота.
     fn angle_group(&mut self, ui: &mut Ui) {
         style::caption(ui, &tr("Angle"));
-        egui::ComboBox::from_id_salt("modeler.rotation_snap")
-            .width(72.0)
-            .selected_text(if self.view.rotation_step > 0.0 { format!("{}°", trim(self.view.rotation_step)) } else { tr("Free").to_string() })
-            .show_ui(ui, |ui| {
+        let selected = if self.view.rotation_step > 0.0 { format!("{}°", trim(self.view.rotation_step)) } else { tr("Free").to_string() };
+        controls::combo_ex(ui, "modeler.rotation_snap", selected.as_str(), 72.0, |ui| {
                 for step in [22.5, 15.0, 5.0, 0.0] {
                     let label = if step > 0.0 { format!("{}°", trim(step)) } else { tr("Free").to_string() };
                     ui.selectable_value(&mut self.view.rotation_step, step, label);
@@ -1729,7 +2072,10 @@ impl ModelerApp {
             .open(&mut open)
             .collapsible(false)
             .resizable(false)
-            .anchor(egui::Align2::CENTER_CENTER, vec2(0.0, 0.0))
+            // Двигается за заголовок (раньше — прибито к центру), не уходит за край окна.
+            .pivot(egui::Align2::CENTER_CENTER)
+            .default_pos(ctx.screen_rect().center())
+            .constrain(true)
             .show(ctx, |ui| {
                 let rows: &[(&str, &str)] = &[
                     ("Tab", n_("Edit / Paint mode")),
@@ -1742,11 +2088,16 @@ impl ModelerApp {
                     ("F  1  3  7  5", n_("Frame, front / right / top view, projection")),
                     ("Ctrl+1  Ctrl+3  Ctrl+7", n_("Back / left / bottom view")),
                     ("Ctrl+N  Ctrl+S", n_("New, save")),
-                    ("RMB  MMB  Wheel", n_("Orbit, pan, zoom")),
+                    (n_("RMB  MMB  Wheel"), n_("Orbit, pan, zoom")),
+                    ("V  1  2  3", n_("Mesh mode; select vertices, edges, faces")),
+                    ("G  R  S  X Y Z", n_("Move, rotate, scale the mesh selection; along an axis")),
+                    ("E  I  Ctrl+B  Ctrl+R", n_("Extrude, inset, bevel, loop cut")),
+                    ("F  M  X  Shift+D  P", n_("Make face, merge, delete, duplicate, separate")),
+                    ("A  Alt+click  L  Shift+A", n_("Select all, edge loop, linked; add a mesh")),
                 ];
                 egui::Grid::new("modeler.shortcuts.grid").num_columns(2).spacing([kit::SP_XL, kit::SP_S]).show(ui, |ui| {
                     for (keys, what) in rows {
-                        ui.label(egui::RichText::new(*keys).monospace());
+                        ui.label(egui::RichText::new(tr(keys)).monospace());
                         ui.label(tr(what));
                         ui.end_row();
                     }
@@ -1788,7 +2139,7 @@ impl ModelerApp {
                 }
             }
             if self.mode == Mode::Paint {
-                ui.add_space(8.0);
+                ui.add_space(kit::SP_4);
                 let (rect, _) = ui.allocate_exact_size(vec2(28.0, 34.0), Sense::hover());
                 let back = Rect::from_min_size(rect.min + vec2(9.0, 12.0), vec2(18.0, 18.0));
                 let front = Rect::from_min_size(rect.min + vec2(1.0, 2.0), vec2(18.0, 18.0));
@@ -1980,10 +2331,10 @@ impl ModelerApp {
                         let (r, _) = ui.allocate_exact_size(vec2(16.0, 16.0), Sense::hover());
                         icons::paint(ui.painter(), r, Icon::Warning, p.warn);
                         ui.label(egui::RichText::new(tr("Unsaved changes from an earlier session were found")).size(12.5));
-                        if ui.button(tr("Restore")).clicked() {
+                        if controls::primary_button(ui, &tr("Restore")).clicked() {
                             command = Some(Command::RestoreRecovery);
                         }
-                        if ui.button(tr("Discard")).clicked() {
+                        if controls::button(ui, &tr("Discard")).clicked() {
                             command = Some(Command::DiscardRecovery);
                         }
                     });
@@ -1996,16 +2347,7 @@ impl ModelerApp {
 
     fn prompt_window(&mut self, ctx: &egui::Context) {
         let Some(prompt) = self.prompt.as_mut() else { return };
-        let (title, hint, button) = match prompt.kind {
-            PromptKind::Open => (n_("Open Model"), "path/to/model.pmodel", n_("Open")),
-            PromptKind::SaveAs => (n_("Save Model As"), "path/to/model.pmodel", n_("Save")),
-            PromptKind::ExportGlb => (n_("Export glTF Binary"), "model.glb", n_("Export")),
-            PromptKind::ExportObj => (n_("Export Wavefront OBJ"), "model.obj", n_("Export")),
-            PromptKind::ExportTexture => (n_("Export Texture"), "texture.png", n_("Export")),
-            PromptKind::ImportTexture => (n_("Import Texture"), "path/to/texture.png", n_("Import")),
-            PromptKind::ImportReference => (n_("Import Reference Mesh"), "path/to/mesh.obj or .glb", n_("Import")),
-            PromptKind::ResizeTexture => (n_("Resize Texture"), "64x64", n_("Resize")),
-        };
+        let (title, hint, button) = prompt.kind.labels();
         let mut submit = false;
         let mut cancel = false;
         let base = self
@@ -2019,20 +2361,31 @@ impl ModelerApp {
         let suggestions: Vec<String> = match prompt.kind {
             PromptKind::Open => list_files(&base, &["pmodel"]),
             PromptKind::ImportTexture => list_files(&base, &["png"]),
-            PromptKind::ImportReference => list_files(&base, &["obj", "glb", "gltf"]),
+            PromptKind::ImportReference => list_files(&base, &reference_extensions()),
             _ => Vec::new(),
         };
         egui::Window::new(tr(title))
             .id(egui::Id::new("modeler.prompt"))
             .collapsible(false)
             .resizable(false)
-            .anchor(egui::Align2::CENTER_CENTER, vec2(0.0, -40.0))
+            // Окно можно двигать за заголовок (раньше стояло прибитым к центру); не уходит
+            // за край окна программы.
+            .pivot(egui::Align2::CENTER_CENTER)
+            .default_pos(ctx.screen_rect().center() - vec2(0.0, 40.0))
+            .constrain(true)
             .fixed_size(vec2(420.0, 0.0))
             .show(ctx, |ui| {
                 if prompt.kind != PromptKind::ResizeTexture {
-                    ui.label(egui::RichText::new(trf!("Relative paths start at {path}", path = base.display())).size(11.5).weak());
+                    // Длинный путь — с «…» в середине, целиком во всплывающей подсказке.
+                    let full = base.display().to_string();
+                    let shown = elide_middle(&full, 52);
+                    let label = ui.label(egui::RichText::new(trf!("Relative paths start at {path}", path = shown)).size(11.5).weak());
+                    if shown != full {
+                        label.on_hover_text(full);
+                    }
+                    ui.add_space(kit::SP_S);
                 }
-                let response = ui.add(egui::TextEdit::singleline(&mut prompt.text).hint_text(hint).desired_width(f32::INFINITY));
+                let response = controls::text_field(ui, &mut prompt.text, &hint, f32::INFINITY);
                 if prompt.focus {
                     response.request_focus();
                     prompt.focus = false;
@@ -2052,13 +2405,32 @@ impl ModelerApp {
                 if let Some(error) = &prompt.error {
                     ui.colored_label(ui.visuals().error_fg_color, error);
                 }
-                ui.horizontal(|ui| {
-                    if ui.button(tr(button)).clicked() {
-                        submit = true;
-                    }
-                    if ui.button(tr("Cancel")).clicked() || ui.input(|i| i.key_pressed(Key::Escape)) {
-                        cancel = true;
-                    }
+                // Строка кнопок, как во всех диалогах движка: отступ от поля, справа
+                // «Cancel | главная», одна высота и минимальная ширина; Enter — главная, Esc — Cancel.
+                let content_bottom = ui.min_rect().bottom();
+                ui.add_space(kit::DIALOG_ACTIONS_GAP);
+                let row = ui.allocate_ui_with_layout(
+                    vec2(ui.available_width(), kit::DIALOG_BUTTON_H),
+                    egui::Layout::right_to_left(egui::Align::Center),
+                    |ui| {
+                        ui.spacing_mut().item_spacing.x = kit::SP_M;
+                        let primary = controls::button_ex(ui, controls::Kind::Primary, None, &tr(button), kit::DIALOG_BUTTON_MIN_W);
+                        let cancel_button = controls::button_ex(ui, controls::Kind::Normal, None, &tr("Cancel"), kit::DIALOG_BUTTON_MIN_W);
+                        (cancel_button.rect, primary.rect, primary.clicked(), cancel_button.clicked())
+                    },
+                );
+                let (cancel_rect, primary_rect, primary_clicked, cancel_clicked) = row.inner;
+                if primary_clicked {
+                    submit = true;
+                }
+                if cancel_clicked || ui.input(|i| i.key_pressed(Key::Escape)) {
+                    cancel = true;
+                }
+                ui.ctx().data_mut(|d| {
+                    d.insert_temp(
+                        egui::Id::new("modeler.prompt.layout"),
+                        PromptLayout { body: ui.max_rect(), content_bottom, cancel: cancel_rect, primary: primary_rect },
+                    )
                 });
             });
         if cancel {
@@ -2082,6 +2454,8 @@ impl ModelerApp {
             PromptKind::ExportTexture => Command::ExportTexture(path),
             PromptKind::ImportTexture => Command::ImportTexture(path),
             PromptKind::ImportReference => Command::ImportReference(path),
+            PromptKind::ImportMesh => Command::ImportMesh(path),
+            PromptKind::ExportBbmodel => Command::ExportBbmodel(path),
             PromptKind::ResizeTexture => {
                 let parsed = text
                     .split(['x', 'X', '×', ' '])
@@ -2175,6 +2549,7 @@ fn shape_icon(shape: &Shape) -> Icon {
         Shape::Cylinder { .. } => Icon::Cylinder,
         Shape::Cone { .. } => Icon::Cone,
         Shape::Sphere { .. } => Icon::Sphere,
+        Shape::Mesh => Icon::Grid,
     }
 }
 
@@ -2183,6 +2558,36 @@ pub(crate) fn trim(v: f32) -> String {
     let s = format!("{:.3}", v);
     let s = s.trim_end_matches('0').trim_end_matches('.');
     if s == "-0" { "0".to_string() } else { s.to_string() }
+}
+
+/// Раскладка окна ввода пути в последнем кадре — для проверок выравнивания.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct PromptLayout {
+    /// Содержимое окна без полей рамки.
+    pub body: Rect,
+    /// Низ последнего поля над строкой кнопок.
+    pub content_bottom: f32,
+    pub cancel: Rect,
+    pub primary: Rect,
+}
+
+impl ModelerApp {
+    /// Раскладка окна ввода пути (если оно было в последнем кадре).
+    pub fn prompt_layout(ctx: &egui::Context) -> Option<PromptLayout> {
+        ctx.data(|d| d.get_temp(egui::Id::new("modeler.prompt.layout")))
+    }
+}
+
+/// Строка не длиннее `max` знаков: середина заменяется «…» (начало и имя файла видны).
+fn elide_middle(text: &str, max: usize) -> String {
+    let chars: Vec<char> = text.chars().collect();
+    if chars.len() <= max || max < 5 {
+        return text.to_string();
+    }
+    let keep = max - 1;
+    let head = keep / 2;
+    let tail = keep - head;
+    chars[..head].iter().chain(std::iter::once(&'…')).chain(chars[chars.len() - tail..].iter()).collect()
 }
 
 fn list_files(dir: &Path, extensions: &[&str]) -> Vec<String> {

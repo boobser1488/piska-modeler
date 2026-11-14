@@ -4,6 +4,7 @@
 use std::collections::HashSet;
 
 use egui::{pos2, vec2, Color32, PointerButton, Pos2, Rect, Sense, Shape as EShape, Stroke, Ui};
+use engine_i18n::{tr_s, trn};
 use glam::{Vec2, Vec3};
 
 use super::style::{self, Palette};
@@ -49,7 +50,19 @@ enum Drag {
     Box {
         start: Pos2,
     },
+    /// Сдвиг вершин (стрелки осей) или грани (стрелка нормали) меша.
+    Mesh {
+        handle: Handle,
+        origin: Vec3,
+        axis: Vec3,
+        start: f32,
+    },
 }
+
+// Правка мешей (режим V): выделение, перетаскивание с клавиатуры, операции, панели.
+#[path = "mesh_tools.rs"]
+mod mesh_tools;
+pub use mesh_tools::{LastKind, LastOp, MeshCmd, MeshEdit};
 
 /// Куда попала кисть.
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -95,6 +108,12 @@ pub(super) struct Viewport {
     pub pending: Option<raster::ViewRequest>,
     drag: Option<Drag>,
     stroke: Option<StrokeState>,
+    /// Режим правки вершин меша.
+    pub mesh_edit: Option<MeshEdit>,
+    /// Сообщение для строки состояния (почему щелчок ничего не сделал).
+    pub notice: Option<String>,
+    /// Закончилась операция с числами: (подпись, операция) — окно запомнит её для панели.
+    pub pending_last: Option<(&'static str, LastKind)>,
     /// Модель изменилась после последнего кадра.
     frame_stale: bool,
     pub renders: u64,
@@ -172,7 +191,13 @@ impl Viewport {
 
         let modifiers = ui.input(|i| i.modifiers);
         let mut hover_handle = None;
+        if self.mesh_edit.as_ref().is_some_and(|m| cx.session.doc.element(m.id).is_none_or(|e| e.mesh.is_none())) {
+            self.mesh_edit = None;
+        }
         match cx.mode {
+            Mode::Edit if self.mesh_edit.is_some() => {
+                hover_handle = self.mesh_edit_input(ui, &response, rect, cx, over_compass, modifiers);
+            }
             Mode::Edit => {
                 hover_handle = self.edit_input(ui, &response, rect, cx, over_compass, modifiers);
             }
@@ -270,11 +295,11 @@ impl Viewport {
         // Подпись вида.
         let label = format!(
             "{} · {}",
-            if self.camera.orthographic { "Orthographic" } else { "Perspective" },
+            if self.camera.orthographic { tr_s("Orthographic") } else { tr_s("Perspective") },
             match cx.view.shading {
-                raster::Shading::Textured => "Textured",
-                raster::Shading::Solid => "Solid",
-                raster::Shading::Wireframe => "Wireframe",
+                raster::Shading::Textured => tr_s("Textured"),
+                raster::Shading::Solid => tr_s("Solid"),
+                raster::Shading::Wireframe => tr_s("Wireframe"),
             }
         );
         painter.text(rect.min + vec2(12.0, 10.0), egui::Align2::LEFT_TOP, label, style::small(), p.text_faint);
@@ -325,6 +350,9 @@ impl Viewport {
         let doc = &cx.session.doc;
         let session = &*cx.session;
         let mut out = Vec::new();
+        if let Some(state) = &self.mesh_edit {
+            return self.mesh_handles(rect, doc, state);
+        }
         let Some(primary) = session.primary() else { return out };
         if doc.is_locked(primary) {
             return out;
@@ -603,15 +631,35 @@ impl Viewport {
 
     fn target(&self, doc: &Document, ray: Ray) -> Option<PaintTarget> {
         let hit = raycast(&self.mesh, ray, |id| !doc.is_locked(id))?;
+        let element = doc.element(hit.node)?;
+        let clip = match &element.mesh {
+            Some(mesh) => {
+                if !mesh.has_uvs() {
+                    return None;
+                }
+                // Грань меша: её прямоугольник UV.
+                let part = self.mesh.triangles.get(hit.triangle).map_or(0, |t| t.part as usize);
+                let face = mesh.faces.get(part)?;
+                let (mut lo, mut hi) = ([f32::INFINITY; 2], [f32::NEG_INFINITY; 2]);
+                for uv in &face.uvs {
+                    for k in 0..2 {
+                        lo[k] = lo[k].min(uv[k]);
+                        hi[k] = hi[k].max(uv[k]);
+                    }
+                }
+                [lo[0].floor() as i32, lo[1].floor() as i32, (hi[0].ceil() as i32).max(lo[0].floor() as i32 + 1), (hi[1].ceil() as i32).max(lo[1].floor() as i32 + 1)]
+            }
+            None => element.face(hit.face).uv.texel_bounds(),
+        };
         let (texture, x, y) = hit.texel(doc)?;
-        let face = doc.element(hit.node)?.face(hit.face);
+        let [x0, y0, x1, y1] = clip;
         Some(PaintTarget {
             node: hit.node,
             face: hit.face,
             texture,
-            x,
-            y,
-            clip: face.uv.texel_bounds(),
+            x: x.clamp(x0, (x1 - 1).max(x0)),
+            y: y.clamp(y0, (y1 - 1).max(y0)),
+            clip,
         })
     }
 
@@ -640,6 +688,18 @@ impl Viewport {
         let Some(pos) = pos else { return };
         if pressed && rect.contains(pos) && !over_compass && !modifiers.alt && self.stroke.is_none() {
             let targets = self.targets(&cx.session.doc, self.ray(rect, pos), cx.paint.mirror);
+            if targets.is_empty() {
+                let doc = &cx.session.doc;
+                let hit = raycast(&self.mesh, self.ray(rect, pos), |_| true);
+                self.notice = Some(match hit.and_then(|h| doc.node(h.node).map(|n| (n, h))) {
+                    Some((node, _)) if doc.is_locked(node.id) => format!("`{}` is locked; unlock it in the outliner to paint", node.name),
+                    Some((node, _)) if node.element().is_some_and(crate::mesh_edit::needs_uvs) => {
+                        format!("`{}` has no UVs yet: Texture ▸ Generate UVs (mesh) makes it paintable", node.name)
+                    }
+                    Some(_) => "this face has no texture area to paint on".to_string(),
+                    None => "Paint mode: the brush paints on the model; press Tab to select and move elements".to_string(),
+                });
+            }
             match cx.tool {
                 Tool::Picker => {
                     if let Some(t) = targets.first() {
@@ -772,7 +832,7 @@ impl Viewport {
     fn outline(&self, painter: &egui::Painter, node: NodeId, stroke: Stroke) {
         for poly in self.mesh.polygons.iter().filter(|p| p.node == node) {
             if let Some(points) = self.polygon_screen(poly) {
-                painter.add(EShape::closed_line(points, stroke));
+                stroke_polygon(painter, &points, stroke);
             }
         }
     }
@@ -786,7 +846,7 @@ impl Viewport {
             let stroke = Stroke::new(1.0_f32, p.text_muted);
             for poly in &self.mesh.polygons {
                 if let Some(points) = self.polygon_screen(poly) {
-                    painter.add(EShape::closed_line(points, stroke));
+                    stroke_polygon(&painter, &points, stroke);
                 }
             }
         }
@@ -825,6 +885,9 @@ impl Viewport {
                     self.ruler(&painter, doc, id, p);
                 }
             }
+            if let Some(state) = &self.mesh_edit {
+                self.mesh_overlay(&painter, doc, state, p);
+            }
             self.draw_gizmo(&painter, rect, cx, hover_handle, p);
             if let Some(Drag::Box { start }) = &self.drag {
                 if let Some(end) = pointer {
@@ -846,8 +909,8 @@ impl Viewport {
                     if let Some(quad) = texel_quad(poly, bx0 as f32, by0 as f32, bx1 as f32, by1 as f32) {
                         let points: Option<Vec<Pos2>> = quad.iter().map(|q| self.world_to_screen(*q)).collect();
                         if let Some(points) = points {
-                            painter.add(EShape::closed_line(points.clone(), Stroke::new(2.5_f32, Color32::from_black_alpha(140))));
-                            painter.add(EShape::closed_line(points, Stroke::new(1.2_f32, Color32::WHITE)));
+                            stroke_polygon(&painter, &points, Stroke::new(2.5_f32, Color32::from_black_alpha(140)));
+                            stroke_polygon(&painter, &points, Stroke::new(1.2_f32, Color32::WHITE));
                         }
                     }
                 } else {
@@ -906,7 +969,7 @@ impl Viewport {
                 (Tool::Rotate, Some(e)) => format!("{}°, {}°, {}°", super::trim(e.rotation.x), super::trim(e.rotation.y), super::trim(e.rotation.z)),
                 (Tool::Resize, Some(e)) => format!("{} × {} × {}", super::trim(e.size.x), super::trim(e.size.y), super::trim(e.size.z)),
                 (_, Some(e)) => format!("{}, {}, {}", super::trim(e.from.x), super::trim(e.from.y), super::trim(e.from.z)),
-                _ => format!("{} item(s)", ids.len()),
+                _ => trn!("{n} item", "{n} items", ids.len()),
             };
             if let Some(pos) = painter.ctx().input(|i| i.pointer.hover_pos()) {
                 pill(painter, pos + vec2(16.0, 18.0), &text, p);
@@ -1039,7 +1102,6 @@ const AXIS: [Color32; 3] = [
     Color32::from_rgb(0x4f, 0x92, 0xec),
 ];
 
-/// Надпись на тёмной подложке.
 fn pill(painter: &egui::Painter, at: Pos2, text: &str, p: &Palette) {
     let galley = painter.layout_no_wrap(text.to_string(), style::small(), p.text);
     let rect = Rect::from_center_size(at, galley.size() + vec2(10.0, 4.0));
@@ -1143,4 +1205,16 @@ fn texel_quad(poly: &Polygon, x0: f32, y0: f32, x1: f32, y1: f32) -> Option<[Vec
         p[0] + (p[1] - p[0]) * s + (p[3] - p[0]) * t
     };
     Some([map(x0, y0), map(x1, y0), map(x1, y1), map(x0, y1)])
+}
+
+/// Контур многоугольника отдельными отрезками. `closed_line` соединяет рёбра «усами»
+/// (miter): у острых углов и у совпадающих точек (вершина конуса и пирамиды) они
+/// выстреливают далеко за фигуру.
+pub(crate) fn stroke_polygon(painter: &egui::Painter, points: &[Pos2], stroke: Stroke) {
+    for (i, a) in points.iter().enumerate() {
+        let b = points[(i + 1) % points.len()];
+        if a.distance(b) > 0.25 {
+            painter.line_segment([*a, b], stroke);
+        }
+    }
 }

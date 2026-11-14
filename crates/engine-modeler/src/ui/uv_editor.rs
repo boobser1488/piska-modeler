@@ -240,10 +240,8 @@ impl UvEditor {
                             let mut r = rect;
                             let mut edited = false;
                             for (label, value) in [("X", &mut r.x), ("Y", &mut r.y), ("W", &mut r.w), ("H", &mut r.h)] {
-                                ui.label(egui::RichText::new(label).size(10.5).color(p.text_faint));
-                                edited |= ui
-                                    .add(egui::DragValue::new(value).speed(0.25).max_decimals(2).update_while_editing(false))
-                                    .changed();
+                                let prefix = format!("{label} ");
+                                edited |= super::controls::number_field_ex(ui, value, f32::MIN..=f32::MAX, 0.25, &prefix, "", 2, 64.0).changed();
                             }
                             if edited {
                                 session.edit("Edit UV", |doc| ops::set_face_uv(doc, id, face, r));

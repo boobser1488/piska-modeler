@@ -1,0 +1,13 @@
+[package]
+name = "engine-model-formats"
+description = "Чтение моделей сторонних форматов (Blockbench .bbmodel, модели блоков Minecraft .json, MagicaVoxel .vox, .ply, .stl) и запись .bbmodel: общий код движка и Piska Modeler."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# Намеренно почти без зависимостей: крейт собирается и в движке, и копией в Piska Modeler
+# (`modeler/vendor/engine-model-formats`, `modeler/scripts/sync_from_engine.py`), и для web.
+# Обе зависимости уже есть в Cargo.lock обоих рабочих пространств.
+[dependencies]
+serde_json = "1"
+png = "0.18"

@@ -16,6 +16,10 @@ winit.workspace = true
 pollster.workspace = true
 image.workspace = true
 log.workspace = true
+# Запуск без консоли (подключение к консоли терминала, журнал, окно паники) и системные
+# окна «Открыть» / «Сохранить» — копия крейта движка.
+engine-build.workspace = true
+engine-i18n.workspace = true
 
 [build-dependencies]
 # Значок в exe (Windows): ресурс без rc.exe.

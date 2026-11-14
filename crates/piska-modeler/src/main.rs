@@ -13,6 +13,9 @@
 //! `--cpu` (программный растеризатор вместо видеокарты). `--bench` — замер кадра.
 
 fn main() {
+    // Программа без консоли: вывод — в консоль терминала, из которого её запустили, иначе
+    // в журнал `logs/piska-modeler.log`; паника — ещё и окном.
+    engine_build::host::gui_startup("piska-modeler", engine_i18n::brand::CONFIG_DIR_NAME);
     let options = match piska_modeler::parse_args(std::env::args().skip(1)) {
         Ok(o) => o,
         Err(e) => {
@@ -25,6 +28,9 @@ fn main() {
     } else if let Some(path) = options.screenshot.clone() {
         piska_modeler::screenshot(&options, &path)
     } else {
+        // Системные окна «Открыть» / «Сохранить» — только у настоящего окна (тесты и
+        // снимки никогда их не открывают).
+        engine_build::file_dialog::enable_native();
         piska_modeler::run_window(&options).map(|app| {
             if app.has_unsaved_changes() {
                 eprintln!(

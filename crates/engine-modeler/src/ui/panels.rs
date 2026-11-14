@@ -51,7 +51,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
         style::row(ui, "Name", |ui| {
             let key = egui::Id::new(("modeler.name", id.0));
             let mut text: String = ui.data_mut(|d| d.get_temp::<String>(key)).unwrap_or_else(|| node.name.clone());
-            let response = ui.add(egui::TextEdit::singleline(&mut text).desired_width(f32::INFINITY));
+            let response = super::controls::text_field(ui, &mut text, "", f32::INFINITY);
             if response.has_focus() {
                 ui.data_mut(|d| d.insert_temp(key, text.clone()));
             } else {
@@ -98,10 +98,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                 let mut changed = false;
                 style::row(ui, "Shape", |ui| {
                     let mut shape = e.shape;
-                    egui::ComboBox::from_id_salt("modeler.shape")
-                        .width(110.0)
-                        .selected_text(style::shape_name(&shape))
-                        .show_ui(ui, |ui| {
+                    super::controls::combo(ui, "modeler.shape", &style::shape_name(&shape), 110.0, |ui| {
                             let segments = shape.segments().unwrap_or(8);
                             for option in [
                                 Shape::Cuboid,
@@ -117,15 +114,16 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                         });
                     match &mut shape {
                         Shape::Cylinder { segments } | Shape::Cone { segments } => {
-                            ui.add(egui::DragValue::new(segments).range(3..=64).prefix(tr("sides ")));
+                            super::controls::number_field_ex(ui, segments, 3..=64, 0.1, &tr("sides "), "", 0, 72.0);
                         }
                         Shape::Sphere { segments, rings } => {
-                            ui.add(egui::DragValue::new(segments).range(3..=64).prefix(tr("sides ")));
-                            ui.add(egui::DragValue::new(rings).range(2..=32).prefix(tr("rings ")));
+                            super::controls::number_field_ex(ui, segments, 3..=64, 0.1, &tr("sides "), "", 0, 72.0);
+                            super::controls::number_field_ex(ui, rings, 2..=32, 0.1, &tr("rings "), "", 0, 72.0);
                         }
                         _ => {}
                     }
-                    if shape != e.shape {
+                    // Форму меша сменить нельзя (его вершины пропали бы); в кубы — Convert to Cubes.
+                    if shape != e.shape && e.shape != Shape::Mesh && shape != Shape::Mesh {
                         let faces = shape.faces();
                         for dir in FaceDir::ALL {
                             e.face_mut(dir).enabled = faces.contains(&dir);
@@ -158,32 +156,21 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                     changed = true;
                 }
                 style::row(ui, "Inflate", |ui| {
-                    let r = ui
-                        .add(egui::DragValue::new(&mut e.inflate).speed(0.05).range(-8.0..=8.0).max_decimals(3))
+                    let r = super::controls::number_field_ex(ui, &mut e.inflate, -8.0..=8.0, 0.05, "", "", 3, 72.0)
                         .on_hover_text(tr("Grows the box on every side; the texture stays the same"));
                     changed |= r.changed();
                 });
 
                 // Стороны.
-                ui.add_space(4.0);
+                ui.add_space(super::kit::SP_2);
                 style::row(ui, "Faces", |ui| {
                     ui.spacing_mut().item_spacing.x = 2.0;
                     for dir in e.shape.faces() {
                         let face = e.face(*dir);
                         let selected = session.face == Some(*dir);
-                        let label = egui::RichText::new(&dir.name()[..1]).size(11.5).color(if !face.enabled {
-                            p.text_faint
-                        } else if selected {
-                            Color32::WHITE
-                        } else {
-                            p.text
-                        });
                         let response = ui
-                            .add(
-                                egui::Button::new(label)
-                                    .min_size(vec2(24.0, 20.0))
-                                    .fill(if selected { p.accent_soft() } else { p.bg_field }),
-                            )
+                            .add_enabled_ui(face.enabled || selected, |ui| super::controls::toggle_button(ui, selected, &dir.name()[..1]))
+                            .inner
                             .on_hover_text(trf!("{face} face — click to select for UV and colour", face = style::face_name(*dir)));
                         if response.clicked() {
                             session.face = if selected { None } else { Some(*dir) };
@@ -205,7 +192,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                         }
                         changed = true;
                     }
-                    ui.add_space(8.0);
+                    ui.add_space(super::kit::SP_4);
                     let mut emissive = first.emissive;
                     if ui.checkbox(&mut emissive, tr("Emissive")).on_hover_text(tr("Unlit in the view; exported as emission")).changed() {
                         for f in &targets {
@@ -222,7 +209,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                         }
                         changed = true;
                     }
-                    if first.tint != [255, 255, 255, 255] && ui.small_button(tr("Reset")).clicked() {
+                    if first.tint != [255, 255, 255, 255] && super::controls::button(ui, &tr("Reset")).clicked() {
                         for f in &targets {
                             e.face_mut(*f).tint = [255, 255, 255, 255];
                         }
@@ -232,10 +219,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                 style::row(ui, "Texture", |ui| {
                     let names: Vec<String> = session.doc.textures.iter().map(|t| t.name.clone()).collect();
                     let mut texture = first.texture as usize;
-                    egui::ComboBox::from_id_salt("modeler.face_texture")
-                        .width(120.0)
-                        .selected_text(names.get(texture).cloned().unwrap_or_default())
-                        .show_ui(ui, |ui| {
+                    super::controls::combo(ui, "modeler.face_texture", &names.get(texture).cloned().unwrap_or_default(), 120.0, |ui| {
                             for (i, name) in names.iter().enumerate() {
                                 ui.selectable_value(&mut texture, i, name);
                             }
@@ -269,7 +253,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                     let name = session.doc.node(twin).map_or("?".to_string(), |n| n.name.clone());
                     style::row(ui, "Twin", |ui| {
                         ui.label(egui::RichText::new(name).color(p.text_muted));
-                        if ui.small_button(tr("Unlink")).clicked() {
+                        if super::controls::button(ui, &tr("Unlink")).clicked() {
                             out.command = Some(Command::UnlinkTwin);
                         }
                     });
@@ -295,11 +279,11 @@ pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
             if secondary.on_hover_text(tr("Second colour: click to swap (X)")).clicked() {
                 std::mem::swap(&mut paint.color, &mut paint.secondary);
             }
-            ui.add_space(6.0);
+            ui.add_space(super::kit::SP_3);
             ui.vertical(|ui| {
                 let key = egui::Id::new("modeler.palette.hex");
                 let mut text: String = ui.data_mut(|d| d.get_temp::<String>(key)).unwrap_or_else(|| to_hex(paint.color));
-                let response = ui.add(egui::TextEdit::singleline(&mut text).desired_width(96.0).font(egui::TextStyle::Monospace));
+                let response = super::controls::text_field(ui, &mut text, "", 96.0);
                 if response.has_focus() {
                     ui.data_mut(|d| d.insert_temp(key, text.clone()));
                     if let Some(c) = parse_hex(&text) {
@@ -312,13 +296,13 @@ pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
                 ui.label(egui::RichText::new(format!("R {r}  G {g}  B {b}  A {a}")).size(10.5).color(p.text_faint));
             });
         });
-        ui.add_space(4.0);
+        ui.add_space(super::kit::SP_2);
         let mut color = style::to_color32(paint.color);
         if egui::widgets::color_picker::color_picker_color32(ui, &mut color, egui::color_picker::Alpha::OnlyBlend) {
             paint.color = style::from_color32(color);
         }
         if !paint.recent.is_empty() {
-            ui.add_space(4.0);
+            ui.add_space(super::kit::SP_2);
             ui.label(egui::RichText::new(tr("RECENT")).size(10.5).color(p.text_faint));
             ui.horizontal_wrapped(|ui| {
                 ui.spacing_mut().item_spacing = vec2(3.0, 3.0);
@@ -329,7 +313,7 @@ pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
                 }
             });
         }
-        ui.add_space(4.0);
+        ui.add_space(super::kit::SP_2);
         ui.horizontal(|ui| {
             ui.label(egui::RichText::new(tr("PALETTE")).size(10.5).color(p.text_faint));
             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
@@ -384,16 +368,16 @@ pub(super) fn textures_panel(ui: &mut Ui, session: &mut Session, current: &mut u
             }
         }
         ui.horizontal_wrapped(|ui| {
-            if ui.button(tr("Add")).clicked() {
+            if super::controls::button(ui, &tr("Add")).clicked() {
                 action = Some(TextureAction::Command(Command::AddTexture));
             }
-            if ui.button(tr("Resize…")).clicked() {
+            if super::controls::button(ui, &tr("Resize…")).clicked() {
                 action = Some(TextureAction::Ask(PromptKind::ResizeTexture));
             }
-            if ui.button(tr("Import PNG…")).clicked() {
+            if super::controls::button(ui, &tr("Import PNG…")).clicked() {
                 action = Some(TextureAction::Ask(PromptKind::ImportTexture));
             }
-            if ui.button(tr("Export PNG…")).clicked() {
+            if super::controls::button(ui, &tr("Export PNG…")).clicked() {
                 action = Some(TextureAction::Ask(PromptKind::ExportTexture));
             }
         });

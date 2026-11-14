@@ -29,6 +29,8 @@ pub struct Triangle {
     pub face: FaceDir,
     pub texture: u32,
     pub emissive: bool,
+    /// Номер грани меша (у элемента-меша; у остальных форм — 0).
+    pub part: u32,
 }
 
 /// Многоугольник стороны — для каркаса, подсветки и обратного отображения тексель → точка.
@@ -145,6 +147,7 @@ pub fn build_element(doc: &Document, id: NodeId, element: &Element, matrix: Mat4
                 face,
                 texture: f.texture,
                 emissive: f.emissive,
+                part: 0,
             });
         }
         mesh.polygons.push(Polygon {
@@ -259,6 +262,53 @@ pub fn build_element(doc: &Document, id: NodeId, element: &Element, matrix: Mat4
                 }
             }
         }
+        Shape::Mesh => {}
+    }
+    if let (Shape::Mesh, Some(shape)) = (element.shape, &element.mesh) {
+        build_mesh_faces(doc, id, element, shape, matrix, mesh);
+    }
+}
+
+/// Грани меша: у каждой своя текстура; оттенок и свечение — общие (сторона North).
+fn build_mesh_faces(doc: &Document, id: NodeId, element: &Element, shape: &crate::doc::MeshShape, matrix: Mat4, mesh: &mut BuiltMesh) {
+    let style = element.face(FaceDir::North);
+    if !style.enabled {
+        return;
+    }
+    let points = element.mesh_points();
+    for (part, face) in shape.faces.iter().enumerate() {
+        if face.vertices.len() < 3 || face.vertices.iter().any(|v| *v as usize >= points.len()) {
+            continue;
+        }
+        let world: Vec<Vec3> = face.vertices.iter().map(|v| matrix.transform_point3(points[*v as usize])).collect();
+        // Нормаль Ньюэлла для обхода против часовой стрелки.
+        let mut normal = Vec3::ZERO;
+        for i in 0..world.len() {
+            let (a, b) = (world[i], world[(i + 1) % world.len()]);
+            normal += Vec3::new((a.y - b.y) * (a.z + b.z), (a.z - b.z) * (a.x + b.x), (a.x - b.x) * (a.y + b.y));
+        }
+        let Some(normal) = normal.try_normalize() else { continue };
+        let size = doc
+            .textures
+            .get(face.texture as usize)
+            .or_else(|| doc.textures.first())
+            .map_or([1.0, 1.0], |t| [t.image.width() as f32, t.image.height() as f32]);
+        let base = mesh.vertices.len() as u32;
+        for (k, p) in world.iter().enumerate() {
+            let uv = face.uvs.get(k).copied().unwrap_or([0.0, 0.0]);
+            mesh.vertices.push(Vertex { position: *p, normal, uv: Vec2::new(uv[0] / size[0], uv[1] / size[1]), color: style.tint });
+        }
+        for t in crate::mesh_ops::triangulate_polygon(&world) {
+            mesh.triangles.push(Triangle {
+                indices: [base + t[0] as u32, base + t[1] as u32, base + t[2] as u32],
+                node: id,
+                face: FaceDir::North,
+                texture: face.texture,
+                emissive: style.emissive,
+                part: part as u32,
+            });
+        }
+        mesh.polygons.push(Polygon { node: id, face: FaceDir::North, points: world, uv_corners: None });
     }
 }
 

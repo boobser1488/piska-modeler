@@ -180,14 +180,7 @@ pub fn vec3_fields(ui: &mut Ui, id: &str, value: &mut [f32; 3], speed: f64, suff
             FontId::proportional(10.5),
             p.axis[axis],
         );
-        let response = ui.add_sized(
-            [width, 20.0],
-            egui::DragValue::new(&mut value[axis])
-                .speed(speed)
-                .max_decimals(3)
-                .suffix(suffix)
-                .update_while_editing(false),
-        );
+        let response = super::controls::number_field_ex(ui, &mut value[axis], f32::MIN..=f32::MAX, speed, "", suffix, 3, width);
         let response = response.on_hover_text(trf!("{field} {axis}: drag or type", field = tr(id), axis = ["X", "Y", "Z"][axis]));
         edit.merge(&response);
     }
@@ -361,7 +354,7 @@ pub fn stepper(ui: &mut Ui, id: &str, value: &mut u32, range: std::ops::RangeInc
     ui.spacing_mut().item_spacing.x = 0.0;
     let small_button = |ui: &mut Ui, label: &str, salt: &str| {
         ui.push_id((id, salt), |ui| {
-            ui.add_sized([CONTROL_H, CONTROL_H], egui::Button::new(egui::RichText::new(label).size(super::kit::FONT_BODY)))
+            super::controls::button_ex(ui, super::controls::Kind::Normal, None, label, CONTROL_H)
         })
         .inner
     };
@@ -369,10 +362,7 @@ pub fn stepper(ui: &mut Ui, id: &str, value: &mut u32, range: std::ops::RangeInc
         *value -= 1;
         changed = true;
     }
-    let field = ui.add_sized(
-        [44.0, CONTROL_H],
-        egui::DragValue::new(value).range(range.clone()).suffix(suffix).speed(0.1),
-    );
+    let field = super::controls::number_field_ex(ui, value, range.clone(), 0.1, "", suffix, 0, 44.0);
     changed |= field.on_hover_text(tooltip).changed();
     if small_button(ui, "+", "plus").on_hover_text(tooltip).clicked() && *value < *range.end() {
         *value += 1;

@@ -1,0 +1,22 @@
+ply
+format ascii 1.0
+comment hand-made test fixture
+element vertex 7
+property float x
+property float y
+property float z
+element face 2
+property list uchar int vertex_indices
+property uchar red
+property uchar green
+property uchar blue
+end_header
+0 0 0.5
+1 0 0.5
+1 1 0.5
+0 1 0.5
+0 0 0
+1 0 0
+0 0 1
+4 0 1 2 3 255 0 0
+3 4 5 6 0 255 0

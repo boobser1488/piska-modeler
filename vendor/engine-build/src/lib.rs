@@ -31,6 +31,8 @@
 //! Проверка результата: [`read_exe_icon`] достаёт значок из готового exe.
 
 pub mod coff;
+pub mod file_dialog;
+pub mod host;
 pub mod ico;
 pub mod pe;
 
@@ -38,7 +40,7 @@ use std::path::{Path, PathBuf};
 
 pub use coff::{icon_resource_object, Arch};
 pub use ico::{ico_from_png, parse_ico, write_ico, IconImage, ICO_SIZES};
-pub use pe::read_exe_icon;
+pub use pe::{read_exe_icon, read_exe_subsystem, SUBSYSTEM_CONSOLE, SUBSYSTEM_GUI};
 
 /// Значок движка: многоразмерный `.ico`, собранный `tools/gen_icon.py`.
 pub const ENGINE_ICO: &[u8] = include_bytes!("../../../crates/piska-modeler/assets/icon.ico");
@@ -62,6 +64,44 @@ pub fn windows_icon() {
     if let Err(e) = try_windows_icon(None) {
         // Сборка без значка лучше, чем сломанная сборка, но ошибку надо видеть.
         println!("cargo:warning=engine-build: no application icon embedded: {e}");
+    }
+}
+
+/// Программа с окном: значок ([`windows_icon`]) и подсистема Windows «GUI» для программ
+/// (`bin`) и примеров пакета — в отладочной сборке тоже, так что рядом с окном не
+/// открывается консоль. Тесты (`cargo test`) остаются консольными. Запущенная из
+/// терминала программа подключается к его консоли сама ([`host::gui_startup`]).
+///
+/// `PISKA_CONSOLE=1` при сборке — оставить консоль (разработчику, которому она нужна).
+pub fn windows_app() {
+    windows_icon();
+    windows_subsystem();
+}
+
+/// Только подсистема «GUI» (без значка) — см. [`windows_app`].
+pub fn windows_subsystem() {
+    println!("cargo:rerun-if-env-changed=PISKA_CONSOLE");
+    if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("windows")
+        || std::env::var("PISKA_CONSOLE").is_ok_and(|v| !v.is_empty() && v != "0")
+    {
+        return;
+    }
+    let args: &[&str] = if std::env::var("CARGO_CFG_TARGET_ENV").as_deref() == Ok("msvc") {
+        &["/SUBSYSTEM:WINDOWS", "/ENTRY:mainCRTStartup"]
+    } else {
+        &["-Wl,--subsystem,windows"]
+    };
+    let manifest = PathBuf::from(std::env::var_os("CARGO_MANIFEST_DIR").unwrap_or_default());
+    let text = std::fs::read_to_string(manifest.join("Cargo.toml")).unwrap_or_default();
+    let has_bins = manifest.join("src").join("main.rs").is_file() || manifest.join("src").join("bin").is_dir() || text.contains("[[bin]]");
+    let has_examples = manifest.join("examples").is_dir() || text.contains("[[example]]");
+    for arg in args {
+        if has_bins {
+            println!("cargo:rustc-link-arg-bins={arg}");
+        }
+        if has_examples {
+            println!("cargo:rustc-link-arg-examples={arg}");
+        }
     }
 }
 

@@ -69,45 +69,21 @@ msgstr "Холст"
 msgid "Tilemap"
 msgstr "Тайловая карта"
 
-#: crates/engine-editor/src/catalog.rs:81
-msgid "Environment"
-msgstr "Окружение"
-
-#: crates/engine-editor/src/catalog.rs:137
-msgid "2D/Animated Sprite"
-msgstr "2D/Анимированный спрайт"
-
 #: crates/engine-editor/src/catalog.rs:138
 msgid "Animated Sprite"
 msgstr "Анимированный спрайт"
-
-#: crates/engine-editor/src/catalog.rs:145
-msgid "2D/Sprite with Physics"
-msgstr "2D/Спрайт с физикой"
 
 #: crates/engine-editor/src/catalog.rs:146
 msgid "Sprite with Physics"
 msgstr "Спрайт с физикой"
 
-#: crates/engine-editor/src/catalog.rs:148
-msgid "Body"
-msgstr "Тело"
-
 #: crates/engine-editor/src/catalog.rs:152
 msgid "Audio Source"
 msgstr "Источник звука"
 
-#: crates/engine-editor/src/catalog.rs:152
-msgid "Audio/Audio Source"
-msgstr "Звук/Источник звука"
-
 #: crates/engine-editor/src/catalog.rs:153
 msgid "Audio Listener"
 msgstr "Слушатель звука"
-
-#: crates/engine-editor/src/catalog.rs:153
-msgid "Audio/Audio Listener"
-msgstr "Звук/Слушатель звука"
 
 #: crates/engine-editor/src/catalog.rs:155
 msgid "Text"
@@ -125,10 +101,6 @@ msgstr "Кнопка"
 msgid "Toggle"
 msgstr "Переключатель"
 
-#: crates/engine-editor/src/catalog.rs:171
-msgid "Label"
-msgstr "Подпись"
-
 #: crates/engine-editor/src/catalog.rs:173
 msgid "Slider"
 msgstr "Ползунок"
@@ -137,21 +109,9 @@ msgstr "Ползунок"
 msgid "Progress Bar"
 msgstr "Индикатор прогресса"
 
-#: crates/engine-editor/src/catalog.rs:174
-msgid "UI/Progress Bar"
-msgstr "UI/Индикатор прогресса"
-
 #: crates/engine-editor/src/catalog.rs:175
 msgid "Input Field"
 msgstr "Поле ввода"
-
-#: crates/engine-editor/src/catalog.rs:175
-msgid "UI/Input Field"
-msgstr "UI/Поле ввода"
-
-#: crates/engine-editor/src/catalog.rs:176
-msgid "Effects/Particle System"
-msgstr "Эффекты/Система частиц"
 
 #: crates/engine-editor/src/catalog.rs:176
 msgid "Particle System"
@@ -161,29 +121,13 @@ msgstr "Система частиц"
 msgid "Trail"
 msgstr "След"
 
-#: crates/engine-editor/src/catalog.rs:179
-msgid "Physics/Rigidbody Cube"
-msgstr "Физика/Физический куб"
-
 #: crates/engine-editor/src/catalog.rs:180
 msgid "Rigidbody Cube"
 msgstr "Физический куб"
 
-#: crates/engine-editor/src/catalog.rs:183
-msgid "Collider"
-msgstr "Коллайдер"
-
-#: crates/engine-editor/src/catalog.rs:183
-msgid "Rigidbody"
-msgstr "Rigidbody"
-
 #: crates/engine-editor/src/catalog.rs:188
 msgid "Character Controller"
 msgstr "Контроллер персонажа"
-
-#: crates/engine-editor/src/catalog.rs:190
-msgid "Character"
-msgstr "Персонаж"
 
 #: crates/engine-editor/src/code.rs:112
 msgid "Rust"
@@ -250,8 +194,8 @@ msgid "Building…"
 msgstr "Сборка…"
 
 #: crates/engine-editor/src/code.rs:884
-msgid "Build succeeded in {seconds:.1} s"
-msgstr "Сборка завершена за {seconds:.1} с"
+msgid "Build succeeded in {seconds} s"
+msgstr "Сборка завершена за {seconds} с"
 
 #: crates/engine-editor/src/code.rs:885
 msgid "Build failed: {command} — see the Console"
@@ -553,10 +497,6 @@ msgstr "Создать"
 msgid "Create a new object in the scene"
 msgstr "Создать объект в сцене"
 
-#: crates/engine-editor/src/hierarchy.rs:220
-msgid "Words match object names; t:Type matches a component type, e.g. t:Camera"
-msgstr "Слова ищутся в именах объектов; t:Тип — по типу компонента, например t:Camera"
-
 #: crates/engine-editor/src/hierarchy.rs:242
 msgid "No objects match the search"
 msgstr "Нет объектов, подходящих под запрос"
@@ -670,8 +610,8 @@ msgid "cannot start Piska Hub: {e}"
 msgstr "не удалось запустить Piska Hub: {e}"
 
 #: crates/engine-editor/src/hub_link.rs:104
-msgid "cannot reach Piska Hub through `{}`: {e}"
-msgstr "не удалось связаться с Piska Hub через `{}`: {e}"
+msgid "cannot reach Piska Hub through `{p0}`: {e}"
+msgstr "не удалось связаться с Piska Hub через `{p0}`: {e}"
 
 #: crates/engine-editor/src/inspector.rs:112
 msgid "Play mode — changes are reverted on Stop"
@@ -1165,10 +1105,6 @@ msgstr "Если материалы не назначены, использов�
 msgid "Extract materials from model"
 msgstr "Извлечь материалы из модели"
 
-#: crates/engine-editor/src/material_editor.rs:602
-msgid "Create {file_materials} .material file(s) next to the model from its embedded materials and assign them"
-msgstr "Создать рядом с моделью файлы .material ({file_materials} шт.) из встроенных в неё материалов и назначить их"
-
 #: crates/engine-editor/src/material_editor.rs:613
 msgid "Inline material (legacy)"
 msgstr "Встроенный материал (устаревший)"
@@ -1214,8 +1150,8 @@ msgid "Clear Selection"
 msgstr "Снять выделение"
 
 #: crates/engine-editor/src/profiler.rs:174
-msgid "worst {worst:.1} ms  ·  1% low {one_percent:.1} ms"
-msgstr "худший {worst:.1} мс  ·  1% худших {one_percent:.1} мс"
+msgid "worst {worst} ms  ·  1% low {one_percent} ms"
+msgstr "худший {worst} мс  ·  1% худших {one_percent} мс"
 
 #: crates/engine-editor/src/profiler.rs:200
 msgid "Average of 60 frames"
@@ -1250,8 +1186,8 @@ msgid "last {} frames · click a frame to inspect it"
 msgstr "последних кадров: {} · щёлкните кадр, чтобы изучить его"
 
 #: crates/engine-editor/src/profiler.rs:329
-msgid "Frame {:.2} ms\n"
-msgstr "Кадр {:.2} мс\n"
+msgid "Frame {} ms"
+msgstr "Кадр {} мс"
 
 #: crates/engine-editor/src/project.rs:350
 msgid "Open Scene"
@@ -1268,10 +1204,6 @@ msgstr "Создать спрайт"
 #: crates/engine-editor/src/project.rs:365
 msgid "Open in Code Tab"
 msgstr "Открыть во вкладке «Код»"
-
-#: crates/engine-editor/src/project.rs:366
-msgid "Mesh"
-msgstr "Меш"
 
 #: crates/engine-editor/src/project.rs:366
 msgid "Open in Piska Modeler"
@@ -1386,10 +1318,6 @@ msgid "Folders are always listed first"
 msgstr "Папки всегда идут первыми"
 
 #: crates/engine-editor/src/project_bar.rs:295
-msgid "all"
-msgstr "все"
-
-#: crates/engine-editor/src/project_bar.rs:295
 msgid "Show every type"
 msgstr "Показать все типы"
 
@@ -1433,10 +1361,6 @@ msgstr "Результаты поиска"
 msgid "Click to type a path"
 msgstr "Щёлкните, чтобы ввести путь"
 
-#: crates/engine-editor/src/project_chrome.rs:376
-msgid "{n} items selected · {}"
-msgstr "Выделено элементов: {n} · {}"
-
 #: crates/engine-editor/src/project_chrome.rs:396
 msgid "Drop files to import them into {dest}"
 msgstr "Отпустите файлы, чтобы импортировать их в {dest}"
@@ -1454,8 +1378,8 @@ msgid "Delete permanently?"
 msgstr "Удалить безвозвратно?"
 
 #: crates/engine-editor/src/project_chrome.rs:555
-msgid "Cannot open `{}`: {err}"
-msgstr "Не удаётся открыть `{}`: {err}"
+msgid "Cannot open `{p0}`: {err}"
+msgstr "Не удаётся открыть `{p0}`: {err}"
 
 #: crates/engine-editor/src/project_chrome.rs:569
 msgid "Import New Asset"
@@ -1469,17 +1393,13 @@ msgstr "Импорт в {title}"
 msgid "Import"
 msgstr "Импортировать"
 
-#: crates/engine-editor/src/project_chrome.rs:653
-msgid "Import {count} {}"
-msgstr "Импортировать {count} {}"
-
 #: crates/engine-editor/src/project_chrome.rs:661
 msgid "Ctrl-click selects several. Double-click opens a folder."
 msgstr "Ctrl+щелчок выделяет несколько. Двойной щелчок открывает папку."
 
 #: crates/engine-editor/src/project_content.rs:660
-msgid "{}\nCannot preview: {reason}"
-msgstr "{}\nПредпросмотр недоступен: {reason}"
+msgid "{p0}\nCannot preview: {reason}"
+msgstr "{p0}\nПредпросмотр недоступен: {reason}"
 
 #: crates/engine-editor/src/project_content.rs:929
 msgid "Unknown type in the search"
@@ -1710,8 +1630,8 @@ msgid "All Prefabs"
 msgstr "Все префабы"
 
 #: crates/engine-editor/src/project_ops.rs:261
-msgid "Cannot rename `{}`: {why}"
-msgstr "Не удаётся переименовать `{}`: {why}"
+msgid "Cannot rename `{p0}`: {why}"
+msgstr "Не удаётся переименовать `{p0}`: {why}"
 
 #: crates/engine-editor/src/project_ops.rs:277
 msgid "Duplicated"
@@ -1758,8 +1678,8 @@ msgid "Cannot create a scene in `{folder}`: {err}"
 msgstr "Не удаётся создать сцену в `{folder}`: {err}"
 
 #: crates/engine-editor/src/project_ops.rs:570
-msgid "Reimported {count} {}"
-msgstr "Переимпортировано: {count} {}"
+msgid "Reimported {count} {p0}"
+msgstr "Переимпортировано: {count} {p0}"
 
 #: crates/engine-editor/src/project_ops.rs:581
 msgid "Prefab"
@@ -1802,8 +1722,8 @@ msgid "out of GPU memory"
 msgstr "недостаточно видеопамяти"
 
 #: crates/engine-editor/src/rust_scripts.rs:958
-msgid "{}: cannot start `{}`: {err}. Is it installed and on PATH?"
-msgstr "{}: не удаётся запустить `{}`: {err}. Программа установлена и доступна в PATH?"
+msgid "{p0}: cannot start `{p1}`: {err}. Is it installed and on PATH?"
+msgstr "{p0}: не удаётся запустить `{p1}`: {err}. Программа установлена и доступна в PATH?"
 
 #: crates/engine-editor/src/rust_scripts.rs:1567
 msgid "Language"
@@ -1954,8 +1874,8 @@ msgid "Saved export options to {}"
 msgstr "Параметры экспорта сохранены в {}"
 
 #: crates/engine-editor/src/settings/build.rs:397
-msgid "cannot write `{}`: {e}. Is the file read-only?"
-msgstr "не удаётся записать `{}`: {e}. Возможно, файл только для чтения?"
+msgid "cannot write `{p0}`: {e}. Is the file read-only?"
+msgstr "не удаётся записать `{p0}`: {e}. Возможно, файл только для чтения?"
 
 #: crates/engine-editor/src/settings/build.rs:483
 msgid "default"
@@ -2262,8 +2182,8 @@ msgid "Defined only in the game's code: {}. Code that binds an action after star
 msgstr "Заданы только в коде игры: {}. Если код привязывает действие после запуска, его привязки важнее этой карты."
 
 #: crates/engine-editor/src/settings/input.rs:769
-msgid "{} “{name}”"
-msgstr "{} «{name}»"
+msgid "{p0} “{name}”"
+msgstr "{p0} «{name}»"
 
 #: crates/engine-editor/src/settings/input.rs:776
 msgid "What code asks for. Must be unique; renaming keeps the bindings."
@@ -2474,16 +2394,16 @@ msgid "Reset {what} to defaults"
 msgstr "Сброс к значениям по умолчанию: {what}"
 
 #: crates/engine-editor/src/settings/mod.rs:594
-msgid "cannot write `{}`: {e}. Choose another folder"
-msgstr "не удаётся записать `{}`: {e}. Выберите другую папку"
+msgid "cannot write `{p0}`: {e}. Choose another folder"
+msgstr "не удаётся записать `{p0}`: {e}. Выберите другую папку"
 
 #: crates/engine-editor/src/settings/mod.rs:595
 msgid "Exported to {}"
 msgstr "Экспортировано в {}"
 
 #: crates/engine-editor/src/settings/mod.rs:604
-msgid "cannot read `{}`: {e}. Check the path"
-msgstr "не удаётся прочитать `{}`: {e}. Проверьте путь"
+msgid "cannot read `{p0}`: {e}. Check the path"
+msgstr "не удаётся прочитать `{p0}`: {e}. Проверьте путь"
 
 #: crates/engine-editor/src/settings/mod.rs:609
 msgid "`{}` is not an editor preferences file: export one with Preferences → Export…"
@@ -2862,8 +2782,8 @@ msgid "Redraw only when something changes; an idle editor redraws {} times a sec
 msgstr "Перерисовывать только при изменениях; бездействующий редактор перерисовывается {} раз в секунду и не нагружает GPU."
 
 #: crates/engine-editor/src/settings/pages_prefs.rs:274
-msgid "Now: {fps:.0} FPS."
-msgstr "Сейчас: {fps:.0} FPS."
+msgid "Now: {fps} FPS."
+msgstr "Сейчас: {fps} FPS."
 
 #: crates/engine-editor/src/settings/pages_project.rs:30
 msgid "Identity"
@@ -3162,12 +3082,12 @@ msgid "Not found on disk"
 msgstr "Не найдено на диске"
 
 #: crates/engine-editor/src/settings/shortcuts_page.rs:43
-msgid "{} · {now}"
-msgstr "{} · {now}"
+msgid "{p0} · {now}"
+msgstr "{p0} · {now}"
 
 #: crates/engine-editor/src/settings/shortcuts_page.rs:45
-msgid "{} · {now} · default {default}"
-msgstr "{} · {now} · по умолчанию {default}"
+msgid "{p0} · {now} · default {default}"
+msgstr "{p0} · {now} · по умолчанию {default}"
 
 #: crates/engine-editor/src/settings/shortcuts_page.rs:49
 msgid "Press keys…"
@@ -3549,13 +3469,9 @@ msgstr "Точечный свет"
 msgid "Untitled"
 msgstr "Без названия"
 
-#: crates/engine-editor/src/state.rs:1217
-msgid "Main Camera"
-msgstr "Основная камера"
-
 #: crates/engine-editor/src/state.rs:1405
-msgid "there is no `{id}` in the GameObject menu; use one of: {}"
-msgstr "в меню «Объект» нет `{id}`; доступны: {}"
+msgid "there is no `{id}` in the GameObject menu; use one of: {p0}"
+msgstr "в меню «Объект» нет `{id}`; доступны: {p0}"
 
 #: crates/engine-editor/src/state.rs:1684
 msgid "the game is running: press Stop before saving"
@@ -3954,8 +3870,8 @@ msgid "Folder name"
 msgstr "Имя папки"
 
 #: crates/engine-editor/src/view3d.rs:518
-msgid "Fly speed  {:.1} m/s"
-msgstr "Скорость полёта  {:.1} м/с"
+msgid "Fly speed  {} m/s"
+msgstr "Скорость полёта  {} м/с"
 
 #: crates/engine-editor/src/viewport.rs:125
 msgid "What the Scene view draws over the scene"
@@ -3993,10 +3909,6 @@ msgstr "Развернуть при запуске"
 msgid "Enlarge the Game view to the whole dock area when Play starts"
 msgstr "Разворачивать окно «Игра» на всю область панелей при запуске игры"
 
-#: crates/engine-editor/src/viewport.rs:234
-msgid "Right drag  orbit     Drag  pan     Wheel  zoom     F  frame selection"
-msgstr "Перетаскивание ПКМ  орбита     Перетаскивание  панорама     Колесо  масштаб     F  показать выделение"
-
 #: crates/engine-editor/src/viewport.rs:302
 msgid "This is what the game camera sees. {} to run the game"
 msgstr "Так видит сцену игровая камера. {}, чтобы запустить игру"
@@ -4004,10 +3916,6 @@ msgstr "Так видит сцену игровая камера. {}, чтобы
 #: crates/engine-editor/src/viewport.rs:303
 msgid "Press Play"
 msgstr "Нажмите «Играть»"
-
-#: crates/engine-editor/src/viewport.rs:438
-msgid "Drag  select     Right / middle drag  pan     Wheel  zoom     F  frame     Ctrl  snap"
-msgstr "Перетаскивание  выделение     Перетаскивание ПКМ / СКМ  панорама     Колесо  масштаб     F  показать     Ctrl  привязка"
 
 #: crates/engine-modeler/src/ui/mod.rs:73
 msgid "Move"
@@ -4289,81 +4197,17 @@ msgstr "Сглаживание краёв (суперсэмплинг 2×)"
 msgid "Not saved yet"
 msgstr "Ещё не сохранено"
 
-#: crates/engine-modeler/src/ui/mod.rs:1386
-msgid "Tab switches between modelling and painting"
-msgstr "Tab переключает между моделированием и рисованием"
-
-#: crates/engine-modeler/src/ui/mod.rs:1397
-msgid "Creates it at the origin, inside the selected group"
-msgstr "Создаёт в начале координат, внутри выделенной группы"
-
 #: crates/engine-modeler/src/ui/mod.rs:1403
 msgid "A named node with its own pivot"
 msgstr "Именованный узел со своей опорной точкой"
-
-#: crates/engine-modeler/src/ui/mod.rs:1410
-msgid "Linked twin on the other side: edit one, the other follows"
-msgstr "Связанный двойник с другой стороны: правки одного повторяются на другом"
-
-#: crates/engine-modeler/src/ui/mod.rs:1415
-msgid "Flip X"
-msgstr "Перевернуть по X"
-
-#: crates/engine-modeler/src/ui/mod.rs:1415
-msgid "Mirror the selection in place"
-msgstr "Отразить выделение на месте"
-
-#: crates/engine-modeler/src/ui/mod.rs:1420
-msgid "Move the selection (or the model) to X = 0, Z = 0"
-msgstr "Переместить выделение (или модель) в X = 0, Z = 0"
 
 #: crates/engine-modeler/src/ui/mod.rs:1436
 msgid "Snap"
 msgstr "Привязка"
 
-#: crates/engine-modeler/src/ui/mod.rs:1450
-msgid "Grid snapping for move and resize. Hold Ctrl to toggle while dragging, Shift for quarter steps"
-msgstr "Привязка к сетке при перемещении и изменении размера. Ctrl во время перетаскивания переключает её, Shift — шаг в четверть"
-
 #: crates/engine-modeler/src/ui/mod.rs:1453
 msgid "Free"
 msgstr "Свободно"
-
-#: crates/engine-modeler/src/ui/mod.rs:1461
-msgid "Rotation snapping"
-msgstr "Привязка поворота"
-
-#: crates/engine-modeler/src/ui/mod.rs:1466
-msgid "Brush colour (X swaps with the second colour)"
-msgstr "Цвет кисти (X — поменять со вторым цветом)"
-
-#: crates/engine-modeler/src/ui/mod.rs:1472
-msgid "Second colour: click to swap"
-msgstr "Второй цвет: щёлкните, чтобы поменять местами"
-
-#: crates/engine-modeler/src/ui/mod.rs:1480
-msgid "Brush size ( [ and ] )"
-msgstr "Размер кисти ( [ и ] )"
-
-#: crates/engine-modeler/src/ui/mod.rs:1483
-msgid "Face"
-msgstr "Грань"
-
-#: crates/engine-modeler/src/ui/mod.rs:1484
-msgid "Connected"
-msgstr "Связная область"
-
-#: crates/engine-modeler/src/ui/mod.rs:1486
-msgid "Mirror Painting"
-msgstr "Зеркальное рисование"
-
-#: crates/engine-modeler/src/ui/mod.rs:1486
-msgid "Paint on both sides of X = 0"
-msgstr "Рисовать по обе стороны от X = 0"
-
-#: crates/engine-modeler/src/ui/mod.rs:1493
-msgid "How much the Shade brush lightens or darkens per stroke"
-msgstr "Насколько кисть «Тон» осветляет или затемняет за один мазок"
 
 #: crates/engine-modeler/src/ui/mod.rs:1505
 msgid "Wireframe"
@@ -4665,10 +4509,6 @@ msgstr "Переместить опорную точку"
 msgid "Erase"
 msgstr "Стереть"
 
-#: tools/piska-hub/src/config.rs:96
-msgid "`{}` could not be read ({err}); starting with an empty list. Fix or delete the file to restore it."
-msgstr "Не удалось прочитать `{}` ({err}); список начат заново. Исправьте или удалите файл, чтобы восстановить его."
-
 #: tools/piska-hub/src/config.rs:179
 msgid "Never"
 msgstr "Никогда"
@@ -4694,8 +4534,8 @@ msgid "`{}` is one of the engine's own samples; it is not deleted from the hub"
 msgstr "`{}` — один из встроенных примеров движка; из хаба он не удаляется"
 
 #: tools/piska-hub/src/hub.rs:788
-msgid "Cannot save the project list to `{}`: {err}"
-msgstr "Не удалось сохранить список проектов в `{}`: {err}"
+msgid "Cannot save the project list to `{p0}`: {err}"
+msgstr "Не удалось сохранить список проектов в `{p0}`: {err}"
 
 #: tools/piska-hub/src/hub.rs:857
 msgid "The engine checkout was not found, so Piska Modeler cannot be started"
@@ -4710,8 +4550,8 @@ msgid "Deleted `{}` from disk."
 msgstr "`{}` удалён с диска."
 
 #: tools/piska-hub/src/hub.rs:938
-msgid "Could not delete `{}` completely: {err}"
-msgstr "Не удалось полностью удалить `{}`: {err}"
+msgid "Could not delete `{p0}` completely: {err}"
+msgstr "Не удалось полностью удалить `{p0}`: {err}"
 
 #: tools/piska-hub/src/hub.rs:964
 msgid "Added “{}”."
@@ -4762,12 +4602,12 @@ msgid "Prebuilt {} editors."
 msgstr "Заранее собрано редакторов: {}."
 
 #: tools/piska-hub/src/hub.rs:1244
-msgid "Prebuilt {} editors, {failed} failed."
-msgstr "Заранее собрано редакторов: {}, не удалось: {failed}."
+msgid "Prebuilt {p0} editors, {failed} failed."
+msgstr "Заранее собрано редакторов: {p0}, не удалось: {failed}."
 
 #: tools/piska-hub/src/hub.rs:1285
-msgid "“{}” is already {what} (process {pid})."
-msgstr "«{}» уже {what} (процесс {pid})."
+msgid "“{p0}” is already {what} (process {pid})."
+msgstr "«{p0}» уже {what} (процесс {pid})."
 
 #: tools/piska-hub/src/hub.rs:1326
 msgid "The engine checkout was not found"
@@ -4780,10 +4620,6 @@ msgstr "Создан проект «{}»."
 #: tools/piska-hub/src/hub.rs:1404
 msgid "“{title}” exited with an error; see its console output."
 msgstr "«{title}» завершился с ошибкой; подробности — в выводе консоли."
-
-#: tools/piska-hub/src/hub.rs:1477
-msgid "Build failed with {errors} error{}."
-msgstr "Сборка не удалась. Ошибок: {errors}{}."
 
 #: tools/piska-hub/src/hub.rs:1479
 msgid "Build failed; see the output below."
@@ -4798,8 +4634,8 @@ msgid "“{title}” exported."
 msgstr "«{title}» экспортирован."
 
 #: tools/piska-hub/src/hub.rs:1575
-msgid "“{title}” is queued; it builds after the current build ({} waiting)."
-msgstr "«{title}» в очереди; сборка начнётся после текущей (в очереди: {})."
+msgid "“{title}” is queued; it builds after the current build ({p0} waiting)."
+msgstr "«{title}» в очереди; сборка начнётся после текущей (в очереди: {p0})."
 
 #: tools/piska-hub/src/hub.rs:1595
 msgid "Piska tools"
@@ -4834,8 +4670,8 @@ msgid "piska-export builds games from `games/` of the engine; `{}` is outside it
 msgstr "piska-export собирает игры только из папки `games/` движка, а `{}` находится вне её. Чтобы экспортировать проект, скопируйте или переместите его в games/"
 
 #: tools/piska-hub/src/jobs.rs:269
-msgid "cannot start `{}`: {e}. Is Rust (cargo) installed and in PATH?"
-msgstr "не удаётся запустить `{}`: {e}. Установлен ли Rust (cargo) и прописан ли он в PATH?"
+msgid "cannot start `{p0}`: {e}. Is Rust (cargo) installed and in PATH?"
+msgstr "не удаётся запустить `{p0}`: {e}. Установлен ли Rust (cargo) и прописан ли он в PATH?"
 
 #: tools/piska-hub/src/main.rs:48
 msgid "Piska Hub"
@@ -4881,25 +4717,9 @@ msgstr "Пустой 3D"
 msgid "Starfall sample"
 msgstr "Пример Starfall"
 
-#: tools/piska-hub/src/templates.rs:35
-msgid "Orthographic camera, a sprite and one Rust component. The smallest 2D game that runs."
-msgstr "Ортографическая камера, спрайт и один компонент на Rust. Самая маленькая работающая 2D-игра."
-
-#: tools/piska-hub/src/templates.rs:38
-msgid "Perspective camera, sun and sky, a ground grid and a cube spun by a Rust component."
-msgstr "Перспективная камера, солнце и небо, сетка на земле и куб, который вращает компонент на Rust."
-
 #: tools/piska-hub/src/templates.rs:41
 msgid "A complete small 2D game: sprites, prefabs, 2D physics, UI, sound and a saved high score."
 msgstr "Небольшая законченная 2D-игра: спрайты, префабы, 2D-физика, интерфейс, звук и сохранение рекорда."
-
-#: tools/piska-hub/src/templates.rs:49
-msgid "1 scene · 1 sprite · 1 script"
-msgstr "1 сцена · 1 спрайт · 1 скрипт"
-
-#: tools/piska-hub/src/templates.rs:50
-msgid "1 scene · 1 script"
-msgstr "1 сцена · 1 скрипт"
 
 #: tools/piska-hub/src/templates.rs:51
 msgid "1 scene · 1 prefab · 3 sprites · 1 sound · 3 scripts"
@@ -4953,10 +4773,6 @@ msgstr "  ·  не найдено: {missing}"
 msgid "  ·  engine games/ and folders you added"
 msgstr "  ·  games/ движка и добавленные вами папки"
 
-#: tools/piska-hub/src/ui.rs:365
-msgid "Add Existing…"
-msgstr "Добавить существующий…"
-
 #: tools/piska-hub/src/ui.rs:370
 msgid "Prebuild All"
 msgstr "Собрать все заранее"
@@ -4998,8 +4814,8 @@ msgid "Unpin"
 msgstr "Открепить"
 
 #: tools/piska-hub/src/ui.rs:511
-msgid "{location}  ·  {}"
-msgstr "{location}  ·  {}"
+msgid "{location}  ·  {p0}"
+msgstr "{location}  ·  {p0}"
 
 #: tools/piska-hub/src/ui.rs:512
 msgid "External  ·  {}"
@@ -5046,12 +4862,12 @@ msgid "Prebuilding editors: {} of {}"
 msgstr "Предсборка редакторов: {} из {}"
 
 #: tools/piska-hub/src/ui.rs:773
-msgid "{}  ·  {command}"
-msgstr "{}  ·  {command}"
+msgid "{p0}  ·  {command}"
+msgstr "{p0}  ·  {command}"
 
 #: tools/piska-hub/src/ui.rs:790
-msgid "{done} of {} done{}  ·  {} already up to date"
-msgstr "Готово {done} из {}{}  ·  уже актуальны: {}"
+msgid "{done} of {p0} done{p1}  ·  {p2} already up to date"
+msgstr "Готово {done} из {p0}{p1}  ·  уже актуальны: {p2}"
 
 #: tools/piska-hub/src/ui.rs:812
 msgid "Step {done} of {total}: {step}"
@@ -5080,10 +4896,6 @@ msgstr "Завершено"
 #: tools/piska-hub/src/ui.rs:823
 msgid "Started (process {pid})"
 msgstr "Запущено (процесс {pid})"
-
-#: tools/piska-hub/src/ui.rs:853
-msgid "{} compiled  ·  {} up to date  ·  {} warning{}  ·  {} error{}"
-msgstr "Скомпилировано: {}  ·  актуально: {}  ·  предупреждений: {}{}  ·  ошибок: {}{}"
 
 #: tools/piska-hub/src/ui.rs:864
 msgid "The hub hides while the editor is open and comes back when you close it."
@@ -5182,8 +4994,8 @@ msgid "Prebuild {} of {}: {}"
 msgstr "Предсборка {} из {}: {}"
 
 #: tools/piska-hub/src/ui.rs:1088
-msgid "{current}  ·  {} / {total}"
-msgstr "{current}  ·  {} / {total}"
+msgid "{current}  ·  {p0} / {total}"
+msgstr "{current}  ·  {p0} / {total}"
 
 #: tools/piska-hub/src/ui.rs:1090
 msgid "starting cargo…"
@@ -5194,8 +5006,8 @@ msgid "{what}  —  {detail}"
 msgstr "{what}  —  {detail}"
 
 #: tools/piska-hub/src/ui.rs:1104
-msgid "Prebuild finished: {} built, {failed} failed"
-msgstr "Предсборка завершена: собрано: {}, не удалось: {failed}"
+msgid "Prebuild finished: {p0} built, {failed} failed"
+msgstr "Предсборка завершена: собрано: {p0}, не удалось: {failed}"
 
 #: tools/piska-hub/src/ui.rs:1134
 msgid "Dismiss"
@@ -5266,8 +5078,8 @@ msgid "Guides"
 msgstr "Руководства"
 
 #: tools/piska-hub/src/ui.rs:1275
-msgid "{} built, {failed} failed, {} were already up to date. Open is now instant for the built ones."
-msgstr "Собрано: {}, не удалось: {failed}, уже были актуальны: {}. Собранные проекты теперь открываются мгновенно."
+msgid "{p0} built, {failed} failed, {p1} were already up to date. Open is now instant for the built ones."
+msgstr "Собрано: {p0}, не удалось: {failed}, уже были актуальны: {p1}. Собранные проекты теперь открываются мгновенно."
 
 #: tools/piska-hub/src/ui.rs:1279
 msgid "Prebuild finished"
@@ -5308,10 +5120,6 @@ msgstr "Использовать папку games/ движка"
 #: tools/piska-hub/src/ui.rs:1442
 msgid "Inside the engine workspace: the project shares the engine's build cache, so the first build only compiles the game."
 msgstr "Внутри рабочего пространства движка: проект использует общий с движком кэш сборки, поэтому первая сборка компилирует только игру."
-
-#: tools/piska-hub/src/ui.rs:1448
-msgid "Outside the engine: the project gets its own Cargo workspace with a path to this engine checkout. Its first build compiles the whole engine — about 10–15 minutes and several GB of disk."
-msgstr "Вне движка: у проекта будет своё рабочее пространство Cargo с путём к этой рабочей копии движка. Первая сборка скомпилирует весь движок — это примерно 10–15 минут и несколько ГБ на диске."
 
 #: tools/piska-hub/src/ui.rs:1454
 msgid "Options"
@@ -5462,8 +5270,8 @@ msgid "no editor program — Open will explain"
 msgstr "нет программы редактора — «Открыть» объяснит почему"
 
 #: tools/piska-hub/src/ui.rs:1806
-msgid "“{}” — {}, {editor}."
-msgstr "«{}» — {}, {editor}."
+msgid "“{p0}” — {p1}, {editor}."
+msgstr "«{p0}» — {p1}, {editor}."
 
 #: tools/piska-hub/src/ui.rs:1809
 msgid "Choose one of the crates below (marked with a cube)."
@@ -5522,8 +5330,8 @@ msgid "Optimized, smaller"
 msgstr "Оптимизированная, меньше по размеру"
 
 #: tools/piska-hub/src/ui.rs:1888
-msgid "Runs `cargo run -p piska-export -- {platform} --game {folder}{}`. The result goes to dist/{folder}/{platform}/. Same as File → Build… in the editor (docs/api/export.md)."
-msgstr "Выполняет `cargo run -p piska-export -- {platform} --game {folder}{}`. Результат сохраняется в dist/{folder}/{platform}/. То же, что «Файл → Собрать…» в редакторе (docs/api/export.md)."
+msgid "Runs `cargo run -p piska-export -- {platform} --game {folder}{p0}`. The result goes to dist/{folder}/{platform}/. Same as File → Build… in the editor (docs/api/export.md)."
+msgstr "Выполняет `cargo run -p piska-export -- {platform} --game {folder}{p0}`. Результат сохраняется в dist/{folder}/{platform}/. То же, что «Файл → Собрать…» в редакторе (docs/api/export.md)."
 
 #: tools/piska-hub/src/ui.rs:1951
 msgid "Running"
@@ -5912,3 +5720,4726 @@ msgstr "Отрисовка превью ассетов…"
 
 msgid "Where the gizmo rotates and scales the selection: the active object's pivot or the centre of the selection"
 msgstr "Вокруг чего гизмо поворачивает и масштабирует выделение: опорной точки активного объекта или центра выделения"
+
+#: crates/engine-editor/src/project_chrome.rs:473
+msgid " and {} more"
+msgstr " и ещё {}"
+
+#: tools/piska-hub/src/ui.rs:1144
+msgid "+{queued} queued"
+msgstr "+{queued} в очереди"
+
+#: tools/piska-hub/src/ui.rs:793
+msgid ", {failed_count} failed"
+msgstr ", ошибок: {failed_count}"
+
+#: tools/piska-hub/src/templates.rs:51
+msgid "1 scene · 1 Scenario script"
+msgstr "1 сцена · 1 скрипт Scenario"
+
+#: tools/piska-hub/src/templates.rs:50
+msgid "1 scene · 1 sprite · 1 Scenario script"
+msgstr "1 сцена · 1 спрайт · 1 скрипт Scenario"
+
+#: crates/engine-editor/src/settings/build.rs:194
+msgid "`android.{key}` must be a positive whole number, not `{p0}`"
+msgstr "`android.{key}` должно быть положительным целым числом, а не `{p0}`"
+
+#: crates/engine-editor/src/rust_scripts.rs:510
+msgid "`{file}` is skipped until it parses ({reason}); fix it and build again"
+msgstr "`{file}` пропущен, пока не разбирается ({reason}); исправьте его и соберите снова"
+
+#: crates/engine-editor/src/project_fs.rs:191
+#: crates/engine-editor/src/project_fs.rs:226
+msgid "`{from}` no longer exists"
+msgstr "`{from}` больше не существует"
+
+#: crates/engine-editor/src/project_fs.rs:180
+msgid "`{name}` already exists here"
+msgstr "`{name}` уже существует здесь"
+
+#: crates/engine-editor/src/scenarios.rs:47
+msgid "`{name}` cannot be a scenario name: use letters, digits, `_` or `-`, for example `intro` or `wave_1`"
+msgstr "`{name}` не может быть именем сценария: используйте буквы, цифры, `_` или `-`, например `intro` или `wave_1`"
+
+#: crates/engine-editor/src/rust_scripts.rs:1486
+msgid "`{name}` is not a valid file name"
+msgstr "`{name}` — недопустимое имя файла"
+
+#: crates/engine-editor/src/project_ops.rs:595
+msgid "`{name}` is used by 1 object in the open scene; it is selected"
+msgstr "`{name}` используется 1 объектом в открытой сцене; он выделен"
+
+#: crates/engine-editor/src/project_ops.rs:597
+msgid "`{name}` is used by {n} object in the open scene; the first one is selected"
+msgid_plural "`{name}` is used by {n} objects in the open scene; the first one is selected"
+msgstr[0] "`{name}` используется {n} объектом в открытой сцене; выделен первый"
+msgstr[1] "`{name}` используется {n} объектами в открытой сцене; выделен первый"
+msgstr[2] "`{name}` используется {n} объектами в открытой сцене; выделен первый"
+
+#: crates/engine-editor/src/project_fs.rs:201
+msgid "`{new_name}` already exists here"
+msgstr "`{new_name}` уже существует здесь"
+
+#: tools/piska-hub/src/config.rs:104
+msgid "`{p0}` could not be read: {err}"
+msgstr "Не удалось прочитать `{p0}`: {err}"
+
+#: crates/engine-editor/src/settings/tools.rs:162
+msgid "`{p0}` failed: {line}"
+msgstr "`{p0}` завершилась с ошибкой: {line}"
+
+#: crates/engine-editor/src/settings/build.rs:177
+msgid "`{path}` must be a string, not `{p0}`"
+msgstr "`{path}` должно быть строкой, а не `{p0}`"
+
+#: crates/engine-editor/src/scenarios.rs:55
+msgid "`{relative}` already exists; pick another name"
+msgstr "`{relative}` уже существует; выберите другое имя"
+
+#: crates/engine-editor/src/project_fs.rs:65
+msgid "`{relative}` is not a path inside the assets directory"
+msgstr "`{relative}` — не путь внутри папки ассетов"
+
+#: crates/engine-editor/src/scenarios.rs:85
+msgid "`{relative}` is not in the asset database"
+msgstr "`{relative}` нет в базе ассетов"
+
+#: crates/engine-editor/src/project_content.rs:434
+msgid "`{text}` already exists here"
+msgstr "`{text}` уже существует здесь"
+
+#: crates/engine-editor/src/state.rs:1507
+msgid "`{to}` already exists; pick another name"
+msgstr "`{to}` уже существует; выберите другое имя"
+
+#: crates/engine-editor/src/state.rs:1503
+msgid "`{to}` is not a valid name for an asset"
+msgstr "`{to}` — недопустимое имя ассета"
+
+#: crates/engine-editor/src/rust_scripts.rs:1490
+msgid "`{}` already exists; pick another name"
+msgstr "`{}` уже существует; выберите другое имя"
+
+#: tools/piska-hub/src/platform.rs:11
+#: tools/piska-hub/src/platform.rs:31
+msgid "`{}` does not exist"
+msgstr "`{}` не существует"
+
+#: crates/engine-editor/src/project_nav.rs:109
+msgid "`{}` is not a folder in this project"
+msgstr "`{}` — не папка этого проекта"
+
+#: tools/piska-hub/src/hub.rs:706
+msgid "`{}` is open; close it first"
+msgstr "`{}` открыт; сначала закройте его"
+
+#: crates/engine-editor/src/rust_scripts.rs:263
+msgid "a comment starting on line {start} is never closed"
+msgstr "комментарий, начатый в строке {start}, не закрыт"
+
+#: crates/engine-editor/src/rust_scripts.rs:1071
+msgid "a component named `{name}` (or the file `{p0}`) already exists; pick another name"
+msgstr "компонент `{name}` (или файл `{p0}`) уже существует; выберите другое имя"
+
+#: crates/engine-editor/src/state.rs:799
+msgid "a component named `{name}` already exists; pick another name"
+msgstr "компонент `{name}` уже существует; выберите другое имя"
+
+#: crates/engine-editor/src/rust_scripts.rs:317
+msgid "a raw string starting on line {start_line} is never closed"
+msgstr "сырая строка, начатая в строке {start_line}, не закрыта"
+
+#: crates/engine-editor/src/rust_scripts.rs:245
+msgid "a string starting on line {start_line} is never closed"
+msgstr "строка, начатая в строке {start_line}, не закрыта"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1781
+msgid "Adds it at the origin, inside the selected group"
+msgstr "Добавляет в начало координат, внутрь выбранной группы"
+
+#: crates/engine-editor/src/settings/mod.rs:559
+msgid "all settings"
+msgstr "все настройки"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1670
+msgid "Angle"
+msgstr "Угол"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1743
+msgid "Back / left / bottom view"
+msgstr "Вид сзади / слева / снизу"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1700
+msgid "Back to the default brush and second colour"
+msgstr "Вернуть кисть и второй цвет по умолчанию"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1688
+msgid "Brush colour {hex} — click to edit in the Palette"
+msgstr "Цвет кисти {hex} — щёлкните, чтобы изменить в палитре"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1710
+msgid "Brush size in texels ( [ and ] )"
+msgstr "Размер кисти в текселях ( [ и ] )"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1738
+msgid "Brush size, swap colours"
+msgstr "Размер кисти, обмен цветов"
+
+#: tools/piska-hub/src/hub.rs:1498
+msgid "Build failed with {n} error."
+msgid_plural "Build failed with {n} errors."
+msgstr[0] "Сборка не удалась: {n} ошибка."
+msgstr[1] "Сборка не удалась: {n} ошибки."
+msgstr[2] "Сборка не удалась: {n} ошибок."
+
+#: tools/piska-hub/src/templates.rs:39
+msgid "Camera, sun, sky, ground grid and a cube spun by a Scenario script. Opens at once, nothing to compile."
+msgstr "Камера, солнце, небо, сетка земли и куб, который вращает скрипт Scenario. Открывается сразу, компилировать нечего."
+
+#: crates/engine-editor/src/modeler_link.rs:50
+msgid "cannot create `{p0}`: {e}"
+msgstr "не удалось создать `{p0}`: {e}"
+
+#: crates/engine-editor/src/code.rs:466
+msgid "cannot open `{p0}` as text: {e}"
+msgstr "не удалось открыть `{p0}` как текст: {e}"
+
+#: tools/piska-hub/src/platform.rs:39
+msgid "cannot open `{p0}`: {e}"
+msgstr "не удалось открыть `{p0}`: {e}"
+
+#: tools/piska-hub/src/platform.rs:25
+msgid "cannot open the file manager: {e}"
+msgstr "не удалось открыть файловый менеджер: {e}"
+
+#: crates/engine-editor/src/settings/build.rs:357
+#: crates/engine-editor/src/settings/build.rs:395
+msgid "cannot read `{p0}`: {e}"
+msgstr "не удалось прочитать `{p0}`: {e}"
+
+#: crates/engine-editor/src/rust_scripts.rs:1317
+msgid "cannot read the editor session `{p0}`: {err}"
+msgstr "не удалось прочитать сессию редактора `{p0}`: {err}"
+
+#: crates/engine-editor/src/settings/tools.rs:156
+msgid "cannot run `{p0}`: {e}"
+msgstr "не удалось запустить `{p0}`: {e}"
+
+#: crates/engine-editor/src/code.rs:491
+#: crates/engine-editor/src/code.rs:522
+msgid "cannot save `{p0}`: {e}"
+msgstr "не удалось сохранить `{p0}`: {e}"
+
+#: crates/engine-editor/src/project_fs.rs:574
+msgid "cannot start `gio trash`: {err}"
+msgstr "не удалось запустить `gio trash`: {err}"
+
+#: tools/piska-hub/src/jobs.rs:492
+msgid "cannot start `{p0}`: {e}"
+msgstr "не удалось запустить `{p0}`: {e}"
+
+#: crates/engine-editor/src/project_fs.rs:565
+msgid "cannot start osascript: {err}"
+msgstr "не удалось запустить osascript: {err}"
+
+#: crates/engine-editor/src/rust_scripts.rs:1304
+msgid "cannot start the rebuilt editor `{p0}`: {err}; this editor keeps running the previous code"
+msgstr "не удалось запустить пересобранный редактор `{p0}`: {err}; этот редактор продолжает работать на прежнем коде"
+
+#: crates/engine-editor/src/rust_scripts.rs:577
+msgid "cannot update `{p0}`: {source}"
+msgstr "не удалось обновить `{p0}`: {source}"
+
+#: modeler/crates/piska-modeler/src/lib.rs:364
+msgid "cannot write `{path}`: {e}"
+msgstr "не удалось записать `{path}`: {e}"
+
+#: crates/engine-editor/src/project_fs.rs:171
+msgid "cannot {action} `{path}`: {err}{hint}"
+msgstr "не удалось выполнить «{action}» для `{path}`: {err}{hint}"
+
+#: tools/piska-hub/src/hub.rs:1560
+msgid "cargo did not report the program `{target}`"
+msgstr "cargo не сообщил о программе `{target}`"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1552
+msgid "Click a texel to make its colour the brush colour"
+msgstr "Щёлкните тексель, чтобы взять его цвет для кисти"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1499
+msgid "Click an element, drag on empty space for a box selection"
+msgstr "Щёлкните элемент; протяните по пустому месту, чтобы выделить рамкой"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1458
+msgid "Close document"
+msgstr "Закрыть документ"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1686
+msgid "Colour"
+msgstr "Цвет"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1740
+msgid "Copy, paste, duplicate"
+msgstr "Копировать, вставить, дублировать"
+
+#: crates/engine-editor/src/project_chrome.rs:61
+msgid "Create a folder, scene, material, model or script here"
+msgstr "Создать здесь папку, сцену, материал, модель или скрипт"
+
+#: crates/engine-editor/src/material_editor.rs:603
+msgid "Create {n} .material file next to the model from its embedded materials and assign it"
+msgid_plural "Create {n} .material files next to the model from its embedded materials and assign them"
+msgstr[0] "Создать {n} файл .material рядом с моделью из её встроенных материалов и назначить его"
+msgstr[1] "Создать {n} файла .material рядом с моделью из её встроенных материалов и назначить их"
+msgstr[2] "Создать {n} файлов .material рядом с моделью из её встроенных материалов и назначить их"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1560
+msgid "Darken"
+msgstr "Затемнить"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1741
+msgid "Delete, group, mirror twin, hide"
+msgstr "Удалить, сгруппировать, зеркальный двойник, скрыть"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:147
+msgid "Drag a face handle: grow from that side, the opposite side stays · Ctrl: toggle snap · Shift: fine"
+msgstr "Тяните ручку грани: растёт эта сторона, противоположная остаётся · Ctrl: вкл./выкл. привязку · Shift: точно"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:148
+msgid "Drag a ring: rotate around the pivot · Ctrl: toggle angle snap · Shift: 1° steps"
+msgstr "Тяните кольцо: поворот вокруг опорной точки · Ctrl: вкл./выкл. привязку угла · Shift: шаг 1°"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:146
+msgid "Drag an arrow: move along it · centre square: in the view plane · Ctrl: toggle snap · Shift: fine"
+msgstr "Тяните стрелку: перемещение вдоль неё · центральный квадрат: в плоскости вида · Ctrl: вкл./выкл. привязку · Shift: точно"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:149
+msgid "Drag an arrow: move the pivot, the shape stays"
+msgstr "Тяните стрелку: сдвиг опорной точки, форма остаётся на месте"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:156
+msgid "Drag: lighten or darken (see Mode) · Shift: the other one · each texel once per stroke"
+msgstr "Протяните: осветлить или затемнить (см. «Режим») · Shift: наоборот · каждый тексель — раз за штрих"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:154
+msgid "Drag: rectangle on one face · Shift: the other of outline / filled"
+msgstr "Протяните: прямоугольник на одной грани · Shift: другой вариант (контур / залитый)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:153
+msgid "Drag: straight line on one face · [ ] size"
+msgstr "Протяните: прямая линия на одной грани · [ ] размер"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1560
+msgid "Each stroke makes texels darker (Shift: lighter)"
+msgstr "Каждый штрих затемняет тексели (Shift: осветляет)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1559
+msgid "Each stroke makes texels lighter (Shift: darker)"
+msgstr "Каждый штрих осветляет тексели (Shift: затемняет)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1735
+msgid "Edit / Paint mode"
+msgstr "Режим «Форма» / «Рисование»"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1412
+msgid "Edit the shape: add, move, resize, rotate (Tab switches)"
+msgstr "Правка формы: добавлять, перемещать, менять размер, поворачивать (Tab — переключить)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1538
+msgid "Fill every texel of the face under the cursor"
+msgstr "Залить все тексели грани под курсором"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1539
+msgid "Fill only the connected area of the colour under the cursor, inside that face"
+msgstr "Залить только связную область цвета под курсором внутри этой грани"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1518
+msgid "Filled"
+msgstr "Залитый"
+
+#: crates/engine-editor/src/settings/tools.rs:174
+msgid "folder `{}` does not exist"
+msgstr "папка `{}` не существует"
+
+#: crates/engine-editor/src/settings/tools.rs:280
+msgid "found {}"
+msgstr "найдено: {}"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1742
+msgid "Frame, front / right / top view, projection"
+msgstr "Показать, вид спереди / справа / сверху, проекция"
+
+#: tools/piska-hub/src/ui.rs:1682
+msgid "games/{} is not in this engine checkout"
+msgstr "games/{} нет в этой копии движка"
+
+#: crates/engine-editor/src/project_fs.rs:573
+msgid "gio trash refused: {}"
+msgstr "gio trash отказал: {}"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1665
+msgid "Grid step for moving and resizing (16 px = 1 m). Ctrl while dragging: toggle, Shift: quarter steps"
+msgstr "Шаг сетки при перемещении и изменении размера (16 px = 1 м). Ctrl при перетаскивании: вкл./выкл., Shift: четверть шага"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1390
+msgctxt "menu"
+msgid "Help"
+msgstr "Справка"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1591
+msgid "History"
+msgstr "История"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1602
+msgid "History: undo several steps at once"
+msgstr "История: отменить сразу несколько шагов"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1575
+msgid "How much one stroke changes each texel, in % of full brightness"
+msgstr "На сколько один штрих меняет тексель, в % полной яркости"
+
+#: crates/engine-editor/src/ui.rs:720
+msgid "idle  {} ms"
+msgstr "простой  {} мс"
+
+#: crates/engine-editor/src/project_chrome.rs:661
+msgid "Import {n} item"
+msgid_plural "Import {n} items"
+msgstr[0] "Импортировать {n} элемент"
+msgstr[1] "Импортировать {n} элемента"
+msgstr[2] "Импортировать {n} элементов"
+
+#: tools/piska-hub/src/hub.rs:1178
+msgid "launch {}"
+msgstr "запуск {}"
+
+#: tools/piska-hub/src/hub.rs:1565
+#: tools/piska-hub/src/hub.rs:1647
+msgid "launch {}{}"
+msgstr "запуск {}{}"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1559
+msgid "Lighten"
+msgstr "Осветлить"
+
+#: crates/engine-editor/src/rust_scripts.rs:369
+msgid "line {line}: `{c}` closes `{found}` opened on line {p0}"
+msgstr "строка {line}: `{c}` закрывает `{found}`, открытую в строке {p0}"
+
+#: crates/engine-editor/src/rust_scripts.rs:373
+msgid "line {line}: `{c}` has no matching opening bracket"
+msgstr "строка {line}: у `{c}` нет парной открывающей скобки"
+
+#: crates/engine-editor/src/rust_scripts.rs:381
+msgid "line {p0}: `{c}` is never closed"
+msgstr "строка {p0}: `{c}` не закрыта"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:151
+msgid "LMB erase texels (they become transparent) · [ ] size"
+msgstr "ЛКМ — стереть тексели (они станут прозрачными) · [ ] размер"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:152
+msgid "LMB fill the face or the connected colour (see Mode) · X swap colours"
+msgstr "ЛКМ — залить грань или связную область цвета (см. «Режим») · X — обмен цветов"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:150
+msgid "LMB paint on the model or in the UV view · [ ] size · X swap colours · Alt+LMB orbit"
+msgstr "ЛКМ — рисовать по модели или на развёртке UV · [ ] размер · X — обмен цветов · Alt+ЛКМ — облёт"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:145
+msgid "LMB select · Ctrl/Shift+LMB add · drag on empty space: box · RMB orbit · MMB pan · wheel zoom"
+msgstr "ЛКМ — выделить · Ctrl/Shift+ЛКМ — добавить · протяжка по пустому месту — рамка · ПКМ — облёт · СКМ — сдвиг · колесо — масштаб"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:155
+msgid "LMB take the colour under the cursor"
+msgstr "ЛКМ — взять цвет под курсором"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1536
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1557
+msgid "Mode"
+msgstr "Режим"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1472
+msgid "New Document"
+msgstr "Новый документ"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1744
+msgid "New, save"
+msgstr "Создать, сохранить"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1517
+msgid "Only the border (Shift while dragging: filled)"
+msgstr "Только контур (Shift при перетаскивании: залитый)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1745
+msgid "Orbit, pan, zoom"
+msgstr "Облёт, сдвиг, масштаб"
+
+#: tools/piska-hub/src/templates.rs:36
+msgid "Orthographic camera and a sprite turned by a Scenario script. Opens at once, nothing to compile."
+msgstr "Ортографическая камера и спрайт, который поворачивает скрипт Scenario. Открывается сразу, компилировать нечего."
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1517
+msgid "Outline"
+msgstr "Контур"
+
+#: tools/piska-hub/src/ui.rs:1447
+msgid "Outside the engine: the project gets its own Cargo workspace with a path to this engine checkout. It opens at once in the generic editor; once you add Rust or C++ code, its first build compiles the whole engine — about 10–15 minutes and several GB of disk."
+msgstr "Вне движка: у проекта свой Cargo-workspace с путём к этой копии движка. В универсальном редакторе он открывается сразу; когда вы добавите код на Rust или C++, первая сборка скомпилирует весь движок — около 10–15 минут и несколько ГБ на диске."
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1716
+msgid "Paint on both sides of X = 0 at once"
+msgstr "Рисовать сразу по обе стороны от X = 0"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1413
+msgid "Paint the texture on the model and in the UV view (Tab switches)"
+msgstr "Рисовать текстуру по модели и на развёртке UV (Tab — переключить)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1737
+msgid "Pencil, Eraser, Fill, Line, Rectangle, Picker, Shade (Paint)"
+msgstr "Карандаш, ластик, заливка, линия, прямоугольник, пипетка, тон (Рисование)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1700
+msgid "Reset colours"
+msgstr "Сбросить цвета"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1745
+msgid "RMB  MMB  Wheel"
+msgstr "ПКМ  СКМ  Колесо"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1681
+msgid "Rotation steps. Ctrl while dragging: toggle, Shift: 1° steps"
+msgstr "Шаги поворота. Ctrl при перетаскивании: вкл./выкл., Shift: шаг 1°"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1539
+msgid "Same colour"
+msgstr "Тот же цвет"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1469
+msgid "saved"
+msgstr "сохранено"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1693
+msgid "Second colour {hex} — click to make it the brush colour"
+msgstr "Второй цвет {hex} — щёлкните, чтобы сделать его цветом кисти"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1736
+msgid "Select, Move, Rotate, Resize, Pivot (Edit)"
+msgstr "Выделение, перемещение, поворот, размер, опорная точка (Форма)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1627
+msgid "Show the ground grid"
+msgstr "Показать сетку земли"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1632
+msgid "Solid: shape and light only"
+msgstr "Сплошной: только форма и свет"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1515
+msgid "Style"
+msgstr "Стиль"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1697
+msgid "Swap colours"
+msgstr "Обменять цвета"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1631
+msgid "Textured: the model with its texture"
+msgstr "Текстуры: модель с её текстурой"
+
+#: crates/engine-editor/src/project_fs.rs:229
+#: crates/engine-editor/src/project_fs.rs:252
+msgid "the folder `{dest}` does not exist"
+msgstr "папка `{dest}` не существует"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1518
+msgid "The whole rectangle (Shift while dragging: outline)"
+msgstr "Весь прямоугольник (Shift при перетаскивании: контур)"
+
+#: crates/engine-editor/src/dock.rs:1543
+msgid "the window layout cannot be read: {reason}"
+msgstr "не удалось прочитать раскладку окон: {reason}"
+
+#: crates/engine-editor/src/dock.rs:1418
+#: crates/engine-editor/src/dock.rs:1430
+msgid "there is no saved layout named `{name}`"
+msgstr "нет сохранённой раскладки `{name}`"
+
+#: crates/engine-editor/src/project_chrome.rs:477
+msgid "these {} items"
+msgstr "эти элементы ({})"
+
+#: crates/engine-editor/src/settings/mod.rs:907
+msgid "this page"
+msgstr "эту страницу"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1593
+msgid "Undo back to…"
+msgstr "Отменить до…"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1739
+msgid "Undo, redo"
+msgstr "Отменить, повторить"
+
+#: crates/engine-editor/src/dock.rs:325
+msgid "unknown layout node `{other}`"
+msgstr "неизвестный узел раскладки `{other}`"
+
+#: crates/engine-editor/src/dock.rs:452
+msgid "unknown layout section `{other}`"
+msgstr "неизвестный раздел раскладки `{other}`"
+
+#: crates/engine-editor/src/dock.rs:304
+msgid "unknown window `{key}`"
+msgstr "неизвестное окно `{key}`"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1469
+msgid "unsaved changes"
+msgstr "есть несохранённые изменения"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1538
+msgid "Whole face"
+msgstr "Вся грань"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs:1633
+msgid "Wireframe: edges only"
+msgstr "Каркас: только рёбра"
+
+#: crates/engine-editor/src/settings/tools.rs:178
+msgid "zig {v}"
+msgstr "zig {v}"
+
+#: crates/engine-editor/src/settings/input.rs:227
+msgid "{base} (pressed)"
+msgstr "{base} (нажатие)"
+
+#: crates/engine-editor/src/settings/input.rs:229
+msgid "{base} (released side)"
+msgstr "{base} (отпускание)"
+
+#: crates/engine-editor/src/settings/tags.rs:255
+msgid "{before} (missing)"
+msgstr "{before} (отсутствует)"
+
+#: crates/engine-editor/src/project.rs:781
+msgid "{b} bytes"
+msgstr "{b} Б"
+
+#: tools/piska-hub/src/ui.rs:854
+msgid "{compiled} compiled  ·  {fresh} up to date  ·  {warnings}  ·  {errors}"
+msgstr "скомпилировано: {compiled}  ·  актуально: {fresh}  ·  {warnings}  ·  {errors}"
+
+#: crates/engine-editor/src/project_chrome.rs:444
+msgid "{done} of {total} files"
+msgstr "{done} из {total} файлов"
+
+#: crates/engine-editor/src/viewport.rs:193
+msgid "{draw_calls} draw calls"
+msgstr "вызовов отрисовки: {draw_calls}"
+
+#: crates/engine-editor/src/project.rs:551
+msgid "{files}, {folders} inside"
+msgstr "внутри: {files}, {folders}"
+
+#: crates/engine-editor/src/ui.rs:722
+msgid "{fps} fps  {p0} ms"
+msgstr "{fps} fps  {p0} мс"
+
+#: tools/piska-hub/src/ui.rs:1751
+msgid "{hidden} removed"
+msgstr "убрано: {hidden}"
+
+#: tools/piska-hub/src/hub.rs:1661
+msgid "{label} is not built and the engine checkout was not found to build it"
+msgstr "{label} не собран, а копия движка для его сборки не найдена"
+
+#: tools/piska-hub/src/ui.rs:1105
+msgid "{n} build waiting"
+msgid_plural "{n} builds waiting"
+msgstr[0] "{n} сборка ожидает"
+msgstr[1] "{n} сборки ожидают"
+msgstr[2] "{n} сборок ожидают"
+
+#: tools/piska-hub/src/config.rs:188
+msgid "{n} day ago"
+msgid_plural "{n} days ago"
+msgstr[0] "{n} день назад"
+msgstr[1] "{n} дня назад"
+msgstr[2] "{n} дней назад"
+
+#: tools/piska-hub/src/ui.rs:858
+msgid "{n} error"
+msgid_plural "{n} errors"
+msgstr[0] "{n} ошибка"
+msgstr[1] "{n} ошибки"
+msgstr[2] "{n} ошибок"
+
+#: crates/engine-editor/src/project.rs:551
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] "{n} файл"
+msgstr[1] "{n} файла"
+msgstr[2] "{n} файлов"
+
+#: crates/engine-editor/src/project.rs:551
+msgid "{n} folder"
+msgid_plural "{n} folders"
+msgstr[0] "{n} папка"
+msgstr[1] "{n} папки"
+msgstr[2] "{n} папок"
+
+#: tools/piska-hub/src/config.rs:186
+msgid "{n} hour ago"
+msgid_plural "{n} hours ago"
+msgstr[0] "{n} час назад"
+msgstr[1] "{n} часа назад"
+msgstr[2] "{n} часов назад"
+
+#: crates/engine-editor/src/project.rs:502
+msgid "{n} item selected"
+msgid_plural "{n} items selected"
+msgstr[0] "Выделен {n} элемент"
+msgstr[1] "Выделено {n} элемента"
+msgstr[2] "Выделено {n} элементов"
+
+#: crates/engine-editor/src/project_chrome.rs:384
+msgid "{n} item selected · {size}"
+msgid_plural "{n} items selected · {size}"
+msgstr[0] "Выделен {n} элемент · {size}"
+msgstr[1] "Выделено {n} элемента · {size}"
+msgstr[2] "Выделено {n} элементов · {size}"
+
+#: tools/piska-hub/src/config.rs:185
+msgid "{n} minute ago"
+msgid_plural "{n} minutes ago"
+msgstr[0] "{n} минуту назад"
+msgstr[1] "{n} минуты назад"
+msgstr[2] "{n} минут назад"
+
+#: crates/engine-editor/src/inspector_multi.rs:104
+msgid "{n} object"
+msgid_plural "{n} objects"
+msgstr[0] "{n} объект"
+msgstr[1] "{n} объекта"
+msgstr[2] "{n} объектов"
+
+#: tools/piska-hub/src/ui.rs:354
+msgid "{n} project"
+msgid_plural "{n} projects"
+msgstr[0] "{n} проект"
+msgstr[1] "{n} проекта"
+msgstr[2] "{n} проектов"
+
+#: tools/piska-hub/src/ui.rs:857
+msgid "{n} warning"
+msgid_plural "{n} warnings"
+msgstr[0] "{n} предупреждение"
+msgstr[1] "{n} предупреждения"
+msgstr[2] "{n} предупреждений"
+
+#: crates/engine-editor/src/export.rs:391
+msgid "{p0} build ready in {seconds} s: {p1}"
+msgstr "Сборка {p0} готова за {seconds} с: {p1}"
+
+#: crates/engine-editor/src/rust_scripts.rs:987
+msgid "{p0}: failed ({status}); the errors are above"
+msgstr "{p0}: сбой ({status}); ошибки выше"
+
+#: tools/piska-hub/src/ui.rs:1402
+msgid "{relative}  (in the engine workspace)"
+msgstr "{relative}  (в рабочем пространстве движка)"
+
+#: crates/engine-editor/src/settings/tags.rs:240
+msgid "{tag} (missing)"
+msgstr "{tag} (отсутствует)"
+
+#: crates/engine-editor/src/settings/input.rs:252
+#: crates/engine-editor/src/settings/input.rs:300
+msgid "{text} (unknown)"
+msgstr "{text} (неизвестно)"
+
+#: crates/engine-editor/src/settings/tags.rs:102
+msgid "{used} in this scene"
+msgstr "{used} в этой сцене"
+
+#: crates/engine-editor/src/settings/rows.rs:392
+msgid "{value} (missing)"
+msgstr "{value} (отсутствует)"
+
+#: tools/piska-hub/src/ui.rs:1095
+msgid "{what}: cancelled"
+msgstr "{what}: отменено"
+
+#: tools/piska-hub/src/ui.rs:1096
+msgid "{what}: done"
+msgstr "{what}: готово"
+
+#: crates/engine-editor/src/settings/build.rs:597
+msgid "{} (default)"
+msgstr "{} (по умолчанию)"
+
+#: tools/piska-hub/src/hub.rs:1674
+msgid "{} (one-time build)"
+msgstr "{} (разовая сборка)"
+
+#: tools/piska-hub/src/ui.rs:843
+msgid "{} / {} units   {}"
+msgstr "{} / {} ед.   {}"
+
+#: crates/engine-editor/src/export.rs:178
+msgid "{} builds can only be made on {}"
+msgstr "Сборки {} можно делать только на {}"
+
+#: crates/engine-editor/src/dock.rs:684
+msgid "{} cannot be docked to itself"
+msgstr "{} нельзя закрепить в самом себе"
+
+#: crates/engine-editor/src/sorting.rs:323
+msgid "{} d ago"
+msgstr "{} дн. назад"
+
+#: crates/engine-editor/src/profiler.rs:165
+msgid "{} fps   {} ms"
+msgstr "{} fps   {} мс"
+
+#: crates/engine-editor/src/sorting.rs:322
+msgid "{} h ago"
+msgstr "{} ч назад"
+
+#: crates/engine-editor/src/settings/mod.rs:936
+msgid "{} is already used"
+msgstr "{} уже занято"
+
+#: crates/engine-editor/src/settings/tools.rs:170
+msgid "{} is not set and was not found: enter its path or install it"
+msgstr "{} не задан и не найден: введите путь или установите его"
+
+#: crates/engine-editor/src/sorting.rs:321
+msgid "{} min ago"
+msgstr "{} мин назад"
+
+#: crates/engine-editor/src/profiler.rs:167
+msgid "{} ms of work per frame   (redrawing on demand)"
+msgstr "{} мс работы на кадр   (перерисовка по требованию)"
+
+#: tools/piska-hub/src/ui.rs:844
+msgid "{} units   {}"
+msgstr "{} ед.   {}"
+
+#: crates/engine-editor/src/settings/tools.rs:282
+msgid "{} was not found: enter its path"
+msgstr "{} не найден: введите путь"
+
+#: tools/piska-hub/src/ui.rs:1704
+msgid "Also used by the editor and the model editor. Auto follows the system language."
+msgstr "Действует и в редакторе, и в редакторе моделей. «Авто» — язык системы."
+
+#: modeler/crates/engine-modeler/src/ui/viewport.rs:910
+msgid "{n} item"
+msgid_plural "{n} items"
+msgstr[0] "{n} элемент"
+msgstr[1] "{n} элемента"
+msgstr[2] "{n} элементов"
+
+#: crates/engine-editor/src/settings/pages_project.rs:58
+msgid " FPS"
+msgstr " FPS"
+
+#: modeler/crates/engine-modeler/src/ui/viewport.rs:288
+msgid "Add a cuboid from the toolbar, or open a .pmodel from File"
+msgstr "Добавьте кубоид на панели инструментов или откройте .pmodel через «Файл»"
+
+#: crates/engine-editor/src/settings/input.rs:684
+msgid "Add one below, or press Reset page for the built-in ones."
+msgstr "Добавьте ниже или нажмите «Сбросить страницу», чтобы вернуть встроенные."
+
+#: crates/engine-editor/src/project_bar.rs:233
+msgid "All"
+msgstr "Все"
+
+#: crates/engine-editor/src/script_order.rs:286
+msgid "Apply"
+msgstr "Применить"
+
+#: crates/engine-editor/src/rust_scripts.rs:1636
+msgid "Build and Reload"
+msgstr "Собрать и перезагрузить"
+
+#: crates/engine-editor/src/project.rs:698
+msgid "Cannot preview this model"
+msgstr "Предпросмотр этой модели недоступен"
+
+#: crates/engine-editor/src/code.rs:1149
+msgid "Close (Esc)"
+msgstr "Закрыть (Esc)"
+
+#: crates/engine-editor/src/console.rs:352
+msgid "Close details"
+msgstr "Скрыть подробности"
+
+#: tools/piska-hub/src/ui.rs:411
+msgid "Create one with New Project or add a folder with Add Existing…"
+msgstr "Создайте проект кнопкой «Новый проект» или добавьте папку через «Добавить существующий…»"
+
+#: crates/engine-editor/src/project_chrome.rs:484
+msgid "Delete Permanently"
+msgstr "Удалить безвозвратно"
+
+#: crates/engine-editor/src/settings/physics.rs:96
+msgid "Disable All"
+msgstr "Отключить все"
+
+#: crates/engine-editor/src/ui.rs:960
+msgid "Don't Save"
+msgstr "Не сохранять"
+
+#: crates/engine-editor/src/inspector_refs.rs:288
+msgid "Drag an object here from the Hierarchy, or pick one with the target button"
+msgstr "Перетащите сюда объект из иерархии или выберите его кнопкой-прицелом"
+
+#: crates/engine-editor/src/project.rs:687
+msgid "Drag to rotate · wheel to zoom"
+msgstr "Перетаскивание — поворот · колесо — масштаб"
+
+#: modeler/crates/engine-modeler/src/ui/viewport.rs:284
+msgid "Empty model"
+msgstr "Пустая модель"
+
+#: crates/engine-editor/src/settings/physics.rs:93
+msgid "Enable All"
+msgstr "Включить все"
+
+#: crates/engine-editor/src/settings/tools.rs:297
+msgid "File → Build… puts games into <folder>/<game>/<platform>. Relative to the workspace, or absolute."
+msgstr "«Файл → Собрать…» кладёт сборки в <папка>/<игра>/<платформа>. Путь — от рабочего пространства или абсолютный."
+
+#: crates/engine-editor/src/code.rs:1116
+msgid "Find in file"
+msgstr "Найти в файле"
+
+#: tools/piska-hub/src/ui.rs:1420
+msgid "Folder for the project"
+msgstr "Папка для проекта"
+
+#: tools/piska-hub/src/ui.rs:2152
+msgid "Folder path"
+msgstr "Путь к папке"
+
+#: tools/piska-hub/src/ui.rs:439
+msgid "LAST OPENED"
+msgstr "ОТКРЫВАЛСЯ"
+
+#: tools/piska-hub/src/ui.rs:409
+msgid "Looking for projects…"
+msgstr "Поиск проектов…"
+
+#: crates/engine-editor/src/inspector_refs.rs:226
+msgid "Missing ({kind})"
+msgstr "Не найден ({kind})"
+
+#: tools/piska-hub/src/ui.rs:565
+#: tools/piska-hub/src/ui.rs:720
+msgid "More actions"
+msgstr "Ещё действия"
+
+#: crates/engine-editor/src/settings/pages_project.rs:32
+msgid "My Game"
+msgstr "Моя игра"
+
+#: crates/engine-editor/src/settings/pages_project.rs:33
+msgid "My Studio"
+msgstr "Моя студия"
+
+#: crates/engine-editor/src/code.rs:1139
+msgid "Next match (Enter)"
+msgstr "Следующее совпадение (Enter)"
+
+#: crates/engine-editor/src/settings/input.rs:528
+msgid "No bindings yet"
+msgstr "Привязок пока нет"
+
+#: crates/engine-editor/src/code.rs:919
+msgid "No file is open"
+msgstr "Нет открытого файла"
+
+#: crates/engine-editor/src/export.rs:315
+msgid "No game crate"
+msgstr "Нет крейта игры"
+
+#: crates/engine-editor/src/settings/input.rs:684
+msgid "No input actions"
+msgstr "Нет действий ввода"
+
+#: tools/piska-hub/src/ui.rs:411
+msgid "No projects yet"
+msgstr "Проектов пока нет"
+
+#: crates/engine-editor/src/inspector_refs.rs:364
+msgid "No {kind} objects match"
+msgstr "Нет подходящих объектов: {kind}"
+
+#: crates/engine-editor/src/help.rs:268
+msgid "OK"
+msgstr "ОК"
+
+#: crates/engine-editor/src/project_chrome.rs:587
+msgid "Parent folder"
+msgstr "Родительская папка"
+
+#: crates/engine-editor/src/viewport.rs:305
+msgid "Paused — Step advances one frame"
+msgstr "Пауза — «Шаг» выполняет один кадр"
+
+#: crates/engine-editor/src/inspector_refs.rs:298
+msgid "Pick an object from the scene"
+msgstr "Выбрать объект из сцены"
+
+#: crates/engine-editor/src/code.rs:1142
+msgid "Previous match (Shift+Enter)"
+msgstr "Предыдущее совпадение (Shift+Enter)"
+
+#: crates/engine-editor/src/ui.rs:633
+msgid "Project Hub: open or create another project"
+msgstr "Хаб проектов: открыть или создать другой проект"
+
+#: tools/piska-hub/src/ui.rs:409
+msgid "Reading the engine's games/ and the folders you added."
+msgstr "Читаются games/ движка и добавленные вами папки."
+
+#: crates/engine-editor/src/inspector.rs:850
+msgid "Remove this element"
+msgstr "Удалить этот элемент"
+
+#: crates/engine-editor/src/project_chrome.rs:119
+msgid "Rescan the assets directory (Ctrl+R)"
+msgstr "Пересканировать папку ассетов (Ctrl+R)"
+
+#: crates/engine-editor/src/settings/mod.rs:872
+msgid "Reset all"
+msgstr "Сбросить всё"
+
+#: crates/engine-editor/src/settings/mod.rs:865
+msgid "Reset page"
+msgstr "Сбросить страницу"
+
+#: modeler/crates/engine-modeler/src/ui/viewport.rs:295
+msgid "Right drag orbits · Middle drag pans · Wheel zooms · Tab switches to painting"
+msgstr "ПКМ — облёт · СКМ — сдвиг · колесо — масштаб · Tab — переход к рисованию"
+
+#: tools/piska-hub/src/ui.rs:2190
+msgid "Rust crate"
+msgstr "Крейт Rust"
+
+#: crates/engine-editor/src/project_chrome.rs:155
+msgid "Save this search to Favorites"
+msgstr "Сохранить этот поиск в избранное"
+
+#: crates/engine-editor/src/terrain_tools.rs:422
+msgid "Sculpting"
+msgstr "Скульптинг"
+
+#: crates/engine-editor/src/project_chrome.rs:190
+msgid "Search  (t:scene  t:material …)"
+msgstr "Поиск  (t:scene  t:material …)"
+
+#: tools/piska-hub/src/ui.rs:387
+msgid "Search by name, folder or path"
+msgstr "Поиск по имени, папке или пути"
+
+#: crates/engine-editor/src/inspector.rs:1089
+#: crates/engine-editor/src/script_order.rs:172
+msgid "Search components"
+msgstr "Поиск компонентов"
+
+#: tools/piska-hub/src/ui.rs:417
+msgid "Search looks at project names, folders and paths."
+msgstr "Поиск идёт по именам проектов, папкам и путям."
+
+#: crates/engine-editor/src/console.rs:219
+msgid "Search messages"
+msgstr "Поиск сообщений"
+
+#: crates/engine-editor/src/inspector_refs.rs:331
+msgid "Search {kind} objects"
+msgstr "Поиск объектов: {kind}"
+
+#: crates/engine-editor/src/inspector.rs:372
+msgid "Select an object in the Hierarchy or the Scene view\nto see and edit its components."
+msgstr "Выделите объект в иерархии или в окне «Сцена»,\nчтобы увидеть и изменить его компоненты."
+
+#: crates/engine-editor/src/project_chrome.rs:127
+msgid "Show as a list with columns"
+msgstr "Показать списком со столбцами"
+
+#: crates/engine-editor/src/project_chrome.rs:130
+msgid "Show as tiles with previews"
+msgstr "Показать плитками с превью"
+
+#: crates/engine-editor/src/project_chrome.rs:123
+msgid "Show or hide the details pane"
+msgstr "Показать или скрыть панель сведений"
+
+#: crates/engine-editor/src/settings/pages_project.rs:32
+msgid "Title of the game window. Empty: the title the game sets in code."
+msgstr "Заголовок окна игры. Пусто — заголовок, который игра задаёт в коде."
+
+#: crates/engine-editor/src/settings/mod.rs:833
+msgid "Try another word, or clear the search."
+msgstr "Попробуйте другое слово или очистите поиск."
+
+#: tools/piska-hub/src/ui.rs:2148
+msgid "Up one level"
+msgstr "На уровень вверх"
+
+#: crates/engine-editor/src/settings/pages_project.rs:34
+msgid "Version of the game, for example 1.2.0. Kept with the project."
+msgstr "Версия игры, например 1.2.0. Хранится в проекте."
+
+#: crates/engine-editor/src/settings/pages_project.rs:33
+msgid "Who makes the game. Kept with the project; the game window does not show it."
+msgstr "Кто делает игру. Хранится в проекте; в окне игры не показывается."
+
+#: crates/engine-editor/src/inspector_refs.rs:286
+msgid "{place}\nClick: show in Hierarchy · Double-click: select · Delete: clear"
+msgstr "{place}\nЩелчок — показать в иерархии · двойной щелчок — выделить · Delete — очистить"
+
+#: crates/engine-editor/src/rust_scripts.rs:502
+msgid "`{file}` is skipped: a script file name must be a Rust module name in snake_case, such as `enemy_patrol.rs`"
+msgstr "`{file}` пропущен: имя файла скрипта должно быть именем модуля Rust в snake_case, например `enemy_patrol.rs`"
+
+#: crates/engine-editor/src/rust_scripts.rs:529
+msgid "`{file}`: component `{p0}` is already declared in `{other}`; component type names must be unique, so only that one is registered"
+msgstr "`{file}`: компонент `{p0}` уже объявлен в `{other}`; имена типов компонентов должны быть уникальными, поэтому зарегистрирован только он"
+
+#: crates/engine-editor/src/rust_scripts.rs:522
+msgid "`{file}`: component `{p0}` is not registered because it is private; write `pub struct {p1}` inside `component!`"
+msgstr "`{file}`: компонент `{p0}` не зарегистрирован, потому что он приватный; напишите `pub struct {p1}` внутри `component!`"
+
+#: crates/engine-editor/src/rust_scripts.rs:143
+msgid "`{name}` cannot be a Rust script name: its file would be `{module}.rs`, and `{module}` is a Rust keyword. Pick another name, e.g. `{name}Script`"
+msgstr "`{name}` не может быть именем скрипта Rust: его файл назывался бы `{module}.rs`, а `{module}` — ключевое слово Rust. Выберите другое имя, например `{name}Script`"
+
+#: crates/engine-editor/src/rust_scripts.rs:130
+msgid "`{name}` cannot be a Rust script name: use a type name in UpperCamelCase such as `EnemyPatrol` (Latin letters and digits, starting with a capital letter, no spaces or `_`)"
+msgstr "`{name}` не может быть именем скрипта Rust: используйте имя типа в UpperCamelCase, например `EnemyPatrol` (латинские буквы и цифры, начинается с заглавной, без пробелов и `_`)"
+
+#: crates/engine-editor/src/state.rs:794
+msgid "`{name}` cannot be a script name: use a C++ class name such as `EnemyPatrol` (Latin letters, digits and `_`, starting with a capital letter)"
+msgstr "`{name}` не может быть именем скрипта: используйте имя класса C++, например `EnemyPatrol` (латинские буквы, цифры и `_`, начинается с заглавной)"
+
+#: tools/piska-hub/src/config.rs:97
+msgid "`{p0}` could not be read ({err}); starting with an empty list. Fix or delete the file to restore it."
+msgstr "Не удалось прочитать `{p0}` ({err}); начинаем с пустого списка. Исправьте или удалите файл, чтобы вернуть список."
+
+#: tools/piska-hub/src/hub.rs:716
+msgid "`{}` is not in a project folder the hub knows (the engine's games/, the default location or a folder where the hub created projects); delete it in the file manager"
+msgstr "`{}` лежит не в известной хабу папке проектов (games/ движка, расположение по умолчанию или папка, где хаб создавал проекты); удалите его в файловом менеджере"
+
+#: crates/engine-editor/src/ui.rs:931
+msgid "Creates “Assets/{place}/<name>.scenario” from a short template and opens it. Scenarios need no build: saving the file restarts them, even in Play."
+msgstr "Создаёт «Assets/{place}/<имя>.scenario» из короткого шаблона и открывает его. Сборка для сценариев не нужна: сохранение файла перезапускает их, даже в режиме игры."
+
+#: crates/engine-editor/src/help.rs:152
+msgid "Current bindings. Change them in Preferences → Shortcuts. In the Scene view: right mouse button + W A S D / Q E flies, Alt + left button orbits, middle button pans, Ctrl / Shift + click adds to the selection, dragging over empty space draws a selection box."
+msgstr "Текущие сочетания. Изменить их можно в «Настройки → Горячие клавиши». В окне «Сцена»: правая кнопка мыши + W A S D / Q E — полёт, Alt + левая кнопка — облёт, средняя кнопка — сдвиг, Ctrl / Shift + щелчок — добавить к выделению, протяжка по пустому месту — рамка выделения."
+
+#: crates/engine-editor/src/project.rs:560
+msgid "Double-click a scene to open it, a prefab or texture to add it to the scene. Drag assets into the Scene view or onto Inspector fields."
+msgstr "Двойной щелчок по сцене открывает её, по префабу или текстуре — добавляет в сцену. Перетаскивайте ассеты в окно «Сцена» или на поля Инспектора."
+
+#: crates/engine-editor/src/export.rs:175
+msgid "Linux builds need a Linux machine, or zig for cross-compiling (PISKA_ZIG or PATH) (see docs/api/export.md)"
+msgstr "Сборки для Linux делаются на машине с Linux или с помощью zig для кросс-компиляции (PISKA_ZIG или PATH); см. docs/api/export.md"
+
+#: crates/engine-editor/src/rust_scripts.rs:1688
+msgid "Missing script: `{}` is not in this build. Its data is kept and saved unchanged; restore the type and build, or remove the component."
+msgstr "Скрипт отсутствует: `{}` нет в этой сборке. Его данные сохраняются без изменений; верните тип и пересоберите или удалите компонент."
+
+#: crates/engine-editor/src/rust_scripts.rs:1722
+msgid "New file name for “{}”. Rust scripts must keep a snake_case name ending in `.rs`; the editor rewrites `mod.rs` for you."
+msgstr "Новое имя файла для «{}». Скрипты Rust должны сохранять имя в snake_case с окончанием `.rs`; `mod.rs` редактор перепишет сам."
+
+#: crates/engine-editor/src/code.rs:921
+msgid "Pick a file in the tree on the left, or double-click a script\nin the Project window. Ctrl+S saves, Ctrl+B builds."
+msgstr "Выберите файл в дереве слева или дважды щёлкните скрипт\nв окне «Проект». Ctrl+S — сохранить, Ctrl+B — собрать."
+
+#: crates/engine-editor/src/rust_scripts.rs:1650
+msgid "Rust code changed since this editor was built. Build compiles it and reloads the editor; the scene, selection and open files are kept."
+msgstr "Код Rust изменился после сборки этого редактора. «Собрать» компилирует его и перезагружает редактор; сцена, выделение и открытые файлы сохраняются."
+
+#: crates/engine-editor/src/rust_scripts.rs:1629
+msgid "The class name becomes the component name. The plugin is rebuilt and the script is attached to the selected object."
+msgstr "Имя класса становится именем компонента. Плагин пересобирается, а скрипт подключается к выбранному объекту."
+
+#: crates/engine-editor/src/state.rs:1670
+msgid "the game is running: press Stop before saving, otherwise the file would get the mid-game state of the scene"
+msgstr "игра запущена: нажмите «Стоп» перед сохранением, иначе в файл попадёт состояние сцены посреди игры"
+
+#: crates/engine-editor/src/help.rs:256
+msgid "The model editor is a separate program, `piska-modeler` (its own workspace in `modeler/`), that has to sit next to the editor program. Build it once from the engine folder:"
+msgstr "Редактор моделей — отдельная программа `piska-modeler` (свой workspace в `modeler/`), которая должна лежать рядом с программой редактора. Соберите её один раз из папки движка:"
+
+#: crates/engine-editor/src/rust_scripts.rs:1616
+msgid "The type name (UpperCamelCase, e.g. EnemyPatrol) becomes the component name. The file opens in the Code tab and the game is rebuilt; the editor then reloads itself with the new code and attaches the script to the selected object."
+msgstr "Имя типа (UpperCamelCase, например EnemyPatrol) становится именем компонента. Файл откроется во вкладке «Код», игра пересоберётся; затем редактор перезагрузится с новым кодом и подключит скрипт к выбранному объекту."
+
+#: crates/engine-editor/src/project_chrome.rs:476
+msgid "This system has no Recycle Bin, so {p0} will be deleted PERMANENTLY from disk together with their .meta files. This cannot be undone.\n\n{p1}{more}"
+msgstr "В этой системе нет корзины, поэтому {p0} будут удалены с диска БЕЗВОЗВРАТНО вместе с файлами .meta. Это нельзя отменить.\n\n{p1}{more}"
+
+#: crates/engine-editor/src/rust_scripts.rs:1743
+msgid "“{}” is deleted permanently (there is no undo). Objects that use its components keep their data as missing scripts until you remove them."
+msgstr "«{}» удаляется безвозвратно (отмены нет). Объекты, использующие его компоненты, сохраняют свои данные как отсутствующие скрипты, пока вы их не удалите."
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:235
+msgid " frames"
+msgstr " кадров"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:125
+msgid " min"
+msgstr " мин"
+
+#: crates/engine-editor/src/settings/physics.rs:77
+msgid " rad/s"
+msgstr " рад/с"
+
+#: crates/engine-editor/src/settings/pages_project.rs:84
+#: crates/engine-editor/src/settings/pages_project.rs:93
+msgid " s"
+msgstr " с"
+
+#: crates/engine-editor/src/project_chrome.rs:365
+msgid "{n} result"
+msgid_plural "{n} results"
+msgstr[0] "{n} результат"
+msgstr[1] "{n} результата"
+msgstr[2] "{n} результатов"
+
+#: crates/engine-editor/src/project_fs.rs:29
+msgid "{past} {done}"
+msgstr "{past}: {done}"
+
+#: crates/engine-editor/src/project_fs.rs:37
+msgid "{past} {done} of {total}."
+msgstr "{past}: {done} из {total}."
+
+#: crates/engine-editor/src/settings/tags.rs:68
+msgid "built in"
+msgstr "встроенный"
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "Fullscreen (borderless)"
+msgstr "Полный экран (без рамки)"
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "High"
+msgstr "Высокое"
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "Low"
+msgstr "Низкое"
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "Medium"
+msgstr "Среднее"
+
+#: crates/engine-editor/src/inspector.rs:399
+#: crates/engine-editor/src/ui.rs:834
+msgid "not saved yet"
+msgstr "ещё не сохранено"
+
+#: crates/engine-editor/src/settings/build.rs:589
+msgid "package version"
+msgstr "версия пакета"
+
+#: crates/engine-editor/src/settings/pages_project.rs:49
+msgid "Windowed"
+msgstr "В окне"
+
+#: crates/engine-editor/src/ui.rs:199
+msgctxt "menu"
+msgid "Windows"
+msgstr "Окна"
+
+#: crates/engine-editor/src/project.rs:392
+msgid "Call `engine::mount_assets(&mut app, \"assets\")` before starting the editor"
+msgstr "Вызовите `engine::mount_assets(&mut app, \"assets\")` перед запуском редактора"
+
+#: crates/engine-editor/src/script_order.rs:95
+msgid "cannot save the script execution order: no assets directory is mounted. Call `engine::mount_assets(&mut app, \"assets\")` before starting the editor"
+msgstr "не удалось сохранить порядок выполнения скриптов: папка ассетов не подключена. Вызовите `engine::mount_assets(&mut app, \"assets\")` перед запуском редактора"
+
+#: crates/engine-editor/src/ui.rs:817
+msgctxt "state"
+msgid "Edit"
+msgstr "Правка"
+
+#: crates/engine-editor/src/inspector_prefab.rs:96
+msgid "Overridden in this prefab instance. Right-click to revert it to the prefab value"
+msgstr "Переопределено в этом экземпляре префаба. Щёлкните правой кнопкой, чтобы вернуть значение префаба"
+
+#: crates/engine-editor/src/build_tools.rs:58
+msgid "`piska-export doctor --json` printed something unexpected: {e}"
+msgstr "`piska-export doctor --json` вывел что-то неожиданное: {e}"
+
+#: crates/engine-editor/src/build_tools.rs:106
+msgid "`{exe}` printed nothing: {err}"
+msgstr "`{exe}` ничего не вывел: {err}"
+
+#: crates/engine-editor/src/build_tools.rs:165
+msgid "Build Tools"
+msgstr "Инструменты сборки"
+
+#: crates/engine-editor/src/build_tools.rs:110
+msgid "cannot start `{exe}`: {err}"
+msgstr "не удалось запустить `{exe}`: {err}"
+
+#: crates/engine-editor/src/build_tools.rs:205
+msgid "cargo build -p piska-export"
+msgstr "cargo build -p piska-export"
+
+#: crates/engine-editor/src/build_tools.rs:182
+#: crates/engine-editor/src/build_tools.rs:263
+msgid "Check again"
+msgstr "Проверить снова"
+
+#: crates/engine-editor/src/build_tools.rs:152
+msgid "Check Build Tools…"
+msgstr "Проверить инструменты сборки…"
+
+#: crates/engine-editor/src/build_tools.rs:176
+msgid "Checking the build tools…"
+msgstr "Проверка инструментов сборки…"
+
+#: crates/engine-editor/src/build_tools.rs:233
+msgid "Component"
+msgstr "Компонент"
+
+#: crates/engine-editor/src/build_tools.rs:248
+msgid "Copy fix command"
+msgstr "Копировать команду исправления"
+
+#: crates/engine-editor/src/editor_audio.rs:49
+msgid "Editor volume"
+msgstr "Громкость в редакторе"
+
+#: tools/piska-hub/src/ui.rs:251
+msgid "ENGINE"
+msgstr "ДВИЖОК"
+
+#: crates/engine-editor/src/build_tools.rs:225
+msgid "Everything needed to build and export games is installed."
+msgstr "Всё необходимое для сборки и экспорта игр установлено."
+
+#: crates/engine-editor/src/editor_audio.rs:32
+msgid "Game audio is muted in the editor. Click to turn it on"
+msgstr "Звук игры в редакторе выключен. Щёлкните, чтобы включить"
+
+#: crates/engine-editor/src/editor_audio.rs:30
+msgid "Game audio is on in the editor. Click to mute it (Preferences → Game View → Audio)"
+msgstr "Звук игры в редакторе включён. Щёлкните, чтобы выключить («Настройки → Вид «Игра» → Звук»)"
+
+#: crates/engine-editor/src/editor_audio.rs:50
+msgid "How loud the game plays inside the editor, on top of the game's own volume. Exported games are not affected."
+msgstr "Насколько громко игра звучит внутри редактора — поверх собственной громкости игры. На экспортированные игры не влияет."
+
+#: crates/engine-editor/src/editor_audio.rs:43
+msgid "Mute audio in editor"
+msgstr "Выключить звук в редакторе"
+
+#: tools/piska-hub/src/ui.rs:438
+msgid "NAME"
+msgstr "ИМЯ"
+
+#: crates/engine-editor/src/build_tools.rs:208
+msgid "or point the PISKA_EXPORT environment variable at the program, then open this window again."
+msgstr "или укажите путь к программе в переменной окружения PISKA_EXPORT и откройте это окно снова."
+
+#: crates/engine-editor/src/build_tools.rs:197
+msgid "piska-export is not built here"
+msgstr "piska-export здесь не собран"
+
+#: crates/engine-editor/src/editor_audio.rs:44
+msgid "Silence the game in Play mode inside the editor. The game's own volume settings are not changed."
+msgstr "Отключить звук игры в режиме игры внутри редактора. Собственные настройки громкости игры не меняются."
+
+#: crates/engine-editor/src/build_tools.rs:233
+msgid "Status"
+msgstr "Состояние"
+
+#: crates/engine-editor/src/build_tools.rs:264
+msgid "System: {os}"
+msgstr "Система: {os}"
+
+#: crates/engine-editor/src/build_tools.rs:200
+msgid "The build tools check runs `piska-export doctor`, a separate program of the engine workspace. Build it once from the engine folder:"
+msgstr "Проверка инструментов сборки запускает `piska-export doctor` — отдельную программу рабочего пространства движка. Соберите её один раз из папки движка:"
+
+#: crates/engine-editor/src/editor_api.rs:24
+msgid "there is no folder `{folder}` in the project assets (paths are relative to the assets folder)"
+msgstr "в ассетах проекта нет папки `{folder}` (пути отсчитываются от папки ассетов)"
+
+#: crates/engine-editor/src/build_tools.rs:233
+msgid "Tool"
+msgstr "Инструмент"
+
+#: crates/engine-editor/src/build_tools.rs:227
+msgid "{n} problem(s) found. Run the fix command of each row in a terminal (the editor never installs anything itself)."
+msgstr "Найдено проблем: {n}. Выполните команду исправления каждой строки в терминале (сам редактор ничего не устанавливает)."
+
+#: crates/engine-editor/src/hierarchy.rs:936
+msgid "A parent is locked: this object cannot be picked in the Scene view"
+msgstr "Заперт родитель: этот объект не выбирается в окне «Сцена»"
+
+#: crates/engine-editor/src/scene_picker.rs:399
+msgid "A perspective Main Camera, a Directional Light and a ground plane; the Scene view opens in 3D"
+msgstr "Камера Main Camera с перспективой, направленный свет и плоскость земли; окно «Сцена» открывается в 3D"
+
+#: crates/engine-editor/src/hierarchy.rs:544
+msgid "Alternating Row Shading"
+msgstr "Чередование фона строк"
+
+#: crates/engine-editor/src/scene_picker.rs:398
+msgid "An orthographic Main Camera; the Scene view opens in 2D"
+msgstr "Ортографическая камера Main Camera; окно «Сцена» открывается в 2D"
+
+#: crates/engine-editor/src/scene_picker.rs:458
+msgid "Clear Recent Scenes"
+msgstr "Очистить недавние сцены"
+
+#: crates/engine-editor/src/hierarchy.rs:517
+msgid "Collapse All"
+msgstr "Свернуть всё"
+
+#: crates/engine-editor/src/hierarchy.rs:1297
+msgid "Collapse All Children"
+msgstr "Свернуть всех потомков"
+
+#: crates/engine-editor/src/ui.rs:812
+msgid "Editor input"
+msgstr "Ввод у редактора"
+
+#: crates/engine-editor/src/hierarchy.rs:514
+msgid "Expand All"
+msgstr "Развернуть всё"
+
+#: crates/engine-editor/src/hierarchy.rs:1294
+msgid "Expand All Children"
+msgstr "Развернуть всех потомков"
+
+#: crates/engine-editor/src/hierarchy.rs:822
+msgid "Expand or collapse  (Alt+click: with all children)"
+msgstr "Развернуть или свернуть  (Alt+щелчок — со всеми потомками)"
+
+#: crates/engine-editor/src/hierarchy.rs:540
+msgid "Flat List"
+msgstr "Плоский список"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:266
+msgid "Focus Game view on Play"
+msgstr "Фокус на окне «Игра» при запуске"
+
+#: crates/engine-editor/src/ui.rs:810
+msgid "Game input"
+msgstr "Ввод у игры"
+
+#: crates/engine-editor/src/hierarchy.rs:561
+msgid "Hierarchy options: expand or collapse all, order, search results"
+msgstr "Настройки иерархии: развернуть или свернуть всё, порядок, результаты поиска"
+
+#: crates/engine-editor/src/hierarchy.rs:537
+msgid "In the Tree"
+msgstr "В дереве"
+
+#: crates/engine-editor/src/ui.rs:810
+msgid "Keys, mouse and gamepads go to the game. Shift+Esc or a click on another window gives them back to the editor."
+msgstr "Клавиатура, мышь и геймпады отданы игре. Shift+Esc или щелчок по другому окну возвращает их редактору."
+
+#: crates/engine-editor/src/hierarchy.rs:403
+msgid "Letters match object names in order (rl3 finds Rail L 3); t:Camera — by component type, tag:Player — by tag, layer:UI — by layer"
+msgstr "Буквы ищутся в именах объектов по порядку (rl3 находит Rail L 3); t:Camera — по типу компонента, tag:Player — по тегу, layer:UI — по слою"
+
+#: crates/engine-editor/src/hierarchy.rs:1289
+msgid "Lock in Scene View"
+msgstr "Запретить выбор в окне «Сцена»"
+
+#: crates/engine-editor/src/hierarchy.rs:938
+msgid "Lock: the object and its children cannot be picked in the Scene view"
+msgstr "Замок: объект и его потомков нельзя выбрать в окне «Сцена»"
+
+#: crates/engine-editor/src/hierarchy.rs:934
+msgid "Locked: cannot be picked in the Scene view. Click to unlock"
+msgstr "Заперт: не выбирается в окне «Сцена». Щёлкните, чтобы отпереть"
+
+#: crates/engine-editor/src/scene_picker.rs:406
+msgid "Main Camera (orthographic)."
+msgstr "Main Camera (ортографическая)."
+
+#: crates/engine-editor/src/scene_picker.rs:404
+msgid "Main Camera (perspective), Directional Light, Ground."
+msgstr "Main Camera (перспектива), Directional Light, Ground."
+
+#: crates/engine-editor/src/hierarchy.rs:587
+msgid "Matches with their parents in the tree, or a flat list with the parent path"
+msgstr "Совпадения в дереве вместе с родителями или плоским списком с путём родителей"
+
+#: crates/engine-editor/src/scene_picker.rs:508
+#: crates/engine-editor/src/ui.rs:266
+msgid "New Scene…"
+msgstr "Создать сцену…"
+
+#: crates/engine-editor/src/hierarchy.rs:549
+msgid "No object is locked"
+msgstr "Запертых объектов нет"
+
+#: crates/engine-editor/src/scene_picker.rs:271
+msgid "No scene matches the search"
+msgstr "Ни одна сцена не подходит под поиск"
+
+#: crates/engine-editor/src/scene_picker.rs:492
+msgid "No scenes in this project"
+msgstr "В проекте нет сцен"
+
+#: crates/engine-editor/src/hierarchy.rs:722
+msgid "Only scenes and prefabs can be dropped into the Hierarchy"
+msgstr "В иерархию можно перетащить только сцену или префаб"
+
+#: crates/engine-editor/src/scene_picker.rs:312
+msgid "open"
+msgstr "открыта"
+
+#: crates/engine-editor/src/scene_picker.rs:444
+#: crates/engine-editor/src/scene_picker.rs:449
+msgid "Open Recent Scene"
+msgstr "Недавние сцены"
+
+#: crates/engine-editor/src/scene_picker.rs:434
+#: crates/engine-editor/src/scene_picker.rs:505
+msgid "Open Scene…"
+msgstr "Открыть сцену…"
+
+#: crates/engine-editor/src/hierarchy.rs:528
+msgid "Order"
+msgstr "Порядок"
+
+#: crates/engine-editor/src/settings/pages_prefs.rs:267
+msgid "Play gives the Game view the keyboard focus. The game receives keys, mouse and gamepads only while the Game view has focus: click another window or press Shift+Esc to give them back to the editor, click the Game view to return them."
+msgstr "При запуске фокус клавиатуры получает окно «Игра». Игра получает клавиатуру, мышь и геймпады, только пока фокус у окна «Игра»: щелчок по другому окну или Shift+Esc отдаёт их редактору, щелчок по окну «Игра» возвращает."
+
+#: crates/engine-editor/src/hierarchy.rs:721
+msgid "Release to add the prefab to the scene"
+msgstr "Отпустите, чтобы добавить префаб в сцену"
+
+#: crates/engine-editor/src/hierarchy.rs:720
+msgid "Release to open this scene"
+msgstr "Отпустите, чтобы открыть эту сцену"
+
+#: crates/engine-editor/src/hierarchy.rs:520
+msgid "Reveal Selection"
+msgstr "Показать выделенное"
+
+#: crates/engine-editor/src/scene_picker.rs:493
+msgid "Save the scene with File → Save As…"
+msgstr "Сохраните сцену: Файл → Сохранить как…"
+
+#: crates/engine-editor/src/hierarchy.rs:529
+msgid "Scene Order"
+msgstr "Порядок сцены"
+
+#: crates/engine-editor/src/scene_picker.rs:446
+msgid "Scenes you open in this project are listed here"
+msgstr "Здесь появятся сцены, которые вы открываете в этом проекте"
+
+#: crates/engine-editor/src/hierarchy.rs:401
+msgid "Search  (t:  tag:  layer:)"
+msgstr "Поиск  (t:  tag:  layer:)"
+
+#: crates/engine-editor/src/hierarchy.rs:536
+msgid "Search Results"
+msgstr "Результаты поиска"
+
+#: crates/engine-editor/src/scene_picker.rs:249
+msgid "Search scenes by name or folder"
+msgstr "Поиск сцен по имени или папке"
+
+#: crates/engine-editor/src/hierarchy.rs:575
+msgid "Show as List"
+msgstr "Списком"
+
+#: crates/engine-editor/src/hierarchy.rs:575
+msgid "Show in Tree"
+msgstr "В дереве"
+
+#: crates/engine-editor/src/scene_picker.rs:309
+msgid "start scene"
+msgstr "стартовая сцена"
+
+#: crates/engine-editor/src/scene_picker.rs:525
+msgid "Switch to another scene of the project"
+msgstr "Перейти к другой сцене проекта"
+
+#: crates/engine-editor/src/scene_picker.rs:389
+msgid "The current scene closes; if it has unsaved changes, you are asked first."
+msgstr "Текущая сцена закроется; если в ней есть несохранённые изменения, сначала будет вопрос."
+
+#: crates/engine-editor/src/viewport.rs:319
+msgid "The editor has the input — click the Game view to play"
+msgstr "Ввод у редактора — щёлкните по окну «Игра», чтобы играть"
+
+#: crates/engine-editor/src/ui.rs:812
+msgid "The game gets no input now. Click the Game view to give it keys, mouse and gamepads."
+msgstr "Игра сейчас не получает ввод. Щёлкните по окну «Игра», чтобы отдать ей клавиатуру, мышь и геймпады."
+
+#: crates/engine-editor/src/scene_picker.rs:269
+msgid "This project has no .scene files yet: File → Save As… creates one"
+msgstr "В проекте пока нет файлов .scene: Файл → Сохранить как… создаст первый"
+
+#: crates/engine-editor/src/hierarchy.rs:547
+msgid "Unlock All"
+msgstr "Отпереть все"
+
+#: crates/engine-editor/src/hierarchy.rs:1289
+msgid "Unlock in Scene View"
+msgstr "Разрешить выбор в окне «Сцена»"
+
+#: crates/engine-editor/src/scene_picker.rs:343
+msgid "{count} of {total} scenes  ·  Up / Down to choose, Enter to open, Esc to close"
+msgstr "Сцен: {count} из {total}  ·  вверх / вниз — выбор, Enter — открыть, Esc — закрыть"
+
+#: crates/engine-editor/src/scene_picker.rs:499
+msgid "{folder}  ·  start"
+msgstr "{folder}  ·  стартовая"
+
+#: crates/engine-editor/src/hierarchy.rs:571
+msgid "{n} object found"
+msgid_plural "{n} objects found"
+msgstr[0] "Найден {n} объект"
+msgstr[1] "Найдено {n} объекта"
+msgstr[2] "Найдено {n} объектов"
+
+#: crates/engine-editor/src/rust_scripts.rs:1784
+msgid "Build Scripts"
+msgstr "Собрать скрипты"
+
+#: crates/engine-editor/src/rust_scripts.rs:1750
+msgid "The project's scripts are built: the editor is restarting with them."
+msgstr "Скрипты проекта собраны: редактор перезапускается с ними."
+
+#: crates/engine-editor/src/rust_scripts.rs:1754
+msgid "This editor does not contain the project's scripts ({list}), so Play runs the scene without them. Build them once; the editor restarts with the same scene."
+msgstr "В этом редакторе нет скриптов проекта ({list}), поэтому режим игры запускает сцену без них. Соберите их один раз — редактор перезапустится с той же сценой."
+
+#: crates/engine-editor/src/rust_scripts.rs:1756
+msgid "This editor does not contain the project's scripts ({list}), so Play runs the scene without them. Open the project from Piska Hub: it builds the project's own editor."
+msgstr "В этом редакторе нет скриптов проекта ({list}), поэтому режим игры запускает сцену без них. Откройте проект из Piska Hub: он соберёт собственный редактор проекта."
+
+#: crates/engine-editor/src/rust_scripts.rs:1752
+msgid "This editor does not contain the project's scripts ({list}). They are building now; when the build is done, the editor restarts with them and Play runs the whole game."
+msgstr "В этом редакторе нет скриптов проекта ({list}). Они сейчас собираются; после сборки редактор перезапустится с ними, и режим игры запустит всю игру."
+
+#: crates/engine-editor/src/viewport.rs:30
+msgid "Alt drag"
+msgstr "Alt + ЛКМ"
+
+#: crates/engine-editor/src/viewport.rs:22
+msgid "Drag"
+msgstr "ЛКМ"
+
+#: crates/engine-editor/src/viewport.rs:29
+msgid "fly"
+msgstr "полёт"
+
+#: crates/engine-editor/src/viewport.rs:25
+#: crates/engine-editor/src/viewport.rs:33
+msgid "frame"
+msgstr "показать"
+
+#: crates/engine-editor/src/viewport.rs:31
+msgid "Middle drag"
+msgstr "СКМ"
+
+#: crates/engine-editor/src/viewport.rs:30
+msgid "orbit"
+msgstr "облёт"
+
+#: crates/engine-editor/src/viewport.rs:23
+#: crates/engine-editor/src/viewport.rs:31
+msgid "pan"
+msgstr "сдвиг"
+
+#: crates/engine-editor/src/viewport.rs:23
+msgid "Right / middle drag"
+msgstr "ПКМ / СКМ"
+
+#: crates/engine-editor/src/viewport.rs:29
+msgid "Right drag + W A S D"
+msgstr "ПКМ + W A S D"
+
+#: crates/engine-editor/src/viewport.rs:22
+msgid "select"
+msgstr "выделение"
+
+#: crates/engine-editor/src/viewport.rs:26
+msgid "snap"
+msgstr "привязка"
+
+#: crates/engine-editor/src/viewport.rs:24
+#: crates/engine-editor/src/viewport.rs:32
+msgid "Wheel"
+msgstr "Колесо"
+
+#: crates/engine-editor/src/viewport.rs:24
+#: crates/engine-editor/src/viewport.rs:32
+msgid "zoom"
+msgstr "масштаб"
+
+#: crates/engine-editor/src/hierarchy.rs:457
+msgid "Getting Started…"
+msgstr "Начало работы…"
+
+#: crates/engine-editor/src/hierarchy.rs:454
+msgid "The scene is empty. Add objects with + Create or GameObject."
+msgstr "Сцена пуста. Добавьте объекты: + Создать или меню «Объект»."
+
+#: crates/engine-editor/src/viewport.rs:189
+msgid " m/s"
+msgstr " м/с"
+
+#: crates/engine-editor/src/project_content.rs:1048
+msgid "Release to save the object as a prefab here"
+msgstr "Отпустите, чтобы сохранить объект префабом здесь"
+
+#: crates/engine-editor/src/code.rs:1195
+msgid "1 – {lines}"
+msgstr "1 – {lines}"
+
+#: crates/engine-editor/src/catalog.rs:100
+msgid "Body"
+msgstr "Корпус"
+
+#: crates/engine-editor/src/inspector.rs:533
+msgid "Copy a value of the same kind first"
+msgstr "Сначала скопируйте значение того же вида"
+
+#: crates/engine-editor/src/code.rs:1202
+msgid "Go"
+msgstr "Перейти"
+
+#: crates/engine-editor/src/code.rs:1192
+msgid "Go to line"
+msgstr "Перейти к строке"
+
+#: crates/engine-editor/src/code.rs:1165
+msgid "Hide replace"
+msgstr "Скрыть замену"
+
+#: crates/engine-editor/src/catalog.rs:102
+msgid "Jumping and Noclip"
+msgstr "Прыжки и полёт сквозь стены"
+
+#: crates/engine-editor/src/catalog.rs:104
+msgid "Look"
+msgstr "Взгляд"
+
+#: crates/engine-editor/src/catalog.rs:99
+msgid "Movement"
+msgstr "Движение"
+
+#: crates/engine-editor/src/undo_history.rs:60
+msgid "Redo up to this step"
+msgstr "Повторить до этого шага"
+
+#: crates/engine-editor/src/code.rs:1159
+msgid "Replace All"
+msgstr "Заменить все"
+
+#: crates/engine-editor/src/code.rs:1152
+msgid "Replace the current match and go to the next one"
+msgstr "Заменить текущее совпадение и перейти к следующему"
+
+#: crates/engine-editor/src/code.rs:1149
+msgid "Replace with"
+msgstr "Заменить на"
+
+#: crates/engine-editor/src/inspector.rs:537
+msgid "Reset to Default"
+msgstr "Сбросить к значению по умолчанию"
+
+#: crates/engine-editor/src/undo_history.rs:38
+msgid "Scene opened"
+msgstr "Сцена открыта"
+
+#: crates/engine-editor/src/viewport.rs:353
+msgid "Shift+Esc — release the mouse"
+msgstr "Shift+Esc — вернуть мышь"
+
+#: crates/engine-editor/src/catalog.rs:101
+msgid "Speed Modifiers"
+msgstr "Множители скорости"
+
+#: crates/engine-editor/src/catalog.rs:106
+msgid "State During Play"
+msgstr "Состояние во время игры"
+
+#: crates/engine-editor/src/undo_history.rs:60
+msgid "Undo back to this step"
+msgstr "Отменить до этого шага"
+
+#: crates/engine-editor/src/ui.rs:345
+#: crates/engine-editor/src/undo_history.rs:21
+msgid "Undo History"
+msgstr "История отмены"
+
+#: crates/engine-editor/src/undo_history.rs:30
+msgid "{done} of {total} steps applied"
+msgstr "Применено шагов: {done} из {total}"
+
+#: tools/piska-hub/src/import.rs:140
+msgid "`{a}` already exists and has {b} files; clashing files follow the conflict setting below"
+msgstr "`{a}` уже существует, в нём файлов — {b}; совпадающие файлы обрабатываются по настройке конфликтов ниже"
+
+#: tools/piska-hub/src/import.rs:124
+msgid "`{a}` and `{b}` differ only in letter case; they cannot both exist on Windows or macOS"
+msgstr "`{a}` и `{b}` отличаются только регистром букв; в Windows и macOS они не могут существовать вместе"
+
+#: tools/piska-hub/src/import.rs:142
+msgid "`{a}` is inside the engine checkout; projects there must go to its games/ folder, otherwise choose a folder outside the engine"
+msgstr "`{a}` лежит внутри копии движка; проекты там должны попадать в её games/, иначе выберите каталог вне движка"
+
+#: tools/piska-hub/src/import.rs:1189
+msgid "`{}` is a file; choose another name or folder"
+msgstr "`{}` — файл; выберите другое имя или каталог"
+
+#: tools/piska-hub/src/import_flow.rs:752
+msgid "`{}` is a folder; add a file name, for example {}"
+msgstr "`{}` — каталог; добавьте имя файла, например {}"
+
+#: tools/piska-hub/src/import_flow.rs:210
+msgid "`{}` is not a project file; a project file ends with .{} (made with Save Project As File…)"
+msgstr "`{}` — не файл проекта; файл проекта оканчивается на .{} (его делает «Сохранить проект в файл…»)"
+
+#: tools/piska-hub/src/ui.rs:1864
+msgid "A .{} file made with Save Project As File…"
+msgstr "Файл .{}, сделанный командой «Сохранить проект в файл…»"
+
+#: tools/piska-hub/src/import_ui.rs:375
+msgid "A folder named after the project is created here. Outside the engine the project gets its own Cargo workspace."
+msgstr "Здесь создаётся каталог с именем проекта. Вне движка проект получает собственное рабочее пространство Cargo."
+
+#: tools/piska-hub/src/import_ui.rs:731
+msgid "A project folder, a folder with projects, or a .{} file"
+msgstr "Каталог проекта, каталог с проектами или файл .{}"
+
+#: tools/piska-hub/src/ui.rs:1859
+msgid "A project folder, or a folder that contains several projects: they are found and listed."
+msgstr "Каталог проекта или каталог с несколькими проектами: они будут найдены и показаны списком."
+
+#: tools/piska-hub/src/import.rs:138
+msgid "A project named `{a}` is already in the list ({b}); rename this one or regenerate GUIDs"
+msgstr "Проект `{a}` уже есть в списке ({b}); переименуйте этот или создайте новые GUID"
+
+#: tools/piska-hub/src/import_ui.rs:136
+msgid "Add a project folder, a folder with several projects, or a project file."
+msgstr "Добавьте каталог проекта, каталог с несколькими проектами или файл проекта."
+
+#: tools/piska-hub/src/import_ui.rs:496
+msgid "Add a source to begin."
+msgstr "Добавьте источник, чтобы начать."
+
+#: tools/piska-hub/src/import_ui.rs:402
+msgid "Add to the project list"
+msgstr "Добавить в список проектов"
+
+#: tools/piska-hub/src/import.rs:910
+msgid "Added to the list in place: no files were copied or changed"
+msgstr "Добавлен в список на месте: файлы не копировались и не менялись"
+
+#: tools/piska-hub/src/import_ui.rs:410
+msgid "Advanced"
+msgstr "Дополнительно"
+
+#: tools/piska-hub/src/import_ui.rs:400
+msgid "After import"
+msgstr "После импорта"
+
+#: crates/engine-editor/src/project_file.rs:193
+#: tools/piska-hub/src/import_ui.rs:968
+msgid "Always left out: target/, .git/, caches, plugin build folders, editor temp files and links. .gitignore is respected."
+msgstr "Всегда не входят: target/, .git/, кэши, каталоги сборки плагинов, временные файлы редактора и ссылки. .gitignore учитывается."
+
+#: tools/piska-hub/src/import.rs:903
+msgid "An own [workspace] and build profiles were added: the project builds on its own now"
+msgstr "Добавлены собственный [workspace] и профили сборки: теперь проект собирается сам по себе"
+
+#: tools/piska-hub/src/import_flow.rs:391
+msgid "Another project in this import has the same name"
+msgstr "Другой проект в этом импорте называется так же"
+
+#: tools/piska-hub/src/import_ui.rs:458
+msgid "Asset GUIDs"
+msgstr "GUID ассетов"
+
+#: tools/piska-hub/src/import.rs:258
+msgid "build output, cache or version control"
+msgstr "результат сборки, кэш или система контроля версий"
+
+#: tools/piska-hub/src/import_ui.rs:404
+msgid "Build the project's editor in the background"
+msgstr "Собрать редактор проекта в фоне"
+
+#: tools/piska-hub/src/import_ui.rs:919
+msgid "C++ code needs a C++ compiler (MSVC or GCC); run Tools → Check Build Tools in the editor if the build complains."
+msgstr "Для кода на C++ нужен компилятор (MSVC или GCC); если сборка жалуется, запустите в редакторе Tools → Check Build Tools."
+
+#: crates/engine-editor/src/project_file.rs:189
+#: tools/piska-hub/src/import_ui.rs:960
+msgid "C++ sources (cpp/)"
+msgstr "Исходники C++ (cpp/)"
+
+#: tools/piska-hub/src/import_ui.rs:469
+msgid "C++ sources ({})"
+msgstr "Исходники C++ ({})"
+
+#: tools/piska-hub/src/import_ui.rs:581
+msgid "Cancelling leaves no half-written project: files are prepared in a temporary folder and moved into place at the end."
+msgstr "Отмена не оставляет недописанного проекта: файлы готовятся во временном каталоге и в конце переносятся на место."
+
+#: tools/piska-hub/src/import_ui.rs:549
+msgid "Cancelling…"
+msgstr "Отмена…"
+
+#: tools/piska-hub/src/import_flow.rs:759
+msgid "Cannot create `{}`: {}"
+msgstr "Не удалось создать `{}`: {}"
+
+#: tools/piska-hub/src/tasks.rs:235
+msgid "cannot start cargo: {e}; is Rust installed?"
+msgstr "не удалось запустить cargo: {e}; Rust установлен?"
+
+#: tools/piska-hub/src/import_flow.rs:647
+msgid "cargo test -p {package}  (in {})"
+msgstr "cargo test -p {package}  (in {})"
+
+#: tools/piska-hub/src/import.rs:906
+msgid "Cargo.lock copied from the engine so the dependencies keep their tested versions"
+msgstr "Cargo.lock скопирован из движка, чтобы зависимости остались проверенных версий"
+
+#: tools/piska-hub/src/import.rs:145
+msgid "Cargo.toml is converted: {a}"
+msgstr "Cargo.toml преобразуется: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:922
+msgid "Cargo.toml now points at this engine checkout; if you move the engine folder, update the paths in Cargo.toml."
+msgstr "Cargo.toml теперь указывает на эту копию движка; если переместите каталог движка, обновите пути в Cargo.toml."
+
+#: tools/piska-hub/src/import.rs:438
+msgid "Cargo.toml: {reason}"
+msgstr "Cargo.toml: {reason}"
+
+#: tools/piska-hub/src/import_ui.rs:925
+msgid "Check that it builds: `cargo test -p {}` in the project folder."
+msgstr "Проверьте, что проект собирается: `cargo test -p {}` в каталоге проекта."
+
+#: tools/piska-hub/src/import.rs:1181
+msgid "Checking the result"
+msgstr "Проверка результата"
+
+#: tools/piska-hub/src/import.rs:755
+msgid "Choose a destination folder"
+msgstr "Выберите каталог назначения"
+
+#: tools/piska-hub/src/ui.rs:1863
+msgid "Choose a Project File"
+msgstr "Выбор файла проекта"
+
+#: tools/piska-hub/src/ui.rs:1858
+msgid "Choose a Project Folder"
+msgstr "Выбор каталога проекта"
+
+#: tools/piska-hub/src/ui.rs:1865
+msgid "Choose File"
+msgstr "Выбрать файл"
+
+#: tools/piska-hub/src/ui.rs:1860
+msgid "Choose Folder"
+msgstr "Выбрать каталог"
+
+#: tools/piska-hub/src/import_flow.rs:749
+msgid "Choose where to save the file"
+msgstr "Выберите, куда сохранить файл"
+
+#: tools/piska-hub/src/import.rs:136
+msgid "Contains exported builds ({a}); they are left out unless you include them"
+msgstr "Содержит экспортированные сборки ({a}); они не войдут, пока вы их не включите"
+
+#: tools/piska-hub/src/import_ui.rs:287
+msgid "Contents"
+msgstr "Состав"
+
+#: tools/piska-hub/src/import_ui.rs:657
+msgid "copied"
+msgstr "скопирован"
+
+#: tools/piska-hub/src/import_ui.rs:360
+msgid "Copy into folder"
+msgstr "Копировать в каталог"
+
+#: tools/piska-hub/src/import_ui.rs:354
+msgid "Copy makes an independent project in the folder below; Use in place only adds the existing folder to the list and changes nothing in it."
+msgstr "«Копировать» создаёт независимый проект в каталоге ниже; «Использовать на месте» только добавляет существующий каталог в список и ничего в нём не меняет."
+
+#: tools/piska-hub/src/import_ui.rs:516
+msgid "Copy or unpack the ticked projects (Enter)"
+msgstr "Скопировать или распаковать отмеченные проекты (Enter)"
+
+#: tools/piska-hub/src/import_ui.rs:360
+msgid "Copy the project; the original is never touched"
+msgstr "Скопировать проект; оригинал не затрагивается"
+
+#: tools/piska-hub/src/import.rs:1055
+#: tools/piska-hub/src/import.rs:1085
+msgid "Copying files"
+msgstr "Копирование файлов"
+
+#: tools/piska-hub/src/import_flow.rs:550
+msgid "Could not save the project file: {}"
+msgstr "Не удалось сохранить файл проекта: {}"
+
+#: tools/piska-hub/src/import_ui.rs:328
+msgid "Crate and folder name: lowercase letters, digits, _ and -. The same rules as New Project."
+msgstr "Имя крейта и каталога: строчные буквы, цифры, _ и -. Те же правила, что у нового проекта."
+
+#: tools/piska-hub/src/import.rs:126
+msgid "Dependency `{a}` points to `{b}`, a folder that does not exist on this computer; fix the path in Cargo.toml after the import"
+msgstr "Зависимость `{a}` указывает на `{b}` — такого каталога на этом компьютере нет; после импорта исправьте путь в Cargo.toml"
+
+#: tools/piska-hub/src/import.rs:127
+msgid "Dependency `{a}` points to `{b}`, which does not exist next to the project; fix the path in Cargo.toml after the import"
+msgstr "Зависимость `{a}` указывает на `{b}`, а рядом с проектом такого пути нет; после импорта исправьте путь в Cargo.toml"
+
+#: tools/piska-hub/src/import.rs:901
+msgid "Dependency path rewritten: `{a}` → `{b}`"
+msgstr "Путь зависимости переписан: `{a}` → `{b}`"
+
+#: tools/piska-hub/src/import_ui.rs:377
+msgid "Destination"
+msgstr "Куда"
+
+#: tools/piska-hub/src/import_ui.rs:432
+msgid "Do not touch the dependency paths"
+msgstr "Не трогать пути зависимостей"
+
+#: tools/piska-hub/src/import_ui.rs:724
+msgid "Drop to import"
+msgstr "Отпустите, чтобы импортировать"
+
+#: tools/piska-hub/src/ui.rs:1869
+msgid "Each imported project gets its own folder inside this one."
+msgstr "Каждый импортированный проект получит свой каталог внутри этого."
+
+#: tools/piska-hub/src/import_ui.rs:471
+msgid "Editor and IDE settings (.vscode, .idea)"
+msgstr "Настройки редактора и IDE (.vscode, .idea)"
+
+#: tools/piska-hub/src/import_ui.rs:423
+msgid "Engine dependency"
+msgstr "Зависимость от движка"
+
+#: crates/engine-editor/src/project_file.rs:173
+msgid "Everything needed to rebuild the project in one portable .{} file: Cargo.toml, src, assets with .meta, settings. No target/, .git/ or caches. The same file opens in the hub (Import)."
+msgstr "Всё, что нужно, чтобы собрать проект заново, в одном переносимом файле .{}: Cargo.toml, src, ассеты с .meta, настройки. Без target/, .git/ и кэшей. Тот же файл открывается в хабе (Импорт)."
+
+#: tools/piska-hub/src/import.rs:260
+msgid "excluded by .gitignore"
+msgstr "исключено .gitignore"
+
+#: crates/engine-editor/src/project_file.rs:159
+msgid "Export Project File"
+msgstr "Файл проекта"
+
+#: crates/engine-editor/src/project_file.rs:135
+msgid "Export Project File…"
+msgstr "Экспортировать файл проекта…"
+
+#: tools/piska-hub/src/import_ui.rs:470
+msgid "Exported builds ({})"
+msgstr "Экспортированные сборки ({})"
+
+#: tools/piska-hub/src/import.rs:899
+msgid "File renamed: {a} → {b}"
+msgstr "Файл переименован: {a} → {b}"
+
+#: tools/piska-hub/src/import_ui.rs:475
+msgid "Files are copied byte for byte; line endings are never converted."
+msgstr "Файлы копируются байт в байт; окончания строк не преобразуются."
+
+#: tools/piska-hub/src/import_ui.rs:538
+msgid "Finishing…"
+msgstr "Завершение…"
+
+#: tools/piska-hub/src/import_ui.rs:82
+msgid "Folder or project file path"
+msgstr "Путь к каталогу или файлу проекта"
+
+#: tools/piska-hub/src/import_ui.rs:102
+msgid "Folder…"
+msgstr "Каталог…"
+
+#: tools/piska-hub/src/import_ui.rs:459
+msgid "Give every asset a new GUID and update the references. Use it for a copy that lives next to its original."
+msgstr "Дать каждому ассету новый GUID и обновить ссылки. Нужно для копии, которая лежит рядом с оригиналом."
+
+#: tools/piska-hub/src/import_ui.rs:346
+#: tools/piska-hub/src/import_ui.rs:353
+msgid "How"
+msgstr "Как"
+
+#: tools/piska-hub/src/import_ui.rs:440
+msgid "If files exist"
+msgstr "Если файлы есть"
+
+#: tools/piska-hub/src/ui.rs:377
+msgid "Import a project from a folder or a project file, with a pre-flight report and settings"
+msgstr "Импорт проекта из каталога или файла проекта: с предварительным отчётом и настройками"
+
+#: tools/piska-hub/src/import_flow.rs:585
+msgid "Import cancelled; nothing was left behind."
+msgstr "Импорт отменён; ничего не осталось."
+
+#: tools/piska-hub/src/import_flow.rs:630
+msgid "Import failed: {n} project could not be imported"
+msgid_plural "Import failed: {n} projects could not be imported"
+msgstr[0] "Не удалось импортировать: {n} проект"
+msgstr[1] "Не удалось импортировать: {n} проекта"
+msgstr[2] "Не удалось импортировать: {n} проектов"
+
+#: tools/piska-hub/src/import_ui.rs:639
+msgid "Import More"
+msgstr "Импортировать ещё"
+
+#: tools/piska-hub/src/import_ui.rs:44
+msgid "Import Project"
+msgstr "Импорт проекта"
+
+#: tools/piska-hub/src/import_flow.rs:481
+msgid "Import started: {} to import"
+msgstr "Импорт начат: проектов к импорту — {}"
+
+#: tools/piska-hub/src/import_ui.rs:512
+msgid "Import {n} Projects"
+msgstr "Импортировать проекты ({n})"
+
+#: tools/piska-hub/src/import_flow.rs:629
+#: tools/piska-hub/src/import_ui.rs:604
+msgid "Imported {n} project"
+msgid_plural "Imported {n} projects"
+msgstr[0] "Импортирован {n} проект"
+msgstr[1] "Импортировано {n} проекта"
+msgstr[2] "Импортировано {n} проектов"
+
+#: tools/piska-hub/src/import_flow.rs:631
+msgid "Imported {n}, failed {f}; see the result page"
+msgstr "Импортировано: {n}, не удалось: {f}; см. страницу результата"
+
+#: tools/piska-hub/src/import_ui.rs:606
+msgid "Imported {n}, {f} failed"
+msgstr "Импортировано: {n}, не удалось: {f}"
+
+#: tools/piska-hub/src/import_ui.rs:41
+msgid "Importing in the background; the hub stays usable."
+msgstr "Импорт идёт в фоне; хабом можно пользоваться."
+
+#: tools/piska-hub/src/import_flow.rs:454
+msgid "Importing {n} project"
+msgid_plural "Importing {n} projects"
+msgstr[0] "Импорт: {n} проект"
+msgstr[1] "Импорт: {n} проекта"
+msgstr[2] "Импорт: {n} проектов"
+
+#: tools/piska-hub/src/import_flow.rs:452
+msgid "Importing “{}”"
+msgstr "Импорт «{}»"
+
+#: tools/piska-hub/src/import_ui.rs:549
+msgid "Importing…"
+msgstr "Импорт…"
+
+#: tools/piska-hub/src/import_ui.rs:659
+msgid "in place"
+msgstr "на месте"
+
+#: tools/piska-hub/src/import_ui.rs:465
+#: tools/piska-hub/src/import_ui.rs:955
+msgid "Include"
+msgstr "Включить"
+
+#: tools/piska-hub/src/import.rs:904
+msgid "Inherited setting written out: {a}"
+msgstr "Унаследованная настройка записана явно: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:373
+msgid "Inside the engine's games/: the project joins the workspace and shares its build cache."
+msgstr "Внутри games/ движка: проект входит в его рабочее пространство и использует общий кэш сборки."
+
+#: tools/piska-hub/src/import_ui.rs:432
+msgid "Keep as is"
+msgstr "Как есть"
+
+#: tools/piska-hub/src/import_ui.rs:450
+msgid "Keep both"
+msgstr "Оставить оба"
+
+#: tools/piska-hub/src/import_ui.rs:448
+msgid "Keep the existing file"
+msgstr "Оставить имеющийся файл"
+
+#: tools/piska-hub/src/import.rs:907
+msgid "Kept both: {a} was saved as {b}"
+msgstr "Оставлены оба: {a} сохранён как {b}"
+
+#: tools/piska-hub/src/import_ui.rs:689
+msgid "Left out ({})"
+msgstr "Не вошло ({})"
+
+#: tools/piska-hub/src/import.rs:262
+msgid "left out by the settings"
+msgstr "не включено настройками"
+
+#: tools/piska-hub/src/import_ui.rs:309
+msgid "Left out of the copy ({})"
+msgstr "Не войдёт в копию ({})"
+
+#: tools/piska-hub/src/import.rs:909
+msgid "Left out: {a}"
+msgstr "Не вошло: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:475
+msgid "Line endings"
+msgstr "Окончания строк"
+
+#: tools/piska-hub/src/import.rs:261
+msgid "link (not followed)"
+msgstr "ссылка (не раскрывается)"
+
+#: crates/engine-editor/src/project_file.rs:212
+msgid "Looking at the files…"
+msgstr "Просмотр файлов…"
+
+#: tools/piska-hub/src/import_ui.rs:127
+msgid "Looking for projects in {}…"
+msgstr "Поиск проектов в {}…"
+
+#: tools/piska-hub/src/import_ui.rs:276
+msgid "Made with engine"
+msgstr "Сделан в движке"
+
+#: tools/piska-hub/src/import.rs:125
+msgid "Made with engine {a}, this is engine {b}: open the project and check it builds"
+msgstr "Сделан в движке {a}, сейчас движок {b}: откройте проект и проверьте, что он собирается"
+
+#: tools/piska-hub/src/import.rs:1185
+msgid "Moving into place"
+msgstr "Перенос на место"
+
+#: tools/piska-hub/src/import_ui.rs:476
+msgid "Never converted"
+msgstr "Не преобразуются"
+
+#: tools/piska-hub/src/import_ui.rs:296
+msgid "No problems found."
+msgstr "Проблем не найдено."
+
+#: tools/piska-hub/src/import_flow.rs:297
+msgid "No projects found in `{}` (looked three folders deep). A project is a folder with Cargo.toml and src/lib.rs."
+msgstr "В `{}` проектов не найдено (искали на три уровня вглубь). Проект — это каталог с Cargo.toml и src/lib.rs."
+
+#: tools/piska-hub/src/import_ui.rs:286
+msgid "no scenes or scripts yet"
+msgstr "пока нет сцен и скриптов"
+
+#: tools/piska-hub/src/import_ui.rs:274
+msgid "not recorded; this engine is {now}"
+msgstr "не записана; сейчас движок {now}"
+
+#: tools/piska-hub/src/import_ui.rs:135
+msgid "Nothing to import yet"
+msgstr "Пока нечего импортировать"
+
+#: tools/piska-hub/src/import_ui.rs:940
+msgid "One portable .{} file with everything needed to rebuild the project: Cargo.toml, src, assets with .meta, settings. Nothing derived: no target/, .git/ or caches."
+msgstr "Один переносимый файл .{} со всем, что нужно для сборки проекта: Cargo.toml, src, ассеты с .meta, настройки. Ничего производного: без target/, .git/ и кэшей."
+
+#: tools/piska-hub/src/ui.rs:2081
+msgid "Only a valid project can be saved as a file"
+msgstr "В файл можно сохранить только проект, который проходит проверку"
+
+#: tools/piska-hub/src/import_ui.rs:441
+msgid "Only when the destination folder already has files: keep yours, replace them, or save the new file next to yours as name.imported.ext."
+msgstr "Только если в каталоге назначения уже есть файлы: оставить ваши, заменить их или сохранить новый файл рядом как имя.imported.расширение."
+
+#: tools/piska-hub/src/import_ui.rs:910
+msgid "Open the project from the list: it starts in the generic editor at once."
+msgstr "Откройте проект из списка: он сразу запускается в общем редакторе."
+
+#: tools/piska-hub/src/import_ui.rs:449
+msgid "Overwrite"
+msgstr "Заменить"
+
+#: tools/piska-hub/src/import.rs:896
+msgid "Package renamed: `{a}` → `{b}`"
+msgstr "Пакет переименован: `{a}` → `{b}`"
+
+#: tools/piska-hub/src/import_ui.rs:465
+msgid "Parts of the project to bring along. Source, assets and settings are always included."
+msgstr "Что взять с собой. Исходники, ассеты и настройки входят всегда."
+
+#: tools/piska-hub/src/import_ui.rs:113
+msgid "Paste a path and press Enter, or drop a folder or a .{} file on the window. A folder with several projects is scanned: tick the ones to import."
+msgstr "Вставьте путь и нажмите Enter или бросьте на окно каталог или файл .{}. Каталог с несколькими проектами просматривается: отметьте нужные."
+
+#: tools/piska-hub/src/import_ui.rs:431
+msgid "Point the engine dependency at this checkout"
+msgstr "Направить зависимость от движка на эту копию"
+
+#: tools/piska-hub/src/import_ui.rs:256
+msgid "Pre-flight report"
+msgstr "Предварительный отчёт"
+
+#: tools/piska-hub/src/import.rs:898
+msgid "Program renamed in Cargo.toml: `{a}` → `{b}`"
+msgstr "Программа переименована в Cargo.toml: `{a}` → `{b}`"
+
+#: tools/piska-hub/src/import_ui.rs:269
+msgid "Project file"
+msgstr "Файл проекта"
+
+#: tools/piska-hub/src/import_ui.rs:105
+msgid "Project file…"
+msgstr "Файл проекта…"
+
+#: tools/piska-hub/src/import_ui.rs:500
+msgid "Reading the projects…"
+msgstr "Чтение проектов…"
+
+#: tools/piska-hub/src/import_ui.rs:237
+msgid "Reading the project…"
+msgstr "Чтение проекта…"
+
+#: tools/piska-hub/src/import_ui.rs:198
+msgid "Reading…"
+msgstr "Чтение…"
+
+#: tools/piska-hub/src/import_ui.rs:361
+msgid "Reference the folder where it is"
+msgstr "Ссылаться на каталог там, где он лежит"
+
+#: tools/piska-hub/src/import_ui.rs:461
+msgid "Regenerate GUIDs"
+msgstr "Создать новые GUID"
+
+#: tools/piska-hub/src/import.rs:1172
+msgid "Regenerating GUIDs"
+msgstr "Создание новых GUID"
+
+#: tools/piska-hub/src/import_ui.rs:215
+msgid "Remove from this import"
+msgstr "Убрать из этого импорта"
+
+#: tools/piska-hub/src/import_ui.rs:418
+msgid "Rename in sources"
+msgstr "Переименовать в исходниках"
+
+#: tools/piska-hub/src/import_ui.rs:415
+msgid "Rename inside"
+msgstr "Переименование внутри"
+
+#: tools/piska-hub/src/import_ui.rs:449
+msgid "Replace the existing file"
+msgstr "Заменить имеющийся файл"
+
+#: tools/piska-hub/src/import_ui.rs:395
+msgid "Result: {}"
+msgstr "Результат: {}"
+
+#: tools/piska-hub/src/import_ui.rs:405
+msgid "Run the project's tests"
+msgstr "Запустить тесты проекта"
+
+#: tools/piska-hub/src/import.rs:132
+msgid "Rust was not found (`rustc` is not on PATH); install it with rustup to build the project"
+msgstr "Rust не найден (`rustc` нет в PATH); для сборки проекта установите его через rustup"
+
+#: tools/piska-hub/src/ui.rs:2079
+msgid "Save Project As File…"
+msgstr "Сохранить проект в файл…"
+
+#: tools/piska-hub/src/import_ui.rs:450
+msgid "Save the new file as name.imported.ext"
+msgstr "Сохранить новый файл как имя.imported.расширение"
+
+#: crates/engine-editor/src/project_file.rs:181
+#: tools/piska-hub/src/import_ui.rs:945
+msgid "Save to"
+msgstr "Сохранить в"
+
+#: tools/piska-hub/src/import_ui.rs:936
+msgid "Save “{}” As File"
+msgstr "Сохранить «{}» в файл"
+
+#: crates/engine-editor/src/project_file.rs:169
+msgid "Save “{}” as one file"
+msgstr "Сохранить «{}» одним файлом"
+
+#: crates/engine-editor/src/project_file.rs:222
+msgid "Saved {name}: {files} files, {bytes} packed into {archive}"
+msgstr "Сохранён {name}: файлов — {files}, {bytes} упаковано в {archive}"
+
+#: tools/piska-hub/src/import_ui.rs:783
+msgid "Saved {name}: {files} files, {size}"
+msgstr "Сохранён {name}: файлов — {files}, {size}"
+
+#: tools/piska-hub/src/import_flow.rs:542
+msgid "Saved “{}”: {} files, {}"
+msgstr "Сохранён «{}»: файлов — {}, {}"
+
+#: tools/piska-hub/src/import_flow.rs:552
+msgid "Saving cancelled; nothing was written."
+msgstr "Сохранение отменено; ничего не записано."
+
+#: tools/piska-hub/src/import_flow.rs:775
+msgid "Saving “{}” to a file"
+msgstr "Сохранение «{}» в файл"
+
+#: tools/piska-hub/src/import.rs:806
+msgid "settings inherited from the engine workspace are written out, and an own [workspace] is added"
+msgstr "настройки, унаследованные от рабочего пространства движка, записываются явно, и добавляется собственный [workspace]"
+
+#: crates/engine-editor/src/project_file.rs:230
+#: tools/piska-hub/src/import_ui.rs:677
+msgid "Show in Folder"
+msgstr "Показать в папке"
+
+#: tools/piska-hub/src/import_ui.rs:850
+msgid "Show Result"
+msgstr "Показать результат"
+
+#: tools/piska-hub/src/import_ui.rs:448
+msgid "Skip"
+msgstr "Пропустить"
+
+#: tools/piska-hub/src/import.rs:908
+msgid "Skipped, already exists: {a}"
+msgstr "Пропущен, уже существует: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:79
+msgid "Sources"
+msgstr "Источники"
+
+#: tools/piska-hub/src/import_ui.rs:551
+msgid "Starting…"
+msgstr "Запуск…"
+
+#: tools/piska-hub/src/import.rs:259
+msgid "temporary or system file"
+msgstr "временный или системный файл"
+
+#: crates/engine-editor/src/project_file.rs:188
+#: tools/piska-hub/src/import_ui.rs:959
+msgid "Tests (tests/)"
+msgstr "Тесты (tests/)"
+
+#: tools/piska-hub/src/import_ui.rs:468
+msgid "Tests ({n} file)"
+msgid_plural "Tests ({n} files)"
+msgstr[0] "Тесты ({n} файл)"
+msgstr[1] "Тесты ({n} файла)"
+msgstr[2] "Тесты ({n} файлов)"
+
+#: tools/piska-hub/src/import_flow.rs:652
+msgid "Tests of “{}”"
+msgstr "Тесты «{}»"
+
+#: tools/piska-hub/src/import.rs:133
+msgid "The C++ part uses CMake, but `cmake` was not found on PATH; install CMake to build it"
+msgstr "Часть на C++ использует CMake, но `cmake` в PATH не найден; для сборки установите CMake"
+
+#: tools/piska-hub/src/import.rs:141
+msgid "The destination `{a}` is inside the source project; choose another folder"
+msgstr "Каталог назначения `{a}` лежит внутри исходного проекта; выберите другой"
+
+#: tools/piska-hub/src/import.rs:146
+msgid "The engine checkout was not found, so the dependency cannot be rewritten; it is kept as it is"
+msgstr "Копия движка не найдена, поэтому зависимость нельзя переписать; она остаётся как есть"
+
+#: tools/piska-hub/src/import.rs:144
+msgid "The engine dependency will be changed from `{a}` to `{b}`"
+msgstr "Зависимость от движка изменится с `{a}` на `{b}`"
+
+#: crates/engine-editor/src/project_file.rs:190
+#: tools/piska-hub/src/import_ui.rs:963
+msgid "The last exported builds (dist/)"
+msgstr "Последние экспортированные сборки (dist/)"
+
+#: tools/piska-hub/src/import_ui.rs:962
+msgid "The last exported builds (dist/, {})"
+msgstr "Последние экспортированные сборки (dist/, {})"
+
+#: tools/piska-hub/src/import.rs:122
+msgid "The project file contains an unsafe path and was refused: {a}"
+msgstr "В файле проекта небезопасный путь, файл отвергнут: {a}"
+
+#: tools/piska-hub/src/import.rs:120
+msgid "The project file is damaged: {a}"
+msgstr "Файл проекта повреждён: {a}"
+
+#: tools/piska-hub/src/ui.rs:1874
+msgid "The project file is saved in this folder."
+msgstr "Файл проекта будет сохранён в этом каталоге."
+
+#: tools/piska-hub/src/import.rs:123
+msgid "The project file is too big to unpack safely: {a}"
+msgstr "Файл проекта слишком велик, чтобы распаковать его безопасно: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:346
+msgid "The project file is unpacked into a new folder; the file itself is not changed."
+msgstr "Файл проекта распаковывается в новый каталог; сам файл не меняется."
+
+#: tools/piska-hub/src/import.rs:121
+msgid "The project file was written by a newer version of the engine (format {a}); update the engine to read it"
+msgstr "Файл проекта записан более новой версией движка (формат {a}); обновите движок, чтобы его прочитать"
+
+#: crates/engine-editor/src/project_file.rs:137
+msgid "The project folder with Cargo.toml was not found next to the assets"
+msgstr "Каталог проекта с Cargo.toml рядом с ассетами не найден"
+
+#: tools/piska-hub/src/import_ui.rs:913
+msgid "The project has its own Rust or C++ code: its editor is building in the background; the first build can take several minutes."
+msgstr "У проекта есть свой код на Rust или C++: его редактор собирается в фоне; первая сборка может занять несколько минут."
+
+#: tools/piska-hub/src/import_ui.rs:915
+msgid "The project has its own Rust or C++ code: use Open in Editor to build its editor (the first build can take several minutes), or tick “Build in the background” next time."
+msgstr "У проекта есть свой код на Rust или C++: чтобы собрать его редактор, нажмите «Открыть в редакторе» (первая сборка может занять несколько минут) или в следующий раз отметьте «Собрать в фоне»."
+
+#: tools/piska-hub/src/import_ui.rs:400
+msgid "The project is always added to the project list."
+msgstr "Проект всегда добавляется в список проектов."
+
+#: tools/piska-hub/src/import.rs:131
+msgid "The project needs Rust {a}, installed is {b}; run `rustup update`"
+msgstr "Проекту нужен Rust {a}, установлен {b}; выполните `rustup update`"
+
+#: tools/piska-hub/src/import_ui.rs:907
+msgid "The project stays where it was; the hub never edits it. Open it from the list."
+msgstr "Проект остаётся на месте; хаб его не меняет. Откройте его из списка."
+
+#: tools/piska-hub/src/import.rs:130
+msgid "The project uses Rust edition {a}, the engine uses {b}; this builds, but language features differ"
+msgstr "Проект использует редакцию Rust {a}, движок — {b}; это собирается, но возможности языка различаются"
+
+#: tools/piska-hub/src/import.rs:902
+msgid "The project's own [workspace] and profiles were removed: it is a member of the engine workspace now"
+msgstr "Собственные [workspace] и профили проекта удалены: теперь он член рабочего пространства движка"
+
+#: tools/piska-hub/src/import.rs:804
+msgid "the project's own [workspace] is removed because it joins the engine's games/"
+msgstr "собственный [workspace] проекта удаляется, потому что он попадает в games/ движка"
+
+#: tools/piska-hub/src/import.rs:139
+msgid "This folder is already in the project list"
+msgstr "Этот каталог уже есть в списке проектов"
+
+#: tools/piska-hub/src/import.rs:119
+msgid "This is not a project the hub can open: {a}"
+msgstr "Это не проект, который хаб может открыть: {a}"
+
+#: tools/piska-hub/src/import_ui.rs:498
+msgid "Tick at least one project to import."
+msgstr "Отметьте хотя бы один проект."
+
+#: tools/piska-hub/src/import.rs:897
+msgid "Title changed: “{a}” → “{b}”"
+msgstr "Заголовок изменён: «{a}» → «{b}»"
+
+#: tools/piska-hub/src/import_ui.rs:347
+msgid "Unpack into a folder"
+msgstr "Распаковать в каталог"
+
+#: tools/piska-hub/src/import_ui.rs:658
+msgid "unpacked"
+msgstr "распакован"
+
+#: tools/piska-hub/src/import.rs:1104
+msgid "Unpacking files"
+msgstr "Распаковка файлов"
+
+#: tools/piska-hub/src/import.rs:263
+msgid "unusable file name"
+msgstr "неподходящее имя файла"
+
+#: tools/piska-hub/src/import_ui.rs:416
+msgid "Update Cargo.toml (package, programs, title), `use` paths in sources and tests, GAME_NAME and the README to the new name. Applies when the name differs from the original."
+msgstr "Обновить под новое имя Cargo.toml (пакет, программы, заголовок), пути `use` в исходниках и тестах, GAME_NAME и README. Действует, если имя отличается от исходного."
+
+#: tools/piska-hub/src/import.rs:1132
+msgid "Updating the project"
+msgstr "Правка проекта"
+
+#: tools/piska-hub/src/import_ui.rs:361
+msgid "Use in place"
+msgstr "Использовать на месте"
+
+#: tools/piska-hub/src/import.rs:147
+msgid "Used in place: nothing is copied or edited, the project is only added to the list"
+msgstr "Используется на месте: ничего не копируется и не правится, проект только добавляется в список"
+
+#: tools/piska-hub/src/import_ui.rs:697
+msgid "What to do next"
+msgstr "Что делать дальше"
+
+#: tools/piska-hub/src/import_ui.rs:683
+msgid "What was changed"
+msgstr "Что изменено"
+
+#: tools/piska-hub/src/import_ui.rs:42
+msgid "What was imported, what was changed and what to do next."
+msgstr "Что импортировано, что изменено и что делать дальше."
+
+#: tools/piska-hub/src/import.rs:135
+msgid "{a} to copy; this may take a while"
+msgstr "Копировать {a}; это может занять время"
+
+#: tools/piska-hub/src/import.rs:503
+msgid "{bytes} B"
+msgstr "{bytes} Б"
+
+#: crates/engine-editor/src/project_file.rs:205
+#: tools/piska-hub/src/import_ui.rs:764
+msgid "{done} / {total} files  ·  {bytes} of {all}"
+msgstr "Файлов: {done} из {total}  ·  {bytes} из {all}"
+
+#: tools/piska-hub/src/import_ui.rs:558
+msgid "{done} / {total} files  ·  {bytes} of {all}  ·  {time}"
+msgstr "Файлов: {done} из {total}  ·  {bytes} из {all}  ·  {time}"
+
+#: tools/piska-hub/src/import_ui.rs:666
+msgid "{files} files  ·  {size}"
+msgstr "Файлов: {files}  ·  {size}"
+
+#: tools/piska-hub/src/import_ui.rs:291
+msgid "{files} files  ·  {total}  ·  assets {assets}"
+msgstr "Файлов: {files}  ·  {total}  ·  ассеты {assets}"
+
+#: tools/piska-hub/src/import_ui.rs:977
+msgid "{files} files, {size} before compression  ·  {left} items left out"
+msgstr "Файлов: {files}, {size} до сжатия  ·  не вошло: {left}"
+
+#: tools/piska-hub/src/import.rs:1418
+msgid "{key} = \"{text}\""
+msgstr "{key} = \"{text}\""
+
+#: tools/piska-hub/src/import_ui.rs:620
+msgid "{name}: {reason}"
+msgstr "{name}: {reason}"
+
+#: tools/piska-hub/src/import_ui.rs:280
+msgid "{n} prefab"
+msgid_plural "{n} prefabs"
+msgstr[0] "{n} префаб"
+msgstr[1] "{n} префаба"
+msgstr[2] "{n} префабов"
+
+#: tools/piska-hub/src/import_ui.rs:502
+msgid "{n} problem blocks the import; see the report"
+msgid_plural "{n} problems block the import; see the report"
+msgstr[0] "{n} проблема мешает импорту; см. отчёт"
+msgstr[1] "{n} проблемы мешают импорту; см. отчёт"
+msgstr[2] "{n} проблем мешают импорту; см. отчёт"
+
+#: tools/piska-hub/src/import_ui.rs:605
+msgid "{n} project could not be imported"
+msgid_plural "{n} projects could not be imported"
+msgstr[0] "{n} проект не удалось импортировать"
+msgstr[1] "{n} проекта не удалось импортировать"
+msgstr[2] "{n} проектов не удалось импортировать"
+
+#: tools/piska-hub/src/import_ui.rs:504
+msgid "{n} project ready to import"
+msgid_plural "{n} projects ready to import"
+msgstr[0] "{n} проект готов к импорту"
+msgstr[1] "{n} проекта готовы к импорту"
+msgstr[2] "{n} проектов готовы к импорту"
+
+#: tools/piska-hub/src/import_ui.rs:281
+msgid "{n} Rust script"
+msgid_plural "{n} Rust scripts"
+msgstr[0] "{n} скрипт на Rust"
+msgstr[1] "{n} скрипта на Rust"
+msgstr[2] "{n} скриптов на Rust"
+
+#: tools/piska-hub/src/import_ui.rs:283
+msgid "{n} Scenario script"
+msgid_plural "{n} Scenario scripts"
+msgstr[0] "{n} скрипт Scenario"
+msgstr[1] "{n} скрипта Scenario"
+msgstr[2] "{n} скриптов Scenario"
+
+#: tools/piska-hub/src/import_ui.rs:279
+msgid "{n} scene"
+msgid_plural "{n} scenes"
+msgstr[0] "{n} сцена"
+msgstr[1] "{n} сцены"
+msgstr[2] "{n} сцен"
+
+#: tools/piska-hub/src/import_ui.rs:142
+msgid "{n} source"
+msgid_plural "{n} sources"
+msgstr[0] "{n} источник"
+msgstr[1] "{n} источника"
+msgstr[2] "{n} источников"
+
+#: tools/piska-hub/src/import_ui.rs:311
+msgid "{path}  —  {}"
+msgstr "{path}  —  {}"
+
+#: tools/piska-hub/src/import_ui.rs:691
+msgid "{path} — {}"
+msgstr "{path} — {}"
+
+#: tools/piska-hub/src/import_ui.rs:789
+msgid "{title}: {n} imported, {f} failed"
+msgstr "{title}: импортировано {n}, не удалось {f}"
+
+#: tools/piska-hub/src/import_ui.rs:272
+msgid "{v} (this engine)"
+msgstr "{v} (этот движок)"
+
+#: tools/piska-hub/src/import_ui.rs:273
+msgid "{v}; this engine is {now}"
+msgstr "{v}; этот движок — {now}"
+
+#: tools/piska-hub/src/import_ui.rs:776
+msgid "{}  —  {detail}"
+msgstr "{}  —  {detail}"
+
+#: tools/piska-hub/src/import_ui.rs:774
+msgid "{}  —  {detail}  ·  {current}"
+msgstr "{}  —  {detail}  ·  {current}"
+
+#: tools/piska-hub/src/import_ui.rs:804
+msgid "{}: cancelled"
+msgstr "{}: отменено"
+
+#: tools/piska-hub/src/import_ui.rs:795
+msgid "{}: failed"
+msgstr "{}: не пройдены"
+
+#: tools/piska-hub/src/import_ui.rs:793
+msgid "{}: passed"
+msgstr "{}: пройдены"
+
+#: tools/piska-hub/src/import_flow.rs:569
+msgid "{}: tests failed; open the details in the task strip"
+msgstr "{}: тесты не пройдены; подробности — в полосе задач"
+
+#: tools/piska-hub/src/import_flow.rs:567
+msgid "{}: tests passed"
+msgstr "{}: тесты пройдены"
+
+#: tools/piska-hub/src/import_ui.rs:314
+#: tools/piska-hub/src/import_ui.rs:694
+msgid "… and {} more"
+msgstr "… и ещё {}"
+
+#: tools/piska-hub/src/import_ui.rs:282
+msgid "{n} C++ file"
+msgid_plural "{n} C++ files"
+msgstr[0] "{n} файл C++"
+msgstr[1] "{n} файла C++"
+msgstr[2] "{n} файлов C++"
+
+#: tools/piska-hub/src/import.rs:497
+msgid "{value} GB"
+msgstr "{value} ГБ"
+
+#: tools/piska-hub/src/import.rs:501
+msgid "{value} KB"
+msgstr "{value} КБ"
+
+#: tools/piska-hub/src/import.rs:499
+msgid "{value} MB"
+msgstr "{value} МБ"
+
+#: tools/piska-hub/src/import.rs:936
+msgid "editor and IDE settings"
+msgstr "настройки редактора и IDE"
+
+#: tools/piska-hub/src/import.rs:935
+msgid "exported builds (dist/)"
+msgstr "экспортированные сборки (dist/)"
+
+#: tools/piska-hub/src/import_ui.rs:631
+msgid "in {value} s"
+msgstr "за {value} с"
+
+#: tools/piska-hub/src/import.rs:933
+msgid "tests (tests/)"
+msgstr "тесты (tests/)"
+
+#: tools/piska-hub/src/import.rs:135
+msgid "{n} asset GUID is used by more than one file (for example {b}); regenerate GUIDs or fix the copies"
+msgid_plural "{n} asset GUIDs are used by more than one file (for example {b}); regenerate GUIDs or fix the copies"
+msgstr[0] "{n} GUID ассета используется несколькими файлами (например, {b}); создайте новые GUID или исправьте копии"
+msgstr[1] "{n} GUID ассетов используются несколькими файлами (например, {b}); создайте новые GUID или исправьте копии"
+msgstr[2] "{n} GUID ассетов используются несколькими файлами (например, {b}); создайте новые GUID или исправьте копии"
+
+#: tools/piska-hub/src/import.rs:924
+msgid "{n} asset GUID regenerated; references in scenes, prefabs and settings were updated"
+msgid_plural "{n} asset GUIDs regenerated; references in scenes, prefabs and settings were updated"
+msgstr[0] "Создан {n} новый GUID ассета; ссылки в сценах, префабах и настройках обновлены"
+msgstr[1] "Создано {n} новых GUID ассетов; ссылки в сценах, префабах и настройках обновлены"
+msgstr[2] "Создано {n} новых GUID ассетов; ссылки в сценах, префабах и настройках обновлены"
+
+#: tools/piska-hub/src/import.rs:129
+msgid "{n} asset has no .meta file (for example {b}); the editor will give it a new GUID, so scenes that reference it by GUID may lose the link"
+msgid_plural "{n} assets have no .meta file (for example {b}); the editor will give them new GUIDs, so scenes that reference them by GUID may lose the link"
+msgstr[0] "У {n} ассета нет файла .meta (например, {b}); редактор выдаст ему новый GUID, и сцены, ссылающиеся на него по GUID, могут потерять связь"
+msgstr[1] "У {n} ассетов нет файла .meta (например, {b}); редактор выдаст им новые GUID, и сцены, ссылающиеся на них по GUID, могут потерять связь"
+msgstr[2] "У {n} ассетов нет файла .meta (например, {b}); редактор выдаст им новые GUID, и сцены, ссылающиеся на них по GUID, могут потерять связь"
+
+#: tools/piska-hub/src/import.rs:145
+msgid "{n} folder or file is left out: build output, caches, links, version control"
+msgid_plural "{n} folders and files are left out: build output, caches, links, version control"
+msgstr[0] "Не вошёл {n} каталог или файл: результаты сборки, кэши, ссылки, система контроля версий"
+msgstr[1] "Не вошли {n} каталога или файла: результаты сборки, кэши, ссылки, система контроля версий"
+msgstr[2] "Не вошло {n} каталогов и файлов: результаты сборки, кэши, ссылки, система контроля версий"
+
+#: tools/piska-hub/src/import.rs:915
+msgid "{n} source file updated for the new name"
+msgid_plural "{n} source files updated for the new name"
+msgstr[0] "Под новое имя обновлён {n} файл исходников"
+msgstr[1] "Под новое имя обновлено {n} файла исходников"
+msgstr[2] "Под новое имя обновлено {n} файлов исходников"
+
+#: tools/piska-hub/src/import_ui.rs
+msgid "Nothing is written to disk until you press Import."
+msgstr "Пока не нажато «Импортировать», на диск ничего не пишется."
+
+#: tools/piska-hub/src/import_ui.rs
+msgid "Use this engine"
+msgstr "Этот движок"
+
+#: tools/piska-hub/src/import_ui.rs
+msgid "“Use this engine” points the project at this engine checkout; “Keep as is” leaves Cargo.toml untouched (that path may not exist on this computer)."
+msgstr "«Этот движок» направляет проект на эту копию движка; «Как есть» не меняет Cargo.toml (такого пути на этом компьютере может не быть)."
+
+#: tools/piska-hub/src/import_ui.rs
+msgid "The engine dependency `{a}` will not resolve from the new location; choose “Use this engine”"
+msgstr "Зависимость от движка `{a}` не найдётся из нового места; выберите «Этот движок»"
+
+#: tools/piska-hub/src/ui.rs
+msgid "Click a file to choose it, double-click a folder to open it."
+msgstr "Щелчок по файлу выбирает его, двойной щелчок по папке — открывает её."
+
+#: crates/engine-editor/src/export.rs
+msgid "Choose the Output Folder"
+msgstr "Выберите папку результата"
+
+#: crates/engine-editor/src/modeler_link.rs
+msgid "Edit in Modeler"
+msgstr "Править в Modeler"
+
+#: crates/engine-editor/src/modeler_link.rs
+msgid "Edit a Copy in Modeler"
+msgstr "Править копию в Modeler"
+
+#: crates/engine-editor/src/modeler_link.rs
+msgid "Piska Modeler is not installed: build it with `cargo build --manifest-path modeler/Cargo.toml` or set PISKA_MODELER"
+msgstr "Piska Modeler не установлен: соберите его командой `cargo build --manifest-path modeler/Cargo.toml` или задайте PISKA_MODELER"
+
+#: tools/piska-hub/src/hub.rs
+msgid "All files"
+msgstr "Все файлы"
+
+#: tools/piska-hub/src/hub.rs
+msgid "Open a Project File"
+msgstr "Открыть файл проекта"
+
+#: tools/piska-hub/src/hub.rs
+msgid "Piska project"
+msgstr "Проект Piska"
+
+#: tools/piska-hub/src/hub.rs
+msgid "Scanning projects and checking their editors…"
+msgstr "Поиск проектов и проверка их редакторов…"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Piska model"
+msgstr "Модель Piska"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "glTF Binary"
+msgstr "glTF (двоичный)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "PNG image"
+msgstr "Изображение PNG"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Reference meshes"
+msgstr "Опорные меши"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Wavefront OBJ"
+msgstr "Wavefront OBJ"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "glTF"
+msgstr "glTF"
+
+#: tools/piska-hub/src/hub.rs
+msgid "Loading {n} thumbnail…"
+msgid_plural "Loading {n} thumbnails…"
+msgstr[0] "Загрузка {n} миниатюры…"
+msgstr[1] "Загрузка {n} миниатюр…"
+msgstr[2] "Загрузка {n} миниатюр…"
+
+#: tools/piska-installer/src
+msgid "--source {path}: not an engine checkout (Cargo.toml and tools/piska-export are missing)"
+msgstr "--source {path}: это не копия движка (нет Cargo.toml и tools/piska-export)"
+
+#: tools/piska-installer/src
+msgid "<install folder>/cache"
+msgstr "<папка установки>/cache"
+
+#: tools/piska-installer/src
+msgid "A .{ext} file opens the Import page of {hub}. Only for your user account."
+msgstr "Файл .{ext} открывает страницу импорта в {hub}. Только для вашей учётной записи."
+
+#: tools/piska-installer/src
+msgid "A folder with the engine sources: Cargo.toml and tools/piska-export inside."
+msgstr "Папка с исходниками движка: внутри Cargo.toml и tools/piska-export."
+
+#: tools/piska-installer/src
+msgid "about {time} left"
+msgstr "осталось около {time}"
+
+#: tools/piska-installer/src
+msgid "Accept"
+msgstr "Принять"
+
+#: tools/piska-installer/src
+msgid "Accept every licence to continue."
+msgstr "Чтобы продолжить, примите все лицензии."
+
+#: tools/piska-installer/src
+msgid "Accept the licences first."
+msgstr "Сначала примите лицензии."
+
+#: tools/piska-installer/src
+msgid "Action"
+msgstr "Действие"
+
+#: tools/piska-installer/src
+msgid "Add a [build] target-dir block to {file}? A backup is made first."
+msgstr "Добавить блок [build] target-dir в {file}? Сначала будет сделана копия."
+
+#: tools/piska-installer/src
+msgid "Add components to the installation."
+msgstr "Добавить компоненты к установке."
+
+#: tools/piska-installer/src
+msgid "Administrator"
+msgstr "Администратор"
+
+#: tools/piska-installer/src
+msgid "Administrator Rights"
+msgstr "Права администратора"
+
+#: tools/piska-installer/src
+msgid "Administrator rights are requested now: {reason}"
+msgstr "Сейчас будут запрошены права администратора: {reason}"
+
+#: tools/piska-installer/src
+msgid "Administrator rights were refused. Retry and answer Yes in the Windows prompt, or install this tool by hand."
+msgstr "В правах администратора отказано. Повторите и ответьте «Да» в окне Windows или установите этот инструмент вручную."
+
+#: tools/piska-installer/src
+msgid "already there"
+msgstr "уже есть"
+
+#: tools/piska-installer/src
+msgid "already there: {found}"
+msgstr "уже есть: {found}"
+
+#: tools/piska-installer/src
+msgid "An engine checkout: it is built where it is."
+msgstr "Копия движка: сборка идёт прямо в ней."
+
+#: tools/piska-installer/src
+msgid "Android command-line tools (sdkmanager)"
+msgstr "Инструменты командной строки Android (sdkmanager)"
+
+#: tools/piska-installer/src
+msgid "Android export"
+msgstr "Экспорт для Android"
+
+#: tools/piska-installer/src
+msgid "Android SDK licences"
+msgstr "Лицензии Android SDK"
+
+#: tools/piska-installer/src
+msgid "Android SDK packages"
+msgstr "Пакеты Android SDK"
+
+#: tools/piska-installer/src
+msgid "Application menu"
+msgstr "Меню приложений"
+
+#: tools/piska-installer/src
+msgid "Application menu entries"
+msgstr "Пункты меню приложений"
+
+#: tools/piska-installer/src
+msgid "bash could not be started: {error}"
+msgstr "Не удалось запустить bash: {error}"
+
+#: tools/piska-installer/src
+msgid "bash was not found (the installer needs bash 3.2 or newer)"
+msgstr "bash не найден (установщику нужен bash 3.2 или новее)"
+
+#: tools/piska-installer/src
+msgid "Block"
+msgstr "Блок"
+
+#: tools/piska-installer/src
+msgid "Build the hub, editor, export tool and modeler"
+msgstr "Сборка хаба, редактора, инструмента экспорта и редактора моделей"
+
+#: tools/piska-installer/src
+msgid "C++ plugins"
+msgstr "Плагины C++"
+
+#: tools/piska-installer/src
+msgid "Cache"
+msgstr "Кэш"
+
+#: tools/piska-installer/src
+msgid "cannot create {path}: {error}"
+msgstr "не удалось создать {path}: {error}"
+
+#: tools/piska-installer/src
+msgid "cannot read back {path}: {error}"
+msgstr "не удалось прочитать обратно {path}: {error}"
+
+#: tools/piska-installer/src
+msgid "cannot write {path}: {error}"
+msgstr "не удалось записать {path}: {error}"
+
+#: tools/piska-installer/src
+msgid "Cargo configuration: shared build folder"
+msgstr "Настройка Cargo: общая папка сборки"
+
+#: tools/piska-installer/src
+msgid "Check"
+msgstr "Проверка"
+
+#: tools/piska-installer/src
+msgid "Check of this computer"
+msgstr "Проверка этого компьютера"
+
+#: tools/piska-installer/src
+msgid "Checking the installed tools…"
+msgstr "Проверка установленных инструментов…"
+
+#: tools/piska-installer/src
+msgid "Checking what is already installed…"
+msgstr "Проверка того, что уже установлено…"
+
+#: tools/piska-installer/src
+msgid "Checking which licences apply…"
+msgstr "Проверка, какие лицензии нужны…"
+
+#: tools/piska-installer/src
+msgid "Checking…"
+msgstr "Проверка…"
+
+#: tools/piska-installer/src
+msgid "Checks what is already installed. This only reads and starts right away."
+msgstr "Проверяет, что уже установлено. Проверка только читает и начинается сразу."
+
+#: tools/piska-installer/src
+msgid "Choose"
+msgstr "Выбрать"
+
+#: tools/piska-installer/src
+msgid "Choose at least one component."
+msgstr "Выберите хотя бы один компонент."
+
+#: tools/piska-installer/src
+msgid "Choose components"
+msgstr "Выбор компонентов"
+
+#: tools/piska-installer/src
+msgid "Choose the install folder."
+msgstr "Выберите папку установки."
+
+#: tools/piska-installer/src
+msgid "Close Setup?"
+msgstr "Закрыть установщик?"
+
+#: tools/piska-installer/src
+msgid "CMake and Ninja (system packages)"
+msgstr "CMake и Ninja (системные пакеты)"
+
+#: tools/piska-installer/src
+msgid "CMake and Ninja for hot-reloadable C++ gameplay plugins"
+msgstr "CMake и Ninja для горячо перезагружаемых игровых плагинов на C++"
+
+#: tools/piska-installer/src
+msgid "Continue"
+msgstr "Продолжить"
+
+#: tools/piska-installer/src
+msgid "Copy Command"
+msgstr "Копировать команду"
+
+#: tools/piska-installer/src
+msgid "Copy Error"
+msgstr "Копировать ошибку"
+
+#: tools/piska-installer/src
+msgid "Copy Plan"
+msgstr "Копировать план"
+
+#: tools/piska-installer/src
+msgid "Core"
+msgstr "Основа"
+
+#: tools/piska-installer/src
+msgid "Could not save the plan: {error}"
+msgstr "Не удалось сохранить план: {error}"
+
+#: tools/piska-installer/src
+msgid "Custom selection"
+msgstr "Свой набор"
+
+#: tools/piska-installer/src
+msgid "Decline"
+msgstr "Отклонить"
+
+#: tools/piska-installer/src
+msgid "declined"
+msgstr "отклонено"
+
+#: tools/piska-installer/src
+msgid "Delete the file"
+msgstr "Удалить файл"
+
+#: tools/piska-installer/src
+msgid "Delete the folder"
+msgstr "Удалить папку"
+
+#: tools/piska-installer/src
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#: tools/piska-installer/src
+msgid "Do you accept the licence terms of {name}?"
+msgstr "Вы принимаете условия лицензии {name}?"
+
+#: tools/piska-installer/src
+msgid "done"
+msgstr "готово"
+
+#: tools/piska-installer/src
+msgid "done earlier"
+msgstr "сделано раньше"
+
+#: tools/piska-installer/src
+msgid "Download"
+msgstr "Скачивание"
+
+#: tools/piska-installer/src
+msgid "Download about {download} · on disk about {disk}"
+msgstr "Скачать около {download} · на диске около {disk}"
+
+#: tools/piska-installer/src
+msgid "Download cache"
+msgstr "Кэш загрузок"
+
+#: tools/piska-installer/src
+msgid "Download from the repository"
+msgstr "Скачать из репозитория"
+
+#: tools/piska-installer/src
+msgid "DRY RUN"
+msgstr "СУХОЙ ПРОГОН"
+
+#: tools/piska-installer/src
+msgid "Dry run"
+msgstr "Сухой прогон"
+
+#: tools/piska-installer/src
+msgid "Dry run finished: nothing was changed"
+msgstr "Сухой прогон завершён: ничего не изменено"
+
+#: tools/piska-installer/src
+msgid "Each licence needs its own tick. The scripts accept a licence only when you tick it here."
+msgstr "Каждой лицензии — своя галочка. Скрипты принимают лицензию, только если вы отметили её здесь."
+
+#: tools/piska-installer/src
+msgid "Editor preferences"
+msgstr "Настройки редактора"
+
+#: tools/piska-installer/src
+msgid "Editor preferences: tool paths"
+msgstr "Настройки редактора: пути к инструментам"
+
+#: tools/piska-installer/src
+msgid "Engine and tools"
+msgstr "Движок и инструменты"
+
+#: tools/piska-installer/src
+msgid "Engine folder"
+msgstr "Папка движка"
+
+#: tools/piska-installer/src
+msgid "Engine sources"
+msgstr "Исходники движка"
+
+#: tools/piska-installer/src
+msgid "Engine sources; the hub, editor and modeler are built; shortcuts"
+msgstr "Исходники движка; сборка хаба, редактора и редактора моделей; ярлыки"
+
+#: tools/piska-installer/src
+msgid "Environment variable PISKA_ZIG"
+msgstr "Переменная окружения PISKA_ZIG"
+
+#: tools/piska-installer/src
+msgid "Environment variables"
+msgstr "Переменные окружения"
+
+#: tools/piska-installer/src
+msgid "Environment variables for Android"
+msgstr "Переменные окружения для Android"
+
+#: tools/piska-installer/src
+msgid "Everything"
+msgstr "Всё"
+
+#: tools/piska-installer/src
+msgid "Exactly what will be run, downloaded and changed. Nothing has been changed yet."
+msgstr "Что именно будет запущено, скачано и изменено. Пока ничего не изменено."
+
+#: tools/piska-installer/src
+msgid "Existing installation"
+msgstr "Прежняя установка"
+
+#: tools/piska-installer/src
+msgid "Existing values are kept; a backup copy is made first."
+msgstr "Заданные значения сохраняются; сначала делается резервная копия."
+
+#: tools/piska-installer/src
+msgid "exit code {code}"
+msgstr "код выхода {code}"
+
+#: tools/piska-installer/src
+msgid "Extract"
+msgstr "Распаковка"
+
+#: tools/piska-installer/src
+msgid "failed"
+msgstr "сбой"
+
+#: tools/piska-installer/src
+msgid "File associations"
+msgstr "Ассоциации файлов"
+
+#: tools/piska-installer/src
+msgid "Files already there that pass their checksum are used without downloading (offline installs)."
+msgstr "Файлы, которые там уже есть и проходят проверку контрольной суммы, используются без скачивания (установка без сети)."
+
+#: tools/piska-installer/src
+msgid "Finish"
+msgstr "Готово"
+
+#: tools/piska-installer/src
+msgid "found"
+msgstr "найдено"
+
+#: tools/piska-installer/src
+msgid "Found: {components}"
+msgstr "Найдено: {components}"
+
+#: tools/piska-installer/src
+msgid "Free space"
+msgstr "Свободно"
+
+#: tools/piska-installer/src
+msgid "From the install manifest {path}"
+msgstr "Из манифеста установки {path}"
+
+#: tools/piska-installer/src
+msgid "I accept the licence terms of {name}"
+msgstr "Я принимаю условия лицензии {name}"
+
+#: tools/piska-installer/src
+msgid "Incomplete: {missing} of {total} steps"
+msgstr "Частично: нет {missing} из {total}"
+
+#: tools/piska-installer/src
+msgid "Install"
+msgstr "Установить"
+
+#: tools/piska-installer/src
+msgid "Install folder"
+msgstr "Папка установки"
+
+#: tools/piska-installer/src
+msgid "Installed"
+msgstr "Установлено"
+
+#: tools/piska-installer/src
+msgid "Installed · {version}"
+msgstr "Установлено · {version}"
+
+#: tools/piska-installer/src
+msgid "Installing"
+msgstr "Установка"
+
+#: tools/piska-installer/src
+msgid "Installs and configures everything needed to build games with the engine."
+msgstr "Устанавливает и настраивает всё, что нужно для создания игр на движке."
+
+#: tools/piska-installer/src
+msgid "JDK, Android SDK and NDK, cargo-ndk: build Android packages (APK)"
+msgstr "JDK, Android SDK и NDK, cargo-ndk: сборка пакетов Android (APK)"
+
+#: tools/piska-installer/src
+msgid "keep"
+msgstr "оставить"
+
+#: tools/piska-installer/src
+msgid "Keep Installing"
+msgstr "Продолжить установку"
+
+#: tools/piska-installer/src
+msgid "Launch {hub}"
+msgstr "Запустить {hub}"
+
+#: tools/piska-installer/src
+msgid "Licence"
+msgstr "Лицензия"
+
+#: tools/piska-installer/src
+msgid "licence accepted: {name}"
+msgstr "лицензия принята: {name}"
+
+#: tools/piska-installer/src
+msgid "Licence of the engine"
+msgstr "Лицензия движка"
+
+#: tools/piska-installer/src
+msgid "Licences"
+msgstr "Лицензии"
+
+#: tools/piska-installer/src
+msgid "Linux export"
+msgstr "Экспорт для Linux"
+
+#: tools/piska-installer/src
+msgid "Log"
+msgstr "Журнал"
+
+#: tools/piska-installer/src/ui.rs
+msgid "Log ({n} line)"
+msgid_plural "Log ({n} lines)"
+msgstr[0] "Журнал ({n} строка)"
+msgstr[1] "Журнал ({n} строки)"
+msgstr[2] "Журнал ({n} строк)"
+
+#: tools/piska-installer/src
+msgid "Minimal"
+msgstr "Минимальный"
+
+#: tools/piska-installer/src
+msgid "missing"
+msgstr "нет"
+
+#: tools/piska-installer/src
+msgid "Modify"
+msgstr "Изменить"
+
+#: tools/piska-installer/src
+msgid "Modify adds components. To remove what was installed, choose Uninstall on the first page."
+msgstr "«Изменить» добавляет компоненты. Чтобы убрать установленное, выберите «Удалить» на первой странице."
+
+#: tools/piska-installer/src
+msgid "Needed by: {list}"
+msgstr "Нужен для: {list}"
+
+#: tools/piska-installer/src
+msgid "Needs about {need}"
+msgstr "Нужно около {need}"
+
+#: tools/piska-installer/src
+msgid "Needs about {need} · {free} free"
+msgstr "Нужно около {need} · свободно {free}"
+
+#: tools/piska-installer/src
+msgid "neither Windows PowerShell (powershell.exe) nor PowerShell 7 (pwsh) was found"
+msgstr "не найдены ни Windows PowerShell (powershell.exe), ни PowerShell 7 (pwsh)"
+
+#: tools/piska-installer/src
+msgid "Next"
+msgstr "Далее"
+
+#: tools/piska-installer/src
+msgid "No"
+msgstr "Нет"
+
+#: tools/piska-installer/src
+msgid "No subfolders"
+msgstr "Нет вложенных папок"
+
+#: tools/piska-installer/src
+msgid "No third-party licence needs your acceptance"
+msgstr "Принимать сторонние лицензии не нужно"
+
+#: tools/piska-installer/src
+msgid "none (dry run)"
+msgstr "нет (сухой прогон)"
+
+#: tools/piska-installer/src
+msgid "None for the selected components."
+msgstr "Для выбранных компонентов — никаких."
+
+#: tools/piska-installer/src
+msgid "Not an engine checkout: Cargo.toml and tools/piska-export are missing."
+msgstr "Это не копия движка: нет Cargo.toml и tools/piska-export."
+
+#: tools/piska-installer/src
+msgid "Not enough free space: about {need} is needed, {free} is free. Free some space or choose another install folder on the next page."
+msgstr "Не хватает места: нужно около {need}, свободно {free}. Освободите место или выберите другую папку установки на следующей странице."
+
+#: tools/piska-installer/src
+msgid "Not enough free space: about {need} is needed."
+msgstr "Не хватает места: нужно около {need}."
+
+#: tools/piska-installer/src
+msgid "Not installed"
+msgstr "Не установлено"
+
+#: tools/piska-installer/src
+msgid "Note"
+msgstr "Заметка"
+
+#: tools/piska-installer/src
+msgid "note"
+msgstr "заметка"
+
+#: tools/piska-installer/src
+msgid "Nothing on this computer is changed: the scripts only show what they would do."
+msgstr "На компьютере ничего не меняется: скрипты только показывают, что бы они сделали."
+
+#: tools/piska-installer/src
+msgid "Nothing to remove"
+msgstr "Удалять нечего"
+
+#: tools/piska-installer/src
+msgid "Nothing to remove."
+msgstr "Удалять нечего."
+
+#: tools/piska-installer/src
+msgid "On disk"
+msgstr "На диске"
+
+#: tools/piska-installer/src
+msgid "On this computer"
+msgstr "На этом компьютере"
+
+#: tools/piska-installer/src
+msgid "Only show and log the plan; change nothing"
+msgstr "Только показать и записать план, ничего не менять"
+
+#: tools/piska-installer/src
+msgid "Only what is missing is installed. You can stop at any time and continue later."
+msgstr "Устанавливается только недостающее. Остановить можно в любой момент и продолжить позже."
+
+#: tools/piska-installer/src
+msgid "Only what this installer added is removed. Programs that were here before are not touched."
+msgstr "Удаляется только добавленное этим установщиком. Программы, которые были раньше, не трогаются."
+
+#: tools/piska-installer/src
+msgid "Open .pmodel, .scene and .scenario files with the engine, and .{ext} projects with the hub"
+msgstr "Открывать файлы .pmodel, .scene и .scenario движком, а проекты .{ext} — хабом"
+
+#: tools/piska-installer/src
+msgid "Open a new terminal so that PATH and the new environment variables take effect."
+msgstr "Откройте новый терминал, чтобы подействовали PATH и новые переменные окружения."
+
+#: tools/piska-installer/src
+msgid "Open Log"
+msgstr "Открыть журнал"
+
+#: tools/piska-installer/src
+msgid "Open the Documentation"
+msgstr "Открыть документацию"
+
+#: tools/piska-installer/src
+msgid "Outdated"
+msgstr "Устарело"
+
+#: tools/piska-installer/src
+msgid "Outdated · {version}"
+msgstr "Устарело · {version}"
+
+#: tools/piska-installer/src
+msgid "Passed to the scripts as HTTPS_PROXY; empty — the system settings."
+msgstr "Передаётся скриптам как HTTPS_PROXY; пусто — настройки системы."
+
+#: tools/piska-installer/src
+msgid "Preparing the exact plan (a dry run of the installer script)…"
+msgstr "Составляется точный план (сухой прогон скрипта установки)…"
+
+#: tools/piska-installer/src
+msgid "Preparing the installer scripts…"
+msgstr "Подготовка скриптов установки…"
+
+#: tools/piska-installer/src
+msgid "Preparing the plan…"
+msgstr "Составляется план…"
+
+#: tools/piska-installer/src
+msgid "Proxy"
+msgstr "Прокси"
+
+#: tools/piska-installer/src
+msgid "Question"
+msgstr "Вопрос"
+
+#: tools/piska-installer/src
+msgid "Read the licence"
+msgstr "Прочитать лицензию"
+
+#: tools/piska-installer/src
+msgid "Reading the install manifest…"
+msgstr "Чтение манифеста установки…"
+
+#: tools/piska-installer/src
+msgid "Register the file associations for your user account?"
+msgstr "Зарегистрировать ассоциации файлов для вашей учётной записи?"
+
+#: tools/piska-installer/src
+msgid "Registry"
+msgstr "Реестр"
+
+#: tools/piska-installer/src
+msgid "remove"
+msgstr "удалить"
+
+#: tools/piska-installer/src
+msgid "Remove from PATH"
+msgstr "Убрать из PATH"
+
+#: tools/piska-installer/src
+msgid "Remove the added block"
+msgstr "Убрать добавленный блок"
+
+#: tools/piska-installer/src
+msgid "Remove the Rust target"
+msgstr "Удалить цель Rust"
+
+#: tools/piska-installer/src
+msgid "Remove what this installer added (listed before anything is removed)."
+msgstr "Удалить добавленное этим установщиком (список показывается до удаления)."
+
+#: tools/piska-installer/src
+msgid "Remove what this installer added?"
+msgstr "Удалить то, что добавил этот установщик?"
+
+#: tools/piska-installer/src
+msgid "Remove {target}?"
+msgstr "Удалить {target}?"
+
+#: tools/piska-installer/src
+msgid "removed"
+msgstr "удаляется"
+
+#: tools/piska-installer/src
+msgid "Removing what this installer added."
+msgstr "Удаляется то, что добавил этот установщик."
+
+#: tools/piska-installer/src
+msgid "Repair"
+msgstr "Восстановить"
+
+#: tools/piska-installer/src
+msgid "Restore the editor preferences"
+msgstr "Вернуть настройки редактора"
+
+#: tools/piska-installer/src
+msgid "Restore the environment variable"
+msgstr "Вернуть переменную окружения"
+
+#: tools/piska-installer/src
+msgid "Restore the file association"
+msgstr "Вернуть ассоциацию файлов"
+
+#: tools/piska-installer/src
+msgid "Retry Step"
+msgstr "Повторить шаг"
+
+#: tools/piska-installer/src
+msgid "Review"
+msgstr "Проверка плана"
+
+#: tools/piska-installer/src
+msgid "Review the plan"
+msgstr "Проверка плана"
+
+#: tools/piska-installer/src
+msgid "Rights"
+msgstr "Права"
+
+#: tools/piska-installer/src
+msgid "Run"
+msgstr "Запуск"
+
+#: tools/piska-installer/src
+msgid "Run Dry Run"
+msgstr "Сухой прогон"
+
+#: tools/piska-installer/src
+msgid "Run the steps that failed or whose result is missing again."
+msgstr "Повторить шаги, которые не удались или результат которых пропал."
+
+#: tools/piska-installer/src
+msgid "running"
+msgstr "выполняется"
+
+#: tools/piska-installer/src
+msgid "Rust (rustup, stable toolchain)"
+msgstr "Rust (rustup, стабильный набор)"
+
+#: tools/piska-installer/src
+msgid "Rust components (clippy, rustfmt)"
+msgstr "Компоненты Rust (clippy, rustfmt)"
+
+#: tools/piska-installer/src
+msgid "Rust target {target}"
+msgstr "Цель Rust {target}"
+
+#: tools/piska-installer/src
+msgid "Rust, the system compiler and libraries, Git: needed to build the engine and every game"
+msgstr "Rust, системный компилятор и библиотеки, Git: нужны для сборки движка и любой игры"
+
+#: tools/piska-installer/src
+msgid "Rust, Visual Studio C++ build tools and Git: needed to build the engine and every game"
+msgstr "Rust, инструменты сборки C++ Visual Studio и Git: нужны для сборки движка и любой игры"
+
+#: tools/piska-installer/src
+msgid "Save Plan…"
+msgstr "Сохранить план…"
+
+#: tools/piska-installer/src
+msgid "Script shell"
+msgstr "Оболочка скриптов"
+
+#: tools/piska-installer/src
+msgid "Selected automatically: a selected component needs it."
+msgstr "Отмечено автоматически: он нужен выбранному компоненту."
+
+#: tools/piska-installer/src
+msgid "Setting"
+msgstr "Настройка"
+
+#: tools/piska-installer/src
+msgid "Setup {version}"
+msgstr "Установщик {version}"
+
+#: tools/piska-installer/src
+msgid "sha256 checked against the publisher at install time"
+msgstr "sha256 сверяется с издателем при установке"
+
+#: tools/piska-installer/src
+msgid "sha256 pinned"
+msgstr "sha256 закреплена"
+
+#: tools/piska-installer/src
+msgid "Shortcut"
+msgstr "Ярлык"
+
+#: tools/piska-installer/src
+msgid "Show the Log"
+msgstr "Показать журнал"
+
+#: tools/piska-installer/src
+msgid "Skip Step"
+msgstr "Пропустить шаг"
+
+#: tools/piska-installer/src
+msgid "skipped on request"
+msgstr "пропущено по просьбе"
+
+#: tools/piska-installer/src
+msgid "Some licences are not accepted yet: go back to the Licences page."
+msgstr "Не все лицензии приняты: вернитесь на страницу «Лицензии»."
+
+#: tools/piska-installer/src
+msgid "Start menu"
+msgstr "Меню «Пуск»"
+
+#: tools/piska-installer/src
+msgid "Start menu shortcuts"
+msgstr "Ярлыки в меню «Пуск»"
+
+#: tools/piska-installer/src
+msgid "Starting the installer script…"
+msgstr "Запуск скрипта установки…"
+
+#: tools/piska-installer/src
+msgid "Step {n} of {total} · {title}"
+msgstr "Шаг {n} из {total} · {title}"
+
+#: tools/piska-installer/src
+msgid "Step “{title}” failed"
+msgstr "Шаг «{title}» не удался"
+
+#: tools/piska-installer/src
+msgid "Steps"
+msgstr "Шаги"
+
+#: tools/piska-installer/src
+msgid "Still checking this computer…"
+msgstr "Компьютер ещё проверяется…"
+
+#: tools/piska-installer/src
+msgid "Still working… no output for {time}. Big installers are quiet for a long time; nothing is stopped unless you press Cancel."
+msgstr "Работа идёт… вывода нет уже {time}. Большие установщики подолгу молчат; ничего не останавливается, пока вы не нажмёте «Отмена»."
+
+#: tools/piska-installer/src
+msgid "Stop and Close"
+msgstr "Остановить и закрыть"
+
+#: tools/piska-installer/src
+msgid "Stop the Installation?"
+msgstr "Остановить установку?"
+
+#: tools/piska-installer/src
+msgid "Stopped. Finished steps are recorded: Resume continues where it stopped."
+msgstr "Остановлено. Завершённые шаги записаны: «Продолжить» начнёт с места остановки."
+
+#: tools/piska-installer/src
+msgid "Stopped: a licence was not accepted."
+msgstr "Остановлено: лицензия не принята."
+
+#: tools/piska-installer/src
+msgid "Stopped: administrator rights were not confirmed."
+msgstr "Остановлено: права администратора не подтверждены."
+
+#: tools/piska-installer/src
+msgid "Stopping…"
+msgstr "Остановка…"
+
+#: tools/piska-installer/src
+msgid "System"
+msgstr "Система"
+
+#: tools/piska-installer/src
+msgid "System packages (compiler, libraries, Vulkan)"
+msgstr "Системные пакеты (компилятор, библиотеки, Vulkan)"
+
+#: tools/piska-installer/src
+msgid "System packages stay installed"
+msgstr "Системные пакеты остаются установленными"
+
+#: tools/piska-installer/src
+msgid "The check did not finish: {error}"
+msgstr "Проверка не завершилась: {error}"
+
+#: tools/piska-installer/src
+msgid "The command was copied to the clipboard"
+msgstr "Команда скопирована в буфер обмена"
+
+#: tools/piska-installer/src
+msgid "The copy of the engine this installer was started from."
+msgstr "Копия движка, из которой запущен этот установщик."
+
+#: tools/piska-installer/src
+msgid "The current step is stopped. Steps that finished stay installed and are recorded, so Setup can continue later."
+msgstr "Текущий шаг будет остановлен. Завершённые шаги остаются установленными и записаны — установку можно продолжить позже."
+
+#: tools/piska-installer/src
+msgid "The editor preferences already set {key}. Replace the value with the detected one?"
+msgstr "В настройках редактора уже задан {key}. Заменить значение найденным?"
+
+#: tools/piska-installer/src
+msgid "The engine folder is not an engine checkout."
+msgstr "Папка движка — не копия движка."
+
+#: tools/piska-installer/src
+msgid "The error was copied to the clipboard"
+msgstr "Ошибка скопирована в буфер обмена"
+
+#: tools/piska-installer/src
+msgid "The hub is not built yet: install the Engine and tools component."
+msgstr "Хаб ещё не собран: установите компонент «Движок и инструменты»."
+
+#: tools/piska-installer/src
+msgid "The installer script stopped unexpectedly"
+msgstr "Скрипт установки неожиданно остановился"
+
+#: tools/piska-installer/src
+msgid "The installer script stopped unexpectedly (exit code {code})"
+msgstr "Скрипт установки неожиданно остановился (код выхода {code})"
+
+#: tools/piska-installer/src
+msgid "The installer scripts could not be prepared."
+msgstr "Не удалось подготовить скрипты установки."
+
+#: tools/piska-installer/src
+msgid "The installer scripts could not be prepared: {error}"
+msgstr "Не удалось подготовить скрипты установки: {error}"
+
+#: tools/piska-installer/src
+msgid "The next step needs administrator rights. Continue?"
+msgstr "Следующему шагу нужны права администратора. Продолжить?"
+
+#: tools/piska-installer/src
+msgid "The package manager needs administrator rights: pkexec asks for the password in its own window, or you run the shown command in a terminal."
+msgstr "Менеджеру пакетов нужны права администратора: pkexec спросит пароль в своём окне, или вы выполните показанную команду в терминале."
+
+#: tools/piska-installer/src
+msgid "The plan above is what a real installation would do. Run Setup again without Dry run to install."
+msgstr "План — то, что сделала бы настоящая установка. Чтобы установить, запустите установщик снова без сухого прогона."
+
+#: tools/piska-installer/src
+msgid "The plan could not be prepared."
+msgstr "Не удалось составить план."
+
+#: tools/piska-installer/src
+msgid "The plan could not be prepared: {error}"
+msgstr "Не удалось составить план: {error}"
+
+#: tools/piska-installer/src
+msgid "The plan is saved there as install-plan.txt."
+msgstr "План сохраняется туда как install-plan.txt."
+
+#: tools/piska-installer/src
+msgid "The plan was copied to the clipboard"
+msgstr "План скопирован в буфер обмена"
+
+#: tools/piska-installer/src
+msgid "The plan was saved to {path}"
+msgstr "План сохранён в {path}"
+
+#: tools/piska-installer/src
+msgid "The repository is private right now: downloading needs access to it. Sign in to GitHub first (Git Credential Manager, or gh auth login), or use an existing folder."
+msgstr "Репозиторий сейчас закрытый: для скачивания нужен доступ к нему. Сначала войдите в GitHub (Git Credential Manager или gh auth login) или используйте существующую папку."
+
+#: tools/piska-installer/src
+msgid "The scripts show what they would do; nothing is changed."
+msgstr "Скрипты показывают, что бы они сделали; ничего не меняется."
+
+#: tools/piska-installer/src
+msgid "The selected components use only open-source tools, or the tools are already installed."
+msgstr "Выбранные компоненты используют только открытые инструменты, или они уже установлены."
+
+#: tools/piska-installer/src
+msgid "The uninstall plan could not be prepared: {error}"
+msgstr "Не удалось составить план удаления: {error}"
+
+#: tools/piska-installer/src
+msgid "The WebAssembly target: export games to the browser"
+msgstr "Цель WebAssembly: экспорт игр в браузер"
+
+#: tools/piska-installer/src
+msgid "There is no install manifest: this installer has not added anything here."
+msgstr "Манифеста установки нет: этот установщик здесь ничего не добавлял."
+
+#: tools/piska-installer/src
+msgid "There is no log file: a dry run does not write one"
+msgstr "Файла журнала нет: сухой прогон его не пишет"
+
+#: tools/piska-installer/src
+msgid "These steps ask for administrator rights. Windows shows its own prompt for each; this installer never sees your password."
+msgstr "Эти шаги попросят права администратора. Windows покажет свой запрос для каждого; этот установщик никогда не видит ваш пароль."
+
+#: tools/piska-installer/src
+msgid "Third-party tools that need your acceptance. Nothing is accepted for you."
+msgstr "Сторонние инструменты, лицензии которых нужно принять. Ничего не принимается за вас."
+
+#: tools/piska-installer/src
+msgid "This computer"
+msgstr "Этот компьютер"
+
+#: tools/piska-installer/src
+msgid "This installer may ask Windows for administrator rights (one UAC prompt)."
+msgstr "Этот установщик может запросить у Windows права администратора (один запрос UAC)."
+
+#: tools/piska-installer/src
+msgid "This step needs administrator rights and pkexec is not available. Run this command in a terminal, then press Retry:"
+msgstr "Этому шагу нужны права администратора, а pkexec нет. Выполните эту команду в терминале, затем нажмите «Повторить шаг»:"
+
+#: tools/piska-installer/src
+msgid "too old"
+msgstr "устарело"
+
+#: tools/piska-installer/src
+msgid "Tools without their own installer (zig, Android command-line tools), the download cache and the engine go here."
+msgstr "Сюда ставятся инструменты без своего установщика (zig, инструменты командной строки Android), кэш загрузок и движок."
+
+#: tools/piska-installer/src
+msgid "Typical"
+msgstr "Обычный"
+
+#: tools/piska-installer/src
+msgid "Uninstall"
+msgstr "Удалить"
+
+#: tools/piska-installer/src
+msgid "Uninstall finished"
+msgstr "Удаление завершено"
+
+#: tools/piska-installer/src
+msgid "Uninstall Rust (rustup)"
+msgstr "Удалить Rust (rustup)"
+
+#: tools/piska-installer/src
+msgid "Uninstall script"
+msgstr "Скрипт удаления"
+
+#: tools/piska-installer/src
+msgid "Uninstall the cargo tool"
+msgstr "Удалить инструмент cargo"
+
+#: tools/piska-installer/src
+msgid "Uninstall the program (winget)"
+msgstr "Удалить программу (winget)"
+
+#: tools/piska-installer/src
+msgid "Uninstalling"
+msgstr "Удаление"
+
+#: tools/piska-installer/src
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: tools/piska-installer/src
+msgid "unknown argument `{arg}` (see --help)"
+msgstr "неизвестный аргумент `{arg}` (см. --help)"
+
+#: tools/piska-installer/src
+msgid "unknown component `{name}`; known: {list}, all"
+msgstr "неизвестный компонент `{name}`; есть: {list}, all"
+
+#: tools/piska-installer/src
+msgid "unknown language `{lang}` (en, ru)"
+msgstr "неизвестный язык `{lang}` (en, ru)"
+
+#: tools/piska-installer/src
+msgid "Use an existing folder"
+msgstr "Использовать существующую папку"
+
+#: tools/piska-installer/src
+msgid "Used only by the Engine and tools component, which is not selected."
+msgstr "Нужно только компоненту «Движок и инструменты», а он не выбран."
+
+#: tools/piska-installer/src
+msgid "Variable"
+msgstr "Переменная"
+
+#: tools/piska-installer/src
+msgid "Verify"
+msgstr "Проверка"
+
+#: tools/piska-installer/src
+msgid "Visual Studio Build Tools (C++ workload and Windows SDK)"
+msgstr "Visual Studio Build Tools (рабочая нагрузка C++ и Windows SDK)"
+
+#: tools/piska-installer/src
+msgid "Visual Studio Build Tools install for all users: Windows shows one administrator (UAC) prompt."
+msgstr "Visual Studio Build Tools ставятся для всех пользователей: Windows покажет один запрос прав администратора (UAC)."
+
+#: tools/piska-installer/src
+msgid "Vulkan runtime (GPU driver)"
+msgstr "Среда Vulkan (драйвер видеокарты)"
+
+#: tools/piska-installer/src
+msgid "waiting"
+msgstr "ожидает"
+
+#: tools/piska-installer/src
+msgid "Web export"
+msgstr "Экспорт в веб"
+
+#: tools/piska-installer/src
+msgid "Welcome"
+msgstr "Начало"
+
+#: tools/piska-installer/src
+msgid "What"
+msgstr "Что"
+
+#: tools/piska-installer/src
+msgid "What happens"
+msgstr "Что произойдёт"
+
+#: tools/piska-installer/src
+msgid "What it is for"
+msgstr "Зачем"
+
+#: tools/piska-installer/src
+msgid "What this installer added was removed."
+msgstr "Добавленное этим установщиком удалено."
+
+#: tools/piska-installer/src
+msgid "What to install. Dependencies are added automatically; what is already on this computer is skipped."
+msgstr "Что установить. Зависимости добавляются сами; то, что уже есть на компьютере, пропускается."
+
+#: tools/piska-installer/src
+msgid "Where / what to do"
+msgstr "Где / что сделать"
+
+#: tools/piska-installer/src
+msgid "Where downloaded files are kept."
+msgstr "Где хранятся скачанные файлы."
+
+#: tools/piska-installer/src
+msgid "Where to install, where the engine sources come from and what to set up."
+msgstr "Куда ставить, откуда брать исходники движка и что настроить."
+
+#: tools/piska-installer/src
+msgid "Where to install. A new folder is created if needed."
+msgstr "Куда ставить. Новая папка создаётся при необходимости."
+
+#: tools/piska-installer/src
+msgid "Windows needs to restart to finish this step. Restart, then run Setup again and choose Repair."
+msgstr "Чтобы завершить этот шаг, Windows нужно перезагрузить. Перезагрузите компьютер, затем снова запустите установщик и выберите «Восстановить»."
+
+#: tools/piska-installer/src
+msgid "Windows PowerShell could not be started: {error}"
+msgstr "Не удалось запустить Windows PowerShell: {error}"
+
+#: tools/piska-installer/src
+msgid "would run"
+msgstr "будет выполнено"
+
+#: tools/piska-installer/src
+msgid "would skip"
+msgstr "будет пропущено"
+
+#: tools/piska-installer/src
+msgid "Write the detected tool paths into the editor preferences"
+msgstr "Записать найденные пути инструментов в настройки редактора"
+
+#: tools/piska-installer/src
+msgid "yes"
+msgstr "да"
+
+#: tools/piska-installer/src
+msgid "Yes"
+msgstr "Да"
+
+#: tools/piska-installer/src
+msgid "You can keep using the computer. Cancel stops safely; finished steps are kept."
+msgstr "Компьютером можно пользоваться. «Отмена» останавливает безопасно; завершённые шаги сохраняются."
+
+#: tools/piska-installer/src
+msgid "You choose the components; what they depend on is added for you."
+msgstr "Вы выбираете компоненты; то, от чего они зависят, добавляется само."
+
+#: tools/piska-installer/src
+msgid "You see the exact plan: every command, download, checksum and change."
+msgstr "Вы видите точный план: каждую команду, скачивание, контрольную сумму и изменение."
+
+#: tools/piska-installer/src
+msgid "zig and the Linux target: build Linux versions of games on this computer"
+msgstr "zig и цель Linux: сборка версий игр для Linux на этом компьютере"
+
+#: tools/piska-installer/src
+msgid "{component} is selected automatically: {list} cannot be installed without it."
+msgstr "{component} отмечен автоматически: без него нельзя установить {list}."
+
+#: tools/piska-installer/src
+msgid "{done} done, {skipped} already there, {failed} failed"
+msgstr "выполнено {done}, уже было {skipped}, не удалось {failed}"
+
+#: tools/piska-installer/src
+msgid "{done} downloaded"
+msgstr "скачано {done}"
+
+#: tools/piska-installer/src
+msgid "{done} of about {total}"
+msgstr "{done} из примерно {total}"
+
+#: tools/piska-installer/src
+msgid "{done} of {total}"
+msgstr "{done} из {total}"
+
+#: tools/piska-installer/src
+msgid "{done} of {total} steps"
+msgstr "{done} из {total} шагов"
+
+#: tools/piska-installer/src
+msgid "{done} of {total} steps are already done on this computer."
+msgstr "На этом компьютере уже выполнено {done} из {total} шагов."
+
+#: tools/piska-installer/src
+msgid "{engine} is free software: {licence}."
+msgstr "{engine} — свободная программа: {licence}."
+
+#: tools/piska-installer/src
+msgid "{engine} is installed"
+msgstr "{engine} установлен"
+
+#: tools/piska-installer/src
+msgid "{engine} Setup"
+msgstr "Установка {engine}"
+
+#: tools/piska-installer/src
+msgid "{m} min {s} s"
+msgstr "{m} мин {s} с"
+
+#: tools/piska-installer/src
+msgid "{name} needs a value"
+msgstr "{name}: нужно значение"
+
+#: tools/piska-installer/src/ui.rs
+msgid "{n} line was not an event and is shown as is"
+msgid_plural "{n} lines were not events and are shown as is"
+msgstr[0] "{n} строка не была событием и показана как есть"
+msgstr[1] "{n} строки не были событиями и показаны как есть"
+msgstr[2] "{n} строк не были событиями и показаны как есть"
+
+#: tools/piska-installer/src/ui.rs
+msgid "{n} step asks for administrator rights; the reason is shown at the step. Your password never passes through this installer."
+msgid_plural "{n} steps ask for administrator rights; the reason is shown at each step. Your password never passes through this installer."
+msgstr[0] "{n} шаг попросит права администратора; причина указана у шага. Пароль никогда не проходит через этот установщик."
+msgstr[1] "{n} шага попросят права администратора; причина указана у каждого шага. Пароль никогда не проходит через этот установщик."
+msgstr[2] "{n} шагов попросят права администратора; причина указана у каждого шага. Пароль никогда не проходит через этот установщик."
+
+#: tools/piska-installer/src
+msgid "{path} was not written correctly (the file read back differs): check the disk and the antivirus"
+msgstr "{path} записан неверно (прочитанный обратно файл отличается): проверьте диск и антивирус"
+
+#: tools/piska-installer/src
+msgid "{s} s"
+msgstr "{s} с"
+
+#: tools/piska-installer/src
+msgid "{total} steps: {todo} to run, {done} already done"
+msgstr "Шагов: {total}; выполнить {todo}, уже сделано {done}"
+
+#: tools/piska-installer/src
+msgid "· downloads with pinned sizes: {size}"
+msgstr "· скачивания известного размера: {size}"
+
+#: tools/piska-installer/src/ui.rs
+msgctxt "installer"
+msgid "Back"
+msgstr "Назад"
+
+#: tools/piska-installer/src/ui.rs
+msgctxt "installer"
+msgid "Shortcuts"
+msgstr "Ярлыки"
+
+#: tools/piska-installer/src/ui.rs
+msgid "no"
+msgstr "нет"
+
+#: tools/piska-installer/src/ui.rs
+msgid "Administrator rights are asked only for the steps that need them."
+msgstr "Права администратора запрашиваются только для шагов, которым они нужны."
+
+#: crates/engine-editor/src/help.rs
+msgid "Show Log Folder"
+msgstr "Показать папку журналов"
+
+#: crates/engine-editor/src/help.rs
+msgid "The log folder is not known on this system"
+msgstr "Папка журналов на этой системе неизвестна"
+
+#: modeler
+msgid " ({} note(s) in the log)"
+msgstr " (замечаний в журнале: {})"
+
+#: modeler
+msgid "`{}` has no UVs yet: Texture ▸ Generate UVs (mesh) makes it paintable"
+msgstr "У `{}` ещё нет развёртки: меню «Текстура», пункт «Создать развёртку (меш)» — и его можно раскрашивать"
+
+#: modeler
+msgid "`{}` is locked; unlock it in the outliner to paint"
+msgstr "`{}` заблокирован; чтобы рисовать, снимите блокировку в структуре"
+
+#: modeler
+msgid "Back to element editing"
+msgstr "Вернуться к правке элементов"
+
+#: modeler
+msgid "Blockbench model"
+msgstr "Модель Blockbench"
+
+#: modeler
+msgid "Convert Mesh to Cubes"
+msgstr "Превратить меш в кубы"
+
+#: modeler
+msgid "Convert to Cubes"
+msgstr "Превратить в кубы"
+
+#: modeler
+msgid "Converted to {n} cuboid(s); faces keep their texture"
+msgstr "Превращено в кубоиды: {n}; грани сохранили текстуру"
+
+#: modeler
+msgid "Delete Faces"
+msgstr "Удалить грани"
+
+#: modeler
+msgid "Deleted {n} face(s)"
+msgstr "Удалено граней: {n}"
+
+#: modeler
+msgid "Edit Vertices / Faces"
+msgstr "Править вершины и грани"
+
+#: modeler
+msgid "Export Blockbench (.bbmodel)…"
+msgstr "Экспорт в Blockbench (.bbmodel)…"
+
+#: modeler
+msgid "Export Blockbench Model"
+msgstr "Экспорт модели Blockbench"
+
+#: modeler
+msgid "Exported {}; {}"
+msgstr "Экспортировано: {}; {}"
+
+#: modeler
+msgid "Finish Vertex Editing"
+msgstr "Закончить правку вершин"
+
+#: modeler
+msgid "Generate UVs"
+msgstr "Создать развёртку"
+
+#: modeler
+msgid "Generate UVs (mesh)"
+msgstr "Создать развёртку (меш)"
+
+#: modeler
+msgid "Generated UVs for {n} face(s); the mesh can be painted now (Tab)"
+msgstr "Развёртка создана для граней: {n}; меш можно раскрашивать (Tab)"
+
+#: modeler
+msgid "Import as Reference (grey, not editable)…"
+msgstr "Импорт как образец (серый, без правки)…"
+
+#: modeler
+msgid "Import Mesh"
+msgstr "Импорт меша"
+
+#: modeler
+msgid "Import Mesh (.obj, .glb, .ply, .stl, .bbmodel)…"
+msgstr "Импорт меша (.obj, .glb, .ply, .stl, .bbmodel)…"
+
+#: modeler
+msgid "Import Model"
+msgstr "Импорт модели"
+
+#: modeler
+msgid "Imported {file} as an editable mesh: select, move and paint it; Model ▸ Edit Vertices / Faces changes its shape"
+msgstr "{file} импортирован как редактируемый меш: выделяйте, двигайте и раскрашивайте его; форму меняет пункт «Править вершины и грани» меню «Модель»"
+
+#: modeler
+msgid "Merge Vertices"
+msgstr "Слить вершины"
+
+#: modeler
+msgid "Merged {removed} vertex(es)"
+msgstr "Слито вершин: {removed}"
+
+#: modeler
+msgid "Move Face"
+msgstr "Сдвинуть грань"
+
+#: modeler
+msgid "Move Vertices"
+msgstr "Сдвинуть вершины"
+
+#: modeler
+msgid "Paint mode: the brush paints on the model; press Tab to select and move elements"
+msgstr "Режим рисования: кисть рисует по модели; Tab — выделять и двигать элементы"
+
+#: modeler
+msgid "select a face (click it) or all vertices of a face to delete it"
+msgstr "чтобы удалить грань, выделите её (щелчком) или все её вершины"
+
+#: modeler
+msgid "select a mesh element first"
+msgstr "сначала выделите элемент-меш"
+
+#: modeler
+msgid "select a mesh element first (imported .obj, .glb, .ply or .stl)"
+msgstr "сначала выделите элемент-меш (импортированный .obj, .glb, .ply или .stl)"
+
+#: modeler
+msgid "vertex editing works on mesh elements; select one first"
+msgstr "правка вершин работает с элементами-мешами; сначала выделите такой"
+
+#: modeler
+msgid "Vertex mode: click or box-select vertices, click a face to select it; drag the arrows to move; Del deletes the face; V or Esc returns"
+msgstr "Режим вершин: щелчок или рамка выделяют вершины, щелчок по грани выделяет её; стрелки двигают; Del удаляет грань; V или Esc — выход"
+
+#: modeler
+msgid "Add Mesh"
+msgstr "Добавить меш"
+
+#: modeler
+msgid "Added {name}: V edits its vertices, faces and edges"
+msgstr "Добавлен {name}: V — правка вершин, граней и рёбер"
+
+#: modeler
+msgid "Alt+J"
+msgstr "Alt+J"
+
+#: modeler
+msgid "Alt+N"
+msgstr "Alt+N"
+
+#: modeler
+msgid "Array"
+msgstr "Массив"
+
+#: modeler
+msgid "Bevel"
+msgstr "Фаска"
+
+#: modeler
+msgid "Bevel Edges"
+msgstr "Фаска рёбер"
+
+#: modeler
+msgid "Cells"
+msgstr "Ячейки"
+
+#: modeler
+msgid "Convert Cube to Mesh"
+msgstr "Кубоид в меш"
+
+#: modeler
+msgid "Count"
+msgstr "Количество"
+
+#: modeler
+msgid "Ctrl+="
+msgstr "Ctrl+="
+
+#: modeler
+msgid "Ctrl+B"
+msgstr "Ctrl+B"
+
+#: modeler
+msgid "Ctrl+I"
+msgstr "Ctrl+I"
+
+#: modeler
+msgid "Ctrl+J"
+msgstr "Ctrl+J"
+
+#: modeler
+msgid "Ctrl+T"
+msgstr "Ctrl+T"
+
+#: modeler
+msgid "Ctrl+−"
+msgstr "Ctrl+−"
+
+#: modeler
+msgid "Cuts"
+msgstr "Разрезы"
+
+#: modeler
+msgid "Dissolve"
+msgstr "Растворить"
+
+#: modeler
+msgid "Distance"
+msgstr "Расстояние"
+
+#: modeler
+msgid "Edge"
+msgstr "Рёбра"
+
+#: modeler
+msgid "Extrude"
+msgstr "Выдавить"
+
+#: modeler
+msgid "Face"
+msgstr "Грани"
+
+#: modeler
+msgid "Fill (Make Face)"
+msgstr "Заполнить (создать грань)"
+
+#: modeler
+msgid "Flip Normals"
+msgstr "Развернуть нормали"
+
+#: modeler
+msgid "I"
+msgstr "I"
+
+#: modeler
+msgid "L"
+msgstr "L"
+
+#: modeler
+msgid "Inset"
+msgstr "Вставка"
+
+#: modeler
+msgid "Inset Faces"
+msgstr "Вставка граней"
+
+#: modeler
+msgid "Invert Selection"
+msgstr "Обратить выделение"
+
+#: modeler
+msgid "Join"
+msgstr "Объединить"
+
+#: modeler
+msgid "Join Meshes"
+msgstr "Объединить меши"
+
+#: modeler
+msgid "Joined {n} meshes"
+msgstr "Объединено мешей: {n}"
+
+#: modeler
+msgid "Lathe"
+msgstr "Вращение"
+
+#: modeler
+msgid "Lathe (vase profile)"
+msgstr "Вращение (профиль вазы)"
+
+#: modeler
+msgid "Lathe Selected Profile"
+msgstr "Вращение выделенного профиля"
+
+#: modeler
+msgid "length {d}"
+msgstr "длина {d}"
+
+#: modeler
+msgid "Loop Cut"
+msgstr "Петлевой разрез"
+
+#: modeler
+msgid "Merge"
+msgstr "Слить"
+
+#: modeler
+msgid "Merge at Centre"
+msgstr "Слить в центре"
+
+#: modeler
+msgctxt "menu"
+msgid "Mesh"
+msgstr "Меш"
+
+#: modeler
+msgid "Mirror"
+msgstr "Отражение"
+
+#: modeler
+msgid "Mirror X (apply)"
+msgstr "Отразить по X (применить)"
+
+#: modeler
+msgid "nothing is selected"
+msgstr "ничего не выделено"
+
+#: modeler
+msgid "only border edges (with one face) can be extruded; select faces to extrude a region"
+msgstr "выдавить можно только краевые рёбра (с одной гранью); чтобы выдавить область, выделите грани"
+
+#: modeler
+msgid "point at an edge (or select one) and press Ctrl+R to cut a loop across it"
+msgstr "наведите курсор на ребро (или выделите его) и нажмите Ctrl+R — петля разреза пройдёт поперёк"
+
+#: modeler
+msgid "Radius"
+msgstr "Радиус"
+
+#: modeler
+msgid "Recalculate Normals"
+msgstr "Пересчитать нормали"
+
+#: modeler
+msgid "Recalculate Normals Outside"
+msgstr "Нормали наружу"
+
+#: modeler
+msgid "Rings"
+msgstr "Кольца"
+
+#: modeler
+msgid "Segments"
+msgstr "Сегменты"
+
+#: modeler
+msgid "select a chain of edges to sweep a tube along"
+msgstr "выделите цепочку рёбер — вдоль неё пройдёт труба"
+
+#: modeler
+msgid "select a mesh element first (Model ▸ Add Mesh, or Convert Cube to Mesh)"
+msgstr "сначала выделите элемент-меш (меню «Меш»: «Добавить меш» или «Кубоид в меш»)"
+
+#: modeler
+msgid "select cuboids to convert to meshes"
+msgstr "выделите кубоиды, которые станут мешами"
+
+#: modeler
+msgid "select edges to bevel"
+msgstr "выделите рёбра для фаски"
+
+#: modeler
+msgid "select faces (3) or border edges (2) to extrude"
+msgstr "выделите грани (3) или краевые рёбра (2), чтобы выдавить"
+
+#: modeler
+msgid "select faces to duplicate"
+msgstr "выделите грани, чтобы скопировать"
+
+#: modeler
+msgid "select faces to inset"
+msgstr "выделите грани для вставки"
+
+#: modeler
+msgid "select faces to separate into a new element"
+msgstr "выделите грани, которые станут отдельным элементом"
+
+#: modeler
+msgid "select faces to subdivide"
+msgstr "выделите грани, чтобы поделить"
+
+#: modeler
+msgid "Select Less"
+msgstr "Выделить меньше"
+
+#: modeler
+msgid "Select Linked"
+msgstr "Выделить связанное"
+
+#: modeler
+msgid "Select More"
+msgstr "Выделить больше"
+
+#: modeler
+msgid "Select Similar Normal"
+msgstr "Выделить с той же нормалью"
+
+#: modeler
+msgid "select two or more mesh elements to join (Shift+click in the outliner)"
+msgstr "выделите два меша или больше (Shift+щелчок в списке узлов), чтобы объединить"
+
+#: modeler
+msgid "select two or more vertices of a profile (radius from the element's pivot, height up)"
+msgstr "выделите две вершины профиля или больше (радиус — от точки вращения элемента, высота — вверх)"
+
+#: modeler
+msgid "select two or more vertices to merge"
+msgstr "выделите две вершины или больше, чтобы слить"
+
+#: modeler
+msgid "select vertices, edges or faces first (click, box or A)"
+msgstr "сначала выделите вершины, рёбра или грани (щелчок, рамка или A)"
+
+#: modeler
+msgid "Separate"
+msgstr "Отделить"
+
+#: modeler
+msgid "separated into a new element"
+msgstr "отделено в новый элемент"
+
+#: modeler
+msgid "Set Texel Density"
+msgstr "Задать плотность текселей"
+
+#: modeler
+msgid "Shift+D"
+msgstr "Shift+D"
+
+#: modeler
+msgid "Shift+N"
+msgstr "Shift+N"
+
+#: modeler
+msgid "Sides"
+msgstr "Стороны"
+
+#: modeler
+msgid "Slide"
+msgstr "Сдвиг"
+
+#: modeler
+msgid "Snap UVs"
+msgstr "Привязать UV"
+
+#: modeler
+msgid "Snap UVs to Texels"
+msgstr "Привязать UV к текселям"
+
+#: modeler
+msgid "Solidify"
+msgstr "Толщина"
+
+#: modeler
+msgid "Split"
+msgstr "Оторвать"
+
+#: modeler
+msgid "Subdivide"
+msgstr "Поделить"
+
+#: modeler
+msgid "Subdivisions"
+msgstr "Деления"
+
+#: modeler
+msgid "Taper"
+msgstr "Сужение"
+
+#: modeler
+msgid "Texel Density"
+msgstr "Плотность текселей"
+
+#: modeler
+msgid "Thickness"
+msgstr "Толщина"
+
+#: modeler
+msgid "Times"
+msgstr "Раз"
+
+#: modeler
+msgid "Triangulate"
+msgstr "Треугольники"
+
+#: modeler
+msgid "Tris to Quads"
+msgstr "Треугольники в квады"
+
+#: modeler
+msgid "Tube"
+msgstr "Труба"
+
+#: modeler
+msgid "Tube Along Selected Edges"
+msgstr "Труба вдоль выделенных рёбер"
+
+#: modeler
+msgid "Twist"
+msgstr "Скручивание"
+
+#: modeler
+msgid "UVs laid out again at {d} texels per unit"
+msgstr "UV разложены заново: {d} текселя на единицу"
+
+#: modeler
+msgid "UVs snapped to texel corners"
+msgstr "UV прижаты к углам текселей"
+
+#: modeler
+msgid "Vertex"
+msgstr "Вершины"
+
+#: modeler
+msgid "{mode} select (1 2 3) · {tris} tris · G R S move rotate scale · E extrude · I inset · Ctrl+B bevel · Ctrl+R loop cut · F fill · M merge · X delete · Alt+click loop · V exit"
+msgstr "Выделение: {mode} (1 2 3) · треугольников: {tris} · G R S сдвиг поворот масштаб · E выдавить · I вставка · Ctrl+B фаска · Ctrl+R петлевой разрез · F грань · M слить · X удалить · Alt+щелчок петля · V выход"
+
+#: modeler
+msgid "{n} cuboid(s) are meshes now: V edits their vertices"
+msgstr "Кубоидов стало мешами: {n}; V — правка вершин"
+
+#: modeler
+msgid "{op} cancelled"
+msgstr "{op}: отменено"
+
+#: modeler
+msgid "{op}{axis}: {value} · X Y Z axis · type a number · Ctrl snap · click or Enter to apply · right click or Esc to cancel"
+msgstr "{op}{axis}: {value} · X Y Z ось · число с клавиатуры · Ctrl привязка · щелчок или Enter — применить · правый щелчок или Esc — отмена"
+
+#: modeler
+msgid "Circle"
+msgstr "Круг"
+
+#: modeler
+msgid "UV Sphere"
+msgstr "UV-сфера"
+
+#: modeler
+msgid "Ico Sphere"
+msgstr "Икосфера"
+
+#: modeler
+msgid "Torus"
+msgstr "Тор"
+
+#: modeler
+msgid "Wedge"
+msgstr "Клин"
+
+#: modeler
+msgid "Stairs"
+msgstr "Лестница"
+
+#: modeler
+msgid "Mesh mode; select vertices, edges, faces"
+msgstr "Режим меша; выделение вершин, рёбер, граней"
+
+#: modeler
+msgid "Move, rotate, scale the mesh selection; along an axis"
+msgstr "Сдвиг, поворот, масштаб выделенного в меше; по оси"
+
+#: modeler
+msgid "Extrude, inset, bevel, loop cut"
+msgstr "Выдавить, вставка, фаска, петлевой разрез"
+
+#: modeler
+msgid "Make face, merge, delete, duplicate, separate"
+msgstr "Создать грань, слить, удалить, копия, отделить"
+
+#: modeler
+msgid "Select all, edge loop, linked; add a mesh"
+msgstr "Выделить всё, петлю рёбер, связанное; добавить меш"
+
+#: modeler
+msgid "A  Alt+click  L  Shift+A"
+msgstr "A  Alt+щелчок  L  Shift+A"
+
+#: modeler
+msgid "E  I  Ctrl+B  Ctrl+R"
+msgstr "E  I  Ctrl+B  Ctrl+R"
+
+#: modeler
+msgid "F  M  X  Shift+D  P"
+msgstr "F  M  X  Shift+D  P"
+
+#: modeler
+msgid "G  R  S  X Y Z"
+msgstr "G  R  S  X Y Z"
+
+#: modeler
+msgid "V  1  2  3"
+msgstr "V  1  2  3"

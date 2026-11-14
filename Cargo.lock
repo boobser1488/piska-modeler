@@ -528,6 +528,7 @@ version = "0.1.0"
 dependencies = [
  "image",
  "thiserror 1.0.69",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
@@ -535,12 +536,22 @@ name = "engine-i18n"
 version = "0.1.0"
 
 [[package]]
+name = "engine-model-formats"
+version = "0.1.0"
+dependencies = [
+ "png",
+ "serde_json",
+]
+
+[[package]]
 name = "engine-modeler"
 version = "0.1.0"
 dependencies = [
  "egui",
  "egui-wgpu",
+ "engine-build",
  "engine-i18n",
+ "engine-model-formats",
  "glam",
  "gltf",
  "image",
@@ -1608,6 +1619,7 @@ dependencies = [
  "egui-wgpu",
  "egui-winit",
  "engine-build",
+ "engine-i18n",
  "engine-modeler",
  "image",
  "log",

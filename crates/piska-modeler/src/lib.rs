@@ -37,11 +37,15 @@ pub struct Options {
     pub bench: bool,
     /// Программный растеризатор вместо видеокарты.
     pub cpu: bool,
+    /// `--reference меш.obj|.glb|.bbmodel|…` — добавить меш редактируемыми элементами в открытую
+    /// модель и сохранить её
+    /// (редактор движка: «Edit a Copy in Modeler» для чужого меша).
+    pub reference: Option<String>,
 }
 
 pub const USAGE: &str = "usage: piska-modeler [model.pmodel…] [--screenshot out.png --size 1440x860 --frames 6 \
 --sample crate|lantern|pine|rover --paint --tool NAME --view front|top|… --ortho --select NODE \
---face north|… --pointer X,Y --scale 1.0 --cpu] | --bench [--size WxH --frames N --cpu]";
+--face north|… --pointer X,Y --scale 1.0 --cpu] [--reference mesh.obj] | --bench [--size WxH --frames N --cpu]";
 
 pub fn parse_args(args: impl IntoIterator<Item = String>) -> Result<Options, String> {
     let mut o = Options { size: (1440, 860), frames: 6, scale: 1.0, ..Options::default() };
@@ -60,6 +64,7 @@ pub fn parse_args(args: impl IntoIterator<Item = String>) -> Result<Options, Str
             "--paint" => o.paint = true,
             "--bench" => o.bench = true,
             "--cpu" => o.cpu = true,
+            "--reference" => o.reference = Some(value("--reference")?),
             "--tool" => o.tool = Some(value("--tool")?),
             "--view" => o.view = Some(value("--view")?),
             "--ortho" => o.ortho = true,
@@ -91,6 +96,15 @@ pub fn build_app(o: &Options) -> ModelerApp {
         match engine_modeler::samples::all().into_iter().find(|(n, _)| n == name) {
             Some((_, doc)) => app.open_document(doc, None),
             None => eprintln!("piska-modeler: no sample `{name}` (crate, lantern, pine, rover)"),
+        }
+    }
+    if let Some(mesh) = &o.reference {
+        // Копия чужого меша для правки: меш становится редактируемыми элементами новой
+        // модели (выделение, перенос, рисование, вершины; `.bbmodel` — кубами), модель сразу
+        // сохранена — редактор движка видит её в окне Project.
+        app.run(Command::ImportMesh(std::path::PathBuf::from(mesh)));
+        if app.path().is_some() {
+            app.run(Command::Save);
         }
     }
     if let Some(name) = &o.select {
@@ -464,7 +478,15 @@ impl Runner {
         if let Some(icon) = window_icon() {
             attributes = attributes.with_window_icon(Some(icon));
         }
+        // Панель задач и Alt-Tab берут «большой» значок окна — без него там пусто.
+        #[cfg(windows)]
+        {
+            use winit::platform::windows::WindowAttributesExtWindows;
+            attributes = attributes.with_taskbar_icon(window_icon());
+        }
         let window = Arc::new(event_loop.create_window(attributes).map_err(|e| e.to_string())?);
+        // Системные окна файлов встают над окном Modeler и блокируют его, пока открыты.
+        engine_build::file_dialog::set_owner_window(native_handle(&window));
         let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::default());
         let surface = instance.create_surface(window.clone()).map_err(|e| e.to_string())?;
         let (adapter, device, queue) = request_device(&instance, Some(&surface))?;
@@ -606,6 +628,15 @@ impl ApplicationHandler for Runner {
         } else {
             event_loop.set_control_flow(ControlFlow::WaitUntil(self.next_frame));
         }
+    }
+}
+
+/// HWND окна на Windows (владелец системных окон «Открыть» / «Сохранить»).
+fn native_handle(window: &Window) -> Option<isize> {
+    use winit::raw_window_handle::{HasWindowHandle, RawWindowHandle};
+    match window.window_handle().ok()?.as_raw() {
+        RawWindowHandle::Win32(handle) => Some(handle.hwnd.get()),
+        _ => None,
     }
 }
 

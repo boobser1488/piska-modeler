@@ -5,6 +5,7 @@ members = [
     "crates/piska-modeler",
     "vendor/engine-i18n",
     "vendor/engine-build",
+    "vendor/engine-model-formats",
 ]
 
 [workspace.package]
@@ -17,6 +18,8 @@ engine-modeler = { path = "crates/engine-modeler" }
 # Копии крейтов движка Piska (scripts/sync_from_engine.py): перевод интерфейса и значок exe.
 engine-i18n = { path = "vendor/engine-i18n" }
 engine-build = { path = "vendor/engine-build" }
+# Сторонние форматы моделей (.bbmodel, Minecraft .json, .vox, .ply, .stl) — копия крейта движка.
+engine-model-formats = { path = "vendor/engine-model-formats" }
 
 # Те же версии, что у движка Piska: так этот каталог собирается и внутри движка, и сам.
 glam = "0.29"

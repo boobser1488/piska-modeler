@@ -324,6 +324,9 @@ pub fn flip(doc: &mut Document, ids: &[NodeId], axis: usize) {
 /// Картинки сторон зеркально по оси: стороны этой оси меняются местами, остальные
 /// отражаются в своей плоскости.
 fn mirror_faces(e: &mut Element, axis: usize) {
+    if let Some(mesh) = &mut e.mesh {
+        crate::mesh_edit::flip_shape(mesh, axis);
+    }
     let (a, b) = match axis {
         0 => (FaceDir::East, FaceDir::West),
         1 => (FaceDir::Up, FaceDir::Down),
@@ -468,6 +471,9 @@ pub fn mirrored(e: &Element) -> Element {
     m.rotation.z = -e.rotation.z;
     if matches!(e.shape, Shape::Cuboid | Shape::Plane) {
         m.faces.swap(FaceDir::East.index(), FaceDir::West.index());
+    }
+    if let Some(mesh) = &mut m.mesh {
+        crate::mesh_edit::flip_shape(mesh, 0);
     }
     for face in &mut m.faces {
         face.uv.mirror_horizontal();

@@ -142,3 +142,22 @@ pub fn read_exe_icon(exe: &[u8]) -> Result<Option<Vec<IconImage>>, Error> {
     }
     Ok(Some(images))
 }
+
+/// Подсистема Windows из заголовка exe: [`SUBSYSTEM_GUI`] (окно, без консоли) или
+/// [`SUBSYSTEM_CONSOLE`].
+pub fn read_exe_subsystem(exe: &[u8]) -> Result<u16, Error> {
+    if exe.get(..2) != Some(b"MZ") {
+        return Err(bad("not a Windows executable (no `MZ` header)"));
+    }
+    let pe = u32_at(exe, 0x3c)? as usize;
+    if exe.get(pe..pe + 4) != Some(b"PE\0\0") {
+        return Err(bad("not a PE file (no `PE` signature)"));
+    }
+    // Поле Subsystem — со смещением 68 в необязательном заголовке (PE32 и PE32+).
+    u16_at(exe, pe + 24 + 68)
+}
+
+/// `IMAGE_SUBSYSTEM_WINDOWS_GUI`.
+pub const SUBSYSTEM_GUI: u16 = 2;
+/// `IMAGE_SUBSYSTEM_WINDOWS_CUI`.
+pub const SUBSYSTEM_CONSOLE: u16 = 3;

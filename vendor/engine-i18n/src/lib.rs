@@ -36,6 +36,7 @@ use std::hash::{BuildHasherDefault, Hasher};
 use std::sync::atomic::{AtomicU8, Ordering};
 use std::sync::OnceLock;
 
+pub mod brand;
 pub use catalogue::{placeholders, Catalogue, CatalogueError, Entry};
 
 /// Быстрый хешер для коротких ключей (FNV-1a): интерфейс ищет сотни строк за кадр.
@@ -247,6 +248,24 @@ pub fn tr_in(language: Language, key: &str) -> Cow<'_, str> {
     }
 }
 
+/// То же для `&'static str`: результат тоже `&'static str` (каталог живёт всю программу), так
+/// что `tr_s("Save")` годится везде, где был литерал, — аргумент `&str`, ветка `if` / `match`,
+/// поле структуры. Для таблиц в `const` ключ помечают `n_`, а `tr_s` вызывают при показе.
+pub fn tr_s(key: &'static str) -> &'static str {
+    match current().catalogue().and_then(|c| c.translate(None, key)) {
+        Some(text) => text,
+        None => key,
+    }
+}
+
+/// [`tr_s`] с контекстом.
+pub fn tr_ctx_s(context: &str, key: &'static str) -> &'static str {
+    match current().catalogue().and_then(|c| c.translate(Some(context), key)) {
+        Some(text) => text,
+        None => key,
+    }
+}
+
 /// Перевести с контекстом: `tr_ctx("menu", "File")` — «Файл», а `tr("File")` может
 /// значить другое. Нет записи с контекстом — английский `key`.
 pub fn tr_ctx<'a>(context: &str, key: &'a str) -> Cow<'a, str> {
@@ -284,19 +303,29 @@ pub const fn n_(text: &'static str) -> &'static str {
 pub fn format_named(template: &str, args: &[(&str, &dyn Display)]) -> String {
     let mut out = String::with_capacity(template.len() + 8);
     let mut rest = template;
+    let mut next_positional = 0usize;
     while let Some(start) = rest.find(['{', '}']) {
         out.push_str(&rest[..start]);
         let tail = &rest[start..];
-        if tail.starts_with("{{") {
+        if let Some(after) = tail.strip_prefix("{{") {
             out.push('{');
-            rest = &tail[2..];
-        } else if tail.starts_with("}}") {
+            rest = after;
+        } else if let Some(after) = tail.strip_prefix("}}") {
             out.push('}');
-            rest = &tail[2..];
+            rest = after;
         } else if tail.starts_with('{') {
             match tail.find('}') {
                 Some(end) => {
-                    let name = &tail[1..end];
+                    // `{имя}`, `{}` (следующий по порядку), `{0}`; всё после `:` (формат) игнорируется.
+                    let name = tail[1..end].split(':').next().unwrap_or("");
+                    let positional;
+                    let name = if name.is_empty() {
+                        positional = next_positional.to_string();
+                        next_positional += 1;
+                        positional.as_str()
+                    } else {
+                        name
+                    };
                     match args.iter().find(|(n, _)| *n == name) {
                         Some((_, value)) => out.push_str(&value.to_string()),
                         None => out.push_str(&tail[..=end]),
@@ -317,6 +346,14 @@ pub fn format_named(template: &str, args: &[(&str, &dyn Display)]) -> String {
     out
 }
 
+/// Перевести шаблон с подстановками по порядку: `{}` или `{0}`, `{1}` (то же, что
+/// `trf!("…{}…", a, b)`). Нужен для шаблонов, пришедших из `format!("…{}…", a)`.
+pub fn tr_fmt_pos(key: &str, args: &[&dyn Display]) -> String {
+    const NAMES: [&str; 12] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"];
+    let named: Vec<(&str, &dyn Display)> = args.iter().enumerate().take(NAMES.len()).map(|(i, v)| (NAMES[i], *v)).collect();
+    format_named(&tr(key), &named)
+}
+
 /// Перевести шаблон и подставить значения (то же, что [`trf!`] без макроса).
 pub fn tr_fmt(key: &str, args: &[(&str, &dyn Display)]) -> String {
     format_named(&tr(key), args)
@@ -327,6 +364,10 @@ pub fn tr_fmt(key: &str, args: &[(&str, &dyn Display)]) -> String {
 macro_rules! trf {
     ($key:expr $(, $name:ident = $value:expr)* $(,)?) => {
         $crate::tr_fmt($key, &[$((stringify!($name), &$value as &dyn ::std::fmt::Display)),*])
+    };
+    // Подстановки по порядку, как в `format!("…{}…", a, b)`.
+    ($key:expr, $($value:expr),+ $(,)?) => {
+        $crate::tr_fmt_pos($key, &[$(&($value) as &dyn ::std::fmt::Display),+])
     };
 }
 

@@ -8,3 +8,8 @@ license.workspace = true
 [dependencies]
 image.workspace = true
 thiserror.workspace = true
+
+# Запуск программ с окном без консоли: подключение к консоли терминала, окно паники;
+# системные окна «Открыть» / «Сохранить» / «Папка» (file_dialog.rs).
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_System_Com", "Win32_System_Console", "Win32_UI_Controls", "Win32_UI_Controls_Dialogs", "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_UI_WindowsAndMessaging"] }

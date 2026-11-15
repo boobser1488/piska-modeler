@@ -42,6 +42,7 @@ pub mod raster;
 pub mod samples;
 pub mod session;
 pub mod uv;
+pub mod uv_ops;
 
 #[cfg(feature = "ui")]
 pub mod ui;

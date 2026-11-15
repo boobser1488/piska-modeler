@@ -413,11 +413,18 @@ fn install_fonts(ctx: &egui::Context) {
 // Стиль egui
 // ---------------------------------------------------------------------------
 
+/// Шрифты темы уже поставлены в этот контекст (они подключаются со следующего кадра: кадр, в
+/// котором их ставят, рисовать рано).
+pub fn fonts_installed(ctx: &egui::Context) -> bool {
+    ctx.data(|d| d.get_temp::<bool>(egui::Id::new("piska_fonts_installed"))).unwrap_or(false)
+}
+
 /// Применить тему к контексту (шрифты ставятся один раз; цвета — при каждом вызове,
 /// чтобы смена акцента в Preferences сразу была видна).
 pub fn apply(ctx: &egui::Context, with_fonts: bool) {
-    if with_fonts {
+    if with_fonts && !fonts_installed(ctx) {
         install_fonts(ctx);
+        ctx.data_mut(|d| d.insert_temp(egui::Id::new("piska_fonts_installed"), true));
     }
     let accent = accent();
     let mut style = (*ctx.style()).clone();
@@ -485,7 +492,8 @@ pub fn apply(ctx: &egui::Context, with_fonts: bool) {
     };
     visuals.hyperlink_color = mix(accent, Color32::WHITE, 0.35);
     visuals.selection.bg_fill = mix(BG_INSET, accent, 0.6);
-    visuals.selection.stroke = Stroke::new(1.0_f32, TEXT_STRONG);
+    // Кольцо фокуса поля ввода (egui рисует его этой обводкой) — акцент набора, а не светлая рамка egui.
+    visuals.selection.stroke = Stroke::new(STROKE, accent);
     visuals.slider_trailing_fill = true;
     visuals.handle_shape = egui::style::HandleShape::Rect { aspect_ratio: 0.5 };
     visuals.striped = false;

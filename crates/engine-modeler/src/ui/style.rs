@@ -80,7 +80,8 @@ pub fn body() -> FontId {
 /// Квадратная кнопка с иконкой. `id_name` — стабильный идентификатор (тесты щёлкают по нему).
 pub fn icon_button(ui: &mut Ui, id_name: &str, icon: Icon, selected: bool, enabled: bool, tooltip: &str) -> Response {
     let p = Palette::from_ctx(ui.ctx());
-    let size = vec2(28.0, 28.0);
+    // Высота любого контрола строки — CONTROL_H (как кнопки панелей редактора).
+    let size = vec2(CONTROL_H, CONTROL_H);
     let (rect, _) = ui.allocate_exact_size(size, Sense::hover());
     let id = egui::Id::new(id_name);
     let sense = if enabled { Sense::click() } else { Sense::hover() };
@@ -94,10 +95,11 @@ pub fn icon_button(ui: &mut Ui, id_name: &str, icon: Icon, selected: bool, enabl
     } else {
         Color32::TRANSPARENT
     };
-    ui.painter().rect_filled(rect, Rounding::same(4.0), bg);
+    ui.painter().rect_filled(rect, Rounding::same(super::kit::R_S), bg);
     if selected {
+        // Рамка — внутри кнопки.
         ui.painter()
-            .rect_stroke(rect, Rounding::same(4.0), Stroke::new(1.0_f32, mix(p.accent, p.bg_panel, 0.35)));
+            .rect_stroke(rect.shrink(0.5), Rounding::same(super::kit::R_S), Stroke::new(1.0_f32, mix(p.accent, p.bg_panel, 0.35)));
     }
     let color = if !enabled {
         p.text_faint
@@ -108,7 +110,7 @@ pub fn icon_button(ui: &mut Ui, id_name: &str, icon: Icon, selected: bool, enabl
     } else {
         p.text_muted
     };
-    icons::paint(ui.painter(), rect.shrink(6.0), icon, color);
+    icons::paint(ui.painter(), rect.shrink(((CONTROL_H - 16.0) * 0.5).max(2.0)), icon, color);
     // Простая подсказка переводится здесь; составную (`tip`) переводит сам `tip`, а её
     // готовый текст в каталоге не найдётся и остаётся как есть.
     response.on_hover_text(tr(tooltip))
@@ -156,9 +158,23 @@ pub fn section(ui: &mut Ui, title: &str, open: &mut bool, right: impl FnOnce(&mu
 pub fn row(ui: &mut Ui, label: &str, add: impl FnOnce(&mut Ui)) {
     let p = Palette::from_ctx(ui.ctx());
     ui.horizontal(|ui| {
-        let (rect, _) = ui.allocate_exact_size(vec2(62.0, 22.0), Sense::hover());
-        ui.painter()
-            .text(pos2(rect.min.x, rect.center().y), egui::Align2::LEFT_CENTER, tr(label), small(), p.text_muted);
+        // Колонка подписей — одна для всех строк панели (28 % ширины, 62…96 px: полям рядом нужно
+        // место); длинная
+        // подпись обрезается «…» с подсказкой и не налезает на поле рядом.
+        let column = (ui.available_width() * 0.28).clamp(62.0, 96.0).floor();
+        let (rect, response) = ui.allocate_exact_size(vec2(column, 22.0), Sense::hover());
+        let text = tr(label);
+        let mut job = egui::text::LayoutJob::single_section(
+            text.to_string(),
+            egui::text::TextFormat { font_id: small(), color: p.text_muted, ..Default::default() },
+        );
+        job.wrap = egui::text::TextWrapping { max_width: column - 4.0, max_rows: 1, break_anywhere: true, overflow_character: Some('…') };
+        let galley = ui.painter().layout_job(job);
+        let cut = galley.size().x < ui.painter().layout_no_wrap(text.to_string(), small(), p.text_muted).size().x - 0.5;
+        ui.painter().galley(pos2(rect.min.x, rect.center().y - galley.size().y * 0.5), galley, p.text_muted);
+        if cut {
+            response.on_hover_text(text.to_string());
+        }
         add(ui);
     });
 }
@@ -217,7 +233,18 @@ pub fn swatch(ui: &mut Ui, id: egui::Id, color: Color32, size: f32, selected: bo
     } else {
         Stroke::new(1.0_f32, mix(p.line_strong, Color32::BLACK, 0.3))
     };
-    ui.painter().rect_stroke(rect, Rounding::same(2.0), stroke);
+    // Обводка — внутри образца (не вылезает за его прямоугольник).
+    ui.painter().rect_stroke(rect.shrink(stroke.width * 0.5), Rounding::same(2.0), stroke);
+    response
+}
+
+/// Крупный образец текущего цвета (без щелчка — только показ и подсказка).
+pub fn color_preview(ui: &mut Ui, color: Color32, size: f32) -> Response {
+    let p = Palette::from_ctx(ui.ctx());
+    let (rect, response) = ui.allocate_exact_size(vec2(size, size), Sense::hover());
+    checker(ui.painter(), rect, 4.0);
+    ui.painter().rect_filled(rect, Rounding::same(2.0), color);
+    ui.painter().rect_stroke(rect.shrink(0.5), Rounding::same(2.0), Stroke::new(1.0_f32, mix(p.line_strong, Color32::BLACK, 0.3)));
     response
 }
 

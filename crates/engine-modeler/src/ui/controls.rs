@@ -83,7 +83,8 @@ fn icon_space(icon: Option<Icon>, label: &str) -> f32 {
 pub fn button_colors(kind: Kind, enabled: bool, hovered: bool, pressed: bool) -> (Color32, Color32, Color32) {
     match (kind, enabled) {
         (Kind::Ghost, false) => (Color32::TRANSPARENT, Color32::TRANSPARENT, TEXT_DISABLED),
-        (_, false) => (BG_FIELD, LINE, TEXT_DISABLED),
+        // Выключенная кнопка — та же рамка, что у обычной, только тише: не «пропадает» рядом с соседями.
+        (_, false) => (BG_FIELD, mix(LINE, LINE_STRONG, 0.6), TEXT_DISABLED),
         (Kind::Primary, true) => {
             let base = accent();
             let fill = if pressed { mix(base, Color32::BLACK, 0.15) } else if hovered { mix(base, Color32::WHITE, 0.12) } else { base };
@@ -114,6 +115,19 @@ pub fn button_ex(ui: &mut Ui, kind: Kind, icon: Option<Icon>, label: &str, min_w
 
 /// То же с заданным `id` (по нему кнопку находят тесты и фокус клавиатуры).
 pub fn button_with_id(ui: &mut Ui, id: Option<egui::Id>, kind: Kind, icon: Option<Icon>, label: &str, min_width: f32) -> Response {
+    let enabled = ui.is_enabled();
+    button_impl(ui, id, kind, icon, label, min_width, enabled)
+}
+
+/// Обычная кнопка, которая может быть выключена, — без дочернего `Ui` (`add_enabled_ui`):
+/// в переносящей строке она переносится, как любая другая, а не вылезает за край.
+pub fn button_enabled(ui: &mut Ui, enabled: bool, label: &str) -> Response {
+    let enabled = enabled && ui.is_enabled();
+    button_impl(ui, None, Kind::Normal, None, label, 0.0, enabled)
+}
+
+#[allow(clippy::too_many_arguments)]
+fn button_impl(ui: &mut Ui, id: Option<egui::Id>, kind: Kind, icon: Option<Icon>, label: &str, min_width: f32, enabled: bool) -> Response {
     let d = theme::density(ui.ctx());
     let h = d.control_h();
     let natural = button_width(ui, icon, label).max(min_width);
@@ -121,22 +135,25 @@ pub fn button_with_id(ui: &mut Ui, id: Option<egui::Id>, kind: Kind, icon: Optio
     // всей ширине строки, а не по остатку.
     let room = if ui.layout().main_wrap() { ui.max_rect().width() } else { ui.available_width() };
     let width = natural.min(room.max(h)).round();
+    let sense = if enabled { Sense::click() } else { Sense::hover() };
     let response = match id {
         Some(id) => {
             let (rect, _) = ui.allocate_exact_size(vec2(width, h), Sense::hover());
-            ui.interact(rect, id, Sense::click())
+            ui.interact(rect, id, sense)
         }
-        None => ui.allocate_exact_size(vec2(width, h), Sense::click()).1,
+        None => ui.allocate_exact_size(vec2(width, h), sense).1,
     };
     let rect = response.rect;
     if !ui.is_rect_visible(rect) {
         return response;
     }
-    let enabled = ui.is_enabled();
     let hovered = response.hovered() && enabled;
     let pressed = response.is_pointer_button_down_on() && enabled;
     let (fill, stroke, text) = button_colors(kind, enabled, hovered, pressed);
-    let painter = ui.painter();
+    // Выключенная кнопка рисуется своими приглушёнными цветами (button_colors), без общего
+    // затенения выключенного Ui: иначе её рамка пропадает и она кажется меньше соседей.
+    let unfaded = egui::Painter::new(ui.ctx().clone(), ui.layer_id(), ui.clip_rect());
+    let painter = if enabled { ui.painter() } else { &unfaded };
     if kind == Kind::Ghost {
         if fill != Color32::TRANSPARENT {
             painter.rect_filled(rect, R_S, fill);
@@ -256,7 +273,8 @@ pub fn number_field<N: egui::emath::Numeric>(ui: &mut Ui, value: &mut N, speed: 
     // Рамка egui уже внутри (расширение −½ обводки в теме): поле занимает весь прямоугольник.
     let inner = rect;
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(inner).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = inner.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = inner.size();
     let mut response = child.add_sized(inner.size(), egui::DragValue::new(value).speed(speed).max_decimals(3));
     response.rect = rect;
     response
@@ -268,7 +286,8 @@ pub fn number_field_mixed<N: egui::emath::Numeric>(ui: &mut Ui, value: &mut N, s
     let h = theme::control_h(ui);
     let (rect, _) = ui.allocate_exact_size(vec2(width.min(ui.available_width()).max(h), h), Sense::hover());
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(rect).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = rect.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = rect.size();
     let mut response = child.add_sized(rect.size(), egui::DragValue::new(value).speed(speed).custom_formatter(|_, _| "—".to_string()));
     response.rect = rect;
     response
@@ -288,7 +307,8 @@ pub fn number_field_range<N: egui::emath::Numeric>(
     // Рамка egui уже внутри (расширение −½ обводки в теме): поле занимает весь прямоугольник.
     let inner = rect;
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(inner).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = inner.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = inner.size();
     let mut response = child.add_sized(inner.size(), egui::DragValue::new(value).range(range).speed(speed).suffix(suffix).max_decimals(3));
     response.rect = rect;
     response
@@ -301,7 +321,8 @@ pub fn combo<R>(ui: &mut Ui, id: impl std::hash::Hash, selected: &str, width: f3
     // Рамка egui уже внутри (расширение −½ обводки в теме): поле занимает весь прямоугольник.
     let inner = rect;
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(inner).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = inner.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = inner.size();
     egui::ComboBox::from_id_salt(id)
         .selected_text(selected)
         .width(inner.width())
@@ -316,7 +337,8 @@ pub fn combo_ex<R>(ui: &mut Ui, id: impl std::hash::Hash, selected: impl Into<eg
     let h = theme::control_h(ui);
     let (rect, _) = ui.allocate_exact_size(vec2(width.min(ui.available_width()).max(h), h), Sense::hover());
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(rect).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = rect.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = rect.size();
     let mut inner = egui::ComboBox::from_id_salt(id).selected_text(selected).width(rect.width()).height(320.0).show_ui(&mut child, add);
     inner.response.rect = rect;
     inner
@@ -337,7 +359,8 @@ pub fn number_field_ex<N: egui::emath::Numeric>(
     let h = theme::control_h(ui);
     let (rect, _) = ui.allocate_exact_size(vec2(width.min(ui.available_width()).max(h), h), Sense::hover());
     let mut child = ui.new_child(egui::UiBuilder::new().max_rect(rect).layout(Layout::left_to_right(Align::Center)));
-    child.spacing_mut().interact_size.y = rect.height();
+    // Ширина тоже: в режиме ввода egui берёт ширину поля из interact_size.
+    child.spacing_mut().interact_size = rect.size();
     let mut response = child.add_sized(
         rect.size(),
         egui::DragValue::new(value).range(range).speed(speed).prefix(prefix).suffix(suffix).max_decimals(decimals).update_while_editing(false),

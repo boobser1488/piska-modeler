@@ -8,6 +8,7 @@
 //! так ими пользуются и меню, и тесты.
 
 mod icons;
+pub mod boot;
 pub mod controls;
 pub mod kit;
 pub mod metrics;
@@ -15,6 +16,7 @@ mod outliner;
 mod panels;
 mod style;
 mod uv_editor;
+mod uv_view;
 mod viewport;
 
 use std::path::{Path, PathBuf};
@@ -33,6 +35,7 @@ use crate::session::{clipboard_has_content, Session};
 use crate::{export, format, import, uv, ModelError};
 
 pub use icons::Icon;
+pub use uv_view::UvCmd;
 pub use viewport::{LastKind, LastOp, MeshCmd};
 use style::Palette;
 
@@ -317,6 +320,10 @@ pub enum Command {
     EditMeshVertices,
     /// Операция над мешем (меню Mesh, клавиши режима V).
     Mesh(viewport::MeshCmd),
+    /// Операция редактора UV (развёртка, укладка, склейка…).
+    Uv(UvCmd),
+    /// Показать / скрыть редактор UV (View ▸ UV Editor, U).
+    ToggleUvEditor,
     Undo,
     Redo,
     Copy,
@@ -540,9 +547,16 @@ pub struct ModelerApp {
     pub view: ViewSettings,
     viewport: viewport::Viewport,
     uv: uv_editor::UvEditor,
+    /// Редактор UV мешей (панель слева от вида).
+    uv_view: uv_view::UvView,
     outliner: outliner::OutlinerState,
     open_sections: [bool; 5],
     status: Option<(String, f64, bool)>,
+    /// Состояние окна в кадре, когда сообщение было показано: другое состояние — сообщение
+    /// устарело («Vertex mode…» не висит после следующих действий).
+    status_sig: u64,
+    /// Сообщение поставлено в этом кадре (его состояние запоминается в конце кадра).
+    status_fresh: bool,
     prompt: Option<Prompt>,
     /// Открытое системное окно «Открыть / Сохранить» и что делать с ответом.
     file_dialog: Option<(PromptKind, engine_build::file_dialog::Dialog)>,
@@ -591,9 +605,12 @@ impl ModelerApp {
             view: ViewSettings::default(),
             viewport: viewport::Viewport::default(),
             uv: uv_editor::UvEditor::default(),
+            uv_view: uv_view::UvView::default(),
             outliner: outliner::OutlinerState::default(),
             open_sections: [true, true, true, true, false],
             status: None,
+            status_sig: 0,
+            status_fresh: false,
             prompt: None,
             file_dialog: None,
             saved: Vec::new(),
@@ -790,6 +807,18 @@ impl ModelerApp {
         outliner::row_id(id)
     }
 
+    /// Видимые части рёбер элемента, как их обводит вид под курсором или при выделении
+    /// (мировые отрезки; то, что скрыто за поверхностью, не входит).
+    pub fn visible_outline(&self, id: NodeId) -> Vec<(Vec3, Vec3)> {
+        self.viewport.visible_outline(id)
+    }
+
+    /// Размер кадра программного растеризатора (пикселей) — для тестов: он никогда не больше
+    /// того, что принимает текстура egui.
+    pub fn viewport_frame_size(&self) -> [u32; 2] {
+        [self.viewport.frame_width(), self.viewport.frame_height()]
+    }
+
     /// Сколько раз растеризатор перерисовал кадр (для тестов: кадр не рисуется зря).
     pub fn render_count(&self) -> u64 {
         self.viewport.renders
@@ -816,12 +845,33 @@ impl ModelerApp {
 
     fn message(&mut self, text: impl Into<String>) {
         self.status = Some((text.into(), self.time, false));
+        self.status_fresh = true;
     }
 
     fn error(&mut self, text: impl Into<String>) {
         let text = text.into();
         log::warn!("modeler: {text}");
         self.status = Some((text, self.time, true));
+        self.status_fresh = true;
+    }
+
+    /// Отпечаток того, что делает пользователь: режим, инструмент, выделение, история,
+    /// состояние правки меша. Сообщение живёт, пока отпечаток тот же.
+    fn status_signature(&self) -> u64 {
+        use std::hash::{Hash, Hasher};
+        let mut h = std::collections::hash_map::DefaultHasher::new();
+        self.mode.hash(&mut h);
+        self.tool().hash(&mut h);
+        self.active.hash(&mut h);
+        let s = self.session();
+        s.selection.hash(&mut h);
+        s.history_len().hash(&mut h);
+        match &self.viewport.mesh_edit {
+            Some(e) => (e.mode as u8, e.vertices.len(), e.edges.len(), e.faces.len(), e.knife.is_some(), e.modal.is_some()).hash(&mut h),
+            None => 255u8.hash(&mut h),
+        }
+        self.uv_view.open.hash(&mut h);
+        h.finish()
     }
 
     fn frame_all(&mut self) {
@@ -1007,26 +1057,33 @@ impl ModelerApp {
                         Err(e) => self.error(e),
                     }
                 }
-                None => self.error("select a mesh element first".to_string()),
+                None => self.error(tr("select a mesh element first").to_string()),
             },
             Command::MergeVertices => match self.selected_mesh() {
                 Some(id) => {
                     let mut removed = 0;
                     self.session_mut().edit("Merge Vertices", |doc| removed = crate::mesh_edit::merge_by_distance(doc, id, 0.01));
-                    self.message(format!("Merged {removed} vertex(es)"));
+                    self.message(trf!("Merged {removed} vertex(es)", removed = removed));
                 }
-                None => self.error("select a mesh element first".to_string()),
+                None => self.error(tr("select a mesh element first").to_string()),
             },
+            Command::Uv(cmd) => self.run_uv(cmd),
+            Command::ToggleUvEditor => {
+                self.uv_view.open = !self.uv_view.open;
+                if !self.uv_view.open {
+                    self.tabs[self.active].session.cancel();
+                }
+            }
             Command::EditMeshVertices => {
                 if self.viewport.mesh_edit.is_some() {
                     self.viewport.mesh_edit = None;
-                    self.message("Back to element editing".to_string());
+                    self.message(tr("Back to element editing").to_string());
                 } else if let Some(id) = self.selected_mesh() {
                     self.mode = Mode::Edit;
                     self.viewport.mesh_edit = Some(viewport::MeshEdit::new(id));
-                    self.message("Vertex mode: click or box-select vertices, click a face to select it; drag the arrows to move; Del deletes the face; V or Esc returns".to_string());
+                    self.message(tr("Vertex mode: click or box-select vertices, click a face to select it; drag the arrows to move; Del deletes the face; V or Esc returns").to_string());
                 } else {
-                    self.error("vertex editing works on mesh elements; select one first".to_string());
+                    self.error(tr("vertex editing works on mesh elements; select one first").to_string());
                 }
             }
             Command::Undo => {
@@ -1405,6 +1462,18 @@ impl ModelerApp {
             .resizable(false)
             .frame(panel_frame.inner_margin(egui::Margin::symmetric(6.0, 8.0)))
             .show_inside(ui, |ui| self.tool_column(ui));
+        if self.uv_view.open {
+            // Ширина панели UV: не больше, чем оставляет окно после правой колонки (304) и
+            // узкой полосы вида (120): в узком окне панель уже, а не наезжает на соседей.
+            let widest = (ui.available_width() - 304.0 - 120.0).clamp(260.0, 760.0);
+            egui::SidePanel::left("modeler.uv_view")
+                .default_width(440.0_f32.min(widest))
+                .width_range(260.0..=widest)
+                .frame(panel_frame)
+                .show_inside(ui, |ui| self.uv_panel(ui));
+        } else {
+            self.uv_view.close();
+        }
         egui::SidePanel::right("modeler.panels")
             .default_width(304.0)
             .width_range(240.0..=520.0)
@@ -1448,11 +1517,21 @@ impl ModelerApp {
         self.prompt_window(&ctx);
         self.shortcuts_window(&ctx);
         self.background_work();
+        // Сообщение, показанное при другом состоянии (после него что-то сделали), исчезает.
+        let sig = self.status_signature();
+        if std::mem::take(&mut self.status_fresh) {
+            self.status_sig = sig;
+        } else if sig != self.status_sig {
+            self.status = None;
+        }
     }
 
     fn shortcuts(&mut self, ctx: &egui::Context) {
         // Режим меша первым: его клавиши (G R S E I F M X 1 2 3 A…) важнее общих.
-        self.mesh_shortcuts(ctx);
+        // Над редактором UV и во время его правки клавиши G R S 1 2 3 A L — его.
+        if !self.uv_shortcuts(ctx) {
+            self.mesh_shortcuts(ctx);
+        }
         let ctrl = |key| KeyboardShortcut::new(Modifiers::COMMAND, key);
         let ctrl_shift = |key| KeyboardShortcut::new(Modifiers::COMMAND | Modifiers::SHIFT, key);
         let mut commands = Vec::new();
@@ -1486,6 +1565,9 @@ impl ModelerApp {
             }
             if plain(i, Key::F1) {
                 commands.push(Command::ShowShortcuts);
+            }
+            if plain(i, Key::U) {
+                commands.push(Command::ToggleUvEditor);
             }
             if plain(i, Key::Escape) {
                 commands.push(if self.viewport.mesh_edit.is_some() { Command::EditMeshVertices } else { Command::SelectNone });
@@ -1726,6 +1808,9 @@ impl ModelerApp {
                     if item(ui, "Frame Selection", "F", true) {
                         command = Some(Command::Frame);
                     }
+                    if item(ui, "UV Editor", "U", true) {
+                        command = Some(Command::ToggleUvEditor);
+                    }
                     ui.separator();
                     ui.checkbox(&mut self.view.grid, tr("Grid"));
                     ui.checkbox(&mut self.view.ruler, tr("Size Ruler"));
@@ -1914,11 +1999,7 @@ impl ModelerApp {
                     style::hairline(ui);
                     style::caption(ui, &tr("Strength"));
                     let mut percent = (self.paint.shade as f32 / 255.0 * 100.0).round() as u32;
-                    if ui
-                        .add_sized(
-                            [96.0, style::CONTROL_H],
-                            egui::Slider::new(&mut percent, 1..=40).suffix(" %").show_value(true),
-                        )
+                    if controls::number_field_ex(ui, &mut percent, 1..=40, 0.2, "", " %", 0, 64.0)
                         .on_hover_text(tr("How much one stroke changes each texel, in % of full brightness"))
                         .changed()
                     {
@@ -2032,7 +2113,7 @@ impl ModelerApp {
         if primary.clicked() {
             self.open_sections[SECTION_PALETTE] = true;
         }
-        let secondary = style::swatch(ui, egui::Id::new("modeler.toolbar.secondary"), style::to_color32(self.paint.secondary), style::CONTROL_H - 6.0, false)
+        let secondary = style::swatch(ui, egui::Id::new("modeler.toolbar.secondary"), style::to_color32(self.paint.secondary), style::CONTROL_H, false)
             .on_hover_text(trf!("Second colour {hex} — click to make it the brush colour", hex = crate::image::to_hex(self.paint.secondary)));
         if secondary.clicked() {
             std::mem::swap(&mut self.paint.color, &mut self.paint.secondary);
@@ -2094,6 +2175,10 @@ impl ModelerApp {
                     ("E  I  Ctrl+B  Ctrl+R", n_("Extrude, inset, bevel, loop cut")),
                     ("F  M  X  Shift+D  P", n_("Make face, merge, delete, duplicate, separate")),
                     ("A  Alt+click  L  Shift+A", n_("Select all, edge loop, linked; add a mesh")),
+                    ("K", n_("Knife: two points on edges of one face; bridge loops from the Mesh menu")),
+                    ("U", n_("Show or hide the UV editor (left of the view)")),
+                    ("1  2  3  A  L", n_("In the UV editor: select points, faces, islands; all; linked")),
+                    ("G  R  S  X  Y", n_("In the UV editor: move, rotate, scale; lock to an axis; type a number")),
                 ];
                 egui::Grid::new("modeler.shortcuts.grid").num_columns(2).spacing([kit::SP_XL, kit::SP_S]).show(ui, |ui| {
                     for (keys, what) in rows {

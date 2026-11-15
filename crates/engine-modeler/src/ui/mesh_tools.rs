@@ -37,11 +37,15 @@ pub struct MeshEdit {
     pub modal: Option<Modal>,
     /// Перетаскивание завершено нажатием мыши: её отпускание — не щелчок выбора.
     pub swallow_release: bool,
+    /// Нож (K) включён; первая точка разреза: (ребро, доля от меньшей вершины).
+    pub knife: Option<Option<(Edge, f32)>>,
+    /// Режим петлевого разреза (Ctrl+R без ребра под курсором): (число разрезов, доля).
+    pub loop_cut: Option<(usize, f32)>,
 }
 
 impl MeshEdit {
     pub fn new(id: NodeId) -> Self {
-        Self { id, vertices: Vec::new(), face: None, mode: SelectMode::Vertex, edges: Vec::new(), faces: Vec::new(), hover_edge: None, modal: None, swallow_release: false }
+        Self { id, vertices: Vec::new(), face: None, mode: SelectMode::Vertex, edges: Vec::new(), faces: Vec::new(), hover_edge: None, modal: None, swallow_release: false, knife: None, loop_cut: None }
     }
 
     /// Выделение по вершинам (рёбра и грани между ними).
@@ -174,6 +178,10 @@ pub enum MeshCmd {
     Duplicate,
     Separate,
     Split,
+    /// Нож: два щелчка по рёбрам одной грани режут её.
+    Knife,
+    /// Мост между двумя выделенными краевыми петлями.
+    Bridge,
     FlipNormals,
     RecalcNormals,
     Triangulate,
@@ -197,7 +205,7 @@ pub enum MeshCmd {
 
 // Имена примитивов и шагов истории приходят из кода (`Primitive::name`, подписи `edit`):
 // i18n-keys: "Plane" "Cube" "Circle" "Cylinder" "Cone" "UV Sphere" "Ico Sphere" "Torus" "Wedge" "Stairs" "Grid"
-// i18n-keys: "Move" "Rotate" "Scale" "Fill" "Delete" "Duplicate" "Merge" "Split" "Separate" "Dissolve"
+// i18n-keys: "Move" "Rotate" "Scale" "Fill" "Delete" "Duplicate" "Merge" "Split" "Separate" "Dissolve" "Knife" "Bridge"
 /// Профиль кувшина для Add Mesh ▸ Lathe: (радиус, высота) снизу вверх.
 const VASE: [(f32, f32); 5] = [(0.0, 0.0), (3.0, 0.0), (4.0, 4.0), (2.0, 8.0), (2.5, 9.0)];
 
@@ -281,6 +289,18 @@ impl Viewport {
         if let Some(m) = self.mesh_edit.as_mut() {
             m.hover_edge = hover_edge;
         }
+        // Предпросмотр петлевого разреза: в режиме Ctrl+R и пока над ребром зажат Ctrl.
+        self.loop_preview.clear();
+        if state.modal.is_none() && state.knife.is_none() {
+            let numbers = state.loop_cut.or_else(|| (modifiers.command && hover_edge.is_some()).then_some((1, 0.5)));
+            if let (Some((cuts, slide)), Some(edge)) = (numbers, hover_edge) {
+                if let Some(m) = cx.session.doc.element(state.id).and_then(EditMesh::of) {
+                    let world = Self::mesh_world_points(&cx.session.doc, state.id);
+                    let at = |(u, v, t): (u32, u32, f32)| world[u as usize].lerp(world[v as usize], t);
+                    self.loop_preview = mo::loop_cut_preview(&m, edge, cuts, slide).into_iter().map(|[p, q]| (at(p), at(q))).collect();
+                }
+            }
+        }
         if state.modal.is_some() {
             self.mesh_modal(ui, rect, cx, modifiers);
             return None;
@@ -290,6 +310,34 @@ impl Viewport {
             if !ui.input(|i| i.pointer.any_down()) {
                 if let Some(m) = self.mesh_edit.as_mut() {
                     m.swallow_release = false;
+                }
+            }
+            return None;
+        }
+        if let Some((cuts, slide)) = state.loop_cut {
+            if response.clicked_by(PointerButton::Primary) {
+                if let Some(edge) = hover_edge {
+                    let kind = LastKind::LoopCut { id: state.id, edge, cuts, slide };
+                    let mut result = Ok(None);
+                    cx.session.edit("Loop Cut", |doc| result = kind.apply(doc));
+                    if let Some(m) = self.mesh_edit.as_mut() {
+                        m.loop_cut = None;
+                        m.clear();
+                    }
+                    match result {
+                        Ok(_) => self.pending_last = Some(("Loop Cut", kind)),
+                        Err(e) => self.notice = Some(e),
+                    }
+                } else {
+                    self.notice = Some(tr("Loop cut: point at an edge first").to_string());
+                }
+            }
+            return None;
+        }
+        if let Some(first) = state.knife {
+            if response.clicked_by(PointerButton::Primary) {
+                if let Some(pos) = response.interact_pointer_pos() {
+                    self.knife_click(&mut *cx, state.id, first, pos);
                 }
             }
             return None;
@@ -351,6 +399,53 @@ impl Viewport {
             }
         }
         hover.map(|i| handles[i].0)
+    }
+
+    /// Точка на ребре под курсором: ребро и доля вдоль него от меньшей вершины.
+    fn edge_point(&self, doc: &Document, id: NodeId, pos: Pos2) -> Option<(Edge, f32)> {
+        let e = self.edge_at(doc, id, pos)?;
+        let points = Self::mesh_world_points(doc, id);
+        let (a, b) = (self.world_to_screen(points[e.0 as usize])?, self.world_to_screen(points[e.1 as usize])?);
+        let ab = b - a;
+        let t = ((pos - a).dot(ab) / ab.length_sq().max(1e-6)).clamp(0.05, 0.95);
+        Some((e, t))
+    }
+
+    /// Щелчок ножом: первая точка запоминается, вторая (на другом ребре той же грани) режет.
+    fn knife_click(&mut self, cx: &mut Context, id: NodeId, first: Option<(Edge, f32)>, pos: Pos2) {
+        let Some(point) = self.edge_point(&cx.session.doc, id, pos) else {
+            self.notice = Some(tr("Knife: click a point on an edge").to_string());
+            return;
+        };
+        let Some(first) = first else {
+            if let Some(m) = self.mesh_edit.as_mut() {
+                m.knife = Some(Some(point));
+            }
+            return;
+        };
+        let Some(mesh) = cx.session.doc.element(id).and_then(EditMesh::of) else { return };
+        let ef = mesh.edge_faces();
+        let face = ef.get(&first.0).and_then(|a| ef.get(&point.0).and_then(|b| a.iter().find(|f| b.contains(f)))).copied();
+        let Some(face) = face.filter(|_| first.0 != point.0) else {
+            self.notice = Some(tr("Knife: the second point must be on another edge of the same face").to_string());
+            return;
+        };
+        let mut result = Err(String::new());
+        cx.session.edit("Knife", |doc| {
+            result = mo::apply(doc, id, |m| mo::knife(m, face, first, point)).unwrap_or(Err(String::new()));
+        });
+        if let Some(m) = self.mesh_edit.as_mut() {
+            m.knife = None;
+            m.clear();
+            if let (Ok(cut), Some(mesh)) = (&result, cx.session.doc.element(id).and_then(EditMesh::of)) {
+                m.apply(mo::select_edges(&mesh, BTreeSet::from([*cut])));
+            }
+        }
+        if let Err(e) = result {
+            if !e.is_empty() {
+                self.notice = Some(e);
+            }
+        }
     }
 
     fn box_select(&mut self, doc: &Document, state: &MeshEdit, area: Rect, modifiers: Modifiers) {
@@ -601,7 +696,7 @@ impl Viewport {
             let stroke = if selected.contains(&(a, b)) {
                 Stroke::new(2.0_f32, p.accent)
             } else if state.hover_edge == Some((a, b)) && state.mode != SelectMode::Vertex {
-                Stroke::new(2.0_f32, p.accent.gamma_multiply(0.6))
+                Stroke::new(2.5_f32, Color32::from_rgb(0xe8, 0xc4, 0x4c))
             } else {
                 Stroke::new(1.0_f32, Color32::from_black_alpha(150))
             };
@@ -643,7 +738,32 @@ impl Viewport {
         // Подсказка: что ждёт инструмент.
         let rect = painter.clip_rect();
         let tris = m.faces.iter().map(|f| f.vertices.len().saturating_sub(2)).sum::<usize>();
+        if let Some(first) = state.knife {
+            if let Some((e, t)) = first {
+                let at = points[e.0 as usize].lerp(points[e.1 as usize], t);
+                if let Some(at) = self.world_to_screen(at) {
+                    painter.circle_filled(at, 4.0, Color32::from_rgb(0xe8, 0xc4, 0x4c));
+                    if let Some(pointer) = painter.ctx().input(|i| i.pointer.hover_pos()) {
+                        painter.line_segment([at, pointer], Stroke::new(1.5_f32, Color32::from_rgb(0xe8, 0xc4, 0x4c)));
+                    }
+                }
+            }
+        }
+        // Предпросмотр петлевого разреза: новые петли поперёк кольца.
+        let preview_color = Color32::from_rgb(0xe8, 0xc4, 0x4c);
+        for (a, b) in &self.loop_preview {
+            if let (Some(pa), Some(pb)) = (self.world_to_screen(*a), self.world_to_screen(*b)) {
+                painter.line_segment([pa, pb], Stroke::new(2.0_f32, preview_color));
+                painter.circle_filled(pa, 2.5, preview_color);
+                painter.circle_filled(pb, 2.5, preview_color);
+            }
+        }
         let hint = match &state.modal {
+            _ if state.knife.is_some() => tr("Knife: click a point on an edge, then a point on another edge of the same face · Esc cancels").to_string(),
+            _ if state.loop_cut.is_some() => {
+                let (cuts, _) = state.loop_cut.unwrap_or((1, 0.5));
+                trf!("Loop cut ({cuts}): point at an edge and click · + − change the number of cuts · [ ] slide · Esc cancels", cuts = cuts)
+            }
             Some(modal) => {
                 let axis = modal.axis.map_or(String::new(), |a| format!(" · {}", ["X", "Y", "Z"][a]));
                 let value = if modal.typed.is_empty() { super::super::trim(modal.value) } else { modal.typed.clone() };
@@ -769,6 +889,28 @@ impl ModelerApp {
         self.viewport.mesh_edit.as_ref().map(|m| (m.mode, m.vertices.clone(), m.edges.clone(), m.faces.clone()))
     }
 
+    /// Предпросмотр петлевого разреза под курсором (отрезки в мировых координатах; пусто —
+    /// режим не включён или курсор не над ребром).
+    pub fn loop_cut_preview(&self) -> Vec<(Vec3, Vec3)> {
+        if self.viewport.mesh_edit.is_none() {
+            return Vec::new();
+        }
+        self.viewport.loop_preview.clone()
+    }
+
+    /// Показана ли панель последней операции: только в режиме Edit и только пока не начат
+    /// другой инструмент (нож, петлевой разрез, G R S E I…).
+    pub fn last_operation_panel_visible(&self) -> bool {
+        self.mode == Mode::Edit
+            && self.last_operation().is_some()
+            && !self.viewport.mesh_edit.as_ref().is_some_and(|e| e.knife.is_some() || e.modal.is_some() || e.loop_cut.is_some())
+    }
+
+    /// Включён ли режим петлевого разреза (Ctrl+R без ребра): (число разрезов, доля).
+    pub fn loop_cut_mode(&self) -> Option<(usize, f32)> {
+        self.viewport.mesh_edit.as_ref().and_then(|e| e.loop_cut)
+    }
+
     /// Последняя операция с числами (панель), если она ещё последняя в истории.
     pub fn last_operation(&self) -> Option<&LastOp> {
         self.last_op.as_ref().filter(|l| l.history == self.session().history_len().0)
@@ -806,6 +948,11 @@ impl ModelerApp {
 
     /// Клавиши режима меша (до общих сочетаний окна). `true` — клавиша съедена.
     pub(in crate::ui) fn mesh_shortcuts(&mut self, ctx: &egui::Context) {
+        // Открытое меню Shift+A закрывает Esc (до того, как Esc снимет выделение).
+        if self.add_menu_at.is_some() && ctx.input_mut(|i| i.consume_key(Modifiers::NONE, Key::Escape)) {
+            self.add_menu_at = None;
+            return;
+        }
         let Some(edit) = self.viewport.mesh_edit.clone() else {
             // Вне режима меша: Shift+A — меню примитивов, Ctrl+J — объединить меши.
             let mut add = false;
@@ -826,6 +973,39 @@ impl ModelerApp {
             return;
         }
         let mut commands: Vec<MeshCmd> = Vec::new();
+        if let Some((cuts, slide)) = edit.loop_cut {
+            let mut next = (cuts, slide);
+            let mut cancel = false;
+            ctx.input_mut(|i| {
+                cancel = i.consume_key(Modifiers::NONE, Key::Escape);
+                if i.consume_key(Modifiers::NONE, Key::Plus) || i.consume_key(Modifiers::NONE, Key::Equals) {
+                    next.0 = (next.0 + 1).min(16);
+                }
+                if i.consume_key(Modifiers::NONE, Key::Minus) {
+                    next.0 = next.0.saturating_sub(1).max(1);
+                }
+                if i.consume_key(Modifiers::NONE, Key::OpenBracket) {
+                    next.1 = (next.1 - 0.1).max(0.1);
+                }
+                if i.consume_key(Modifiers::NONE, Key::CloseBracket) {
+                    next.1 = (next.1 + 0.1).min(0.9);
+                }
+            });
+            if let Some(e) = self.viewport.mesh_edit.as_mut() {
+                e.loop_cut = if cancel { None } else { Some(next) };
+            }
+            return;
+        }
+        if edit.knife.is_some() {
+            let mut cancel = false;
+            ctx.input_mut(|i| cancel = i.consume_key(Modifiers::NONE, Key::Escape) || i.consume_key(Modifiers::NONE, Key::K));
+            if cancel {
+                if let Some(e) = self.viewport.mesh_edit.as_mut() {
+                    e.knife = None;
+                }
+            }
+            return;
+        }
         if let Some(mut modal) = edit.modal.clone() {
             // Во время перетаскивания: оси, число, подтверждение, отмена.
             ctx.input_mut(|i| {
@@ -889,6 +1069,7 @@ impl ModelerApp {
             take(none, Key::Delete, MeshCmd::Delete);
             take(Modifiers::SHIFT, Key::D, MeshCmd::Duplicate);
             take(none, Key::P, MeshCmd::Separate);
+            take(none, Key::K, MeshCmd::Knife);
             take(none, Key::Y, MeshCmd::Split);
             take(Modifiers::COMMAND, Key::T, MeshCmd::Triangulate);
             take(Modifiers::ALT, Key::J, MeshCmd::TrisToQuads);
@@ -907,6 +1088,8 @@ impl ModelerApp {
 
     /// Начать перетаскивание с клавиатуры над выбранными вершинами.
     fn start_modal(&mut self, kind: ModalKind, base: Document, verts: Vec<u32>, normal: Vec3, faces: BTreeSet<usize>, edges: BTreeSet<Edge>, new_faces: Vec<usize>) {
+        // Начат другой инструмент: панель прошлой операции исчезает.
+        self.last_op = None;
         let Some(edit) = self.viewport.mesh_edit.as_mut() else { return };
         let points = Viewport::mesh_world_points(&base, edit.id);
         let chosen: Vec<Vec3> = verts.iter().filter_map(|v| points.get(*v as usize).copied()).collect();
@@ -1072,7 +1255,14 @@ impl ModelerApp {
             }
             MeshCmd::LoopCut => {
                 let Some(edge) = edit.hover_edge.or_else(|| edges.iter().next().copied()) else {
-                    return self.message(tr("point at an edge (or select one) and press Ctrl+R to cut a loop across it").to_string());
+                    // Ни ребра под курсором, ни выбранного: режим разреза — наводим, смотрим
+                    // предпросмотр, щёлкаем.
+                    if let Some(e) = self.viewport.mesh_edit.as_mut() {
+                        e.loop_cut = Some((1, 0.5));
+                    }
+                    self.last_op = None;
+                    self.status = None;
+                    return;
                 };
                 self.run_last("Loop Cut", LastKind::LoopCut { id, edge, cuts: 1, slide: 0.5 });
             }
@@ -1168,6 +1358,31 @@ impl ModelerApp {
                     self.viewport.mesh_edit = None;
                     self.session_mut().select(Some(n));
                     self.message(tr("separated into a new element").to_string());
+                }
+            }
+            MeshCmd::Knife => {
+                if let Some(e) = self.viewport.mesh_edit.as_mut() {
+                    e.knife = Some(None);
+                }
+                // Подсказку ножа показывает подпись вида; в строке состояния её не повторяем,
+                // а панель прошлой операции с этого момента не относится к делу.
+                self.last_op = None;
+                self.status = None;
+            }
+            MeshCmd::Bridge => {
+                let mut result = Ok(Vec::new());
+                self.session_mut().edit("Bridge", |doc| {
+                    result = mo::apply(doc, id, |m| mo::bridge(m, &edges)).unwrap_or(Err(not_mesh()));
+                    if let Ok(new) = &result {
+                        let _ = crate::mesh_edit::allocate_uvs(doc, id, new);
+                    }
+                });
+                match result {
+                    Ok(new) => {
+                        set_sel(self, mo::Selection::default());
+                        self.message(trf!("Bridged with {n} faces", n = new.len()));
+                    }
+                    Err(e) => self.error(e),
                 }
             }
             MeshCmd::Split => {
@@ -1386,6 +1601,8 @@ impl ModelerApp {
             (n_("Duplicate"), "Shift+D", MeshCmd::Duplicate),
             (n_("Separate"), "P", MeshCmd::Separate),
             (n_("Split"), "Y", MeshCmd::Split),
+            (n_("Knife"), "K", MeshCmd::Knife),
+            (n_("Bridge Edge Loops"), "", MeshCmd::Bridge),
         ];
         for (label, key, cmd) in ops {
             if item(ui, label, key, mesh) {
@@ -1471,7 +1688,12 @@ impl ModelerApp {
                 self.add_menu_at = None;
             }
         }
+        if !self.last_operation_panel_visible() {
+            return;
+        }
         let Some(last) = self.last_operation().cloned() else { return };
+        /// Ширина колонки подписей панели последней операции.
+        const LAST_OP_LABEL_W: f32 = 76.0;
         let mut changed: Option<LastKind> = None;
         egui::Area::new(egui::Id::new("modeler.last_op")).fixed_pos(rect.left_top() + vec2(kit::SP_M, 34.0)).order(egui::Order::Foreground).show(ctx, |ui| {
             egui::Frame::popup(ui.style()).show(ui, |ui| {
@@ -1480,14 +1702,24 @@ impl ModelerApp {
                 let mut kind = last.kind.clone();
                 let mut edit = |ui: &mut Ui, label: &str, value: &mut f32, lo: f32, hi: f32| {
                     controls::row(ui, |ui| {
-                        ui.label(tr(label));
+                        // Подписи — одной колонкой: поля разных строк начинаются с одного x.
+                        let h = ui.available_height();
+                        ui.allocate_ui_with_layout(vec2(LAST_OP_LABEL_W, h), egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                            ui.set_min_width(LAST_OP_LABEL_W);
+                            ui.label(tr(label))
+                        });
                         controls::number_field_range(ui, value, lo..=hi, 0.1, "", 70.0).changed()
                     })
                 };
                 let mut count = |ui: &mut Ui, label: &str, value: &mut usize, lo: usize, hi: usize| {
                     let mut v = *value as f32;
                     let c = controls::row(ui, |ui| {
-                        ui.label(tr(label));
+                        // Подписи — одной колонкой: поля разных строк начинаются с одного x.
+                        let h = ui.available_height();
+                        ui.allocate_ui_with_layout(vec2(LAST_OP_LABEL_W, h), egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                            ui.set_min_width(LAST_OP_LABEL_W);
+                            ui.label(tr(label))
+                        });
                         controls::number_field_range(ui, &mut v, lo as f32..=hi as f32, 1.0, "", 70.0).changed()
                     });
                     *value = v.round() as usize;

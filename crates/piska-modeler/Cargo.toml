@@ -28,3 +28,5 @@ engine-build.workspace = true
 [dev-dependencies]
 # Тест: значок читается из готового exe.
 engine-build.workspace = true
+# Тест снимков инструментов моделирования: точки модели в мире.
+glam.workspace = true

@@ -203,7 +203,7 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
                 });
                 style::row(ui, "Tint", |ui| {
                     let mut color = style::to_color32(first.tint);
-                    if egui::widgets::color_picker::color_edit_button_srgba(ui, &mut color, egui::color_picker::Alpha::Opaque).changed() {
+                    if super::controls::color_button(ui, &mut color).changed() {
                         for f in &targets {
                             e.face_mut(*f).tint = style::from_color32(color);
                         }
@@ -272,14 +272,15 @@ pub(super) fn element_panel(ui: &mut Ui, session: &mut Session, _view: &ViewSett
 pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
     let p = Palette::from_ctx(ui.ctx());
     margin(ui, |ui| {
-        ui.horizontal(|ui| {
-            let primary = style::swatch(ui, egui::Id::new("modeler.palette.primary"), style::to_color32(paint.color), 34.0, true);
+        // Образцы и поле кода — по верхнему краю, промежутки из шкалы.
+        ui.horizontal_top(|ui| {
+            ui.spacing_mut().item_spacing.x = super::kit::SP_M;
+            let primary = style::color_preview(ui, style::to_color32(paint.color), 34.0);
             primary.on_hover_text(tr("Brush colour"));
-            let secondary = style::swatch(ui, egui::Id::new("modeler.palette.secondary"), style::to_color32(paint.secondary), 22.0, false);
+            let secondary = style::swatch(ui, egui::Id::new("modeler.palette.secondary"), style::to_color32(paint.secondary), style::CONTROL_H, false);
             if secondary.on_hover_text(tr("Second colour: click to swap (X)")).clicked() {
                 std::mem::swap(&mut paint.color, &mut paint.secondary);
             }
-            ui.add_space(super::kit::SP_3);
             ui.vertical(|ui| {
                 let key = egui::Id::new("modeler.palette.hex");
                 let mut text: String = ui.data_mut(|d| d.get_temp::<String>(key)).unwrap_or_else(|| to_hex(paint.color));
@@ -297,17 +298,22 @@ pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
             });
         });
         ui.add_space(super::kit::SP_2);
+        // Выбор цвета — кнопкой набора (как в инспекторе редактора): палитра egui открывается
+        // по щелчку и не стоит в панели постоянно со своими размерами и рамками.
         let mut color = style::to_color32(paint.color);
-        if egui::widgets::color_picker::color_picker_color32(ui, &mut color, egui::color_picker::Alpha::OnlyBlend) {
-            paint.color = style::from_color32(color);
-        }
+        ui.horizontal(|ui| {
+            ui.label(egui::RichText::new(tr("Pick")).color(p.text_muted));
+            if super::controls::color_button(ui, &mut color).on_hover_text(tr("Open the colour picker")).changed() {
+                paint.color = style::from_color32(color);
+            }
+        });
         if !paint.recent.is_empty() {
             ui.add_space(super::kit::SP_2);
             ui.label(egui::RichText::new(tr("RECENT")).size(10.5).color(p.text_faint));
             ui.horizontal_wrapped(|ui| {
-                ui.spacing_mut().item_spacing = vec2(3.0, 3.0);
+                ui.spacing_mut().item_spacing = vec2(super::kit::SP_1, super::kit::SP_1);
                 for (i, c) in paint.recent.clone().iter().enumerate() {
-                    if style::swatch(ui, egui::Id::new(("modeler.recent", i)), style::to_color32(*c), 18.0, *c == paint.color).clicked() {
+                    if style::swatch(ui, egui::Id::new(("modeler.recent", i)), style::to_color32(*c), style::CONTROL_H, *c == paint.color).clicked() {
                         paint.color = *c;
                     }
                 }
@@ -326,9 +332,9 @@ pub(super) fn palette_panel(ui: &mut Ui, paint: &mut PaintSettings) {
         });
         let mut remove = None;
         ui.horizontal_wrapped(|ui| {
-            ui.spacing_mut().item_spacing = vec2(3.0, 3.0);
+            ui.spacing_mut().item_spacing = vec2(super::kit::SP_1, super::kit::SP_1);
             for (i, c) in paint.palette.iter().enumerate() {
-                let response = style::swatch(ui, egui::Id::new(("modeler.palette", i)), style::to_color32(*c), 18.0, *c == paint.color)
+                let response = style::swatch(ui, egui::Id::new(("modeler.palette", i)), style::to_color32(*c), style::CONTROL_H, *c == paint.color)
                     .on_hover_text(trf!("{hex}  ·  right click removes", hex = to_hex(*c)));
                 if response.clicked() {
                     paint.color = *c;
@@ -357,8 +363,14 @@ pub(super) fn textures_panel(ui: &mut Ui, session: &mut Session, current: &mut u
         for (i, texture) in session.doc.textures.iter().enumerate() {
             let selected = *current == i as u32;
             let text = format!("{}   {}×{}", texture.name, texture.image.width(), texture.image.height());
-            let label = egui::RichText::new(text).color(if selected { Color32::WHITE } else { p.text });
-            let response = ui.add_sized([ui.available_width(), 22.0], egui::SelectableLabel::new(selected, label));
+            // Строка списка: заливка выбора и наведения, без рамки; высота — как у контролов.
+            let (rect, response) = ui.allocate_exact_size(egui::vec2(ui.available_width(), style::CONTROL_H), egui::Sense::click());
+            let fill = if selected { p.accent_soft() } else if response.hovered() { p.hover } else { Color32::TRANSPARENT };
+            if fill != Color32::TRANSPARENT {
+                ui.painter().rect_filled(rect, super::kit::R_S, fill);
+            }
+            let color = if selected { Color32::WHITE } else { p.text };
+            ui.painter().text(egui::pos2(rect.left() + super::kit::SP_M, rect.center().y), egui::Align2::LEFT_CENTER, text, style::body(), color);
             let response = match &texture.source {
                 Some(source) => response.on_hover_text(trf!("Imported from {source}; reloads when the file changes", source = source)),
                 None => response,

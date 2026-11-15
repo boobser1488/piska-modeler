@@ -685,6 +685,30 @@ pub fn loop_cut(m: &mut EditMesh, start: Edge, cuts: usize, slide: f32) -> BTree
     cut_edges
 }
 
+/// Отрезки предпросмотра петлевого разреза (то, что построит [`loop_cut`] с теми же числами):
+/// по отрезку на каждую грань кольца и каждый разрез; концы отрезка — точки на рёбрах в виде
+/// `(u, v, t)`: точка = `u + (v − u) · t`.
+pub fn loop_cut_preview(m: &EditMesh, start: Edge, cuts: usize, slide: f32) -> Vec<[(u32, u32, f32); 2]> {
+    let cuts = cuts.clamp(1, 64);
+    // Как в `loop_cut`: для одного разреза доля считается от меньшей вершины ребра.
+    let t = |u: u32, v: u32, k: usize| -> f32 {
+        if cuts > 1 {
+            k as f32 / (cuts + 1) as f32
+        } else if u < v {
+            slide.clamp(0.02, 0.98)
+        } else {
+            1.0 - slide.clamp(0.02, 0.98)
+        }
+    };
+    let mut out = Vec::new();
+    for (_, (a, b), (c, d)) in ring(m, start) {
+        for k in 1..=cuts {
+            out.push([(a, b, t(a, b, k)), (d, c, t(d, c, k))]);
+        }
+    }
+    out
+}
+
 /// Грани вне разреза, у которых на рёбрах появились новые точки, получают их в обход
 /// (без Т-стыков).
 fn insert_edge_points(m: &mut EditMesh, points: &HashMap<(Edge, usize), u32>) {

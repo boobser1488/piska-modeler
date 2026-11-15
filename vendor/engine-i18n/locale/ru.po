@@ -210,8 +210,8 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: crates/engine-editor/src/code.rs:1097
-msgid "Close (unsaved changes are kept in memory until you close)"
-msgstr "Закрыть (несохранённые изменения хранятся в памяти до закрытия)"
+msgid "Close (asks to save unsaved changes)"
+msgstr "Закрыть (спросит о несохранённых изменениях)"
 
 #: crates/engine-editor/src/code.rs:1128
 msgid "No results"
@@ -1380,10 +1380,6 @@ msgstr "Удалить безвозвратно?"
 #: crates/engine-editor/src/project_chrome.rs:555
 msgid "Cannot open `{p0}`: {err}"
 msgstr "Не удаётся открыть `{p0}`: {err}"
-
-#: crates/engine-editor/src/project_chrome.rs:569
-msgid "Import New Asset"
-msgstr "Импортировать новый ассет"
 
 #: crates/engine-editor/src/project_chrome.rs:576
 msgid "Import into {title}"
@@ -4104,10 +4100,6 @@ msgstr "Открыть…"
 #: crates/engine-modeler/src/ui/mod.rs:1184
 msgid "Import Texture (PNG)…"
 msgstr "Импортировать текстуру (PNG)…"
-
-#: crates/engine-modeler/src/ui/mod.rs:1187
-msgid "Import Reference (.obj, .glb)…"
-msgstr "Импортировать опорный меш (.obj, .glb)…"
 
 #: crates/engine-modeler/src/ui/mod.rs:1191
 msgid "Export glTF Binary (.glb)…"
@@ -7754,10 +7746,6 @@ msgstr "Всё, что нужно, чтобы собрать проект зан
 msgid "excluded by .gitignore"
 msgstr "исключено .gitignore"
 
-#: crates/engine-editor/src/project_file.rs:159
-msgid "Export Project File"
-msgstr "Файл проекта"
-
 #: crates/engine-editor/src/project_file.rs:135
 msgid "Export Project File…"
 msgstr "Экспортировать файл проекта…"
@@ -9204,10 +9192,6 @@ msgid "Preparing the exact plan (a dry run of the installer script)…"
 msgstr "Составляется точный план (сухой прогон скрипта установки)…"
 
 #: tools/piska-installer/src
-msgid "Preparing the installer scripts…"
-msgstr "Подготовка скриптов установки…"
-
-#: tools/piska-installer/src
 msgid "Preparing the plan…"
 msgstr "Составляется план…"
 
@@ -9896,14 +9880,6 @@ msgid "Converted to {n} cuboid(s); faces keep their texture"
 msgstr "Превращено в кубоиды: {n}; грани сохранили текстуру"
 
 #: modeler
-msgid "Delete Faces"
-msgstr "Удалить грани"
-
-#: modeler
-msgid "Deleted {n} face(s)"
-msgstr "Удалено граней: {n}"
-
-#: modeler
 msgid "Edit Vertices / Faces"
 msgstr "Править вершины и грани"
 
@@ -9974,10 +9950,6 @@ msgstr "Сдвинуть вершины"
 #: modeler
 msgid "Paint mode: the brush paints on the model; press Tab to select and move elements"
 msgstr "Режим рисования: кисть рисует по модели; Tab — выделять и двигать элементы"
-
-#: modeler
-msgid "select a face (click it) or all vertices of a face to delete it"
-msgstr "чтобы удалить грань, выделите её (щелчком) или все её вершины"
 
 #: modeler
 msgid "select a mesh element first"
@@ -10171,10 +10143,6 @@ msgstr "ничего не выделено"
 #: modeler
 msgid "only border edges (with one face) can be extruded; select faces to extrude a region"
 msgstr "выдавить можно только краевые рёбра (с одной гранью); чтобы выдавить область, выделите грани"
-
-#: modeler
-msgid "point at an edge (or select one) and press Ctrl+R to cut a loop across it"
-msgstr "наведите курсор на ребро (или выделите его) и нажмите Ctrl+R — петля разреза пройдёт поперёк"
 
 #: modeler
 msgid "Radius"
@@ -10443,3 +10411,2669 @@ msgstr "G  R  S  X Y Z"
 #: modeler
 msgid "V  1  2  3"
 msgstr "V  1  2  3"
+
+#: crates/engine-editor/src (code tab)
+msgid "(the text changed since this check; save to check again)"
+msgstr "(текст изменён после проверки; сохраните, чтобы проверить заново)"
+
+#: crates/engine-editor/src (code tab)
+msgid "`#endif` without `#if`"
+msgstr "`#endif` без `#if`"
+
+#: crates/engine-editor/src (code tab)
+msgid "`#{name}` without `#if`"
+msgstr "`#{name}` без `#if`"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{ch}` looks like `{a}` but is a different character; type the ASCII one"
+msgstr "`{ch}` похож на `{a}`, но это другой символ; наберите ASCII-символ"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{kind}` has no field `{field}`"
+msgstr "у `{kind}` нет поля `{field}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{name}` is not registered in `mod.rs` yet"
+msgstr "`{name}` ещё не зарегистрирован в `mod.rs`"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{open}` is never closed"
+msgstr "`{open}` нигде не закрыта"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{ty}` implements `Component` but is not declared with `component!`"
+msgstr "`{ty}` реализует `Component`, но объявлен не через `component!`"
+
+#: crates/engine-editor/src (code tab)
+msgid "a value with a default (for an object reference: ObjectRef)"
+msgstr "значение со значением по умолчанию (для ссылки на объект — ObjectRef)"
+
+#: crates/engine-editor/src (code tab)
+msgid "a {keyword} definition ends with `}};`"
+msgstr "определение {keyword} заканчивается на `}};`"
+
+#: crates/engine-editor/src (code tab)
+msgid "add `#endif` for this `#if` / `#ifdef` / `#ifndef`"
+msgstr "добавьте `#endif` для этого `#if` / `#ifdef` / `#ifndef`"
+
+#: crates/engine-editor/src (code tab)
+msgid "add `;` at the end of the line"
+msgstr "добавьте `;` в конце строки"
+
+#: crates/engine-editor/src (code tab)
+msgid "add the closing `\"`"
+msgstr "добавьте закрывающую `\"`"
+
+#: crates/engine-editor/src (code tab)
+msgid "add the matching `{close}`"
+msgstr "добавьте парную `{close}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Apply the compiler's suggestion"
+msgstr "Применить предложение компилятора"
+
+#: crates/engine-editor/src (code tab)
+msgid "Build (Ctrl+B) rewrites `mod.rs` of the scripts folder and registers it; until then the editor cannot add it to objects"
+msgstr "Сборка (Ctrl+B) перепишет `mod.rs` папки скриптов и зарегистрирует его; до этого редактор не может добавить его на объекты"
+
+#: crates/engine-editor/src (code tab)
+msgid "cannot open `{p0}` as text: it is not UTF-8"
+msgstr "не удалось открыть `{p0}` как текст: это не UTF-8"
+
+#: crates/engine-editor/src (code tab)
+msgid "cannot start `{program}`: {err}. Is it installed and on PATH?"
+msgstr "не удалось запустить `{program}`: {err}. Он установлен и есть в PATH?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Change the search text, the scope or turn the severity filters back on"
+msgstr "Измените текст поиска, область или снова включите фильтры важности"
+
+#: crates/engine-editor/src (code tab)
+msgid "Change the type to `{replacement}`"
+msgstr "Заменить тип на `{replacement}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Change to `{better}`"
+msgstr "Заменить на `{better}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Check Code (cargo check)"
+msgstr "Проверить код (cargo check)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Checking… (cargo check)"
+msgstr "Проверка… (cargo check)"
+
+#: crates/engine-editor/src (code tab)
+msgid "close `{open}` with `{close}` before this `{c}`"
+msgstr "закройте `{open}` скобкой `{close}` перед этой `{c}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "close it with `*/`"
+msgstr "закройте его `*/`"
+
+#: crates/engine-editor/src (code tab)
+msgid "close it with `*/` (block comments nest in Rust: every `/*` needs its own `*/`)"
+msgstr "закройте его `*/` (в Rust блочные комментарии вкладываются: каждому `/*` нужен свой `*/`)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Code Editor"
+msgstr "Редактор кода"
+
+#: crates/engine-editor/src (code tab)
+msgid "compiler"
+msgstr "компилятор"
+
+#: crates/engine-editor/src (code tab)
+msgid "Current File"
+msgstr "Текущий файл"
+
+#: crates/engine-editor/src (code tab)
+msgid "declare it as `component! {{ pub struct {ty} {{ field: Type = default, … }} }}`: that gives the reflection the editor and scenes need (otherwise `Component` does not compile: it requires `Reflect`)"
+msgstr "объявите его как `component! {{ pub struct {ty} {{ field: Type = default, … }} }}`: так появится отражение, нужное редактору и сценам (иначе `Component` не скомпилируется: он требует `Reflect`)"
+
+#: crates/engine-editor/src (code tab)
+msgid "delete it, or add the `#if` / `#ifdef` it closes"
+msgstr "удалите его или добавьте `#if` / `#ifdef`, который он закрывает"
+
+#: crates/engine-editor/src (code tab)
+msgid "Description"
+msgstr "Описание"
+
+#: crates/engine-editor/src (code tab)
+msgid "did you mean `{better}`?"
+msgstr "может быть, `{better}`?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Error List"
+msgstr "Список ошибок"
+
+#: crates/engine-editor/src (code tab)
+msgid "every `#else` / `#elif` belongs to an `#if`, `#ifdef` or `#ifndef` above it"
+msgstr "каждый `#else` / `#elif` относится к `#if`, `#ifdef` или `#ifndef` выше"
+
+#: crates/engine-editor/src (code tab)
+msgid "expected `;` after {keyword} definition"
+msgstr "ожидалась `;` после определения {keyword}"
+
+#: crates/engine-editor/src (code tab)
+msgid "expected `;`, found `{found}`"
+msgstr "ожидалась `;`, найдено `{found}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "expected `{close}` before `{c}`"
+msgstr "ожидалась `{close}` перед `{c}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "extraneous closing `{c}`"
+msgstr "лишняя закрывающая `{c}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "field `{field}` of `{component}`: `component!` cannot store `{ty}`"
+msgstr "поле `{field}` компонента `{component}`: `component!` не умеет хранить `{ty}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Location"
+msgstr "Перейти к месту"
+
+#: crates/engine-editor/src (code tab)
+msgid "hint: {hint}"
+msgstr "подсказка: {hint}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Insert `;`"
+msgstr "Вставить `;`"
+
+#: crates/engine-editor/src (code tab)
+msgid "its fields: {list}"
+msgstr "его поля: {list}"
+
+#: crates/engine-editor/src (code tab)
+msgid "line {line}: {label}"
+msgstr "строка {line}: {label}"
+
+#: crates/engine-editor/src (code tab)
+msgid "mismatched closing delimiter: `{c}`"
+msgstr "закрывающая скобка не той формы: `{c}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "missing terminating `\"` character"
+msgstr "нет закрывающей `\"`"
+
+#: crates/engine-editor/src (code tab)
+msgid "missing terminating `'` character"
+msgstr "нет закрывающей `'`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Next Error"
+msgstr "Следующая ошибка"
+
+#: crates/engine-editor/src (code tab)
+msgid "No issues"
+msgstr "Проблем нет"
+
+#: crates/engine-editor/src (code tab)
+msgid "No problems"
+msgstr "Проблем нет"
+
+#: crates/engine-editor/src (code tab)
+msgid "Open Files"
+msgstr "Открытые файлы"
+
+#: crates/engine-editor/src (code tab)
+msgid "Overview: errors, warnings, find matches and bookmarks of the whole file. Click to jump"
+msgstr "Обзор всего файла: ошибки, предупреждения, найденное и закладки. Щелчок — перейти"
+
+#: crates/engine-editor/src (code tab)
+msgid "Previous Error"
+msgstr "Предыдущая ошибка"
+
+#: crates/engine-editor/src (code tab)
+msgid "Problems of this file (syntax check while you type, cargo check after saving). Click to open the Error List"
+msgstr "Проблемы этого файла (проверка синтаксиса при наборе, cargo check после сохранения). Щелчок открывает Список ошибок"
+
+#: crates/engine-editor/src (code tab)
+msgid "Quick Fix"
+msgstr "Быстрое исправление"
+
+#: crates/engine-editor/src (code tab)
+msgid "Quick Fix (second shortcut)"
+msgstr "Быстрое исправление (второе сочетание)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Quick Fix… ({keys})"
+msgstr "Быстрое исправление… ({keys})"
+
+#: crates/engine-editor/src (code tab)
+msgid "reflected fields are f32, i32, u32, i64, bool, String, Vec2, Vec3, Quat, Color, Rect, Vec<T>, ObjectRef, asset handles and `reflect_enum!` enums; use {instead}"
+msgstr "отражаются поля f32, i32, u32, i64, bool, String, Vec2, Vec3, Quat, Color, Rect, Vec<T>, ObjectRef, ссылки на ассеты и перечисления `reflect_enum!`; используйте {instead}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace with `{close}`"
+msgstr "Заменить на `{close}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Run `cargo check` for the project now ({keys})"
+msgstr "Запустить `cargo check` для проекта сейчас ({keys})"
+
+#: crates/engine-editor/src (code tab)
+msgid "Rust source may use such characters only inside strings, characters and comments"
+msgstr "в исходнике Rust такие символы допустимы только в строках, символах и комментариях"
+
+#: crates/engine-editor/src (code tab)
+msgid "Search Error List"
+msgstr "Поиск в списке ошибок"
+
+#: crates/engine-editor/src (code tab)
+msgid "Sel {n}"
+msgstr "Выд. {n}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Spaces: {n}"
+msgstr "Пробелы: {n}"
+
+#: crates/engine-editor/src (code tab)
+msgid "syntax check"
+msgstr "проверка синтаксиса"
+
+#: crates/engine-editor/src (code tab)
+msgid "Syntax errors appear here while you type in the Code tab; compiler errors after you save (cargo check) or press Check Now"
+msgstr "Ошибки синтаксиса появляются здесь, пока вы печатаете во вкладке Код; ошибки компилятора — после сохранения (cargo check) или кнопки «Проверить»"
+
+#: crates/engine-editor/src (code tab)
+msgid "Tabs: {n}"
+msgstr "Табуляция: {n}"
+
+#: crates/engine-editor/src (code tab)
+msgid "the engine ignores it; check the spelling"
+msgstr "движок его пропускает; проверьте написание"
+
+#: crates/engine-editor/src (code tab)
+msgid "the file ends before the delimiter is closed"
+msgstr "файл кончается раньше, чем скобка закрыта"
+
+#: crates/engine-editor/src (code tab)
+msgid "The text changed since this check; save to check again."
+msgstr "Текст изменён после проверки; сохраните, чтобы проверить заново."
+
+#: crates/engine-editor/src (code tab)
+msgid "there is no opening bracket for it"
+msgstr "для неё нет открывающей скобки"
+
+#: crates/engine-editor/src (code tab)
+msgid "there is no opening bracket for it: delete it or add the opening one"
+msgstr "для неё нет открывающей скобки: удалите её или добавьте открывающую"
+
+#: crates/engine-editor/src (code tab)
+msgid "this `{open}` is never closed"
+msgstr "эта `{open}` нигде не закрыта"
+
+#: crates/engine-editor/src (code tab)
+msgid "this editor has no such component registered: it is misspelt, or it is a script that is not built yet (Build, Ctrl+B)"
+msgstr "в этом редакторе нет такого компонента: опечатка, или это скрипт, который ещё не собран (Собрать, Ctrl+B)"
+
+#: crates/engine-editor/src (code tab)
+msgid "to match this `{open}` on line {line}"
+msgstr "к этой `{open}` в строке {line}"
+
+#: crates/engine-editor/src (code tab)
+msgid "unclosed delimiter `{open}` on line {line}"
+msgstr "незакрытая `{open}` в строке {line}"
+
+#: crates/engine-editor/src (code tab)
+msgid "unexpected closing delimiter: `{c}`"
+msgstr "лишняя закрывающая скобка: `{c}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "unknown component type `{kind}`"
+msgstr "неизвестный тип компонента `{kind}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "unknown material field `{key}`"
+msgstr "неизвестное поле материала `{key}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "unknown start of token: `{ch}`"
+msgstr "недопустимый символ: `{ch}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated block comment"
+msgstr "незакрытый блочный комментарий"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated character literal"
+msgstr "незакрытый символьный литерал"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated comment"
+msgstr "незакрытый комментарий"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated conditional directive"
+msgstr "незакрытая условная директива"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated double quote string"
+msgstr "незакрытая строка в двойных кавычках"
+
+#: crates/engine-editor/src (code tab)
+msgid "unterminated raw string"
+msgstr "незакрытая сырая строка"
+
+#: crates/engine-editor/src (code tab)
+msgid "UTF-8 with BOM"
+msgstr "UTF-8 с BOM"
+
+#: crates/engine-editor/src (code tab)
+msgid "Vec2 / Vec3 or separate fields"
+msgstr "Vec2 / Vec3 или отдельные поля"
+
+#: crates/engine-editor/src (code tab)
+msgid "Check Now"
+msgstr "Проверить"
+
+#: crates/engine-editor/src/error_list.rs
+msgctxt "error list"
+msgid "Line"
+msgstr "Строка"
+
+#: crates/engine-editor/src (code tab)
+msgid " ms"
+msgstr " мс"
+
+#: crates/engine-editor/src (code tab)
+msgid " pt"
+msgstr " пт"
+
+#: crates/engine-editor/src (code tab)
+msgid "A file always ends with a line break when saved."
+msgstr "При сохранении файл всегда заканчивается переводом строки."
+
+#: crates/engine-editor/src (code tab)
+msgid "A vertical line at this column; 0 — none."
+msgstr "Вертикальная линия на этом столбце; 0 — нет."
+
+#: crates/engine-editor/src (code tab)
+msgid "Auto-close brackets and quotes"
+msgstr "Парные скобки и кавычки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Check delay"
+msgstr "Пауза перед проверкой"
+
+#: crates/engine-editor/src (code tab)
+msgid "Check on save (cargo check)"
+msgstr "Проверять при сохранении (cargo check)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Check while typing"
+msgstr "Проверять при наборе"
+
+#: crates/engine-editor/src (code tab)
+msgid "Checks"
+msgstr "Проверки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Column ruler"
+msgstr "Линейка столбца"
+
+#: crates/engine-editor/src (code tab)
+msgid "Font size"
+msgstr "Размер шрифта"
+
+#: crates/engine-editor/src (code tab)
+msgid "How long to wait after the last key press before checking."
+msgstr "Сколько ждать после последнего нажатия клавиши перед проверкой."
+
+#: crates/engine-editor/src (code tab)
+msgid "Indent width for files whose own indentation cannot be seen (an `.editorconfig` and the file itself come first)."
+msgstr "Ширина отступа для файлов, у которых свой отступ не виден (`.editorconfig` и сам файл главнее)."
+
+#: crates/engine-editor/src (code tab)
+msgid "Insert final newline"
+msgstr "Перевод строки в конце файла"
+
+#: crates/engine-editor/src (code tab)
+msgid "Insert spaces"
+msgstr "Отступ пробелами"
+
+#: crates/engine-editor/src (code tab)
+msgid "Keymap"
+msgstr "Раскладка клавиш"
+
+#: crates/engine-editor/src (code tab)
+msgid "Long lines wrap at the window edge (Alt+Z)."
+msgstr "Длинные строки переносятся у края окна (Alt+Z)."
+
+#: crates/engine-editor/src (code tab)
+msgid "Plain"
+msgstr "Простая"
+
+#: crates/engine-editor/src (code tab)
+msgid "Saving"
+msgstr "Сохранение"
+
+#: crates/engine-editor/src (code tab)
+msgid "Saving a Rust file runs `cargo check` for the project in the background; its errors appear in the Error List."
+msgstr "Сохранение файла Rust запускает `cargo check` проекта в фоне; его ошибки появляются в Списке ошибок."
+
+#: crates/engine-editor/src (code tab)
+msgid "Show whitespace"
+msgstr "Показывать пробелы"
+
+#: crates/engine-editor/src (code tab)
+msgid "Size of the monospace font in the Code tab (Ctrl+wheel zooms it too)."
+msgstr "Размер моноширинного шрифта во вкладке Код (его меняет и Ctrl+колесо)."
+
+#: crates/engine-editor/src (code tab)
+msgid "Spaces and tabs are drawn as faint dots and arrows."
+msgstr "Пробелы и табуляции рисуются бледными точками и стрелками."
+
+#: crates/engine-editor/src (code tab)
+msgid "Spaces at line ends are removed when a file is saved."
+msgstr "Пробелы в концах строк убираются при сохранении файла."
+
+#: crates/engine-editor/src (code tab)
+msgid "Syntax errors are underlined a moment after you stop typing (Rust, C++, Scenario, RON, JSON, TOML, WGSL)."
+msgstr "Ошибки синтаксиса подчёркиваются вскоре после того, как вы перестали печатать (Rust, C++, Scenario, RON, JSON, TOML, WGSL)."
+
+#: crates/engine-editor/src (code tab)
+msgid "Tab inserts spaces rather than a tab character in such files."
+msgstr "В таких файлах Tab вставляет пробелы, а не символ табуляции."
+
+#: crates/engine-editor/src (code tab)
+msgid "Tab size"
+msgstr "Размер табуляции"
+
+#: crates/engine-editor/src (code tab)
+msgid "Text, typing, saving and the checks of the Code tab. Kept for this user."
+msgstr "Текст, набор, сохранение и проверки вкладки Код. Хранятся для этого пользователя."
+
+#: crates/engine-editor/src (code tab)
+msgid "Trim trailing whitespace"
+msgstr "Убирать пробелы в концах строк"
+
+#: crates/engine-editor/src (code tab)
+msgid "Typing"
+msgstr "Набор"
+
+#: crates/engine-editor/src (code tab)
+msgid "Typing ( [ { or a quote inserts the pair; typing the closing one steps over it."
+msgstr "Набранная ( [ { или кавычка ставит пару; набранная закрывающая перешагивает её."
+
+#: crates/engine-editor/src (code tab)
+msgid "Visual Studio"
+msgstr "Как в Visual Studio"
+
+#: crates/engine-editor/src (code tab)
+msgid "Visual Studio: Ctrl+D duplicates a line, Alt+Up / Down moves it, Ctrl+K Ctrl+C comments… Plain: only what the text field does."
+msgstr "Visual Studio: Ctrl+D дублирует строку, Alt+↑ / ↓ переносит её, Ctrl+K Ctrl+C комментирует… Простая: только то, что умеет само текстовое поле."
+
+#: crates/engine-editor/src (code tab)
+msgid "Word wrap"
+msgstr "Перенос строк"
+
+#: crates/engine-editor/src (code tab)
+msgid "Comment Selection"
+msgstr "Закомментировать выделенное"
+
+#: crates/engine-editor/src (code tab)
+msgid "Copy Line Down"
+msgstr "Копировать строку вниз"
+
+#: crates/engine-editor/src (code tab)
+msgid "Copy Line Up"
+msgstr "Копировать строку вверх"
+
+#: crates/engine-editor/src (code tab)
+msgid "Cut Line"
+msgstr "Вырезать строку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Delete Line"
+msgstr "Удалить строку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Duplicate Line"
+msgstr "Дублировать строку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Expand Selection"
+msgstr "Расширить выделение"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Matching Bracket"
+msgstr "К парной скобке"
+
+#: crates/engine-editor/src (code tab)
+msgid "Join Lines"
+msgstr "Склеить строки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Make Lowercase"
+msgstr "В нижний регистр"
+
+#: crates/engine-editor/src (code tab)
+msgid "Make Uppercase"
+msgstr "В верхний регистр"
+
+#: crates/engine-editor/src (code tab)
+msgid "Move Line Down"
+msgstr "Переместить строку вниз"
+
+#: crates/engine-editor/src (code tab)
+msgid "Move Line Up"
+msgstr "Переместить строку вверх"
+
+#: crates/engine-editor/src (code tab)
+msgid "Next Bookmark"
+msgstr "Следующая закладка"
+
+#: crates/engine-editor/src (code tab)
+msgid "Previous Bookmark"
+msgstr "Предыдущая закладка"
+
+#: crates/engine-editor/src (code tab)
+msgid "Reset Code Zoom"
+msgstr "Сбросить масштаб кода"
+
+#: crates/engine-editor/src (code tab)
+msgid "Shrink Selection"
+msgstr "Сузить выделение"
+
+#: crates/engine-editor/src (code tab)
+msgid "Sort Lines"
+msgstr "Сортировать строки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle Block Comment"
+msgstr "Блочный комментарий"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle Bookmark"
+msgstr "Поставить / снять закладку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle Line Comment"
+msgstr "Закомментировать / раскомментировать строки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle Word Wrap"
+msgstr "Перенос строк вкл. / выкл."
+
+#: crates/engine-editor/src (code tab)
+msgid "Uncomment Selection"
+msgstr "Раскомментировать выделенное"
+
+#: crates/engine-editor/src (scripting)
+msgid "Start from"
+msgstr "Начать с"
+
+#: crates/engine-editor/src (scripting)
+msgid "Empty (with examples)"
+msgstr "Пустой (с примерами)"
+
+#: crates/engine-editor/src (scripting)
+msgid "Mover"
+msgstr "Движение туда-обратно"
+
+#: crates/engine-editor/src (scripting)
+msgid "Player 2D (top-down)"
+msgstr "Игрок 2D (вид сверху)"
+
+#: crates/engine-editor/src (scripting)
+msgid "Platformer 2D"
+msgstr "Платформер 2D"
+
+#: crates/engine-editor/src (scripting)
+msgid "Player 3D"
+msgstr "Игрок 3D"
+
+#: crates/engine-editor/src (scripting)
+msgid "Collectible"
+msgstr "Подбираемый предмет"
+
+#: crates/engine-editor/src (scripting)
+msgid "Spawner"
+msgstr "Спавнер"
+
+#: crates/engine-editor/src (scripting)
+msgid "UI Button"
+msgstr "Кнопка интерфейса"
+
+#: crates/engine-editor/src (scripting)
+msgid "Moves with the arrow keys / WASD and shows the ten most common actions in comments."
+msgstr "Ездит по стрелкам / WASD, а в комментариях — десять самых частых действий."
+
+#: crates/engine-editor/src (scripting)
+msgid "Moves back and forth between its start and an offset."
+msgstr "Ездит туда-обратно между стартовой точкой и смещением."
+
+#: crates/engine-editor/src (scripting)
+msgid "Walks in four directions. With a Rigidbody2D (gravity 0) it stops at walls."
+msgstr "Ходит в четыре стороны. С Rigidbody2D (гравитация 0) упирается в стены."
+
+#: crates/engine-editor/src (scripting)
+msgid "Runs and jumps. Needs a Rigidbody2D and a Collider2D, and ground to stand on."
+msgstr "Бегает и прыгает. Нужны Rigidbody2D, Collider2D и земля под ногами."
+
+#: crates/engine-editor/src (scripting)
+msgid "Walks and jumps on a CharacterController, facing where it goes."
+msgstr "Ходит и прыгает на CharacterController, поворачиваясь по ходу."
+
+#: crates/engine-editor/src (scripting)
+msgid "Picked up by the Player: tells the Game object, plays a sound, disappears. Needs a trigger collider."
+msgstr "Подбирается игроком: сообщает объекту Game, играет звук и исчезает. Нужен коллайдер-триггер."
+
+#: crates/engine-editor/src (scripting)
+msgid "Creates a prefab every few seconds at its position."
+msgstr "Создаёт префаб в своей позиции каждые несколько секунд."
+
+#: crates/engine-editor/src (scripting)
+msgid "Put it on a UI Button: counts clicks and shows them in a Text named Label."
+msgstr "Повесьте на кнопку интерфейса: считает нажатия и пишет их в текст с именем Label."
+
+#: crates/engine-editor/src (scripting)
+msgid "Scripting Cheat Sheet"
+msgstr "Шпаргалка по скриптам"
+
+#: crates/engine-editor/src (scripting)
+msgid "Short forms for scripts. The long forms on the right keep working; a script may mix both."
+msgstr "Короткие формы для скриптов. Длинные формы справа тоже работают; в одном скрипте можно смешивать обе."
+
+#: crates/engine-editor/src (scripting)
+msgid "Search: jump, spawn, sound, ui…"
+msgstr "Поиск: jump, spawn, sound, ui…"
+
+#: crates/engine-editor/src (scripting)
+msgid "Open the scripting guide"
+msgstr "Открыть руководство по скриптам"
+
+#: crates/engine-editor/src (scripting)
+msgid "Nothing matches the search."
+msgstr "Ничего не найдено."
+
+#: crates/engine-editor/src (scripting)
+msgid "the file `{path}` already exists; pick another name"
+msgstr "файл `{path}` уже есть — выберите другое имя"
+
+#: crates/engine-editor/src (scripting)
+msgid "cannot create `{path}`: {error}"
+msgstr "не удалось создать `{path}`: {error}"
+
+#: crates/engine-editor/src (code tab)
+msgid "`\\` at the end of the expression"
+msgstr "`\\` в конце выражения"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{name}` is not a valid name"
+msgstr "`{name}` — недопустимое имя"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{program}` could not format the file: {first}"
+msgstr "`{program}` не смог отформатировать файл: {first}"
+
+#: crates/engine-editor/src (code tab)
+msgid "a repetition {n,m} needs n ≤ m"
+msgstr "повторение {n,m} требует n ≤ m"
+
+#: crates/engine-editor/src (code tab)
+msgid "Also rename in other project files: {places}"
+msgstr "Переименовать и в других файлах проекта: {places}"
+
+#: crates/engine-editor/src (code tab)
+msgid "cannot start `{program}`: {e}. Is it installed and on PATH?"
+msgstr "не удалось запустить `{program}`: {e}. Он установлен и есть в PATH?"
+
+#: crates/engine-editor/src (code tab)
+msgid "File name (letters in order: `plmv` finds player_move.rs)"
+msgstr "Имя файла (буквы по порядку: `plmv` найдёт player_move.rs)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Files: *.rs; *.scenario"
+msgstr "Файлы: *.rs; *.scenario"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find All"
+msgstr "Найти все"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find All References"
+msgstr "Найти все ссылки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find in files"
+msgstr "Найти в файлах"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find in Files"
+msgstr "Поиск в файлах"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find Next"
+msgstr "Найти далее"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find Previous"
+msgstr "Найти назад"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find Results"
+msgstr "Результаты поиска"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find Selected"
+msgstr "Найти выделенное"
+
+#: crates/engine-editor/src (code tab)
+msgid "Find “{query}”"
+msgstr "Поиск «{query}»"
+
+#: crates/engine-editor/src (code tab)
+msgid "Format Document"
+msgstr "Форматировать документ"
+
+#: crates/engine-editor/src (code tab)
+msgid "Format on save"
+msgstr "Форматировать при сохранении"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Definition"
+msgstr "Перейти к определению"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to File"
+msgstr "Перейти к файлу"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to File (second shortcut)"
+msgstr "Перейти к файлу (второе сочетание)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Symbol in File"
+msgstr "Перейти к символу в файле"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Symbol in File (second shortcut)"
+msgstr "Перейти к символу в файле (второе сочетание)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Go to Symbol in Project"
+msgstr "Перейти к символу в проекте"
+
+#: crates/engine-editor/src (code tab)
+msgid "Keep Mine"
+msgstr "Оставить мои"
+
+#: crates/engine-editor/src (code tab)
+msgid "Keep the edits here; saving overwrites the file on disk"
+msgstr "Оставить правки редактора; сохранение перезапишет файл на диске"
+
+#: crates/engine-editor/src (code tab)
+msgid "missing `)`"
+msgstr "не хватает `)`"
+
+#: crates/engine-editor/src (code tab)
+msgid "missing `]`"
+msgstr "не хватает `]`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Navigate Back"
+msgstr "Назад"
+
+#: crates/engine-editor/src (code tab)
+msgid "Navigate Forward"
+msgstr "Вперёд"
+
+#: crates/engine-editor/src (code tab)
+msgid "New name"
+msgstr "Новое имя"
+
+#: crates/engine-editor/src (code tab)
+msgid "Next Tab (recently used)"
+msgstr "Следующая вкладка (по недавности)"
+
+#: crates/engine-editor/src (code tab)
+msgid "No symbols in this file"
+msgstr "В этом файле нет символов"
+
+#: crates/engine-editor/src (code tab)
+msgid "Nothing found"
+msgstr "Ничего не найдено"
+
+#: crates/engine-editor/src (code tab)
+msgid "nothing to repeat"
+msgstr "нечего повторять"
+
+#: crates/engine-editor/src (code tab)
+msgid "Open File"
+msgstr "Открыть файл"
+
+#: crates/engine-editor/src (code tab)
+msgid "OUTLINE"
+msgstr "СХЕМА"
+
+#: crates/engine-editor/src (code tab)
+msgid "Parameter Info"
+msgstr "Сведения о параметрах"
+
+#: crates/engine-editor/src (code tab)
+msgid "Peek Definition"
+msgstr "Показать определение"
+
+#: crates/engine-editor/src (code tab)
+msgid "Peek Definition: {title}"
+msgstr "Определение: {title}"
+
+#: crates/engine-editor/src (code tab)
+msgid "References to `{name}` (text search: whole word, outside comments and strings)"
+msgstr "Ссылки на `{name}` (поиск по тексту: слово целиком, вне комментариев и строк)"
+
+#: crates/engine-editor/src (code tab)
+msgid "regular expression: {e}"
+msgstr "регулярное выражение: {e}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Reload from Disk"
+msgstr "Перечитать с диска"
+
+#: crates/engine-editor/src (code tab)
+msgid "Rename `{name}`"
+msgstr "Переименовать `{name}`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Rename Symbol"
+msgstr "Переименовать символ"
+
+#: crates/engine-editor/src (code tab)
+msgid "Rename Symbol (second shortcut)"
+msgstr "Переименовать символ (второе сочетание)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Reopen Closed Tab"
+msgstr "Открыть закрытую вкладку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace All…"
+msgstr "Заменить все…"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace every match listed below (asks first)"
+msgstr "Заменить все найденные ниже места (сначала спросит)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace in Files"
+msgstr "Замена в файлах"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace the current match and go to the next one. `$1`, `$2`… insert the groups of the expression"
+msgstr "Заменить текущее совпадение и перейти к следующему. `$1`, `$2`… вставляют группы выражения"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace the text with the file on disk (Ctrl+Z brings your edits back)"
+msgstr "Заменить текст файлом с диска (Ctrl+Z вернёт ваши правки)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Replace {hits} with “{with}” in {files}?"
+msgstr "Заменить {hits} на «{with}» в {files}?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Rust files go through rustfmt, C++ through clang-format (if installed), Scenario is re-indented before saving."
+msgstr "Перед сохранением файлы Rust проходят через rustfmt, C++ — через clang-format (если он установлен), у Scenario выравниваются отступы."
+
+#: crates/engine-editor/src (code tab)
+msgid "Show Completions"
+msgstr "Показать подсказки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Symbol name"
+msgstr "Имя символа"
+
+#: crates/engine-editor/src (code tab)
+msgid "Text-based: the same word naming something else is renamed too. Closed files are written to disk at once."
+msgstr "По тексту: то же слово, означающее другое, тоже переименуется. Закрытые файлы сразу записываются на диск."
+
+#: crates/engine-editor/src (code tab)
+msgid "This file was changed on disk while it has unsaved edits here."
+msgstr "Файл изменён на диске, а здесь есть несохранённые правки."
+
+#: crates/engine-editor/src (code tab)
+msgid "Type text and press Enter (Ctrl+Shift+F). Shift+F12 in the Code tab lists the references of the word under the caret"
+msgstr "Введите текст и нажмите Enter (Ctrl+Shift+F). Shift+F12 во вкладке Код показывает ссылки на слово под курсором"
+
+#: crates/engine-editor/src (code tab)
+msgid "unmatched `)`"
+msgstr "лишняя `)`"
+
+#: crates/engine-editor/src (code tab)
+msgid "Which files to search: patterns separated by `;` (empty — all code and text asset files)"
+msgstr "В каких файлах искать: шаблоны через `;` (пусто — все файлы кода и текстовые ассеты)"
+
+#: crates/engine-editor/src (code tab)
+msgid "{open} of them are open: there each file is one Undo step. The others are written to disk at once."
+msgstr "Открытых из них: {open} — там каждый файл отменяется одним шагом. Остальные сразу записываются на диск."
+
+#: crates/engine-editor/src (code tab)
+msgid "{n} match"
+msgid_plural "{n} matches"
+msgstr[0] "{n} совпадение"
+msgstr[1] "{n} совпадения"
+msgstr[2] "{n} совпадений"
+
+#: crates/engine-editor/src (code tab)
+msgid "{n} place in"
+msgid_plural "{n} places in"
+msgstr[0] "{n} место в"
+msgstr[1] "{n} места в"
+msgstr[2] "{n} мест в"
+
+#: crates/engine-editor/src (code tab)
+msgid "{n} place in this file (whole word, outside comments and strings)"
+msgid_plural "{n} places in this file (whole word, outside comments and strings)"
+msgstr[0] "{n} место в этом файле (слово целиком, вне комментариев и строк)"
+msgstr[1] "{n} места в этом файле (слово целиком, вне комментариев и строк)"
+msgstr[2] "{n} мест в этом файле (слово целиком, вне комментариев и строк)"
+
+#: crates/engine-editor/src (code tab)
+msgid "an owned type"
+msgstr "владеющий тип"
+
+#: crates/engine-editor/src (code tab)
+msgid "i32 or i64"
+msgstr "i32 или i64"
+
+#: crates/engine-editor/src (code tab)
+msgid "a plain field"
+msgstr "обычное поле"
+
+#: modeler
+msgid "Pick"
+msgstr "Выбрать"
+
+#: modeler
+msgid "Open the colour picker"
+msgstr "Открыть выбор цвета"
+
+#: modeler
+msgid "Knife: click a point on an edge"
+msgstr "Нож: щёлкните точку на ребре"
+
+#: modeler
+msgid "Knife: the second point must be on another edge of the same face"
+msgstr "Нож: вторая точка должна быть на другом ребре той же грани"
+
+#: modeler
+msgid "Knife: click a point on an edge, then a point on another edge of the same face · Esc cancels"
+msgstr "Нож: щёлкните точку на ребре, затем точку на другом ребре той же грани · Esc — отмена"
+
+#: modeler
+msgid "Bridged with {n} faces"
+msgstr "Мост: граней — {n}"
+
+#: modeler
+msgid "Knife"
+msgstr "Нож"
+
+#: modeler
+msgid "Bridge"
+msgstr "Мост"
+
+#: modeler
+msgid "Bridge Edge Loops"
+msgstr "Мост между петлями рёбер"
+
+#: modeler
+msgid "K"
+msgstr "K"
+
+#: modeler
+msgid "Knife: two points on edges of one face; bridge loops from the Mesh menu"
+msgstr "Нож: две точки на рёбрах одной грани; мост между петлями — в меню «Меш»"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Shadow cascades"
+msgstr "Каскады теней"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Most cascades a scene's SoftShadows component may use: near shadows stay sharp, far ones cover the whole distance."
+msgstr "Сколько каскадов может взять компонент SoftShadows сцены: ближние тени остаются чёткими, дальние накрывают всю дальность."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Soft shadow filter"
+msgstr "Фильтр мягких теней"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Best shadow edge filter for SoftShadows: 0 is a hard 3x3 filter, 1 is a soft edge, 2 adds contact hardening."
+msgstr "Лучший фильтр края теней для SoftShadows: 0 — жёсткий 3×3, 1 — мягкий край, 2 — ещё и контактное упрочнение."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Ambient occlusion"
+msgstr "Затенение (AO)"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Allows the AmbientOcclusion component: darker creases, corners and ground under objects."
+msgstr "Разрешает компонент AmbientOcclusion: щели, углы и земля под объектами темнее."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "High quality bloom"
+msgstr "Блум высокого качества"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Allows the 13-sample bloom of the PostQuality component: smoother glow, no flickering sparks."
+msgstr "Разрешает блум из 13 выборок компонента PostQuality: ровнее свечение, яркие точки не мерцают."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "FXAA"
+msgstr "FXAA"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Allows FXAA of the PostQuality component: smooths edges that MSAA misses."
+msgstr "Разрешает FXAA компонента PostQuality: сглаживает края, которые не берёт MSAA."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Performance"
+msgstr "Производительность"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Render scale"
+msgstr "Масштаб разрешения"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "3D scene resolution relative to the window; 0.75 is much faster on weak GPUs, the interface stays sharp."
+msgstr "Разрешение 3D-сцены относительно окна; 0.75 заметно быстрее на слабых видеокартах, интерфейс остаётся чётким."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Terrain detail"
+msgstr "Детализация рельефа"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Anti-tiling second texture sample and triplanar rock on terrain; off is much cheaper."
+msgstr "Вторая выборка текстур против повторов и трипланарная скала на рельефе; выключено — заметно дешевле."
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid " px/m"
+msgstr " пикс/м"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Box Projection"
+msgstr "Проекция кубом"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Click selects a face (2)"
+msgstr "Щелчок выбирает грань (2)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Click selects a whole island (3)"
+msgstr "Щелчок выбирает весь остров (3)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Click selects UV points (1)"
+msgstr "Щелчок выбирает точки UV (1)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Fit"
+msgstr "Вписать"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Fit the texture in the view (double-click the empty view)"
+msgstr "Вписать текстуру в окно (двойной щелчок по пустому месту)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Flip Horizontally"
+msgstr "Отразить по горизонтали"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Flip UVs"
+msgstr "Отражение UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Flip Vertically"
+msgstr "Отразить по вертикали"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Gap between islands when packing, in texels"
+msgstr "Зазор между островами при укладке, в текселях"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Island"
+msgstr "Остров"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Islands"
+msgstr "Острова"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Linked"
+msgstr "Связанное"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Margin "
+msgstr "Зазор "
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Move UVs"
+msgstr "Сдвиг UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Pack Islands"
+msgstr "Уложить острова"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Packed the islands of {n} face(s)"
+msgstr "Острова граней уложены: {n}"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Packing may turn islands by 90°"
+msgstr "При укладке острова можно поворачивать на 90°"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Project along X"
+msgstr "Проекция вдоль X"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Project along Y"
+msgstr "Проекция вдоль Y"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Project along Z"
+msgstr "Проекция вдоль Z"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Project from View"
+msgstr "Проекция из вида"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Rotate 90° Clockwise"
+msgstr "Повернуть на 90° по часовой"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Rotate 90° Counterclockwise"
+msgstr "Повернуть на 90° против часовой"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Rotate UVs"
+msgstr "Поворот UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Scale to Texel Density"
+msgstr "Выровнять плотность текселей"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Scale UVs"
+msgstr "Масштаб UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Select a mesh element to edit its UVs"
+msgstr "Выделите элемент-меш, чтобы править его UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "select faces or UV points first"
+msgstr "сначала выберите грани или точки UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Snap to Texels"
+msgstr "Прижать к текселям"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Snap UV points to texel corners (pixel art)"
+msgstr "Прижимать точки UV к углам текселей (пиксель-арт)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Split to Island"
+msgstr "Вынести в свой остров"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Texel density for unwrapping and Scale to Texel Density, pixels per metre (the engine uses 16)"
+msgstr "Плотность текселей для развёртки и выравнивания, пикселей на метр (в движке — 16)"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "The model has no texture yet"
+msgstr "У модели ещё нет текстуры"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Unwrap"
+msgstr "Развернуть"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Unwrap by Face"
+msgstr "Развернуть по граням"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "UV Editor"
+msgstr "Редактор UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "UV points snapped to texel corners"
+msgstr "Точки UV прижаты к углам текселей"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Weld UV Vertices"
+msgstr "Склеить вершины UV"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Welded {n} UV vertex(es)"
+msgstr "Склеено вершин UV: {n}"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "{label}: {n} face(s) laid out at {px} px per metre"
+msgstr "{label}: граней {n}, {px} пикс/м"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "{n} face(s) at {px} px per metre"
+msgstr "Граней: {n}, {px} пикс/м"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "{n} face(s) moved into their own island"
+msgstr "Граней вынесено в свой остров: {n}"
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "{w}×{h} px · {faces} selected · {px} px/m"
+msgstr "{w}×{h} пикс · выбрано {faces} · {px} пикс/м"
+
+#: crates/engine-editor/src/boot.rs
+msgid "cannot start a background thread: {err}"
+msgstr "не удалось запустить фоновый поток: {err}"
+
+#: crates/engine-editor/src/boot.rs
+msgid "the loader crashed: {text}"
+msgstr "загрузчик аварийно завершился: {text}"
+
+#: crates/engine-editor/src/boot.rs
+msgid "Copy details"
+msgstr "Копировать подробности"
+
+#: crates/engine-editor/src/boot.rs
+msgid "The program could not finish starting. The details below say what to fix; then start it again."
+msgstr "Программа не смогла запуститься. Подробности ниже подскажут, что исправить; затем запустите её снова."
+
+#: crates/engine-editor/src/boot.rs
+msgid "{name} could not start"
+msgstr "{name}: не удалось запустить"
+
+#: crates/engine-editor/src/runner.rs
+msgid "Loading the project…"
+msgstr "Загрузка проекта…"
+
+#: crates/engine-editor/src/runner.rs
+msgid "Starting the renderer…"
+msgstr "Запуск отрисовки…"
+
+#: crates/engine-editor/src/runner.rs
+msgid "the editor crashed while loading: {text}"
+msgstr "редактор аварийно завершился при загрузке: {text}"
+
+#: tools/piska-hub/src/startup.rs
+msgid "Reading settings and the project list…"
+msgstr "Чтение настроек и списка проектов…"
+
+#: tools/piska-installer/src/startup.rs
+msgid "Reading the settings and looking for installed tools…"
+msgstr "Чтение настроек и поиск установленных инструментов…"
+
+#: modeler/crates/piska-modeler/src/startup.rs
+msgid "Preparing the editor…"
+msgstr "Подготовка редактора…"
+
+#: modeler/crates/piska-modeler/src/startup.rs
+msgid "Opening the model files…"
+msgstr "Открытие файлов моделей…"
+
+#: modeler/crates/piska-modeler/src/startup.rs
+msgid "Version {version}"
+msgstr "Версия {version}"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Speed"
+msgstr "Скорость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Enabled"
+msgstr "Включено"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Message"
+msgstr "Сообщение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Color"
+msgstr "Цвет"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Offset"
+msgstr "Смещение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Velocity"
+msgstr "Скорость движения"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Interactable"
+msgstr "Интерактивность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Jump Speed"
+msgstr "Скорость прыжка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Value"
+msgstr "Значение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Friction"
+msgstr "Трение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Gravity Scale"
+msgstr "Масштаб гравитации"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Corner Radius"
+msgstr "Радиус углов"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Notify"
+msgstr "Уведомлять"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sound"
+msgstr "Звук"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Seconds"
+msgstr "Секунды"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Spread"
+msgstr "Разброс"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Timer"
+msgstr "Таймер"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fov Deg"
+msgstr "Угол обзора (°)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Kind"
+msgstr "Вид"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Start"
+msgstr "Начало"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Body Type"
+msgstr "Тип тела"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Linear Damping"
+msgstr "Линейное затухание"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Lock Rotation"
+msgstr "Заблокировать вращение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Interpolate"
+msgstr "Интерполяция"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Is Trigger"
+msgstr "Триггер"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Restitution"
+msgstr "Упругость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Collides With"
+msgstr "Сталкивается с"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Direction"
+msgstr "Направление"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Padding"
+msgstr "Отступ"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Border Color"
+msgstr "Цвет рамки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Shadow Color"
+msgstr "Цвет тени"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Shadow Offset"
+msgstr "Смещение тени"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fill Color"
+msgstr "Цвет заливки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Collector Tag"
+msgstr "Тег сборщика"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Smoothing"
+msgstr "Сглаживание"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Hp"
+msgstr "Здоровье (HP)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Destroy On Death"
+msgstr "Удалять при смерти"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Amount"
+msgstr "Количество"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Only Tag"
+msgstr "Только тег"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Destroy On Hit"
+msgstr "Удалять при попадании"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Degrees Per Second"
+msgstr "Градусов в секунду"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Coyote Time"
+msgstr "Время «койота»"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Jump Buffer"
+msgstr "Буфер прыжка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Air Time"
+msgstr "Время в воздухе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Since Jump Press"
+msgstr "С нажатия прыжка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Flip Sprite"
+msgstr "Отражать спрайт"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Turn Speed"
+msgstr "Скорость поворота"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Interval"
+msgstr "Интервал"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Spawned"
+msgstr "Создано"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Speed"
+msgstr "Макс. скорость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Accelerate"
+msgstr "Ускорение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Air Accelerate"
+msgstr "Ускорение в воздухе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Air Speed Cap"
+msgstr "Предел скорости в воздухе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Stop Speed"
+msgstr "Скорость остановки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Jump Height"
+msgstr "Высота прыжка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Step Size"
+msgstr "Размер шага"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Walkable Normal"
+msgstr "Проходимый уклон"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Velocity"
+msgstr "Макс. скорость движения"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Hull Width"
+msgstr "Ширина коллайдера"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Stand Height"
+msgstr "Высота стоя"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Stand Eye"
+msgstr "Высота глаз стоя"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Duck Height"
+msgstr "Высота в приседе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Duck Eye"
+msgstr "Высота глаз в приседе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Duck Time"
+msgstr "Время приседания"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Unduck Time"
+msgstr "Время вставания"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Duck Speed Scale"
+msgstr "Множитель скорости в приседе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Walk Speed Scale"
+msgstr "Множитель скорости ходьбы"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sprint"
+msgstr "Бег"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sprint Speed Scale"
+msgstr "Множитель скорости бега"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Auto Hop"
+msgstr "Авто-прыжки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Noclip"
+msgstr "Полёт сквозь стены"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Noclip Speed"
+msgstr "Скорость полёта сквозь стены"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Input Enabled"
+msgstr "Ввод включён"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Jump On Wheel"
+msgstr "Прыжок колесом"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Look Enabled"
+msgstr "Обзор включён"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Look Requires Capture"
+msgstr "Обзор только при захвате курсора"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sensitivity"
+msgstr "Чувствительность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "M Yaw"
+msgstr "Коэффициент рыскания (m_yaw)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "M Pitch"
+msgstr "Коэффициент тангажа (m_pitch)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Invert Y"
+msgstr "Инвертировать Y"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Gamepad Look Speed"
+msgstr "Скорость обзора геймпадом"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Pitch Limit"
+msgstr "Предел наклона"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Yaw Deg"
+msgstr "Рыскание (°)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Pitch Deg"
+msgstr "Наклон (°)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "On Ground"
+msgstr "На земле"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Ducked"
+msgstr "Присел"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Script"
+msgstr "Скрипт"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Auto Start"
+msgstr "Автозапуск"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Hot Reload"
+msgstr "Горячая перезагрузка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Clip"
+msgstr "Клип"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Clip Name"
+msgstr "Имя клипа"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Pitch"
+msgstr "Высота тона"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Looping"
+msgstr "Зацикливание"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Play On Start"
+msgstr "Играть при старте"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Spatial"
+msgstr "Пространственный"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Min Distance"
+msgstr "Мин. дистанция"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Distance"
+msgstr "Макс. дистанция"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Bus"
+msgstr "Шина"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Object"
+msgstr "Объект"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fields"
+msgstr "Поля"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Target Dir"
+msgstr "Каталог назначения"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Public"
+msgstr "Публичный"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Points"
+msgstr "Точки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Every"
+msgstr "Каждые"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Label"
+msgstr "Подпись"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Clicks"
+msgstr "Нажатия"
+
+#: crates/engine-editor/src/theme.rs
+msgid "One Way"
+msgstr "Односторонний"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Angular Velocity"
+msgstr "Угловая скорость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Angular Damping"
+msgstr "Угловое затухание"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Ccd"
+msgstr "Непрерывные столкновения (CCD)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Density"
+msgstr "Плотность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Step Height"
+msgstr "Высота ступеньки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Slope Deg"
+msgstr "Макс. уклон (°)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Grounded"
+msgstr "Стоит на земле"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sun Size"
+msgstr "Размер солнца"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sun Glow"
+msgstr "Свечение солнца"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Scattering"
+msgstr "Рассеяние"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Clouds"
+msgstr "Облака"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Cloud Speed"
+msgstr "Скорость облаков"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Cloud Scale"
+msgstr "Масштаб облаков"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Cloud Color"
+msgstr "Цвет облаков"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Stars"
+msgstr "Звёзды"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Moon"
+msgstr "Луна"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Hour"
+msgstr "Час"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Heading"
+msgstr "Курс"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Elevation"
+msgstr "Макс. высота"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Night Intensity"
+msgstr "Яркость ночи"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sorting Layer"
+msgstr "Слой сортировки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Flip X"
+msgstr "Отражение по X"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Flip Y"
+msgstr "Отражение по Y"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Uv Offset"
+msgstr "Смещение UV"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Uv Size"
+msgstr "Размер UV"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sheet Columns"
+msgstr "Столбцов в листе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sheet Rows"
+msgstr "Строк в листе"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Projection"
+msgstr "Проекция"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Ortho Size"
+msgstr "Размер ортографии"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Near"
+msgstr "Ближняя плоскость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Far"
+msgstr "Дальняя плоскость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Clear Color"
+msgstr "Цвет очистки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Priority"
+msgstr "Приоритет"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Culling Mask"
+msgstr "Маска отсечения"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Range"
+msgstr "Дальность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Ambient"
+msgstr "Фоновый свет"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fog Density"
+msgstr "Плотность тумана"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Exposure"
+msgstr "Экспозиция"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Vignette"
+msgstr "Виньетка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Shadow Distance"
+msgstr "Дальность теней"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Height Falloff"
+msgstr "Спад по высоте"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Temperature"
+msgstr "Температура"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Contrast"
+msgstr "Контраст"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Saturation"
+msgstr "Насыщенность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Highlights"
+msgstr "Света"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Bias"
+msgstr "Смещение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Depth Threshold"
+msgstr "Порог глубины"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Normal Threshold"
+msgstr "Порог нормалей"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fxaa"
+msgstr "FXAA"
+
+#: crates/engine-editor/src/theme.rs
+msgid "High Quality Bloom"
+msgstr "Качественное свечение (Bloom)"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Zenith"
+msgstr "Зенит"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Horizon"
+msgstr "Горизонт"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Cascades"
+msgstr "Каскады"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Filter"
+msgstr "Фильтр"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Softness"
+msgstr "Мягкость"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Source"
+msgstr "Источник"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Seed"
+msgstr "Зерно генерации"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Chunk Size"
+msgstr "Размер блока"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Resolution"
+msgstr "Разрешение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Noise Scale"
+msgstr "Масштаб шума"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Height Scale"
+msgstr "Масштаб высоты"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Mountains"
+msgstr "Горы"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Octaves"
+msgstr "Октавы"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Land Bias"
+msgstr "Смещение суши"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Flat Zones"
+msgstr "Плоские зоны"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Flat Falloff"
+msgstr "Спад плоских зон"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Heightmap"
+msgstr "Карта высот"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Heightmap Height"
+msgstr "Высота карты высот"
+
+#: crates/engine-editor/src/theme.rs
+msgid "View Distance"
+msgstr "Дальность видимости"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Lod Distance"
+msgstr "Дистанция LOD"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sea Level"
+msgstr "Уровень моря"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Snow Height"
+msgstr "Высота снега"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Desert"
+msgstr "Пустыня"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Texture Scale"
+msgstr "Масштаб текстур"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Grass Texture"
+msgstr "Текстура травы"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Dirt Texture"
+msgstr "Текстура земли"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Rock Texture"
+msgstr "Текстура камня"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sand Texture"
+msgstr "Текстура песка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Snow Texture"
+msgstr "Текстура снега"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Grass Color"
+msgstr "Цвет травы"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Dirt Color"
+msgstr "Цвет земли"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Rock Color"
+msgstr "Цвет камня"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sand Color"
+msgstr "Цвет песка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Snow Color"
+msgstr "Цвет снега"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Edits"
+msgstr "Правки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Deep Color"
+msgstr "Цвет глубины"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Opacity"
+msgstr "Непрозрачность"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Waves"
+msgstr "Волны"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Wave Speed"
+msgstr "Скорость волн"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Sort Order"
+msgstr "Порядок сортировки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Scale Mode"
+msgstr "Режим масштаба"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Reference Resolution"
+msgstr "Опорное разрешение"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Match Width Or Height"
+msgstr "Подгонка по ширине или высоте"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Scale Factor"
+msgstr "Коэффициент масштаба"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Keyboard Navigation"
+msgstr "Навигация с клавиатуры"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Anchor Min"
+msgstr "Мин. якорь"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Anchor Max"
+msgstr "Макс. якорь"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Spacing"
+msgstr "Промежуток"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Padding Left"
+msgstr "Отступ слева"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Padding Right"
+msgstr "Отступ справа"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Padding Top"
+msgstr "Отступ сверху"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Padding Bottom"
+msgstr "Отступ снизу"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Child Alignment"
+msgstr "Выравнивание дочерних"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Stretch Children"
+msgstr "Растягивать дочерние"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Expand Children"
+msgstr "Расширять дочерние"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Fit Content"
+msgstr "Подгонять под содержимое"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Blocks Raycasts"
+msgstr "Блокирует лучи"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Border Width"
+msgstr "Ширина рамки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Shadow Size"
+msgstr "Размер тени"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Slice Border"
+msgstr "Границы 9-slice"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Raycast Target"
+msgstr "Цель луча"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Vertical Align"
+msgstr "Вертикальное выравнивание"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Wrap"
+msgstr "Перенос"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Bold"
+msgstr "Жирный"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Line Spacing"
+msgstr "Межстрочный интервал"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Outline Width"
+msgstr "Ширина контура"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Outline Color"
+msgstr "Цвет контура"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Normal Color"
+msgstr "Обычный цвет"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Hover Color"
+msgstr "Цвет при наведении"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Pressed Color"
+msgstr "Цвет при нажатии"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Disabled Color"
+msgstr "Цвет выключенного"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Is On"
+msgstr "Включено"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Off Color"
+msgstr "Цвет «выкл»"
+
+#: crates/engine-editor/src/theme.rs
+msgid "On Color"
+msgstr "Цвет «вкл»"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Check Color"
+msgstr "Цвет галочки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Whole Numbers"
+msgstr "Только целые"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Track Color"
+msgstr "Цвет дорожки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Handle Color"
+msgstr "Цвет ползунка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Placeholder"
+msgstr "Подсказка"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Max Length"
+msgstr "Макс. длина"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Font Size"
+msgstr "Размер шрифта"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Text Color"
+msgstr "Цвет текста"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Placeholder Color"
+msgstr "Цвет подсказки"
+
+#: crates/engine-editor/src/theme.rs
+msgid "Focus Color"
+msgstr "Цвет фокуса"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Show or hide the UV editor (left of the view)"
+msgstr "Показать или скрыть редактор UV (слева от вида)"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "In the UV editor: select points, faces, islands; all; linked"
+msgstr "В редакторе UV: выбор точек, граней, островов; всё; связанное"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "In the UV editor: move, rotate, scale; lock to an axis; type a number"
+msgstr "В редакторе UV: сдвиг, поворот, масштаб; ось; ввод числа"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Loop cut: point at an edge first"
+msgstr "Петлевой разрез: сначала наведите курсор на ребро"
+
+#: modeler/crates/engine-modeler/src/ui/mod.rs
+msgid "Loop cut ({cuts}): point at an edge and click · + − change the number of cuts · [ ] slide · Esc cancels"
+msgstr "Петлевой разрез ({cuts}): наведите на ребро и щёлкните · + − число разрезов · [ ] сдвиг · Esc — отмена"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Lights"
+msgstr "Лампы"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Max lights"
+msgstr "Больше всего ламп"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Most point and spot lights a frame may use when the scene has a ManyLights component; the nearest to the camera come first."
+msgstr "Сколько точечных ламп и прожекторов может освещать кадр, если в сцене есть компонент ManyLights; ближние к камере идут первыми."
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Shadowed lights"
+msgstr "Ламп с тенями"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "How many point and spot lights with a LightShadows component cast shadows; a point light costs six shadow passes, a spot light one."
+msgstr "Сколько точечных ламп и прожекторов с компонентом LightShadows отбрасывают тени; точечная лампа — шесть проходов теней, прожектор — один."
+
+#: modeler/crates/engine-modeler/src/ui/uv_view.rs
+msgid "Switch to Edit (Tab) to edit UVs"
+msgstr "Для правки UV перейдите в режим «Форма» (Tab)"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Water detail"
+msgstr "Детализация воды"
+
+#: crates/engine-editor/src/settings/pages_project.rs
+msgid "Water with a WaterEffects component: 0 is waves and sun glint, 1 adds refraction, depth colour and shore foam, 2 adds scene reflections."
+msgstr "Вода с компонентом WaterEffects: 0 — волны и блик солнца, 1 — плюс преломление, цвет по глубине и пена у берега, 2 — плюс отражения сцены."
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "This shader has no parameters"
+msgstr "У этого шейдера нет параметров"
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "Choose a shader to see its parameters"
+msgstr "Выберите шейдер, чтобы увидеть его параметры"
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "The shader header has an error: {error}"
+msgstr "Ошибка в заголовке шейдера: {error}"
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "Shader Parameters"
+msgstr "Параметры шейдера"
+
+#: crates/engine-editor/src/project_menus.rs
+msgid "Shader"
+msgstr "Шейдер"
+
+#: crates/engine-editor/src/project_menus.rs
+msgid "Surface Shader"
+msgstr "Шейдер поверхности"
+
+#: crates/engine-editor/src/project_menus.rs
+msgid "Unlit Shader"
+msgstr "Шейдер без освещения"
+
+#: crates/engine-editor/src/project_menus.rs
+msgid "Sprite Shader"
+msgstr "Шейдер спрайта"
+
+#: crates/engine-editor/src/project_menus.rs
+msgid "Post Effect"
+msgstr "Эффект экрана"
+
+#: crates/engine-editor/src/material_editor.rs
+msgid "A custom shader (.shader of kind surface or unlit); empty — the standard material"
+msgstr "Свой шейдер (.shader вида surface или unlit); пусто — стандартный материал"
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "Cannot create `{path}`: {error}"
+msgstr "Не удалось создать `{path}`: {error}"
+
+#: crates/engine-editor/src/shader_params_ui.rs
+msgid "Cannot write `{path}`: {error}"
+msgstr "Не удалось записать `{path}`: {error}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Add Caret Above"
+msgstr "Добавить курсор выше"
+
+#: crates/engine-editor/src (code tab)
+msgid "Add Caret Below"
+msgstr "Добавить курсор ниже"
+
+#: crates/engine-editor/src (code tab)
+msgid "Column Select Left"
+msgstr "Выделение столбцом влево"
+
+#: crates/engine-editor/src (code tab)
+msgid "Column Select Right"
+msgstr "Выделение столбцом вправо"
+
+#: crates/engine-editor/src (code tab)
+msgid "Column Select Up"
+msgstr "Выделение столбцом вверх"
+
+#: crates/engine-editor/src (code tab)
+msgid "Column Select Down"
+msgstr "Выделение столбцом вниз"
+
+#: crates/engine-editor/src (code tab)
+msgid "Add Next Occurrence"
+msgstr "Добавить следующее вхождение"
+
+#: crates/engine-editor/src (code tab)
+msgid "Select All Occurrences"
+msgstr "Выделить все вхождения"
+
+#: crates/engine-editor/src (code tab)
+msgid "Select All Occurrences (second shortcut)"
+msgstr "Выделить все вхождения (второе сочетание)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle Outlining Expansion"
+msgstr "Свернуть / развернуть блок"
+
+#: crates/engine-editor/src (code tab)
+msgid "Collapse to Definitions"
+msgstr "Свернуть до определений"
+
+#: crates/engine-editor/src (code tab)
+msgid "Toggle All Outlining"
+msgstr "Свернуть / развернуть все блоки"
+
+#: crates/engine-editor/src (code tab)
+msgid "Stop Outlining"
+msgstr "Отключить структуру (развернуть всё)"
+
+#: crates/engine-editor/src (code tab)
+msgid "FILES"
+msgstr "ФАЙЛЫ"
+
+#: crates/engine-editor/src (code tab)
+msgid "method"
+msgstr "метод"
+
+#: crates/engine-editor/src (code tab)
+msgid "field"
+msgstr "поле"
+
+#: crates/engine-editor/src (code tab)
+msgid "component"
+msgstr "компонент"
+
+#: crates/engine-editor/src (code tab)
+msgid "class"
+msgstr "класс"
+
+#: crates/engine-editor/src (code tab)
+msgid "keyword"
+msgstr "ключ. слово"
+
+#: crates/engine-editor/src (code tab)
+msgid "snippet"
+msgstr "шаблон"
+
+#: crates/engine-editor/src (code tab)
+msgid "hook"
+msgstr "хук"
+
+#: crates/engine-editor/src (code tab)
+msgid "word"
+msgstr "слово"
+
+#: crates/engine-editor/src (code tab)
+msgid "Pin Tab"
+msgstr "Закрепить вкладку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Unpin Tab"
+msgstr "Открепить вкладку"
+
+#: crates/engine-editor/src (code tab)
+msgid "Pinned tab — click to unpin"
+msgstr "Закреплённая вкладка — щелчок открепляет"
+
+#: crates/engine-editor/src (code tab)
+msgid "Unsaved changes from an earlier session were found (the editor closed without saving them)."
+msgstr "Найдены несохранённые правки прошлого сеанса (редактор закрылся, не сохранив их)."
+
+#: crates/engine-editor/src (code tab)
+msgid "Put the unsaved text back (Ctrl+Z returns the file as it is on disk)"
+msgstr "Вернуть несохранённый текст (Ctrl+Z — снова как на диске)"
+
+#: crates/engine-editor/src (code tab)
+msgid "Forget the unsaved text and keep the file as it is on disk"
+msgstr "Забыть несохранённый текст и оставить файл как на диске"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{p0}` is inside a build or repository folder; the editor does not touch it"
+msgstr "`{p0}` — в каталоге сборки или репозитория; редактор его не трогает"
+
+#: crates/engine-editor/src (code tab)
+msgid "`{p0}` is outside the project's code folders and assets"
+msgstr "`{p0}` — вне каталогов кода и ассетов проекта"
+
+#: crates/engine-editor/src (code tab)
+msgid "Cannot delete `{path}`: {why}"
+msgstr "Не удалось удалить `{path}`: {why}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Cannot duplicate `{p0}`: {why}"
+msgstr "Не удалось дублировать `{p0}`: {why}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Cannot move `{p0}`: {why}"
+msgstr "Не удалось перенести `{p0}`: {why}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Cannot rename `{old}`: {why}"
+msgstr "Не удалось переименовать `{old}`: {why}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Close All"
+msgstr "Закрыть все"
+
+#: crates/engine-editor/src (code tab)
+msgid "Close Others"
+msgstr "Закрыть остальные"
+
+#: crates/engine-editor/src (code tab)
+msgid "Close to the Right"
+msgstr "Закрыть справа"
+
+#: crates/engine-editor/src (code tab)
+msgid "Copy or cut files first"
+msgstr "Сначала скопируйте или вырежьте файлы"
+
+#: crates/engine-editor/src (code tab)
+msgid "Copy Relative Path"
+msgstr "Копировать относительный путь"
+
+#: crates/engine-editor/src (code tab)
+msgid "Fold / Unfold"
+msgstr "Свернуть / развернуть"
+
+#: crates/engine-editor/src (code tab)
+msgid "In `{folder}`. Any name and extension, for example `notes.md` or `helpers.rs`."
+msgstr "В `{folder}`. Любое имя и расширение, например `notes.md` или `helpers.rs`."
+
+#: crates/engine-editor/src (code tab)
+msgid "moving files between the code folders and the assets is not supported; use the system file manager"
+msgstr "перенос между каталогами кода и ассетами не поддерживается; воспользуйтесь проводником"
+
+#: crates/engine-editor/src (code tab)
+msgid "New File"
+msgstr "Новый файл"
+
+#: crates/engine-editor/src (code tab)
+msgid "New File in Code Folder"
+msgstr "Новый файл в каталоге кода"
+
+#: crates/engine-editor/src (code tab)
+msgid "New Folder"
+msgstr "Новый каталог"
+
+#: crates/engine-editor/src (code tab)
+msgid "No block to fold at the caret"
+msgstr "У курсора нет блока для свёртки"
+
+#: crates/engine-editor/src (code tab)
+msgid "No fix for the code at the caret"
+msgstr "Для кода у курсора нет исправлений"
+
+#: crates/engine-editor/src (code tab)
+msgid "No tabs to the right"
+msgstr "Справа нет вкладок"
+
+#: crates/engine-editor/src (code tab)
+msgid "Open in External Editor"
+msgstr "Открыть во внешнем редакторе"
+
+#: crates/engine-editor/src (code tab)
+msgid "Put the caret on a name first"
+msgstr "Сначала поставьте курсор на имя"
+
+#: crates/engine-editor/src (code tab)
+msgid "Quick Fix…"
+msgstr "Быстрое исправление…"
+
+#: crates/engine-editor/src (code tab)
+msgid "Scenario scripts live in the assets; mount an assets directory first"
+msgstr "Сценарии лежат в ассетах; сначала подключите каталог ассетов"
+
+#: crates/engine-editor/src (code tab)
+msgid "Select one file to rename"
+msgstr "Выделите один файл, чтобы переименовать"
+
+#: crates/engine-editor/src (code tab)
+msgid "Select one folder to rename"
+msgstr "Выделите один каталог, чтобы переименовать"
+
+#: crates/engine-editor/src (code tab)
+msgid "Set the external code editor in Preferences → General"
+msgstr "Задайте внешний редактор кода в Preferences → General"
+
+#: crates/engine-editor/src (code tab)
+msgid "Text File…"
+msgstr "Текстовый файл…"
+
+#: crates/engine-editor/src (code tab)
+msgid "The clipboard has no text"
+msgstr "В буфере обмена нет текста"
+
+#: crates/engine-editor/src (code tab)
+msgid "The editor does not know where Rust scripts live (`EditorConfig::rust_scripts`)"
+msgstr "Редактор не знает, где лежат скрипты на Rust (`EditorConfig::rust_scripts`)"
+
+#: crates/engine-editor/src (code tab)
+msgid "They are deleted permanently (there is no undo)."
+msgstr "Они удаляются насовсем (отменить нельзя)."
+
+#: crates/engine-editor/src (code tab)
+msgid "They go to the Recycle Bin."
+msgstr "Они попадут в корзину."
+
+#: crates/engine-editor/src (code tab)
+msgid "This file type has no line comments"
+msgstr "У этого типа файлов нет строчных комментариев"
+
+#: crates/engine-editor/src (code tab)
+msgid "This is the only tab"
+msgstr "Это единственная вкладка"
+
+#: crates/engine-editor/src (code tab)
+msgid "Unsaved changes in {names} will be lost."
+msgstr "Несохранённые правки в {names} пропадут."
+
+#: crates/engine-editor/src (code tab)
+msgid "New Code File…"
+msgstr "Новый файл кода…"
+
+#: crates/engine-editor/src (code tab)
+msgid "Delete “{name}”?"
+msgstr "Удалить «{name}»?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Delete {n} items?"
+msgstr "Удалить элементы: {n}?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Save changes to “{name}”?"
+msgstr "Сохранить изменения в «{name}»?"
+
+#: crates/engine-editor/src (code tab)
+msgid "Save changes to {n} files?"
+msgstr "Сохранить изменения в файлах: {n}?"
+
+#: crates/engine-editor/src (code tab)
+msgid "… and {n} more"
+msgstr "… и ещё {n}"
+
+#: crates/engine-editor/src (code tab)
+msgid "Your changes are lost if you don't save them."
+msgstr "Если не сохранить, изменения пропадут."
+
+#: crates/engine-editor/src (code tab)
+msgid "Save All"
+msgstr "Сохранить все"
+
+#: crates/engine-editor/src (code tab)
+msgid "Unsaved code: {names}."
+msgstr "Несохранённый код: {names}."

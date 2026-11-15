@@ -323,3 +323,45 @@ fn a_cart_from_primitives_extrude_and_loop_cuts() {
     paint_somewhere(&mut app, &mut hands, body);
     save_and_export(&mut app, "cart");
 }
+
+#[test]
+fn knife_and_bridge_from_keys_and_menu() {
+    let mut app = ModelerApp::new();
+    let mut hands = Hands::new(&mut app);
+    let cube = add_mesh(&mut app, &mut hands, "Cube");
+    app.run(Command::View(ViewPreset::Top));
+    app.run(Command::Frame);
+    hands.frame(&mut app, vec![]);
+    hands.key(&mut app, Key::V, Modifiers::NONE);
+    // K, щелчок по середине левого ребра верха, затем правого: верх — две грани.
+    hands.key(&mut app, Key::K, Modifiers::NONE);
+    let left = app.world_to_screen(Vec3::new(-4.0, 8.0, 0.0)).unwrap();
+    let right = app.world_to_screen(Vec3::new(4.0, 8.0, 0.0)).unwrap();
+    hands.click(&mut app, left);
+    hands.click(&mut app, right);
+    let m = mesh(&app, cube);
+    assert_eq!((m.points.len(), m.faces.len()), (10, 7), "the knife split the top (status {:?})", app.status_message());
+    assert_closed(&m, "knife");
+    let (_, _, edges, _) = app.mesh_selection().unwrap();
+    assert_eq!(edges.len(), 1, "the new cut edge is selected");
+    app.run(Command::Undo);
+    assert_eq!(mesh(&app, cube).faces.len(), 6, "one undo step");
+    // Мост: плоскость, её копия выше (Shift+D, G Y 4), обе краевые петли — Mesh ▸ Bridge.
+    hands.key(&mut app, Key::Escape, Modifiers::NONE);
+    let plane = add_mesh(&mut app, &mut hands, "Plane");
+    hands.key(&mut app, Key::V, Modifiers::NONE);
+    hands.key(&mut app, Key::Num3, Modifiers::NONE);
+    hands.key(&mut app, Key::A, Modifiers::NONE);
+    hands.key(&mut app, Key::D, Modifiers::SHIFT);
+    hands.key(&mut app, Key::Y, Modifiers::NONE);
+    hands.typed(&mut app, "4");
+    hands.key(&mut app, Key::Enter, Modifiers::NONE);
+    assert_eq!(mesh(&app, plane).faces.len(), 2, "two parallel planes");
+    hands.key(&mut app, Key::Num2, Modifiers::NONE);
+    hands.key(&mut app, Key::A, Modifiers::NONE);
+    app.run(Command::Mesh(engine_modeler::ui::MeshCmd::Bridge));
+    let m = mesh(&app, plane);
+    assert_eq!(m.faces.len(), 6, "bridge adds four walls (status {:?})", app.status_message());
+    m.check().unwrap();
+    assert!(m.is_closed_manifold(), "the walls close the box");
+}

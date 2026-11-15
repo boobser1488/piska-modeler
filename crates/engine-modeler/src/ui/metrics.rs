@@ -22,6 +22,8 @@ pub struct WidgetMetric {
     pub rect: Rect,
     /// Нажимается или тянется (контрол), а не просто подпись.
     pub interactive: bool,
+    /// Тянется (число, ползунок, разделитель): нажатие с уводом указателя изменило бы значение.
+    pub drag: bool,
     pub enabled: bool,
 }
 
@@ -45,6 +47,7 @@ pub fn widgets(ctx: &egui::Context) -> Vec<WidgetMetric> {
                     layer: *layer,
                     rect: w.rect,
                     interactive: w.sense.click || w.sense.drag,
+                    drag: w.sense.drag,
                     enabled: w.enabled,
                 })
             })
@@ -389,7 +392,7 @@ pub fn analyze_states(
 ) -> (Report, usize) {
     let base = frame(Vec::new());
     let shapes_now = painted(&base);
-    let targets: Vec<(Id, Rect)> = widgets(ctx)
+    let targets: Vec<(Id, Rect, bool)> = widgets(ctx)
         .into_iter()
         .filter(|w| is_control(w) && w.enabled)
         .filter(|w| {
@@ -398,7 +401,7 @@ pub fn analyze_states(
                 _ => false,
             })
         })
-        .map(|w| (w.id, w.rect))
+        .map(|w| (w.id, w.rect, w.drag))
         .collect();
     let mut report = Report::default();
     // Нарушения покоя уже в отчёте экрана: в состояниях — только новые.
@@ -415,24 +418,31 @@ pub fn analyze_states(
         }
     };
     let away = egui::pos2(-50.0, -50.0);
-    for (id, rect) in targets {
+    for (id, rect, drag) in targets {
         let at = rect.center();
         frame(vec![egui::Event::PointerMoved(at)]);
         let shapes = frame(Vec::new());
         take(&mut report, &format!("hover {id:?}"), shapes);
-        let press = |pressed| egui::Event::PointerButton { pos: at, button: egui::PointerButton::Primary, pressed, modifiers: egui::Modifiers::NONE };
-        let shapes = frame(vec![press(true)]);
-        take(&mut report, &format!("press {id:?}"), shapes);
-        // Увести указатель далеко и отпустить там: перетаскивание, не щелчок.
-        frame(vec![egui::Event::PointerMoved(away)]);
-        frame(vec![egui::Event::PointerButton { pos: away, button: egui::PointerButton::Primary, pressed: false, modifiers: egui::Modifiers::NONE }, egui::Event::PointerGone]);
+        // Нажатие — только у того, что не тянется: увод указателя у числа или разделителя
+        // изменил бы значение (поле размера текстуры улетало к 9570).
+        if !drag {
+            let press = |pressed| egui::Event::PointerButton { pos: at, button: egui::PointerButton::Primary, pressed, modifiers: egui::Modifiers::NONE };
+            let shapes = frame(vec![press(true)]);
+            take(&mut report, &format!("press {id:?}"), shapes);
+            // Увести указатель далеко и отпустить там: перетаскивание, не щелчок.
+            frame(vec![egui::Event::PointerMoved(away)]);
+            frame(vec![egui::Event::PointerButton { pos: away, button: egui::PointerButton::Primary, pressed: false, modifiers: egui::Modifiers::NONE }, egui::Event::PointerGone]);
+            states += 1;
+        } else {
+            frame(vec![egui::Event::PointerGone]);
+        }
         ctx.memory_mut(|m| m.request_focus(id));
         frame(Vec::new());
         let shapes = frame(Vec::new());
         take(&mut report, &format!("focus {id:?}"), shapes);
         ctx.memory_mut(|m| m.surrender_focus(id));
         frame(Vec::new());
-        states += 3;
+        states += 2;
     }
     (report, states)
 }

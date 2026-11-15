@@ -9,6 +9,9 @@ Piska Modeler живёт в отдельном репозитории и соб�
   «Рамки панелей»; виджеты редактора не нужны);
 * `crates/engine-modeler/src/ui/controls.rs` — контролы набора (`kit::controls` движка): кнопки,
   поля, списки, флажки одной высоты с рамкой внутри; без частей, которым нужен редактор;
+* `crates/engine-modeler/src/ui/boot.rs` — запуск программы и долгие операции (`kit::boot`):
+  заставка со знаком, именем и настоящим шагом, фоновая работа с ходом, экран ошибки запуска,
+  строка прогресса;
 * `crates/engine-modeler/src/ui/metrics.rs` — замер интерфейса (`kit::metrics`) для проверки
   раскладки в тестах;
 * `vendor/engine-i18n/` — слой перевода интерфейса и каталог `locale/ru.po`;
@@ -21,7 +24,7 @@ Piska Modeler живёт в отдельном репозитории и соб�
     python scripts/sync_from_engine.py --engine <путь к движку Piska>
 
 Если Modeler лежит внутри движка подмодулем (`<движок>/modeler`), `--engine` не нужен.
-`--only engine-model-formats` (или `kit`, `controls`, `metrics`, `engine-i18n`, `engine-build`) обновляет одну копию.
+`--only engine-model-formats` (или `kit`, `controls`, `metrics`, `boot`, `engine-i18n`, `engine-build`) обновляет одну копию.
 Результат детерминирован; после синхронизации — `cargo test`.
 """
 
@@ -43,7 +46,7 @@ KIT_HEADER = """//! КОПИЯ визуальной системы движка 
 
 MARKER = "// Рамки панелей"
 
-PARTS = ("kit", "controls", "metrics", "engine-i18n", "engine-build", "engine-model-formats")
+PARTS = ("kit", "controls", "metrics", "boot", "engine-i18n", "engine-build", "engine-model-formats")
 
 COPY_HEADER = """//! КОПИЯ `crates/engine-editor/src/{name}.rs` движка Piska — не править руками.
 //!
@@ -94,6 +97,9 @@ def engine_module(engine: Path, name: str) -> str:
     body = "\n".join(out) + "\n"
     body = body.replace("use crate::icons::{self, Icon};", "use super::icons::{self, Icon};")
     body = body.replace("use crate::theme::{\n    self,", "use super::kit as theme;\nuse super::kit::{\n   ")
+    body = body.replace("use crate::theme::{self,", "use super::kit as theme;\nuse super::kit::{")
+    body = body.replace("use crate::controls;", "use super::controls;")
+    body = body.replace("use crate::i18n::", "use engine_i18n::")
     body = body.replace("crate::theme::", "super::kit::")
     bad = [l for l in body.splitlines() if "crate::" in l]
     if bad:
@@ -169,7 +175,7 @@ def main() -> int:
         out = MODELER / "crates" / "engine-modeler" / "src" / "ui" / "kit.rs"
         out.write_text(kit(engine), encoding="utf-8", newline="\n")
         print(f"wrote {out}")
-    for name in ("controls", "metrics"):
+    for name in ("controls", "metrics", "boot"):
         if name in parts:
             out = MODELER / "crates" / "engine-modeler" / "src" / "ui" / f"{name}.rs"
             out.write_text(engine_module(engine, name), encoding="utf-8", newline="\n")

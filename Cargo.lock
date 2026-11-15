@@ -1621,6 +1621,7 @@ dependencies = [
  "engine-build",
  "engine-i18n",
  "engine-modeler",
+ "glam",
  "image",
  "log",
  "pollster",

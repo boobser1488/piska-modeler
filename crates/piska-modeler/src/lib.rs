@@ -10,6 +10,7 @@ use std::sync::Arc;
 use std::time::{Duration, Instant};
 
 use engine_modeler::gpu::GpuViewport;
+use engine_modeler::ui::boot::Boot;
 use engine_modeler::ui::{Command, Mode, ModelerApp, Tool};
 use engine_modeler::{FaceDir, ViewPreset};
 use winit::application::ApplicationHandler;
@@ -17,6 +18,8 @@ use winit::dpi::LogicalSize;
 use winit::event::WindowEvent;
 use winit::event_loop::{ActiveEventLoop, ControlFlow, EventLoop};
 use winit::window::{Window, WindowId};
+
+pub mod startup;
 
 /// Параметры командной строки.
 #[derive(Clone, Debug, Default)]
@@ -180,7 +183,7 @@ pub fn request_device(
 }
 
 /// Нарисовать интерфейс egui в текстуру.
-fn paint_ui(
+pub fn paint_ui(
     device: &wgpu::Device,
     queue: &wgpu::Queue,
     renderer: &mut egui_wgpu::Renderer,
@@ -301,7 +304,9 @@ impl Headless {
         let gpu_view = gpu_view.then(|| GpuViewport::new(&device, &mut renderer));
         let ctx = egui::Context::default();
         engine_modeler::ui::kit::apply(&ctx, true);
-        ctx.set_zoom_factor(scale);
+        // Масштаб — свойством экрана в каждом кадре (`native_pixels_per_point`), а не
+        // `set_zoom_factor`: смена масштаба до первого кадра заставляла egui считать первый кадр
+        // по прежнему размеру экрана (10 000 точек) — вид просил текстуру в тысячи пикселей.
         Ok(Self { device, queue, renderer, gpu_view, target, view, size, ctx, scale, frame: 0 })
     }
 
@@ -327,6 +332,8 @@ impl Headless {
             events,
             ..Default::default()
         };
+        let mut input = input;
+        input.viewports.entry(egui::ViewportId::ROOT).or_default().native_pixels_per_point = Some(self.scale);
         self.frame += 1;
         let renders = app.render_count();
         let full = frame_ui(app, &self.ctx, input);
@@ -444,8 +451,59 @@ struct Gfx {
     egui: egui_winit::State,
 }
 
+/// Показ окна: оно создаётся невидимым (белого прямоугольника системы до темы не видно) и
+/// показывается, когда в нём уже нарисованы кадры в цветах темы. Невидимое окно на Windows не
+/// получает `RedrawRequested` — пока оно спрятано, кадры рисуются из `about_to_wait`. Если
+/// кадр так и не удаётся вывести (поверхность потеряна, драйвер), окно всё равно показывается
+/// после [`Reveal::MAX_ATTEMPTS`] попыток: спрятанным навсегда оно не остаётся.
+#[derive(Clone, Copy, Debug, Default)]
+pub struct Reveal {
+    presented: u32,
+    attempts: u32,
+    shown: bool,
+}
+
+impl Reveal {
+    /// Сколько выведенных кадров до показа: в первом тема ставится, во втором — уже действует.
+    pub const FRAMES: u32 = 2;
+    /// Сколько попыток нарисовать кадр самое большее, прежде чем показать окно всё равно.
+    pub const MAX_ATTEMPTS: u32 = 30;
+
+    /// Окно ещё спрятано: кадры рисует цикл событий сам (из `about_to_wait`).
+    pub fn draw_from_idle(&self) -> bool {
+        !self.shown
+    }
+
+    pub fn shown(&self) -> bool {
+        self.shown
+    }
+
+    /// Кадр выведен (`presented`) или не удался. `true` — показать окно сейчас.
+    pub fn frame_done(&mut self, presented: bool) -> bool {
+        if self.shown {
+            return false;
+        }
+        self.attempts += 1;
+        if presented {
+            self.presented += 1;
+        }
+        if self.presented >= Self::FRAMES || self.attempts >= Self::MAX_ATTEMPTS {
+            self.shown = true;
+            return true;
+        }
+        false
+    }
+}
+
 struct Runner {
-    app: ModelerApp,
+    /// Запуск программы: заставка, потом окно моделей (собирается в фоне, `startup.rs`).
+    boot: Boot<ModelerApp>,
+    /// Текстура вида на видеокарте: окно моделей получает её, когда собрано.
+    gpu_texture: Option<egui::TextureId>,
+    attached: bool,
+    /// Устройство wgpu готовится в фоне с первой секунды.
+    warmup: Option<startup::Warmup>,
+    reveal: Reveal,
     gfx: Option<Gfx>,
     error: Option<String>,
     last_frame: Instant,
@@ -471,10 +529,12 @@ fn window_icon() -> Option<winit::window::Icon> {
 const IDLE_WAKE: Duration = Duration::from_secs(1);
 
 impl Runner {
-    fn create(&self, event_loop: &ActiveEventLoop) -> Result<Gfx, String> {
+    fn create(&mut self, event_loop: &ActiveEventLoop) -> Result<Gfx, String> {
         let mut attributes = Window::default_attributes()
             .with_title("Piska Modeler")
-            .with_inner_size(LogicalSize::new(1440.0, 880.0));
+            .with_inner_size(LogicalSize::new(1440.0, 880.0))
+            // Невидимым до первых кадров в цветах темы (см. `Reveal`).
+            .with_visible(false);
         if let Some(icon) = window_icon() {
             attributes = attributes.with_window_icon(Some(icon));
         }
@@ -487,9 +547,8 @@ impl Runner {
         let window = Arc::new(event_loop.create_window(attributes).map_err(|e| e.to_string())?);
         // Системные окна файлов встают над окном Modeler и блокируют его, пока открыты.
         engine_build::file_dialog::set_owner_window(native_handle(&window));
-        let instance = wgpu::Instance::new(wgpu::InstanceDescriptor::default());
-        let surface = instance.create_surface(window.clone()).map_err(|e| e.to_string())?;
-        let (adapter, device, queue) = request_device(&instance, Some(&surface))?;
+        // Устройство готово или почти готово: его готовил отдельный поток.
+        let (surface, adapter, device, queue) = self.warmup.take().unwrap_or_else(startup::Warmup::start).finish(window.clone())?;
         let caps = surface.get_capabilities(&adapter);
         // egui рисует в гамма-пространстве: поверхность не-sRGB.
         let format = caps
@@ -536,8 +595,15 @@ impl Runner {
                 let view = frame.texture.create_view(&wgpu::TextureViewDescriptor::default());
                 let input = gfx.egui.take_egui_input(&gfx.window);
                 let ctx = gfx.egui.egui_ctx().clone();
-                let full = frame_ui(&mut self.app, &ctx, input);
-                if let Some(request) = self.app.take_view_request() {
+                // Программа собрана — окно моделей получает вид на видеокарте до первого кадра.
+                self.boot.poll();
+                if let (Some(app), false) = (self.boot.value_mut(), self.attached) {
+                    app.set_gpu_texture(self.gpu_texture);
+                    self.attached = true;
+                }
+                let boot = &mut self.boot;
+                let full = ctx.run(input, |ctx| startup::frame(boot, ctx));
+                if let Some(request) = self.boot.value_mut().and_then(|app| app.take_view_request()) {
                     gfx.gpu_view.render(&gfx.device, &gfx.queue, &mut gfx.renderer, &request);
                 }
                 let platform = full.platform_output.clone();
@@ -549,6 +615,9 @@ impl Runner {
                 gfx.egui.handle_platform_output(&gfx.window, platform);
                 gfx.window.pre_present_notify();
                 frame.present();
+                if self.reveal.frame_done(true) {
+                    gfx.window.set_visible(true);
+                }
                 // Следующий кадр — когда попросит egui (анимация, подсказка), но не чаще
                 // монитора; в покое — раз в IDLE_WAKE. Ввод будит раньше (window_event).
                 self.next_frame = now + delay.max(self.min_interval).min(IDLE_WAKE);
@@ -556,14 +625,20 @@ impl Runner {
             Err(wgpu::SurfaceError::Lost | wgpu::SurfaceError::Outdated) => {
                 gfx.surface.configure(&gfx.device, &gfx.config);
                 self.next_frame = now;
+                if self.reveal.frame_done(false) {
+                    gfx.window.set_visible(true);
+                }
             }
             Err(e) => {
+                if self.reveal.frame_done(false) {
+                    gfx.window.set_visible(true);
+                }
                 log::warn!("skipping a frame: {e}");
                 self.next_frame = now + self.min_interval;
             }
         }
-        let title = match self.app.path() {
-            Some(p) => format!("{}{} — Piska Modeler", p.display(), if self.app.has_unsaved_changes() { " ●" } else { "" }),
+        let title = match self.boot.value().and_then(|app| app.path().map(|p| (p.to_path_buf(), app.has_unsaved_changes()))) {
+            Some((p, unsaved)) => format!("{}{} — Piska Modeler", p.display(), if unsaved { " ●" } else { "" }),
             None => "Piska Modeler".to_string(),
         };
         if title != self.title {
@@ -571,7 +646,7 @@ impl Runner {
             self.title = title;
         }
         self.frames += 1;
-        if self.max_frames.is_some_and(|m| self.frames >= m) {
+        if self.max_frames.is_some_and(|m| self.frames >= m) || self.boot.quit_requested() {
             event_loop.exit();
         }
     }
@@ -587,7 +662,7 @@ impl ApplicationHandler for Runner {
                 if let Some(mhz) = gfx.window.current_monitor().and_then(|m| m.refresh_rate_millihertz()) {
                     self.min_interval = Duration::from_secs_f64(1000.0 / f64::from(mhz.max(30_000)));
                 }
-                self.app.set_gpu_texture(Some(gfx.gpu_view.texture_id()));
+                self.gpu_texture = Some(gfx.gpu_view.texture_id());
                 gfx.window.request_redraw();
                 self.gfx = Some(gfx);
             }
@@ -619,6 +694,12 @@ impl ApplicationHandler for Runner {
     }
 
     fn about_to_wait(&mut self, event_loop: &ActiveEventLoop) {
+        // Невидимое окно не получает RedrawRequested: первые кадры рисуются отсюда.
+        if self.gfx.is_some() && self.reveal.draw_from_idle() {
+            self.frame(event_loop);
+            event_loop.set_control_flow(ControlFlow::Poll);
+            return;
+        }
         let Some(gfx) = &self.gfx else { return };
         if Instant::now() >= self.next_frame {
             gfx.window.request_redraw();
@@ -642,10 +723,16 @@ fn native_handle(window: &Window) -> Option<isize> {
 
 /// Открыть окно и работать, пока его не закроют. `ENGINE_FRAMES=N` — закрыться после N кадров.
 pub fn run_window(o: &Options) -> Result<ModelerApp, String> {
+    // Видеокарта готовится с первой секунды, пока создаются цикл событий и окно.
+    let warmup = startup::Warmup::start();
     let event_loop = EventLoop::new().map_err(|e| format!("cannot open a window: {e}"))?;
     event_loop.set_control_flow(ControlFlow::Wait);
     let mut runner = Runner {
-        app: build_app(o),
+        boot: startup::start(o.clone()),
+        gpu_texture: None,
+        attached: false,
+        warmup: Some(warmup),
+        reveal: Reveal::default(),
         gfx: None,
         error: None,
         last_frame: Instant::now(),
@@ -659,5 +746,49 @@ pub fn run_window(o: &Options) -> Result<ModelerApp, String> {
     if let Some(e) = runner.error {
         return Err(e);
     }
-    Ok(runner.app)
+    if let Some(message) = runner.boot.error() {
+        return Err(message.to_string());
+    }
+    // Окно закрыли, пока программа собиралась: сохранять нечего.
+    Ok(runner.boot.take_value().unwrap_or_else(ModelerApp::new))
+}
+
+#[cfg(test)]
+mod reveal_tests {
+    use super::Reveal;
+
+    /// Цикл событий спрятанного окна: `RedrawRequested` не приходит никогда, кадры — только из
+    /// `about_to_wait`. Окно обязано показаться при любом исходе кадров.
+    fn shows_within(outcomes: impl Fn(u32) -> bool, limit: u32) -> Option<u32> {
+        let mut reveal = Reveal::default();
+        for step in 0..limit {
+            if !reveal.draw_from_idle() {
+                return Some(step);
+            }
+            reveal.frame_done(outcomes(step));
+        }
+        reveal.shown().then_some(limit)
+    }
+
+    #[test]
+    fn the_window_shows_after_two_themed_frames() {
+        assert_eq!(shows_within(|_| true, 100), Some(Reveal::FRAMES));
+    }
+
+    #[test]
+    fn the_window_never_stays_hidden_even_if_no_frame_presents() {
+        assert_eq!(shows_within(|_| false, 1000), Some(Reveal::MAX_ATTEMPTS));
+        // Кадры то удаются, то нет.
+        let shown = shows_within(|step| step % 3 == 0, 1000).expect("the window is shown");
+        assert!(shown <= Reveal::MAX_ATTEMPTS);
+    }
+
+    #[test]
+    fn once_shown_it_is_not_shown_again() {
+        let mut reveal = Reveal::default();
+        assert!(!reveal.frame_done(true));
+        assert!(reveal.frame_done(true));
+        assert!(!reveal.frame_done(true), "set_visible(true) is asked once");
+        assert!(!reveal.draw_from_idle(), "after showing, frames come from RedrawRequested again");
+    }
 }

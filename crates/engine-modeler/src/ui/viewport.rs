@@ -114,6 +114,8 @@ pub(super) struct Viewport {
     pub notice: Option<String>,
     /// Закончилась операция с числами: (подпись, операция) — окно запомнит её для панели.
     pub pending_last: Option<(&'static str, LastKind)>,
+    /// Предпросмотр петлевого разреза под курсором: отрезки в мировых координатах.
+    pub loop_preview: Vec<(Vec3, Vec3)>,
     /// Модель изменилась после последнего кадра.
     frame_stale: bool,
     pub renders: u64,
@@ -123,6 +125,14 @@ pub(super) struct Viewport {
 }
 
 impl Viewport {
+    pub fn frame_width(&self) -> u32 {
+        self.frame.width
+    }
+
+    pub fn frame_height(&self) -> u32 {
+        self.frame.height
+    }
+
     pub fn triangle_count(&self) -> usize {
         self.mesh.triangles.len()
     }
@@ -214,6 +224,17 @@ impl Viewport {
             (rect.width() * ppp).round().max(1.0) as u32,
             (rect.height() * ppp).round().max(1.0) as u32,
         ];
+        // Размер кадра вида не больше, чем позволяют текстуры: программный кадр egui принимает
+        // текстуру не крупнее `max_texture_side` (первый кадр окна без размера — 10 000 точек),
+        // видеокарта — не крупнее разумного. Больше — кадр рисуется меньше и растягивается.
+        let cap = if self.gpu_texture.is_some() { 8192.0 } else { ui.ctx().input(|i| i.max_texture_side).clamp(64, 16384) as f32 };
+        let longest = full_size[0].max(full_size[1]) as f32;
+        let full_size = if longest > cap {
+            let k = cap / longest;
+            [((full_size[0] as f32 * k).floor() as u32).max(1), ((full_size[1] as f32 * k).floor() as u32).max(1)]
+        } else {
+            full_size
+        };
         // Растеризатор во время перетаскивания рисует вдвое меньший кадр без сверхвыборки:
         // ввод не ждёт. Видеокарте это не нужно.
         let interacting = ui.input(|i| i.pointer.any_down() || i.smooth_scroll_delta != egui::Vec2::ZERO);
@@ -829,10 +850,61 @@ impl Viewport {
         poly.points.iter().map(|p| self.world_to_screen(*p)).collect()
     }
 
+    /// Видна ли точка модели из камеры (ничто не заслоняет её): луч через её пиксель не
+    /// попадает в поверхность заметно ближе.
+    fn point_visible(&self, rect: Rect, p: Vec3) -> bool {
+        let Some(screen) = self.world_to_screen(p) else { return true };
+        let ray = self.ray(rect, screen);
+        let along = (p - ray.origin).dot(ray.dir) / ray.dir.length_squared().max(1e-12);
+        match raycast(&self.mesh, ray, |_| true) {
+            Some(hit) => hit.t >= along - (along * 0.003).max(0.02),
+            None => true,
+        }
+    }
+
+    /// Видимые части рёбер элемента (мировые отрезки): рёбра за поверхностью, в том числе
+    /// внутри чаши и за стенкой, не обводятся — иначе обводка «просвечивает» сквозь модель.
+    pub(super) fn visible_outline(&self, node: NodeId) -> Vec<(Vec3, Vec3)> {
+        const PARTS: usize = 4;
+        let Some(rect) = self.rect else { return Vec::new() };
+        let polys: Vec<&Polygon> = self.mesh.polygons.iter().filter(|p| p.node == node).collect();
+        let edges: usize = polys.iter().map(|p| p.points.len()).sum();
+        // Очень тяжёлые сцены: проверка луча на каждый кусок дороже кадра — только лицевые грани.
+        let heavy = edges * PARTS * self.mesh.triangles.len() > 40_000_000;
+        let eye = self.camera.eye();
+        let key = |p: Vec3| [(p.x * 64.0).round() as i32, (p.y * 64.0).round() as i32, (p.z * 64.0).round() as i32];
+        let mut seen = HashSet::new();
+        let mut out = Vec::new();
+        for poly in polys {
+            let n = poly.points.len();
+            if heavy {
+                // Грань повёрнута от камеры — её рёбра не рисуем.
+                let normal = (1..n.saturating_sub(1)).fold(Vec3::ZERO, |s, i| s + (poly.points[i] - poly.points[0]).cross(poly.points[i + 1] - poly.points[0]));
+                if normal.dot(eye - poly.points[0]) <= 0.0 && !self.camera.orthographic {
+                    continue;
+                }
+            }
+            for i in 0..n {
+                let (a, b) = (poly.points[i], poly.points[(i + 1) % n]);
+                let (ka, kb) = (key(a), key(b));
+                if !seen.insert(if ka < kb { (ka, kb) } else { (kb, ka) }) {
+                    continue;
+                }
+                for s in 0..PARTS {
+                    let (p0, p1) = (a.lerp(b, s as f32 / PARTS as f32), a.lerp(b, (s + 1) as f32 / PARTS as f32));
+                    if heavy || self.point_visible(rect, (p0 + p1) * 0.5) {
+                        out.push((p0, p1));
+                    }
+                }
+            }
+        }
+        out
+    }
+
     fn outline(&self, painter: &egui::Painter, node: NodeId, stroke: Stroke) {
-        for poly in self.mesh.polygons.iter().filter(|p| p.node == node) {
-            if let Some(points) = self.polygon_screen(poly) {
-                stroke_polygon(painter, &points, stroke);
+        for (a, b) in self.visible_outline(node) {
+            if let (Some(pa), Some(pb)) = (self.world_to_screen(a), self.world_to_screen(b)) {
+                painter.line_segment([pa, pb], stroke);
             }
         }
     }

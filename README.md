@@ -82,7 +82,7 @@ PNG в base64, узлы-группы и элементы с абсолютным
 | `vendor/engine-i18n`, `vendor/engine-build`, `crates/engine-modeler/src/ui/kit.rs` | копии частей движка Piska (перевод, значок exe, визуальная система) — обновляются `python scripts/sync_from_engine.py --engine <движок>` |
 | `samples/` | образцы (`cargo run -p engine-modeler --example gen_samples`) |
 
-Лицензия: MIT или Apache-2.0 на выбор (`LICENSE-MIT`, `LICENSE-APACHE`).
+Лицензия: MIT или Apache-2.0 на выбор (`LICENSE-MIT`, `LICENSE-APACHE`) — при распространении самого Modeler, его исходников и программ нужно сохранять указание авторства. Использование Modeler как инструмента указания авторства **не требует**: модели и текстуры, сделанные в нём, — ваши (см. [LICENSE-EXCEPTION.md](LICENSE-EXCEPTION.md)).
 
 ---
 
@@ -105,4 +105,5 @@ directly on the model, made for the Piska Engine but fully standalone.
   tools; Ctrl+Z / Ctrl+Y; F frames; 1 / 3 / 7 views; F1 lists every shortcut.
 * **Layout:** `crates/engine-modeler` (library), `crates/piska-modeler` (app),
   `vendor/` + `ui/kit.rs` (synced copies of engine parts: `scripts/sync_from_engine.py`).
-* **Licence:** MIT OR Apache-2.0.
+* **Licence:** MIT OR Apache-2.0 for the tool itself (attribution required when you redistribute it);
+  what you make with it needs no attribution — see [LICENSE-EXCEPTION.md](LICENSE-EXCEPTION.md).
